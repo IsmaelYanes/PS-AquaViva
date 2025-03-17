@@ -1,0 +1,23 @@
+#side-menu {
+    background-color: #003366;
+    color: white;
+    height: 100vh;
+    padding: 10px;
+}
+
+#side-menu ul {
+    list-style: none;
+    padding: 0;
+
+}
+
+#side-menu li {
+    margin: 10px 0;
+}
+
+#side-menu a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+}
