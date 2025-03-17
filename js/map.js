@@ -6,27 +6,23 @@ function initMap() {
     }).addTo(map);
 
 
-    function addMarkersToMap(zonas) {
-        for (let lugar in zonas) {
-            let lat = zonas[lugar][0];
-            let lon = zonas[lugar][1];
+    function addMarkersToMap(beaches) {
+        for (let i = 0; i < beaches.length; i++) {
+            let beach = beaches[i];
+            let lat = Number(beach.LAT.replace(",", "."));
+            let lon = 0 - (Number(beach.LOG.replace(",", ".")));
+            console.log(lat, lon);
             L.marker([lat, lon]).addTo(map)
-                .bindPopup('<b>' + lugar + '</b>');
+                .bindPopup('<b>' + beach.beachName + '</b>');
+
         }
     }
-
-
-    fetch('../zonas.json')
-        .then(response => response.json())
-        .then(zonas => {
-            addMarkersToMap(zonas);
-        })
-        .catch(error => console.error('Error al cargar el archivo JSON:', error));
-
     fetch('../beaches.json')
         .then(response => response.json())
-        .then(beaches => {
-
+        .then(data => {
+            addMarkersToMap(data)
         })
+
 }
+
 
