@@ -1,0 +1,84 @@
+#body-container {
+    margin: 0 auto;
+    width: 70%;
+    font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    color: #666666;
+}
+#description-container {
+    background-color: #b1bfce;
+    /*background-color: #CAE2F0;*/
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 1em;
+}
+#description {
+    line-height: 1.6;
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    color:black;
+}
+#map{
+    width: 100%;
+    height: 600px;
+    padding: 20px;
+}
+#imageContainer{
+    position: relative;
+    width: 100%;
+    height: 600px;
+    background-image: url('../images/surfer.png');
+    background-size: cover;
+    opacity: 60%;
+    margin-top: 10em;
+}
+.textBlock{
+    position: absolute;
+    width: 13em;
+    height: 13em;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+}
+.textBlock:nth-child(1) {
+    top: 1em;
+    left: 2em;
+}
+.textBlock:nth-child(2) {
+    bottom: 2em;
+    left: 20em;
+}
+.textBlock:nth-child(3) {
+    top: 4em;
+    right: 20em;
+}
+.detail-description {
+    padding: 1em;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+#footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #b1bfce;
+    padding: 5px;
+    width: 100%;
+    height: 20em;
+}
+#gap {
+    margin-top: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #213555;
+    padding: 5px;
+    width: 100%;
+    height: 5em;
+}

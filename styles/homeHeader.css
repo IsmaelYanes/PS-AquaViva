@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.homeHeader-container {
+    /*
+    background: linear-gradient(to left,
+    #FCE0AC 4%,
+    #FFFFFF 10%,
+    #CAE2F0 24%
+    );*/
+    background-color: #213555;
+    height: 15vh;
+    margin-bottom: 3em;
+    padding: 0.5em;
+}
+
+#header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+#imageLogo {
+    border-radius: 90px;
+    width: 9em;
+    height: 9em;
+}
+
+#optionButtons {
+    width: 15.9em;
+    height: 2.5em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-button {
+    background-color: #0099cc;
+    color: white;
+    padding: 0.65em;
+    border: none;
+    border-radius: 0.5em;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #12214c;
+}
+
+#logIn {
+    width: 6em;
+}
+
+#register {
+    width: 9.5em;
+}
+#map-container{
+
+}
+.search-container {
+    position: relative;
+    width: 300px;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 10px 40px 10px 10px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.search-container button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.search-container button img {
+    width: 20px;
+    height: 20px;
+}
