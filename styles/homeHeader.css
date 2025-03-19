@@ -1,68 +1,47 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
-.homeHeader-container {
-    /*
-    background: linear-gradient(to left,
-    #FCE0AC 4%,
-    #FFFFFF 10%,
-    #CAE2F0 24%
-    );*/
-    background-color: #213555;
-    height: 15vh;
-    margin-bottom: 3em;
-    padding: 0.5em;
-}
-
-#header-container {
+.nav-bar {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    height: 100%;
+    height: 6em;
+    width: 100%;
 }
 
-#imageLogo {
-    border-radius: 90px;
-    width: 9em;
-    height: 9em;
-}
-
-#optionButtons {
-    width: 15.9em;
-    height: 2.5em;
+header {
+    width: 100%;
+    height: 100vh;
+    background: url('../images/header.png') no-repeat center center/cover;
     display: flex;
-    justify-content: space-between;
-}
-
-.home-button {
-    background-color: #0099cc;
+    align-items: center;
+    justify-content: center;
     color: white;
-    padding: 0.65em;
+    text-align: center;
+}
+
+.nav-bar_logo {
+    margin-left: 1em;
+}
+
+
+button {
+    padding: 10px 10px;
+    background: linear-gradient(#33CCCC, #0099CC);
+    color: white;
     border: none;
-    border-radius: 0.5em;
-    font-size: 1em;
-    cursor: pointer;
+    border-radius: 1em;
+    text-decoration: none;
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
 }
 
-.button:hover {
-    background-color: #12214c;
+
+#aside-buttons {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    margin-right: 2%;
 }
 
-#logIn {
-    width: 6em;
-}
 
-#register {
-    width: 9.5em;
-}
-#map-container{
-
-}
 .search-container {
-    position: relative;
+    position: absolute;
     width: 300px;
 }
 
@@ -89,3 +68,43 @@
     width: 20px;
     height: 20px;
 }
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 380px) {
+    .nav-bar{
+        flex-direction: column;
+        height: 31em;
+        position: absolute;
+        z-index: 2;
+        background-color: rgb(30, 31, 34, 0.97);
+        border: none;
+        font-size: 0.7em;
+        top: 0;
+        transition: top 1s ease;
+    }
+    .nav-bar.hidden{
+        position: absolute;
+        top: -27em;
+        transition: top 1s ease;
+    }
+    #aside-buttons{
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+    .nav-bar_logo {
+        margin-left: 0;
+        margin-top: 1em;
+    }
+}
+
