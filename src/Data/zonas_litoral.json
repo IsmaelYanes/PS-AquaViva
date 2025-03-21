@@ -4,7 +4,8 @@
     {
       "type": "Feature",
       "properties": {
-        "Gran Canaria": "Oeste",
+        "isla": "Gran Canaria",
+        "zona": "Oeste",
         "name": "Gran Canaria - Oeste",
         "color": "#ff9999"
       },
@@ -96,7 +97,8 @@
     {
       "type": "Feature",
       "properties": {
-        "Gran Canaria": "Norte",
+        "isla": "Gran Canaria",
+        "zona": "Norte",
         "name": "Gran Canaria - Norte",
         "color": "#ff3333"
       },
@@ -228,7 +230,8 @@
     {
       "type": "Feature",
       "properties": {
-        "Gran Canaria": "Este",
+        "isla": "Gran Canaria",
+        "zona": "Este",
         "name": "Gran Canaria - Este",
         "color": "#ff6666"
       },
@@ -352,7 +355,8 @@
     {
       "type": "Feature",
       "properties": {
-        "Gran Canaria": "Sur",
+        "isla": "Gran Canaria",
+        "zona": "Sur",
         "name": "Gran Canaria - Sur",
         "color": "#ff0000"
       },

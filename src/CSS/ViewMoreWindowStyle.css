@@ -1,0 +1,97 @@
+/* Estilo general de la ventana emergente */
+.popup {
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px; /* Aumentamos el ancho */
+    max-height: 90vh; /* Ajuste dinámico a la pantalla */
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Contenedor con scroll si el contenido es grande */
+.popup-content {
+    padding: 20px;
+    width: 100%;
+    overflow-y: auto;
+    flex-grow: 1; /* Permite que el contenido se expanda */
+}
+
+/* Botón de cierre */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #d9534f;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.close-btn:hover {
+    background: darkred;
+}
+
+/* Encabezado */
+.popup-header h2 {
+    font-size: 18px;
+    margin: 0;
+    color: #007acc;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    width: 80%;
+}
+
+/* Cuerpo con más espacio */
+.popup-body {
+    margin-top: 15px;
+    padding-bottom: 20px;
+}
+
+/* Imagen */
+.popup-image {
+    width: 70%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+p {
+    width: 80%;
+}
+
+
+.popup-footer {
+    padding: 10px 20px;
+    text-align: right;
+    background: #f9f9f9;
+    border-top: 1px solid #ddd;
+}
+
+.more-info {
+    color: #007acc;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 15px;
+    background: #007acc;
+    color: white;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.more-info:hover {
+    background: #007acc;
+    text-decoration: none;
+}
