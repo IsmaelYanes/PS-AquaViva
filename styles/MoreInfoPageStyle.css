@@ -1,0 +1,12 @@
+#container {
+    display: flex;
+}
+
+#menu-container {
+    width: 20%;
+}
+
+#body-container {
+    width: 80%;
+}
+

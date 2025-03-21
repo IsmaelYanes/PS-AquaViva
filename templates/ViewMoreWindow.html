@@ -1,0 +1,32 @@
+<meta charset="UTF-8">
+
+<link rel= "stylesheet" href="../styles/ViewMoreWindowStyle.css">
+
+<div class="popup">
+    <div class="popup-content">
+        <button class="close-btn" onclick="closePopup()">X</button>
+        <div class="popup-header">
+            <h2>Añadir información de la zona seleccionada</h2>
+        </div>
+        <div class="popup-body">
+            <img src="image-url.jpg" alt="Imagen de la zona seleccionada" class="popup-image">
+            <p><strong>Nombre de la isla:</strong> Isla de Ejemplo</p>
+            <p><strong>Zona:</strong> Zona Ejemplo</p>
+            <p><strong>Información adicional:</strong> Aquí puedes añadir más detalles sobre la zona seleccionada.</p>
+        </div>
+        <div class="popup-footer">
+            <a href="../pages/MoreInfoPage.html" class="more-info">Ver más</a>
+        </div>
+    </div>
+</div>
+
+<script>
+
+function closePopup() {
+    document.querySelector('.popup').style.display = 'none';
+}
+
+function openPopup() {
+    document.querySelector('.popup').style.display = 'flex';
+}</script>
+
