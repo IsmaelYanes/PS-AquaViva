@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+}
+
+#main-container {
+    padding: 1em;
+    height: 45em;
+    width: 70%;
+    min-width: 25em;
+    border-radius: 10px;
+    background: linear-gradient(180deg, lightskyblue, powderblue);
+}
+
+#place-text {
+    padding: 0.5em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2em;
+}
+
+#temp-container {
+    margin: 0 0 2em 0;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5em;
+}
+
+#temperature {
+    display: flex;
+    align-items: center;
+}
+
+#weather-principal-icon {
+    width: 6em;
+}
+
+.temp-text {
+    font-size: 3em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.group-weather {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.day-week {
+    font-size: 1.1em;
+}
+
+.weather-icon {
+    width: 4em;
+}
+
+.temp-day {
+    font-size: 0.8em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.grid-container-7 {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 0.688rem;
+}
+
+.grid-item {
+    background-color: #fff;
+    box-sizing: border-box;
+    border-radius: 0.25rem;
+    padding: 1rem 0.5rem;
+}
+
+.weather-forecast {
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.section3 {
+    margin-top: 1rem;
+}
+
+.grid-container-24 {
+    list-style: none;
+}
