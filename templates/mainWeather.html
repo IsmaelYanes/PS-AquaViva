@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="../styles/mainWeather.css">
+<meta charset="UTF-8">
+
+<body>
+    <div id="main-container">
+        <div id="location-text">
+            <h1 id="place-text"></h1>
+        </div>
+        <section id="temp-container">
+            <div id="temperature">
+                <img id="weather-principal-icon" src="../icons/sunny.png"/></img>
+                <p class="temp-text" id="grados"></p>
+                <span class="temp-text">ºC</span>
+            </div>
+            <div class="information">
+                <span>Precipitaciones: </span>
+                <span class="info-text" id="precipitation"></span><br>
+                <span>Viento: </span>
+                <span class="info-text" id="wind"></span><br>
+                <span>Humedad: </span>
+                <span class="info-text" id="humedad"></span><br>
+            </div>
+        </section>
+        <section>
+            <div class="weather-forecast">
+                <ul class="grid-container-7">
+                    <li class="grid-item group-weather">
+                        <span class="day-week" id="day1"></span>
+                        <img class="weather-icon" id="img-day1" src="../icons/sunny-clearCloud.png"/></img>
+                        <span class="temp-day" id="temp1"></span>
+                    </li>
+                    <li class="grid-item group-weather">
+                        <span class="day-week" id="day2"></span>
+                        <img class="weather-icon" id="img-day2" src="../icons/sunny-clearCloud.png"/></img>
+                        <span class="temp-day" id="temp2"></span>
+                    </li>
+                    <li class="grid-item group-weather">
+                        <span class="day-week" id="day3"></span>
+                        <img class="weather-icon" id="img-day3" src="../icons/sunny-clearCloud.png"/></img>
+                        <span class="temp-day" id="temp3"></span>
+                    </li>
+                    <li class="grid-item group-weather">
+                        <span class="day-week" id="day4"></span>
+                        <img class="weather-icon" id="img-day4" src="../icons/sunny-clearCloud.png"/></img>
+                        <span class="temp-day" id="temp4"></span>
+                    </li>
+                    <li class="grid-item group-weather">
+                        <span class="day-week" id="day5"></span>
+                        <img class="weather-icon" id="img-day5" src="../icons/sunny-clearCloud.png"/></img>
+                        <span class="temp-day" id="temp5"></span>
+                    </li>
+                    <li class="grid-item group-weather">
+                        <span class="day-week" id="day6"></span>
+                        <img class="weather-icon" id="img-day6" src="../icons/sunny-clearCloud.png"/></img>
+                        <span class="temp-day" id="temp6"></span>
+                    </li>
+                    <li class="grid-item group-weather">
+                        <span class="day-week" id="day7"></span>
+                        <img class="weather-icon" id="img-day7" src="../icons/sunny-clearCloud.png"/></img>
+                        <span class="temp-day" id="temp7"></span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</body>
+
+<script>
+    let nombre = "Playa de Las Canteras";
+    document.getElementById("place-text").innerHTML = nombre;
+
+    let dayWeek = ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"];
+    let days = document.getElementsByClassName("day-week");
+    for (let i = 0; i < days.length; i++) {
+        days[i].innerHTML = dayWeek[i];
+    }
+
+    let dayTemp = ["20", "19", "23", "21", "20", "18", "21"];
+    let temps = document.getElementsByClassName("temp-day");
+    for (let i = 0; i < temps.length; i++) {
+        temps[i].innerHTML = dayTemp[i] + "ºC";
+    }
+
+    let temperature = "18";
+    document.getElementById("grados").innerHTML = temperature;
+
+    let precipitation = "50%";
+    document.getElementById("precipitation").innerHTML = precipitation;
+
+    let wind = "9km/h";
+    document.getElementById("wind").innerHTML = wind;
+
+    let humedad = "84%";
+    document.getElementById("humedad").innerHTML = humedad;
+</script>
