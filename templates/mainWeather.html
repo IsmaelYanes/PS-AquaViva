@@ -62,34 +62,109 @@
                 </ul>
             </div>
         </section>
+        <section class="section3">
+            <div class="forecast-table-hour">
+                <h2>Hoy</h2>
+                <h3>Mañana</h3>
+                <table id="weather-table">
+                    <thead>
+                    <tr id="hours-row"></tr>
+                    </thead>
+                    <tbody>
+                    <tr id="weather-icons-hour"></tr>
+                    <tr id="temperature-hour"></tr>
+                    <tr id="wind-hour"></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </div>
 </body>
 
 <script>
-    let nombre = "Playa de Las Canteras";
-    document.getElementById("place-text").innerHTML = nombre;
+    document.addEventListener("DOMContentLoaded", () => {
+        let nombre = "Playa de Las Canteras";
+        document.getElementById("place-text").innerHTML = nombre;
 
-    let dayWeek = ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"];
-    let days = document.getElementsByClassName("day-week");
-    for (let i = 0; i < days.length; i++) {
-        days[i].innerHTML = dayWeek[i];
-    }
+        let dayWeek = ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"];
+        let days = document.getElementsByClassName("day-week");
+        for (let i = 0; i < days.length; i++) {
+            days[i].innerHTML = dayWeek[i];
+        }
 
-    let dayTemp = ["20", "19", "23", "21", "20", "18", "21"];
-    let temps = document.getElementsByClassName("temp-day");
-    for (let i = 0; i < temps.length; i++) {
-        temps[i].innerHTML = dayTemp[i] + "ºC";
-    }
+        let dayTemp = ["20", "19", "23", "21", "20", "18", "21"];
+        let temps = document.getElementsByClassName("temp-day");
+        for (let i = 0; i < temps.length; i++) {
+            temps[i].innerHTML = dayTemp[i] + "ºC";
+        }
 
-    let temperature = "18";
-    document.getElementById("grados").innerHTML = temperature;
+        let temperature = "18";
+        document.getElementById("grados").innerHTML = temperature;
 
-    let precipitation = "50%";
-    document.getElementById("precipitation").innerHTML = precipitation;
+        let precipitation = "50%";
+        document.getElementById("precipitation").innerHTML = precipitation;
 
-    let wind = "9km/h";
-    document.getElementById("wind").innerHTML = wind;
+        let wind = "9km/h";
+        document.getElementById("wind").innerHTML = wind;
 
-    let humedad = "84%";
-    document.getElementById("humedad").innerHTML = humedad;
+        let humedad = "84%";
+        document.getElementById("humedad").innerHTML = humedad;
+
+
+        //hora actual
+        const now = new Date();
+        const currentHour = now.getHours();
+
+        //horas a mostrar hasta qeu termine el dia
+        const numHours = 23 - currentHour;
+
+        const weatherDataTemplate = [
+            {icon: "🌙☁️", temp: "19°", wind: "10 km/h"},
+            {icon: "☁️🌧️", temp: "18°", wind: "12 km/h"},
+            {icon: "☁️", temp: "18°", wind: "11 km/h"},
+            {icon: "☁️", temp: "18°",  wind: "10 km/h"},
+            {icon: "☁️🌧️", temp: "18°", wind: "9 km/h"},
+        ];
+
+        const weatherData = [];
+        for (let i = 0; i <= numHours; i++) {
+            let nextHour = currentHour + i;
+            const formatedHour = nextHour.toString().padStart(2,"0") + ":00";
+            const data = weatherDataTemplate[ i % weatherDataTemplate.length];
+            weatherData.push({
+                time: formatedHour,
+                icon: data.icon,
+                temp: data.temp,
+                wind: data.wind
+            });
+        }
+
+        //Seleccion de filas
+        const hoursRow = document.getElementById("hours-row");
+        const weatherIconsRow = document.getElementById("weather-icons-hour");
+        const temperatureRow = document.getElementById("temperature-hour");
+        const windRow = document.getElementById("wind-hour");
+
+        weatherData.forEach(data => {
+            // Horas
+            const hourCell = document.createElement("th");
+            hourCell.textContent = data.time;
+            hoursRow.appendChild(hourCell);
+
+            // Iconos del clima
+            const iconCell = document.createElement("td");
+            iconCell.textContent = data.icon;
+            weatherIconsRow.appendChild(iconCell);
+
+            // Temperatura
+            const tempCell = document.createElement("td");
+            tempCell.textContent = data.temp;
+            temperatureRow.appendChild(tempCell);
+
+            // Viento
+            const windCell = document.createElement("td");
+            windCell.textContent = data.wind;
+            windRow.appendChild(windCell);
+        });
+    });
 </script>

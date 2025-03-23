@@ -14,7 +14,7 @@ body {
     padding: 1em;
     height: 45em;
     width: 70%;
-    min-width: 25em;
+    min-width: 25rem;
     border-radius: 10px;
     background: linear-gradient(180deg, lightskyblue, powderblue);
 }
@@ -65,7 +65,7 @@ body {
 }
 
 .temp-day {
-    font-size: 0.8em;
+    font-size: 0.9em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -82,15 +82,74 @@ body {
     padding: 1rem 0.5rem;
 }
 
+/*movimiento en horizontal*/
 .weather-forecast {
     overflow-x: auto;
     scrollbar-width: none;
 }
 
 .section3 {
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
-.grid-container-24 {
-    list-style: none;
+.forecast-table-hour {
+    background-color: #fff;
+    padding: 1.25rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    overflow-x: auto;
+    scrollbar-width: none;
 }
+
+h2, h3 {
+    font-size: 1.2em;
+    color: #333;
+}
+
+h2 {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.313em 0.625em;
+    border-radius: 5px;
+}
+
+h3 {
+    display: inline-block;
+    margin-left: 0.625em;
+}
+
+#weather-table {
+    width: 100%;
+    border-collapse: separate;
+    margin-top: 1.25em;
+}
+
+th, td {
+    text-align: center;
+    padding: 0.625em;
+    font-size: 0.9em;
+    color: #333;
+}
+
+th {
+    font-weight: normal;
+    color: #666;
+}
+
+td {
+    border-top: 1px solid #eee;
+}
+
+tr:nth-child(3) td {
+    font-size: 0.8em;
+    color: #666;
+}
+
+tr:nth-child(3) td::after {
+    content: "↓";
+    margin-left: 0.313em;
+    color: #007bff;
+}
+
