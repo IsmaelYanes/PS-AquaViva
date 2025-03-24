@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Chucla",
+    "image": "../images/FishImages/Chucla.jpg"
+  },
+  {
+    "name": "Tiburón martillo",
+    "image": "../images/FishImages/Tiburón martillo.jpg"
+  },
+  {
+    "name": "Tremielga",
+    "image": "../images/FishImages/Tremielga.png"
+  }
+]
