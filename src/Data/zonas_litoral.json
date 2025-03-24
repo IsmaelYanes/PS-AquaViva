@@ -7,7 +7,8 @@
         "isla": "Gran Canaria",
         "zona": "Oeste",
         "name": "Gran Canaria - Oeste",
-        "color": "#ff9999"
+        "color": "#ff9999",
+        "coord": "-15.70954044037984, 28.16792536796312"
       },
       "geometry": {
         "coordinates": [
@@ -100,7 +101,8 @@
         "isla": "Gran Canaria",
         "zona": "Norte",
         "name": "Gran Canaria - Norte",
-        "color": "#ff3333"
+        "color": "#ff3333",
+        "coord": "-15.698910522425365, 28.163646967801327"
       },
       "geometry": {
         "coordinates": [
@@ -233,6 +235,7 @@
         "isla": "Gran Canaria",
         "zona": "Este",
         "name": "Gran Canaria - Este",
+        "coord": "-15.403564046735852, 28.174142112829486",
         "color": "#ff6666"
       },
       "geometry": {
@@ -358,6 +361,7 @@
         "isla": "Gran Canaria",
         "zona": "Sur",
         "name": "Gran Canaria - Sur",
+        "coord": "-16.03674574944796, 27.80385897089471",
         "color": "#ff0000"
       },
       "geometry": {
@@ -502,7 +506,8 @@
       "properties": {
         "zona": "Sur",
         "isla": "Fuerteventura",
-        "name": "Fuerteventura - Sur"
+        "name": "Fuerteventura - Sur",
+        "coord": "-14.736072512471736, 27.984897772017604"
       },
       "geometry": {
         "coordinates": [
@@ -610,7 +615,8 @@
       "properties": {
         "zona": "Oeste",
         "isla": "Fuerteventura",
-        "name": "Fuerteventura - Oeste"
+        "name": "Fuerteventura - Oeste",
+        "coord": "-14.500743110388385, 28.074331983302002"
       },
       "geometry": {
         "coordinates": [
@@ -762,7 +768,8 @@
       "properties": {
         "zona": "Norte",
         "isla": "Fuerteventura",
-        "name": "Fuerteventura - Norte"
+        "name": "Fuerteventura - Norte",
+        "coord": "-14.01475281324062, 28.709079662273325"
       },
       "geometry": {
         "coordinates": [
@@ -950,7 +957,8 @@
       "properties": {
         "zona": "Este",
         "isla": "Fuerteventura",
-        "name": "Fuerteventura - Este"
+        "name": "Fuerteventura - Este",
+        "coord": "-13.697516225613413, 28.24752256121441"
       },
       "geometry": {
         "coordinates": [
@@ -1158,7 +1166,8 @@
       "properties": {
         "zona": "Sur",
         "isla": "Lanzarote",
-        "name": "Lanzarote - Sur"
+        "name": "Lanzarote - Sur",
+        "coord": "-14.007265800164959, 28.885723702088043"
       },
       "geometry": {
         "coordinates": [
@@ -1330,7 +1339,8 @@
       "properties": {
         "zona": "Oeste",
         "isla": "Lanzarote",
-        "name": "Lanzarote - Oeste"
+        "name": "Lanzarote - Oeste",
+        "coord": "-13.873621609544188, 28.893645562463718"
       },
       "geometry": {
         "coordinates": [
@@ -1686,7 +1696,8 @@
       "properties": {
         "zona": "Este",
         "isla": "Lanzarote",
-        "name": "Lanzarote - Este"
+        "name": "Lanzarote - Este",
+        "coord": "-13.601469081799706, 28.784076533044626"
       },
       "geometry": {
         "coordinates": [
@@ -1902,7 +1913,8 @@
       "properties": {
         "isla": "Norte",
         "zona": "Lanzarote",
-        "name": "Lanzarote - Norte"
+        "name": "Lanzarote - Norte",
+        "coord": "-13.51448867305777, 29.177185682007163"
       },
       "geometry": {
         "coordinates": [
@@ -2050,7 +2062,8 @@
       "properties": {
         "zona": "Norte",
         "isla": "Graciosa",
-        "name": "Graciosa - Norte"
+        "name": "Graciosa - Norte",
+        "coord": "-13.547778430209718, 29.222553654525484"
       },
       "geometry": {
         "coordinates": [
@@ -2290,7 +2303,8 @@
       "properties": {
         "zona ": "Sureste",
         "isla": "Tenerife",
-        "name": "Tenerife - Sureste"
+        "name": "Tenerife - Sureste",
+        "coord": "-16.12823576673611, 28.54768680160518"
       },
       "geometry": {
         "coordinates": [
@@ -2534,7 +2548,8 @@
       "properties": {
         "zona": "Norte",
         "isla": "Tenerife",
-        "name": "Tenerife - Norte"
+        "name": "Tenerife - Norte",
+        "coord": "-15.880559290786408, 28.54258117128387"
       },
       "geometry": {
         "coordinates": [
@@ -3090,7 +3105,8 @@
       "properties": {
         "zona": "Oeste",
         "isla": "Gomera",
-        "name": "Gomera - Oeste"
+        "name": "Gomera - Oeste",
+        "coord": "-17.209041643300708, 28.024481819949813"
       },
       "geometry": {
         "coordinates": [
@@ -3346,7 +3362,8 @@
       "properties": {
         "zona": "Sureste",
         "isla": "Hierro",
-        "name": "Hierro - Sureste"
+        "name": "Hierro - Sureste",
+        "coord": "-17.949733466263666, 27.547112759707872"
       },
       "geometry": {
         "coordinates": [
@@ -3430,7 +3447,8 @@
       "properties": {
         "zona": "Norte",
         "isla": "Hierro",
-        "name": "Hierro - Norte"
+        "name": "Hierro - Norte",
+        "coord": "-17.779286574195567, 27.903441507482597"
       },
       "geometry": {
         "coordinates": [
@@ -3650,7 +3668,8 @@
       "properties": {
         "zona": "Suroeste",
         "isla": "Hierro",
-        "name": "Hierro - Suroeste"
+        "name": "Hierro - Suroeste",
+        "coord": "-17.97795880520013, 27.639730478472174"
       },
       "geometry": {
         "coordinates": [
@@ -3850,7 +3869,8 @@
       "properties": {
         "zona": "Este",
         "isla": "La Palma",
-        "name": "La Palma - Este"
+        "name": "La Palma - Este",
+        "coord": "-17.845567153083067, 28.328995993366547"
       },
       "geometry": {
         "coordinates": [
@@ -3982,7 +4002,8 @@
       "properties": {
         "zona": "Oeste",
         "isla": "La Palma",
-        "name": "La Palma - Oeste"
+        "name": "La Palma - Oeste",
+        "coord": "-17.843489681497005, 28.455770540872024"
       },
       "geometry": {
         "coordinates": [
@@ -4382,7 +4403,8 @@
       "properties": {
         "zona": "Este",
         "isla": "Gomera",
-        "name": "Gomera - Este"
+        "name": "Gomera - Este",
+        "coord": "-17.25380110425695, 28.205699804738842"
       },
       "geometry": {
         "coordinates": [
@@ -4514,7 +4536,8 @@
       "properties": {
         "zona": "Suroeste",
         "isla": "Tenerife",
-        "name": "Tenerife - Suroeste"
+        "name": "Tenerife - Suroeste",
+        "coord": "-16.7059286304966, 28.011463037926376"
       },
       "geometry": {
         "coordinates": [
@@ -4674,7 +4697,8 @@
       "properties": {
         "zona": "Norte",
         "isla": "La Palma",
-        "name": "La Palma - Norte"
+        "name": "La Palma - Norte",
+        "coord": "-17.923488041777574, 28.849663792876456"
       },
       "geometry": {
         "coordinates": [
