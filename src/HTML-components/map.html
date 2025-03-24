@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Mapa Leaflet con Stormglass</title>
@@ -7,13 +7,40 @@
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
           crossorigin=""/>
     <link rel="stylesheet" href="../CSS/MapStyles.css"/>
+    <link rel="stylesheet" href="../CSS/ViewMoreWindowStyle.css"/>
 </head>
 <body>
+
 <div id="map"></div>
+
+<div class="popup" style="display: none;">
+    <div class="popup-content">
+        <button class="close-btn" onclick="closePopup()">X</button>
+        <div class="popup-header">
+            <h2 id="popup-title">Información de la zona</h2>
+        </div>
+        <div class="popup-body">
+            <img id="popup-image" src="" alt="Imagen de la zona seleccionada" class="popup-image" style="display: none;">
+            <p><strong>Nombre de la isla:</strong> <span id="popup-island">-</span></p>
+            <p><strong>Zona:</strong> <span id="popup-zone">-</span></p>
+            <p><strong>Información adicional:</strong> <span id="popup-info">-</span></p>
+        </div>
+        <div class="popup-footer">
+            <a id="popup-link" href="#" class="more-info">Ver más</a>
+        </div>
+    </div>
+</div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
 <script src="../JS/map.js"></script>
+
+<script>
+    function closePopup() {
+        document.querySelector('.popup').style.display = 'none';
+    }
+</script>
+
 </body>
 </html>
