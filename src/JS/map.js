@@ -28,10 +28,21 @@ document.addEventListener("DOMContentLoaded", function() {
                 }),
                 onEachFeature: (feature, layer) => {
                     if (feature.properties && feature.properties.name) {
-                        layer.bindPopup(`<b>${feature.properties.name}</b>`);
+                        layer.on('click', () => {
+                            abrirPopup(feature.properties);
+                        });
                     }
                 }
             }).addTo(map);
         })
         .catch(error => console.error('Error al cargar el archivo zonas_litoral.json:', error));
+
+// Función para abrir el popup con ViewMoreWindow.html
+    function abrirPopup(properties) {
+        const popupWindow = window.open('ViewMoreWindow.html', 'popup', 'width=600,height=400');
+        popupWindow.onload = () => {
+            popupWindow.document.getElementById('popup-title').innerText = properties.name;
+            popupWindow.document.getElementById('popup-content').innerText = properties.description || "Sin descripción disponible.";
+        };
+    }
 });
