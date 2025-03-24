@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>homePage</title>
+    <link rel="stylesheet" href="../CSS/homeHeader.css">
+    <link rel="stylesheet" href="../CSS/homepage.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+</head>
+<body>
+  <div id="header"></div>
+  <div id="body-container">
+    <div id="descriptionBlock"></div>
+    <div id="map"></div>
+  </div>
+  <div id="imageContainer">
+    <div id="textContainer" class="textBlock"></div>
+    <div id="textContainer2" class="textBlock"></div>
+    <div id="textContainer3" class="textBlock"></div>
+  </div>
+  <div id="gap"></div>
+  <div id="footer"></div>
+
+  <script src="../JS/map.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+          crossorigin=""></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', init);
+    function loadTemplate(fileName, id, callback) {
+      fetch(fileName).then((res) => {
+        return res.text();
+      }).then((text) => {
+        document.getElementById(id).innerHTML = text;
+        if(callback){
+          callback();
+        }
+      })
+    }
+    function loadMap(){
+      let map = document.getElementById('map');
+
+    }
+    function init() {
+      loadTemplate('../templates/header.html', 'header');
+      loadTemplate('../templates/descriptionBlock.html', 'descriptionBlock');
+      loadTemplate('../templates/textContainer.html', 'textContainer');
+      loadTemplate('../templates/textContainer2.html', 'textContainer2');
+      loadTemplate('../templates/textContainer3.html', 'textContainer3');
+      loadTemplate('../templates/footer.html', 'footer');
+      initMap();
+    }
+
+  </script>
+</body>
+</html>
