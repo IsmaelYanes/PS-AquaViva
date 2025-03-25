@@ -16,7 +16,7 @@ body {
     width: 70%;
     min-width: 25rem;
     border-radius: 10px;
-    background: linear-gradient(180deg, lightskyblue, powderblue);
+    //background: linear-gradient(180deg, lightskyblue, powderblue);
 }
 
 #place-text {
@@ -45,7 +45,14 @@ body {
 
 .temp-text {
     font-size: 3em;
+}
+
+.info-text {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.box-text {
+    font-size: 0.85em;
 }
 
 .group-weather {
@@ -105,19 +112,19 @@ body {
 h2, h3 {
     font-size: 1.2em;
     color: #333;
+    cursor: pointer;
 }
 
 h2 {
     display: inline-block;
-    background-color: #007bff;
-    color: #fff;
     padding: 0.313em 0.625em;
     border-radius: 5px;
 }
 
 h3 {
     display: inline-block;
-    margin-left: 0.625em;
+    padding: 0.313em 0.625em;
+    border-radius: 5px;
 }
 
 #weather-table {
@@ -147,9 +154,11 @@ tr:nth-child(3) td {
     color: #666;
 }
 
-tr:nth-child(3) td::after {
-    content: "↓";
-    margin-left: 0.313em;
-    color: #007bff;
+#container-last-updated {
+    margin-top: 1rem;
+    margin-bottom: 0;
 }
 
+#last-updated {
+    font-size: 0.8em;
+}
