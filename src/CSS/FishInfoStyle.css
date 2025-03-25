@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-    width: 80%;
+    width: 90%;
     text-align: center;
     margin-top: 20px;
 }
@@ -22,8 +22,8 @@ h1 {
 
 .fish-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 15px;
     justify-content: center;
 }
 
@@ -33,7 +33,8 @@ h1 {
     overflow: hidden;
     transition: transform 0.3s;
     text-align: center;
-    padding-bottom: 10px;
+    width: 100%;
+    padding-bottom: 5px;
 }
 
 .fish-item:hover {
@@ -42,13 +43,13 @@ h1 {
 
 .fish-item img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: 120px; /* Ajuste del tamaño de la imagen */
+    object-fit: contain; /* Para que la imagen se vea entera */
     border-bottom: 3px solid #0077ff;
 }
 
 .fish-item h2 {
-    font-size: 1.2rem;
-    margin: 10px 0;
+    font-size: 1rem;
+    margin: 5px 0;
     color: white;
 }
