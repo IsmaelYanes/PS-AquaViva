@@ -105,11 +105,6 @@
                 document.getElementById("wind").textContent = json.current.wind_kph + "km/h";
                 document.getElementById("humedad").textContent = json.current.humidity + "%";
 
-                /*
-                icono
-                if (json.current.condition.text === "Partly cloudy") {
-                    document.getElementById("weather-principal-icon").src = json.current.condition.icon;
-                }*/
                 document.getElementById("weather-principal-icon").src = json.current.condition.icon;
 
                 //forecast 7 days
@@ -194,7 +189,7 @@
                 windCell.appendChild(arrow);
                 windRow.appendChild(windCell);
 
-                if (hour >= 20 || hour <= 8) {
+                if ((hour >= 20 || hour <= 8) && (day === 0)) {
                     // Noche (de 20:00 a 08:00)
                     document.getElementById("main-container").style.background = "linear-gradient(180deg, midnightblue, steelblue)";
                     const textElements = document.getElementsByClassName("info-text");
@@ -245,7 +240,6 @@
     }
 
     function classifyWindDirection(direction) {
-        // Mapeo de direcciones más detalladas a las principales
         const directionMap = {
             "N": "↑", "NNE": "↗", "NE": "↗", "ENE": "↗",
             "E": "→", "ESE": "↘", "SE": "↘", "SSE": "↘",
@@ -253,6 +247,6 @@
             "W": "←", "WNW": "↖", "NW": "↖", "NNW": "↖"
         };
 
-        return directionMap[direction]; // Retorna la dirección principal o "Desconocido" si no coincide
+        return directionMap[direction];
     }
 </script>

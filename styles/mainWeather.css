@@ -15,6 +15,7 @@ body {
     height: 45em;
     width: 70%;
     min-width: 25rem;
+    height: auto;
     border-radius: 10px;
     //background: linear-gradient(180deg, lightskyblue, powderblue);
 }
