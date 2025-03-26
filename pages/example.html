@@ -1,14 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfica de Mareas</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        canvas {
+            width: 80%;
+            height: 400px;
+            margin: 20px auto;
+            display: block;
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+            background-color: #57B4BA;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #205781;
+        }
+    </style>
 </head>
 <body>
-<script src="../index.js"></script>
-<script>
-  obtenerCoordenadasDeZonas();
 
+
+<div class="btn-container" id="selectTideDayButtonContainer">
+</div>
+
+<canvas id="tideChart"></canvas>
+
+<script>
+    function loadButton(dateList){
+        const container = document.getElementById("selectTideDayButtonContainer");
+        console.log("heololo");
+        for (let i = 0; i < dateList.length; i++) {
+            let button = document.createElement("button");
+            button.innerText = dateList[i];
+            button.id = "button" + i;
+            button.onclick = function() {
+                updateChart(i);
+            }
+            container.appendChild(button);
+        }
+    }
+    let tidesData = [];
+    let dateList = [];
+
+    fetch('http://localhost:3000/forecast')
+        .then(response => response.json())
+        .then(data => {
+            let forecastData = data.forecastday;
+            for (let i = 0; i < forecastData.length; i++) {
+                dateList.push(forecastData[i].date);
+                tidesData.push(forecastData[i].day.tides[0].tide);
+            }
+            updateChart(0);
+            loadButton(dateList);
+        })
+        .catch(error => console.log('Error:', error));
+
+    function prepareChartData(dayData) {
+        const labels = dayData.map(tide => tide.tide_time);
+        const heights = dayData.map(tide => tide.tide_height_mt);
+
+        const pointColors = dayData.map(tide => tide.tide_type === 'HIGH' ? 'red' : 'blue');
+
+        return {
+            labels: labels,
+            datasets: [{
+                label: 'Altura de Marea (m)',
+                data: heights,
+                borderColor: 'blue',
+                backgroundColor: '#A1E3F9',
+                fill: true,
+                tension: 0.4,
+                pointBackgroundColor: pointColors,
+                pointRadius: 6,
+                pointStyle: 'circle',
+                pointBorderColor: pointColors,
+                pointBorderWidth: 2
+            }]
+        };
+    }
+
+    let tideChart;
+
+    function updateChart(dayIndex) {
+        const currentDayData = tidesData[dayIndex];
+        const chartData = prepareChartData(currentDayData);
+
+        if (tideChart) {
+            tideChart.data = chartData;
+            tideChart.update();
+        } else {
+            const ctx = document.getElementById('tideChart').getContext('2d');
+            tideChart = new Chart(ctx, {
+                type: 'line',
+                data: chartData,
+                options: {
+                    scales: {
+                        x: {
+                            min:0,
+                            max:24,
+                            title: {
+                                display: true,
+                                text: 'Hora del Día'
+                            }
+                        },
+                        y: {
+                            min: -0.5,
+                            max:2.5,
+                            title: {
+                                display: true,
+                                text: 'Altura de la Marea (m)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
 </script>
+
 </body>
 </html>

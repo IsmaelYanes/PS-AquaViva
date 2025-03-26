@@ -14,7 +14,6 @@ function initMap() {
             console.log(lat, lon);
             L.marker([lat, lon]).addTo(map)
                 .bindPopup('<b>' + beach.beachName + '</b>');
-
         }
     }
     fetch('../beaches.json')
