@@ -42,14 +42,20 @@ function toggleSatelliteView() {
             attribution: '&copy; <a href="https://opentopomap.org">OpenTopoMap</a> contributors'
         }).addTo(window.map);
         window.map.removeLayer(window.defaultLayer);
-    } else {
-        // Volver a la vista estándar
-        window.map.addLayer(window.defaultLayer);
-        window.map.removeLayer(satelliteLayer);
     }
 
     isSatelliteView = !isSatelliteView;
 }
+
 function toggleStreetView() {
-    alert("Activando Street View");
+    if (!window.map) {
+        console.error("El mapa aún no está disponible.");
+        return;
+    }
+
+    if (isSatelliteView) {
+        window.map.addLayer(window.defaultLayer);
+        window.map.removeLayer(satelliteLayer);
+        isSatelliteView = false;
+    }
 }
