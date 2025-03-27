@@ -2,9 +2,17 @@
   "name": "ps",
   "version": "1.0.0",
   "description": "",
+<<<<<<< HEAD:src/Data/package.json
   "main": "../JS/index.js",
+=======
+  "main": "index.js",
+  "type": "module",
+>>>>>>> Zuleima:package.json
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "private": true
+  "private": true,
+  "dependencies": {
+    "firebase": "^11.5.0"
+  }
 }
