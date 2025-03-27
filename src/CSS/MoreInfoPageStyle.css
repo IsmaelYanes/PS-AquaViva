@@ -1,12 +1,36 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Evita el scroll en toda la página */
+}
+
 #container {
     display: flex;
+    height: calc(100vh - 10vh); /* Resta la altura del header */
+    width: 100%;
+}
+
+.homeHeader-container {
+    height: 10vh;
+    padding: 0;
+    margin: 0;
 }
 
 #menu-container {
-    width: 20%;
+    width: 18%;
+    min-width: 180px;
+    background-color: #061a3a; /* Ajusta si es necesario */
 }
 
 #body-container {
-    width: 80%;
+    width: 82%;
+    overflow: hidden; /* Evita scroll dentro del body */
 }
 
+#content-frame {
+    width: 100%;
+    height: 100vh; /* Ajusta la altura al 100% de la pantalla */
+    border: none;
+    overflow: hidden;
+}
