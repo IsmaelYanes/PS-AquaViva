@@ -64,8 +64,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Convertir coordenadas del mapa a posición en la pantalla
         let point = map.latLngToContainerPoint(event.latlng);
-        popup.style.left = `${point.x + 10}px`;
-        popup.style.top = `${point.y + 10}px`;
+        popup.style.left = `${point.x + 280}px`;
+        popup.style.top = `${point.y + 280}px`;
         popup.style.display = 'block';
     }
 });

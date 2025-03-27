@@ -3,53 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <title>homePage</title>
-    <link rel="stylesheet" href="../CSS/homeHeader.css">
     <link rel="stylesheet" href="../CSS/homepage.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-        crossorigin=""/>
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+    <link rel="stylesheet" href="../CSS/MapStyles.css"/>
+    <link rel="stylesheet" href="../CSS/ViewMoreWindowStyle.css"/>
+    <link rel="stylesheet" href="../CSS/ToolbarStyle.css">
 </head>
 <body>
-  <div id="header"></div>
-  <div id="body-container">
-    <div id="descriptionBlock"></div>
-    <div id="map"></div>
-  </div>
-  <div id="imageContainer">
-    <div id="textContainer" class="textBlock"></div>
-    <div id="textContainer2" class="textBlock"></div>
-    <div id="textContainer3" class="textBlock"></div>
-  </div>
-  <div id="gap"></div>
-  <div id="footer"></div>
+<div id="header"></div>
+<div id="body-container">
+    <div id="description-container">
+        <p id="description">Descubre las condiciones marítimas en tiempo real en las costas de las Islas Canarias.
+            Nuestra plataforma interactiva te ofrece información actualizada sobre mareas, oleaje, viento, corrientes y más,
+            ideal para pescadores, surfistas, bañistas y amantes del mar.</p>
+    </div>
+    <div id="map-container">
+        <div id="toolbar">
+            <hr>
+            <img src="../Images/burgerbar.png" id="toolbar-toggle" onclick="toggleToolbar()">
+            <hr>
+            <div id="toolbar-content">
+                <img src="../Images/location.png" class="toolbar-icon">
+                <img src="../Images/fav.png" class="toolbar-icon">
+                <img src="../Images/distance.png" class="toolbar-icon">
+                <img src="../Images/zone.png" class="toolbar-icon">
+                <img src="../Images/beach.png" class="toolbar-icon">
+                <img src="../Images/sateliteview.png" class="toolbar-icon">
+                <img src="../Images/streetview.png" class="toolbar-icon">
+            </div>
+        </div>
 
-  <script src="../JS/map.js"></script>
-  <script>
+        <div id="map"></div>
+
+        <div class="popup" style="display: none;">
+            <div class="popup-content">
+                <button class="close-btn" onclick="closePopup()">X</button>
+                <div class="popup-header">
+                    <h2 id="popup-title">Información de la zona</h2>
+                </div>
+                <div class="popup-body">
+                    <img id="popup-image" src="" alt="Imagen de la zona seleccionada" class="popup-image" style="display: none;">
+                    <p><strong>Nombre de la isla:</strong> <span id="popup-island">-</span></p>
+                    <p><strong>Zona:</strong> <span id="popup-zone">-</span></p>
+                    <p><strong>Información adicional:</strong> <span id="popup-info">-</span></p>
+                </div>
+                <div class="popup-footer">
+                    <a id="popup-link" href="#" class="more-info">Ver más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="imageContainer">
+    <div class="textBlock" data-template="textContainer"></div>
+    <div class="textBlock" data-template="textContainer"></div>
+    <div class="textBlock" data-template="textContainer"></div>
+</div>
+<div id="gap"></div>
+<div id="footer"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+
+<script src="../JS/map.js"></script>
+
+<script>
+    function closePopup() {
+        document.querySelector('.popup').style.display = 'none';
+    }
+</script>
+
+<script src="../JS/ToolbarToggle.js"></script>
+
+<script>
     document.addEventListener('DOMContentLoaded', init);
-    function loadTemplate(fileName, id, callback) {
-      fetch(fileName).then((res) => {
-        return res.text();
-      }).then((text) => {
-        document.getElementById(id).innerHTML = text;
-        if(callback){
-          callback();
-        }
-      })
-    }
-    function loadMap(){
-      let map = document.getElementById('map');
 
+    function loadTemplate(fileName, element, callback) {
+        fetch(fileName)
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`Error cargando ${fileName}: ${res.status}`);
+                }
+                return res.text();
+            })
+            .then((text) => {
+                element.innerHTML = text;
+                if (callback) {
+                    callback();
+                }
+            })
+            .catch((error) => {
+                console.error("Error al cargar componente:", error);
+            });
     }
+
     function init() {
-      loadTemplate('../HTML-components/header.html', 'header');
-      loadTemplate('../HTML-components/descriptionBlock.html', 'descriptionBlock');
-      loadTemplate('../HTML-components/textContainer.html', 'textContainer');
-      loadTemplate('../HTML-components/textContainer2.html', 'textContainer2');
-      loadTemplate('../HTML-components/textContainer3.html', 'textContainer3');
-      loadTemplate('../HTML-components/footer.html', 'footer');
-      initMap();
+        loadTemplate('../HTML-components/header.html', document.getElementById('header'));
+        loadTemplate('../HTML-components/footer.html', document.getElementById('footer'));
+
+        // Cargar dinámicamente todos los textBlocks
+        document.querySelectorAll('.textBlock').forEach((el) => {
+            loadTemplate('../HTML-components/textContainer.html', el);
+        });
     }
 
-  </script>
+</script>
 </body>
 </html>
