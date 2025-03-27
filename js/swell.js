@@ -25,5 +25,29 @@ async function obtenerOleaje() {
     }
 }
 
+function loadHourButton(){
+    let hoursList = document.getElementById('hoursList');
+    hoursList.innerHTML = '';
+    for (let i = 0; i < 24; i++) {
+        let li = document.createElement('li');
+        let button = document.createElement('button');
+        button.innerHTML = `${i}:00`;
+        button.addEventListener('click', () => {selectTime(i);});
+        li.appendChild(button);
+        hoursList.appendChild(li);
+    }
+}
+
+function selectTime(index) {
+    let swellData = swellDataList[index];
+    document.getElementById("swellDirection").innerHTML = swellData.swellDirection + " grado";
+    document.getElementById("swellHeight").innerHTML = swellData.swellHeight + " metros";
+    document.getElementById("swellPeriod").innerHTML = swellData.swellPeriod + " por segundo";
+    document.getElementById("pressure").innerHTML = swellData.pressure + " hPa";
+    document.getElementById("waterTemperature").innerHTML = swellData.waterTemperature + "°C";
+    document.getElementById("zoneName").innerHTML = zoneName;
+
+}
+
+loadHourButton();
 obtenerOleaje();
-console.log(zoneName)

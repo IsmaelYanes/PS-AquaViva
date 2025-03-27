@@ -4,66 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Información oleaje</title>
-    <style>
-        .hours-container {
-            margin: 20px auto;
-            border: 2px solid #007bff;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-        }
-
-        ul#hoursList {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-            gap: 10px;
-            padding: 0;
-            list-style-type: none;
-            overflow: hidden;
-        }
-
-
-        ul#hoursList li {
-            list-style: none;
-            text-align: center;
-        }
-
-
-        ul#hoursList li button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-
-        ul#hoursList li button:hover {
-            background-color: #0056b3;
-        }
-
-        .wave-info h3 {
-            margin-bottom: 10px;
-        }
-
-        .wave-box {
-            width: 80%;
-            margin: 20px auto;
-            text-align: center;
-        }
-        .wellPhoto{
-            width: 10em;
-            border-radius: 50%;
-            border: 5px solid #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            object-fit: cover;
-        }
-        .wellInfoBox{
-            margin: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="../styles/swell.css">
 </head>
 <body>
 
@@ -103,34 +44,5 @@
     </div>
 </div>
 <script src="../js/swell.js"></script>
-<script>
-    function loadHourButton(){
-        let hoursList = document.getElementById('hoursList');
-        hoursList.innerHTML = '';
-        for (let i = 0; i < 24; i++) {
-            let li = document.createElement('li');
-            let button = document.createElement('button');
-            button.innerHTML = `${i}:00`;
-            button.addEventListener('click', () => {selectTime(i);});
-            li.appendChild(button);
-            hoursList.appendChild(li);
-        }
-    }
-
-    function selectTime(index) {
-        let swellData = swellDataList[index];
-        document.getElementById("swellDirection").innerHTML = swellData.swellDirection + " grado";
-        document.getElementById("swellHeight").innerHTML = swellData.swellHeight + " metros";
-        document.getElementById("swellPeriod").innerHTML = swellData.swellPeriod + " por segundo";
-        document.getElementById("pressure").innerHTML = swellData.pressure + " hPa";
-        document.getElementById("waterTemperature").innerHTML = swellData.waterTemperature + "°C";
-        document.getElementById("zoneName").innerHTML = zoneName;
-
-    }
-
-    loadHourButton();
-
-</script>
-
 </body>
 </html>

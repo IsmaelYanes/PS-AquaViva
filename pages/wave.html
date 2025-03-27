@@ -5,37 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gráfica de Mareas</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        canvas {
-            width: 80%;
-            height: 400px;
-            margin: 20px auto;
-            display: block;
-        }
-        .btn-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-        button {
-            margin: 5px;
-            padding: 10px;
-            background-color: #57B4BA;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #205781;
-        }
-    </style>
+    <link rel="stylesheet" href="../styles/wave.css">
 </head>
 <body>
 
-
 <div class="btn-container" id="selectTideDayButtonContainer">
 </div>
-
 <canvas id="tideChart"></canvas>
 
 <script>

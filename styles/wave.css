@@ -1,0 +1,22 @@
+canvas {
+    width: 80%;
+    height: 400px;
+    margin: 20px auto;
+    display: block;
+}
+.btn-container {
+    text-align: center;
+    margin-top: 20px;
+}
+button {
+    margin: 5px;
+    padding: 10px;
+    background-color: #57B4BA;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+button:hover {
+    background-color: #205781;
+}
