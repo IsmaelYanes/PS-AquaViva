@@ -1,3 +1,4 @@
+/* Estilos generales */
 body {
     background-color: #0a0f1e;
     color: white;
@@ -6,27 +7,70 @@ body {
     padding: 0;
     display: flex;
     flex-direction: column;
+    height: 100vh;
+}
+
+/* Ajuste del header para que ocupe menos espacio */
+.homeHeader-container {
+    height: 10vh;
+    padding: 0.2em;
+    display: flex;
     align-items: center;
 }
 
-.container {
-    width: 90%;
-    text-align: center;
-    margin-top: 20px;
+/* Contenedor principal ocupa el resto de la pantalla */
+#container {
+    display: flex;
+    height: 90vh;
+    width: 100%;
 }
 
-h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
+/* Menú lateral */
+#menu-container {
+    width: 18%;
+    min-width: 180px;
+    display: flex;
+    justify-content: flex-end;
 }
 
+/* Estilos del menú */
+#side-menu {
+    font-size: 0.9em;
+    padding: 10px;
+    text-align: right;
+}
+
+#side-menu ul {
+    padding: 0;
+    list-style: none;
+}
+
+#side-menu li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Contenido principal */
+#body-container {
+    width: 82%;
+    overflow: hidden; /* Evita barras de desplazamiento */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Grid para los peces */
 .fish-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 15px;
-    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 
+/* Tarjetas de peces */
 .fish-item {
     background-color: #12192b;
     border-radius: 10px;
@@ -41,15 +85,36 @@ h1 {
     transform: scale(1.05);
 }
 
+/* Imágenes */
 .fish-item img {
     width: 100%;
-    height: 120px; /* Ajuste del tamaño de la imagen */
-    object-fit: contain; /* Para que la imagen se vea entera */
+    height: 120px;
+    object-fit: cover;
     border-bottom: 3px solid #0077ff;
 }
 
+/* Nombres de peces */
 .fish-item h2 {
     font-size: 1rem;
     margin: 5px 0;
     color: white;
+}
+
+/* Media queries para mejorar responsividad */
+@media (max-width: 1024px) {
+    .fish-grid {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .fish-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .fish-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
 }
