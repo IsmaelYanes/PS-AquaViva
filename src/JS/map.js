@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let map = L.map('map', {
+    // Hacer el mapa global
+    window.map = L.map('map', {
         center: [28.299, -16.413],
         zoom: 8,
         minZoom: 8,
@@ -10,9 +11,10 @@ document.addEventListener("DOMContentLoaded", function () {
         maxBoundsViscosity: 1.0
     });
 
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    // Capa base estándar
+    window.defaultLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+    }).addTo(window.map);
 
     fetch('../Data/zonas_litoral.json')
         .then(response => response.json())
@@ -31,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         });
                     }
                 }
-            }).addTo(map);
+            }).addTo(window.map);
         })
         .catch(error => console.error('Error al cargar el archivo zonas_litoral.json:', error));
 
@@ -63,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Convertir coordenadas del mapa a posición en la pantalla
-        let point = map.latLngToContainerPoint(event.latlng);
+        let point = window.map.latLngToContainerPoint(event.latlng);
         popup.style.left = `${point.x + 280}px`;
         popup.style.top = `${point.y + 280}px`;
         popup.style.display = 'block';
