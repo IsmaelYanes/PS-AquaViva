@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch('../Data/zonas_litoral.json')
         .then(response => response.json())
         .then(geojsonData => {
-            L.geoJSON(geojsonData, {
+            window.zonasLitoralLayer = L.geoJSON(geojsonData, {
                 style: feature => ({
                     color: feature.properties.color || "blue",
                     weight: 2,
