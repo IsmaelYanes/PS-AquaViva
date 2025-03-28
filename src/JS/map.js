@@ -1,44 +1,73 @@
+document.addEventListener("DOMContentLoaded", function () {
+    // Hacer el mapa global
+    window.map = L.map('map', {
+        center: [28.299, -16.413],
+        zoom: 8,
+        minZoom: 8,
+        maxBounds: [
+            [27.5, -18.5],
+            [29.5, -13.0]
+        ],
+        maxBoundsViscosity: 1.0
+    });
 
-function initMap() {
-    let map = L.map('map').setView([28.299, -16.413], 8);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    // Capa base estándar
+    window.defaultLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+    }).addTo(window.map);
 
-    let beachIcon = L.icon({
-        iconUrl: 'D:\\Uni\\PSS\\src\\image\\beach.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41]
-    });
-
-    let ZBMIcon = L.icon({
-        iconUrl: 'https://e7.pngegg.com/pngimages/660/961/png-clipart-beach-icon-design-icon-beach-leaf-orange.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41]
-    });
-
-    function addMarkersToMap(beaches) {
-        for (let i = 0; i < beaches.length; i++) {
-            let beach = beaches[i];
-            let lat = Number(beach.LAT.replace(",", "."));
-            let lon = 0 - (Number(beach.LOG.replace(",", ".")));
-            let markerIcon = beach.type === 'playa' ? beachIcon : ZBMIcon;
-            L.marker([lat, lon], { icon: markerIcon }).addTo(map)
-                .bindPopup('<b>' + beach.beachName + '</b>');
-        }
-    }
-
-
-    fetch('../Data/beaches.json')
+    fetch('../Data/zonas_litoral.json')
         .then(response => response.json())
-        .then(data => {
-            addMarkersToMap(data)
+        .then(geojsonData => {
+            window.zonasLitoralLayer = L.geoJSON(geojsonData, {
+                style: feature => ({
+                    color: feature.properties.color || "blue",
+                    weight: 2,
+                    opacity: 0.8,
+                    fillOpacity: 0.4
+                }),
+                onEachFeature: (feature, layer) => {
+                    if (feature.properties) {
+                        layer.on('click', (e) => {
+                            abrirPopup(feature.properties, e);
+                        });
+                    }
+                }
+            }).addTo(window.map);
         })
+        .catch(error => console.error('Error al cargar el archivo zonas_litoral.json:', error));
 
-}
+    function abrirPopup(properties, event) {
+        const popup = document.querySelector('.popup');
 
+        // Actualizar contenido del popup con los datos de la zona
+        document.getElementById('popup-title').innerText = `Información de la zona`;
+        document.getElementById('popup-island').innerText = properties.isla || "Desconocida";
+        document.getElementById('popup-zone').innerText = properties.zona || "Desconocida";
+        document.getElementById('popup-info').innerText = properties.description || "Sin información disponible.";
 
+        // Manejo de la imagen
+        const imgElement = document.getElementById('popup-image');
+        if (properties.image) {
+            imgElement.src = properties.image;
+            imgElement.style.display = "block";
+        } else {
+            imgElement.style.display = "none";
+        }
+
+        // Manejo del enlace "Ver más"
+        const moreInfoLink = document.getElementById('popup-link');
+        if (properties.moreInfoURL) {
+            moreInfoLink.href = properties.moreInfoURL;
+            moreInfoLink.style.display = "inline-block";
+        } else {
+            moreInfoLink.style.display = "none";
+        }
+
+        // Convertir coordenadas del mapa a posición en la pantalla
+        let point = window.map.latLngToContainerPoint(event.latlng);
+        popup.style.left = `${point.x + 280}px`;
+        popup.style.top = `${point.y + 280}px`;
+        popup.style.display = 'block';
+    }
+});

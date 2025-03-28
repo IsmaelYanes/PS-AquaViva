@@ -1,0 +1,254 @@
+<link rel="stylesheet" href="../CSS/mainWeather.css">
+<meta charset="UTF-8">
+
+<body>
+<div id="main-container">
+    <div id="location-text">
+        <h1 class="info-text" id="place-text"></h1>
+    </div>
+    <section id="temp-container">
+        <div id="temperature">
+            <img id="weather-principal-icon" src="../Images/icons/sunny.png"/></img>
+            <p class="temp-text info-text" id="grados"></p>
+            <span class="temp-text info-text">ºC</span>
+        </div>
+        <div class="information">
+            <span class="info-text box-text">Precipitación: </span>
+            <span class="info-text box-text" id="precipitation"></span><br>
+            <span class="info-text box-text">Viento: </span>
+            <span class="info-text box-text" id="wind"></span><br>
+            <span class="info-text box-text">Humedad: </span>
+            <span class="info-text box-text" id="humedad"></span><br>
+        </div>
+    </section>
+    <section>
+        <div class="weather-forecast">
+            <ul class="grid-container-7">
+                <li class="grid-item group-weather">
+                    <span class="day-week" id="day0"></span>
+                    <img class="weather-icon" id="img-day0" src="../Images/icons/sunny-clearCloud.png"/></img>
+                    <span class="temp-day" id="temp1"></span>
+                </li>
+                <li class="grid-item group-weather">
+                    <span class="day-week" id="day1"></span>
+                    <img class="weather-icon" id="img-day1" src="../Images/icons/sunny-clearCloud.png"/></img>
+                    <span class="temp-day" id="temp2"></span>
+                </li>
+                <li class="grid-item group-weather">
+                    <span class="day-week" id="day2"></span>
+                    <img class="weather-icon" id="img-day2" src="../Images/icons/sunny-clearCloud.png"/></img>
+                    <span class="temp-day" id="temp3"></span>
+                </li>
+                <li class="grid-item group-weather">
+                    <span class="day-week" id="day3"></span>
+                    <img class="weather-icon" id="img-day3" src="../Images/icons/sunny-clearCloud.png"/></img>
+                    <span class="temp-day" id="temp4"></span>
+                </li>
+                <li class="grid-item group-weather">
+                    <span class="day-week" id="day4"></span>
+                    <img class="weather-icon" id="img-day4" src="../Images/icons/sunny-clearCloud.png"/></img>
+                    <span class="temp-day" id="temp5"></span>
+                </li>
+                <li class="grid-item group-weather">
+                    <span class="day-week" id="day5"></span>
+                    <img class="weather-icon" id="img-day5" src="../Images/icons/sunny-clearCloud.png"/></img>
+                    <span class="temp-day" id="temp6"></span>
+                </li>
+                <li class="grid-item group-weather">
+                    <span class="day-week" id="day6"></span>
+                    <img class="weather-icon" id="img-day6" src="../Images/icons/sunny-clearCloud.png"/></img>
+                    <span class="temp-day" id="temp7"></span>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="section3">
+        <div class="forecast-table-hour">
+            <h2 id="todayInfo">Hoy</h2>
+            <h3 id="tomorrowInfo">Mañana</h3>
+            <table id="weather-table">
+                <thead>
+                <tr id="hours-row"></tr>
+                </thead>
+                <tbody>
+                <tr id="weather-icons-hour"></tr>
+                <tr id="temperature-hour"></tr>
+                <tr id="wind-hour"></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <div id="container-last-updated">
+        <span id="last-updated"></span>
+    </div>
+</div>
+</body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        getDataJson();
+    });
+
+
+    function getDataJson() {
+        const jsonURL = "https://api.weatherapi.com/v1/forecast.json?key=8eff48f079e44211b52124000251703&q=28.771831683485686,%20-17.750202868741685&days=7&aqi=no&alerts=no";
+        fetch(jsonURL, {
+            method: "GET",
+            headers: {'Content-Type': 'application/json'}
+        })
+            .then(response => response.json())
+            .then(json => {
+                //principal information
+                document.getElementById("place-text").textContent = json.location.name;
+                document.getElementById("grados").textContent = Math.round(json.current.temp_c);
+                document.getElementById("precipitation").textContent = json.current.precip_mm + "mm";
+                document.getElementById("wind").textContent = json.current.wind_kph + "km/h";
+                document.getElementById("humedad").textContent = json.current.humidity + "%";
+
+                document.getElementById("weather-principal-icon").src = json.current.condition.icon;
+
+                //forecast 7 days
+                let dayWeek = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
+                let numDayWeek = new Date(json.location.localtime).getDay();
+                console.log(numDayWeek);
+                let days = document.getElementsByClassName("day-week");
+                for (let i = 0; i < days.length; i++) {
+                    days[i].textContent = dayWeek[(i + numDayWeek) % 7];
+
+                }
+                let temps = document.getElementsByClassName("temp-day");
+                for (let i = 0; i < temps.length; i++) {
+                    temps[i].textContent = Math.round(json.forecast.forecastday[i].day.mintemp_c) + "º/" + Math.round(json.forecast.forecastday[i].day.maxtemp_c) + "º";
+                    //temps[i].textContent = Math.round(json.forecast.forecastday[i].day.maxtemp_c) + "ºC";
+                    document.getElementById(`img-day${i}`).src = json.forecast.forecastday[i].day.condition.icon;
+                }
+
+                //forecast by hour
+                showWeatherData(json);
+
+                //last update
+                const lastUpdate = document.getElementById("last-updated");
+                lastUpdate.textContent = "Última actualización: " + json.current.last_updated;
+            })
+            .catch(error => console.log(error));
+    }
+
+    function showWeatherData(json) {
+        //hora actual
+        const now = new Date();
+        let currentHour = now.getHours();
+
+        //horas a mostrar hasta q termine el dia
+        const hoursRow = document.getElementById("hours-row");
+        const weatherIconsRow = document.getElementById("weather-icons-hour");
+        const temperatureRow = document.getElementById("temperature-hour");
+        const windRow = document.getElementById("wind-hour");
+
+        const todayInfo = document.getElementById("todayInfo");
+        const tomorrowInfo = document.getElementById("tomorrowInfo");
+
+        function fillTable(day) {
+            let hour = currentHour;
+            if (day === 1) {
+                hour = 0;
+            }
+            const dayCeroInfo = json.forecast.forecastday[day];
+
+            for (let i=hour; i<= 23; i++) {
+                let hourInfo = dayCeroInfo.hour[i];
+
+                //hora
+                const hourCell = document.createElement("th");
+                hourCell.textContent = i.toString().padStart(2,"0") + ":00";
+                hoursRow.appendChild(hourCell);
+
+                //icono
+                const iconCell = document.createElement("td");
+                const iconImg = document.createElement("img");
+                iconImg.src = hourInfo.condition.icon;
+                iconCell.appendChild(iconImg);
+                weatherIconsRow.appendChild(iconCell);
+
+                //temperatura
+                const tempCell = document.createElement("td");
+                console.log(dayCeroInfo.day.mintemp_c)
+                console.log(dayCeroInfo.day.maxtemp_c)
+                tempCell.textContent = Math.round(hourInfo.temp_c) + "ºC";
+                temperatureRow.appendChild(tempCell);
+
+                //viento
+                const windCell = document.createElement("td");
+                let flecha = classifyWindDirection(hourInfo.wind_dir);
+
+                const arrow = document.createElement("span");
+                arrow.textContent = flecha;
+                arrow.style.display = "inline-flex";
+                arrow.style.marginLeft = "0.313em";
+                arrow.style.color = "dodgerblue";
+                windCell.innerHTML = parseFloat(hourInfo.wind_kph).toFixed(1) + " km/h";
+                windCell.appendChild(arrow);
+                windRow.appendChild(windCell);
+
+                if (day === 0) {
+                    if (hour >= 20 || hour <= 8) {
+                        // Noche (de 20:00 a 08:00)
+                        document.getElementById("main-container").style.background = "linear-gradient(180deg, midnightblue, steelblue)";
+                        const textElements = document.getElementsByClassName("info-text");
+                        for(let j=0; j<textElements.length; j++) {
+                            textElements[j].style.color = "ghostwhite";
+                        }
+                        document.getElaementById("last-updated").style.color = "white";
+                    } else {
+                        // Día (de 08:01 a 19:59)
+                        document.getElementById("main-container").style.background = "linear-gradient(180deg, lightskyblue, powderblue)";
+                        const textElements = document.getElementsByClassName("info-text");
+                        for(let j=0; j<textElements.length; j++) {
+                            textElements[j].style.color = "black";
+                        }
+                        document.getElementById("last-updated").style.color = "black";
+                    }
+                }
+            }
+        }
+
+        function clearTable() {
+            hoursRow.textContent = "";
+            weatherIconsRow.textContent = "";
+            temperatureRow.textContent = "";
+            windRow.textContent = "";
+        }
+
+        fillTable(0);
+        todayInfo.style.backgroundColor = "#007bff";
+        todayInfo.style.color = "#fff";
+
+        todayInfo.addEventListener("click", () => {
+            clearTable();
+            fillTable(0);
+            todayInfo.style.backgroundColor = "#007bff";
+            todayInfo.style.color = "#fff";
+            tomorrowInfo.style.backgroundColor = "";
+            tomorrowInfo.style.color = "";
+        });
+
+        tomorrowInfo.addEventListener("click", () => {
+            clearTable();
+            fillTable(1);
+            tomorrowInfo.style.backgroundColor = "#007bff";
+            tomorrowInfo.style.color = "#fff";
+            todayInfo.style.backgroundColor = "";
+            todayInfo.style.color = "";
+        });
+    }
+
+    function classifyWindDirection(direction) {
+        const directionMap = {
+            "N": "↑", "NNE": "↗", "NE": "↗", "ENE": "↗",
+            "E": "→", "ESE": "↘", "SE": "↘", "SSE": "↘",
+            "S": "↓", "SSW": "↙", "SW": "↙", "WSW": "↙",
+            "W": "←", "WNW": "↖", "NW": "↖", "NNW": "↖"
+        };
+
+        return directionMap[direction];
+    }
+</script>

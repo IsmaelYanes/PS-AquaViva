@@ -1,0 +1,75 @@
+<meta charset="UTF-8">
+
+<link rel= "stylesheet" href="../CSS/ViewMoreWindowStyle.css">
+
+<div class="popup">
+    <div class="popup-content">
+        <button class="close-btn" onclick="closePopup()">X</button>
+        <div class="popup-header">
+            <h2>Añadir información de la zona seleccionada</h2>
+        </div>
+        <div class="popup-body">
+            <img src="image-url.jpg" alt="Imagen de la zona seleccionada" class="popup-image">
+            <p><strong>Nombre de la isla:</strong> Isla de Ejemplo</p>
+            <p><strong>Zona:</strong> Zona Ejemplo</p>
+            <p><strong>Información adicional:</strong></p>
+
+            <table class="weather-table">
+                <thead>
+                <tr>
+                    <th>Temperatura</th>
+                    <th>Viento</th>
+                    <th>Humedad</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td id="temperature-cell">
+                        <img id="iconImg" src="../Images/icons/sunny-clearCloud.png" class="weather-icon">
+                        <span id="temperature"></span>
+                    </td>
+                    <td><span id="wind"></span></td>
+                    <td><span id="humidity"></span></td>
+                </tr>
+                </tbody>
+            </table>
+
+
+
+        </div>
+        <div class="popup-footer">
+            <a href="../HTML/MoreInfoPage.html" class="more-info">Ver más</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    getPrincipalData();
+
+    function getPrincipalData() {
+        const jsonURL = "https://api.weatherapi.com/v1/forecast.json?key=8eff48f079e44211b52124000251703&q=28.771831683485686,%20-17.750202868741685&days=7&aqi=no&alerts=no";
+        fetch (jsonURL, {
+            method: "GET",
+            headers: {'Content-Type': 'application/json'}
+        })
+            .then(response => response.json())
+            .then(json => {
+                const icon = json.current.condition.icon;
+                const temp = json.current.temp_c;
+                const wind = json.current.wind_kph;
+                const humidity = json.current.humidity;
+                document.getElementById("temperature").innerHTML = `${temp}ºC`;
+                document.getElementById("wind").innerHTML = `${wind}km/h`;
+                document.getElementById("humidity").innerHTML = `${humidity}%`;
+                document.getElementById("iconImg").src = icon;
+            })
+    }
+
+function closePopup() {
+    document.querySelector('.popup').style.display = 'none';
+}
+
+function openPopup() {
+    document.querySelector('.popup').style.display = 'flex';
+}</script>
+

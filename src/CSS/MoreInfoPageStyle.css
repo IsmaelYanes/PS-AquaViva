@@ -1,0 +1,47 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: white; /* Fondo oscuro para toda la página */
+    width: 100%;
+    min-height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+#container {
+    display: flex;
+    height: 100vh; /* Resta la altura del header */
+    width: 100%;
+}
+
+.homeHeader-container {
+    height: 10vh;
+    padding: 0;
+    margin: 0;
+}
+
+#menu-container {
+    width: 18%;
+    min-width: 180px;
+    background-color: #061a3a;
+}
+
+#body-container {
+    width: 82%;
+    min-height: 100vh; /* Asegura que crezca si el contenido es mayor */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+#content-frame {
+    width: 100%;
+    flex-grow: 1; /* Asegura que tome el espacio disponible */
+    border: none;
+    overflow: hidden;
+}

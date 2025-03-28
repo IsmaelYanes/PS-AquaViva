@@ -1,60 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Mapa Leaflet con Stormglass</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
           crossorigin=""/>
+    <link rel="stylesheet" href="../CSS/MapStyles.css"/>
+    <link rel="stylesheet" href="../CSS/ViewMoreWindowStyle.css"/>
 </head>
 <body>
+
 <div id="map"></div>
+
+<div class="popup" style="display: none;">
+    <div class="popup-content">
+        <button class="close-btn" onclick="closePopup()">X</button>
+        <div class="popup-header">
+            <h2 id="popup-title">Información de la zona</h2>
+        </div>
+        <div class="popup-body">
+            <img id="popup-image" src="" alt="Imagen de la zona seleccionada" class="popup-image" style="display: none;">
+            <p><strong>Nombre de la isla:</strong> <span id="popup-island">-</span></p>
+            <p><strong>Zona:</strong> <span id="popup-zone">-</span></p>
+            <p><strong>Información adicional:</strong> <span id="popup-info">-</span></p>
+        </div>
+        <div class="popup-footer">
+            <a id="popup-link" href="#" class="more-info">Ver más</a>
+        </div>
+    </div>
+</div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
+<script src="../JS/map.js"></script>
 
 <script>
-    let map = L.map('map').setView([27.099, -15.413], 10);
-
-
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-
-    L.marker([28.09973, -15.41343]).addTo(map)
-        .bindPopup('A pretty CSS popup.<br> Easily customizable.')
-        .openPopup();
-
-    const apiKey = '2816390e-00fb-11f0-b8ac-0242ac130003-28163968-00fb-11f0-b8ac-0242ac130003';
-
-
-    const latitude = 27.099;
-    const longitude = -15.413;
-
-    // Endpoint de Stormglass para obtener datos de mareas
-    const apiUrl = `https://api.stormglass.io/v2/tide/extremes?lat=${latitude}&lng=${longitude}`;
-
-    // Hacer la solicitud a la API de Stormglass
-    fetch(apiUrl, {
-        headers: {
-            'Authorization': apiKey
-        }
-    })
-        .then(response => response.json())
-        .then(data => {
-            // Mostrar los puntos de marea en el mapa
-            data.data.forEach(tide => {
-                // Crear un marcador para cada punto de marea
-                const tideMarker = L.marker([latitude, longitude])
-                    .addTo(map)
-                    .bindPopup(`Hora: ${new Date(tide.timestamp * 1000).toLocaleString()}<br>Altura de la marea: ${tide.value} metros`);
-            });
-        })
-        .catch(error => {
-            console.error('Error obteniendo los datos de marea:', error);
-        });
+    function closePopup() {
+        document.querySelector('.popup').style.display = 'none';
+    }
 </script>
 </body>
 </html>

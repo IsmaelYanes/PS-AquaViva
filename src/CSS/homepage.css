@@ -1,15 +1,17 @@
 #body-container {
     margin: 0 auto;
-    width: 70%;
+    width: 100%;
     font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
     font-size: 12px;
     line-height: 16px;
     color: #666666;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 #description-container {
     background-color: #b1bfce;
-    /*background-color: #CAE2F0;*/
-    width: 100%;
+    width: 78%;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 1em;
@@ -20,16 +22,11 @@
     font-size: 22px;
     color:black;
 }
-#map{
-    width: 100%;
-    height: 600px;
-    padding: 20px;
-}
 #imageContainer{
     position: relative;
     width: 100%;
     height: 600px;
-    background-image: url('../image/surfer.png');
+    background-image: url('../Images/surfer.png');
     background-size: cover;
     opacity: 60%;
     margin-top: 10em;
@@ -81,4 +78,10 @@
     padding: 5px;
     width: 100%;
     height: 5em;
+}
+#map-container {
+    display: flex;
+    padding: 1%;
+    width: 89%;
+    height: 20%;
 }
