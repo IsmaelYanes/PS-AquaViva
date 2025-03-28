@@ -1,1 +1,25 @@
-Bibliografía de peces y sus páginas particulares //TODO
+categoria peces
+name
+sciname
+image
+IUCN
+description
+genderDescription
+type
+size
+maxsize
+mimetism
+recognize
+fe/maleDifferences
+diet
+territorial
+social
+lifeMode
+mapImage
+lifeDescription
+reproductionMode
+migration
+reproductionDescription
+poison
+danger
+depth
