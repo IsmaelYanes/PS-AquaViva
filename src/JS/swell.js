@@ -1,12 +1,9 @@
 let swellDataList = []
 let coordinate = "28.771831683485686, -17.750202868741685"
 let zoneName;
-async function obtenerOleaje() {
+async function loadSwell() {
     try {
-        const response = await fetch(`http://api.weatherapi.com/v1/marine.json?key=8eff48f079e44211b52124000251703&q=${coordinate}&days=1`);
-        if (!response.ok) {
-            throw new Error('Error en la solicitud');
-        }
+        const response = await fetch(`https://api.weatherapi.com/v1/marine.json?key=8eff48f079e44211b52124000251703&q=${coordinate}&days=1`);
         const data = await response.json();
         zoneName = data.location.name;
         console.log(zoneName)
@@ -39,6 +36,14 @@ function loadHourButton(){
 }
 
 function selectTime(index) {
+    const buttons = document.querySelectorAll('ul#hoursList li button');
+    for (let i = 0; i < buttons.length; i++) {
+        if (i === index) {
+            buttons[i].style.backgroundColor = "#0056b3"
+        }else{
+            buttons[i].style.backgroundColor = "#007bff"
+        }
+    }
     let swellData = swellDataList[index];
     document.getElementById("swellDirection").innerHTML = swellData.swellDirection + " grado";
     document.getElementById("swellHeight").innerHTML = swellData.swellHeight + " metros";
@@ -49,5 +54,8 @@ function selectTime(index) {
 
 }
 
-loadHourButton();
-obtenerOleaje();
+
+loadSwell().then(r => {
+    loadHourButton();
+    selectTime(new Date().getHours());
+});
