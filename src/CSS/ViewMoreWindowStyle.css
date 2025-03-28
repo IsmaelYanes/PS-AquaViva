@@ -97,7 +97,6 @@ p {
 }
 
 .more-info {
-    color: #007acc;
     font-weight: bold;
     text-decoration: none;
     padding: 10px 15px;
@@ -110,4 +109,8 @@ p {
 .more-info:hover {
     background: #007acc;
     text-decoration: none;
+}
+
+.leaflet-container a {
+    color: white;
 }

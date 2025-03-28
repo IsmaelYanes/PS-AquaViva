@@ -18,8 +18,8 @@ const db = getFirestore(app);
 
 
 
-const playasPath = path.join(process.cwd(), "../beaches.json");
-const imagenesPath = path.join(process.cwd(), "../imagenesPlayas.json");
+const playasPath = path.join(process.cwd(), "../Data/beaches.json");
+const imagenesPath = path.join(process.cwd(), "../Data/imagenesPlayas.json");
 
 
 
