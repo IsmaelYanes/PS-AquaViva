@@ -1,13 +1,20 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
-    overflow: hidden; /* Evita el scroll en toda la página */
+    background-color: #0a0f1e; /* Fondo oscuro para toda la página */
+    width: 100%;
+    min-height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 #container {
     display: flex;
-    height: calc(100vh - 10vh); /* Resta la altura del header */
+    min-height: calc(100vh - 10vh); /* Resta la altura del header */
     width: 100%;
 }
 
@@ -20,17 +27,21 @@ html, body {
 #menu-container {
     width: 18%;
     min-width: 180px;
-    background-color: #061a3a; /* Ajusta si es necesario */
+    background-color: #061a3a;
 }
 
 #body-container {
     width: 82%;
-    overflow: hidden; /* Evita scroll dentro del body */
+    min-height: 100vh; /* Asegura que crezca si el contenido es mayor */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
 }
 
 #content-frame {
     width: 100%;
-    height: 100vh; /* Ajusta la altura al 100% de la pantalla */
+    flex-grow: 1; /* Asegura que tome el espacio disponible */
     border: none;
     overflow: hidden;
 }
