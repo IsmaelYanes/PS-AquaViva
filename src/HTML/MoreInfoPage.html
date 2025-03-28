@@ -32,12 +32,12 @@
 
 <div id="container">
     <div id="body-container">
-        <iframe id="content-frame" src="../HTML-components/mainWeather.html" width="100%" height="100%"></iframe>
+        <iframe id="content-frame" width="100%" height="100%"></iframe>
     </div>
     <div id="menu-container">
         <nav id="side-menu">
             <ul>
-                <li><a href="#" onclick="loadTemplate('../HTML-components/mainWeather.html')">Tiempo atmosférico</a></li>
+                <li><a href="#" id="weather-link">Tiempo atmosférico</a></li>
                 <li><a href="#" onclick="loadTemplate('wavesInfo.html')">Oleaje</a></li>
                 <li><a href="#" onclick="loadTemplate('windInfo.html')">Viento</a></li>
                 <li><a href="#" onclick="loadTemplate('climateInfo.html')">Temperaturas y clima</a></li>
@@ -50,6 +50,24 @@
 </div>
 
 <script>
+    //weather
+    const params = getQueryParams();
+    const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=8eff48f079e44211b52124000251703&q=${encodeURIComponent(params.lat)},${encodeURIComponent(params.lon)}&days=7&aqi=no&alerts=no`;
+    const webURL = `../HTML-components/mainWeather.html?apiUrl=${encodeURIComponent(jsonURL)}`;
+
+    function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+            lat: params.get("lat"),
+            lon: params.get("lon")
+        };
+    }
+    document.getElementById("content-frame").src = webURL;
+    document.getElementById("weather-link").addEventListener("click", function () {
+        loadTemplate(webURL);
+    })
+
+
     function loadTemplate(page) {
         document.getElementById('content-frame').src = page;
     }
