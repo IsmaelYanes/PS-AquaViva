@@ -1,7 +1,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    background-color: #0a0f1e; /* Fondo oscuro para toda la página */
+    background-color: white; /* Fondo oscuro para toda la página */
     width: 100%;
     min-height: 100vh;
     overflow-y: auto;
@@ -14,7 +14,7 @@ html, body {
 
 #container {
     display: flex;
-    min-height: calc(100vh - 10vh); /* Resta la altura del header */
+    height: 100vh; /* Resta la altura del header */
     width: 100%;
 }
 
