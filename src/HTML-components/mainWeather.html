@@ -1,14 +1,14 @@
-<link rel="stylesheet" href="../styles/mainWeather.css">
+<link rel="stylesheet" href="../CSS/mainWeather.css">
 <meta charset="UTF-8">
 
-<body>
+<div class="body-wrapper">
 <div id="main-container">
     <div id="location-text">
         <h1 class="info-text" id="place-text"></h1>
     </div>
     <section id="temp-container">
         <div id="temperature">
-            <img id="weather-principal-icon" src="../icons/sunny.png"/></img>
+            <img id="weather-principal-icon" src="../../icons/sunny.png"/></img>
             <p class="temp-text info-text" id="grados"></p>
             <span class="temp-text info-text">ºC</span>
         </div>
@@ -26,37 +26,37 @@
             <ul class="grid-container-7">
                 <li class="grid-item group-weather">
                     <span class="day-week" id="day0"></span>
-                    <img class="weather-icon" id="img-day0" src="../icons/sunny-clearCloud.png"/></img>
+                    <img class="weather-icon" id="img-day0" src="../../icons/sunny-clearCloud.png"/></img>
                     <span class="temp-day" id="temp1"></span>
                 </li>
                 <li class="grid-item group-weather">
                     <span class="day-week" id="day1"></span>
-                    <img class="weather-icon" id="img-day1" src="../icons/sunny-clearCloud.png"/></img>
+                    <img class="weather-icon" id="img-day1" src="../../icons/sunny-clearCloud.png"/></img>
                     <span class="temp-day" id="temp2"></span>
                 </li>
                 <li class="grid-item group-weather">
                     <span class="day-week" id="day2"></span>
-                    <img class="weather-icon" id="img-day2" src="../icons/sunny-clearCloud.png"/></img>
+                    <img class="weather-icon" id="img-day2" src="../../icons/sunny-clearCloud.png"/></img>
                     <span class="temp-day" id="temp3"></span>
                 </li>
                 <li class="grid-item group-weather">
                     <span class="day-week" id="day3"></span>
-                    <img class="weather-icon" id="img-day3" src="../icons/sunny-clearCloud.png"/></img>
+                    <img class="weather-icon" id="img-day3" src="../../icons/sunny-clearCloud.png"/></img>
                     <span class="temp-day" id="temp4"></span>
                 </li>
                 <li class="grid-item group-weather">
                     <span class="day-week" id="day4"></span>
-                    <img class="weather-icon" id="img-day4" src="../icons/sunny-clearCloud.png"/></img>
+                    <img class="weather-icon" id="img-day4" src="../../icons/sunny-clearCloud.png"/></img>
                     <span class="temp-day" id="temp5"></span>
                 </li>
                 <li class="grid-item group-weather">
                     <span class="day-week" id="day5"></span>
-                    <img class="weather-icon" id="img-day5" src="../icons/sunny-clearCloud.png"/></img>
+                    <img class="weather-icon" id="img-day5" src="../../icons/sunny-clearCloud.png"/></img>
                     <span class="temp-day" id="temp6"></span>
                 </li>
                 <li class="grid-item group-weather">
                     <span class="day-week" id="day6"></span>
-                    <img class="weather-icon" id="img-day6" src="../icons/sunny-clearCloud.png"/></img>
+                    <img class="weather-icon" id="img-day6" src="../../icons/sunny-clearCloud.png"/></img>
                     <span class="temp-day" id="temp7"></span>
                 </li>
             </ul>
@@ -82,7 +82,7 @@
         <span id="last-updated"></span>
     </div>
 </div>
-</body>
+</div>
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -194,15 +194,15 @@
                         // Noche (de 20:00 a 08:00)
                         document.getElementById("main-container").style.background = "linear-gradient(180deg, midnightblue, steelblue)";
                         const textElements = document.getElementsByClassName("info-text");
-                        for(let j=0; j<textElements.length; j++) {
+                        for (let j = 0; j < textElements.length; j++) {
                             textElements[j].style.color = "ghostwhite";
                         }
-                        document.getElaementById("last-updated").style.color = "white";
+                        document.getElementById("last-updated").style.color = "white";
                     } else {
                         // Día (de 08:01 a 19:59)
                         document.getElementById("main-container").style.background = "linear-gradient(180deg, lightskyblue, powderblue)";
                         const textElements = document.getElementsByClassName("info-text");
-                        for(let j=0; j<textElements.length; j++) {
+                        for (let j = 0; j < textElements.length; j++) {
                             textElements[j].style.color = "black";
                         }
                         document.getElementById("last-updated").style.color = "black";
