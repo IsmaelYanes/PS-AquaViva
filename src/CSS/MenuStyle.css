@@ -1,8 +1,12 @@
 #side-menu {
-    background: linear-Gradient(#021423, #1B6AB8);
-    color: white;
     height: 100vh;
     padding: 10px;
+
+    /* From https://css.glass */
+    background: rgba(56, 99, 174, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11.7px);
+    -webkit-backdrop-filter: blur(11.7px);
 }
 
 #side-menu ul {

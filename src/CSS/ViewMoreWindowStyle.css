@@ -110,7 +110,22 @@ p {
     background: #007acc;
     text-decoration: none;
 }
+.weather-table {
+    width: 80%;
+    text-align: center;
+    border-collapse: collapse;
+}
 
-.leaflet-container a {
-    color: white;
+#temperature-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#iconImg {
+    width: 2em;
+}
+
+th,td {
+    font-size: 0.9em;
 }
