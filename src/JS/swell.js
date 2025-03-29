@@ -1,6 +1,5 @@
 const KEY = "8eff48f079e44211b52124000251703";
 let swellDataList = []
-let coordinate = "28.771831683485686, -17.750202868741685"
 let zoneName;
 let foresCastDay;
 const DAY = 7;
@@ -13,7 +12,7 @@ let moonset = [];
 
 async function loadSwell() {
     try {
-        const response = await fetch(`https://api.weatherapi.com/v1/marine.json?key=${KEY}&q=${coordinate}&days=${DAY}`);
+        const response = await fetch(`https://api.weatherapi.com/v1/marine.json?key=${KEY}&q=${coordLAT},${coordLON}&days=${DAY}`);
         const data = await response.json();
         zoneName = data.location.name;
         foresCastDay = data.forecast.forecastday;
@@ -76,7 +75,7 @@ function initSwellPage(){
 
 async function loadWaves() {
     try {
-        const response = await fetch(`https://api.weatherapi.com/v1/marine.json?key=${KEY}&q=${coordinate}&days=${DAY}`);
+        const response = await fetch(`https://api.weatherapi.com/v1/marine.json?key=${KEY}&q=${coordLAT},${coordLON}&days=${DAY}`);
         if (!response.ok) {
             throw new Error('Error en la solicitud');
         }

@@ -42,6 +42,7 @@
     let coordLAT;
     let coordLON;
 
+
     function detectSourceAndLoad() {
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get("id");
@@ -95,6 +96,8 @@
     function init() {
         loadTemplate('../HTML-components/header.html', document.getElementById('header'));
     }
+
+
 </script>
 </body>
 </html>
