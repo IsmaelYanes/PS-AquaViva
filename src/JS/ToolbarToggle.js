@@ -69,7 +69,7 @@ function showCustomPopup(fields) {
             </div>
         </div>
     </div>`;
-    
+
     document.body.insertAdjacentHTML("beforeend", popupHTML);
 }
 
