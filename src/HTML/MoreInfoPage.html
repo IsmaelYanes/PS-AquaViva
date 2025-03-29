@@ -18,8 +18,8 @@
         <nav id="side-menu">
             <ul>
                 <li><a onclick="loadTemplate('../HTML-components/mainWeather.html', document.getElementById('body-container'))">Tiempo atmosférico</a></li>
-                <li><a onclick="loadTemplate('../HTML-components/swell.html', document.getElementById('body-container'))">Oleaje</a></li>
-                <li><a  onclick="loadTemplate('../HTML-components/wave.html', document.getElementById('body-container'))">Marea</a></li>
+                <li><a onclick="loadTemplate('../HTML-components/swell.html', document.getElementById('body-container'), initSwellPage)">Oleaje</a></li>
+                <li><a  onclick="loadTemplate('../HTML-components/wave.html', document.getElementById('body-container'), initWavePage)">Marea</a></li>
                 <li id="facilities-item"><a onclick="loadTemplate('../HTML-components/services.html', document.getElementById('body-container'))">Instalaciones y prestaciones</a></li>
                 <li><a onclick="loadTemplate('../HTML-components/FishInfo.html', document.getElementById('body-container'))">Galería de peces</a></li>
                 <li><a onclick="loadTemplate('#', document.getElementById('body-container'))">Descargar tabla pdf</a></li>
@@ -27,9 +27,8 @@
         </nav>
     </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="../JS/services.js"></script>
-<script src="../JS/wave.js"></script>
 <script src="../JS/swell.js"></script>
 <script src="../JS/FishInfo.js"></script>
 <script src="../JS/FishDetail.js"></script>
