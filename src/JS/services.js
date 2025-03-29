@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const beachId = urlParams.get("id");
     if (beachId) {
         console.log("📌 ID de la playa obtenida:", beachId);
-        cargarDatosPlaya(beachId);  // Cargar datos de la playa
+        cargarDatosPlaya(beachId);
     }
 });
 
@@ -31,7 +31,7 @@ async function cargarDatosPlaya(id) {
 }
 
 function mostrarDetallesPlaya(fields) {
-    // Asegurarse de que cada campo existe y asignar un valor por defecto si es undefined
+
     document.getElementById("beachName").textContent = fields.beachName?.stringValue || "Playa Desconocida";
     document.getElementById("composition").textContent = fields["Composición"]?.stringValue || "No especificado";
     document.getElementById("classification").textContent = fields.classification?.stringValue || "N/A";
@@ -49,4 +49,7 @@ function mostrarDetallesPlaya(fields) {
     document.getElementById("footWash").textContent = fields.Lavapies?.stringValue || "No disponible";
 
     document.getElementById("beachImage").src = fields.imageURL?.stringValue || "https://via.placeholder.com/300";
+
+    window.coordLAT = fields.LAT?.stringValue || '';
+    window.coordLON = fields.LON?.stringValue || '';
 }
