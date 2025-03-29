@@ -13,7 +13,7 @@ let moonset = [];
 
 async function loadSwell() {
     try {
-        const response = await fetch(`https://api.weatherapi.com/v1/marine.json?key=8eff48f079e44211b52124000251703&q=${coordinate}&days=7`);
+        const response = await fetch(`https://api.weatherapi.com/v1/marine.json?key=${KEY}&q=${coordinate}&days=${DAY}`);
         const data = await response.json();
         zoneName = data.location.name;
         foresCastDay = data.forecast.forecastday;
@@ -97,6 +97,7 @@ async function loadWaves() {
 }
 function loadButton(dateList){
     const container = document.getElementById("selectTideDayButtonContainer");
+    container.innerHTML="";
     for (let i = 0; i < dateList.length; i++) {
         let button = document.createElement("button");
         button.innerText = dateList[i];
@@ -106,6 +107,7 @@ function loadButton(dateList){
         }
         container.appendChild(button);
     }
+    datesList = [];
 }
 
 

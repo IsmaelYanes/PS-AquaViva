@@ -20,3 +20,13 @@ button {
 button:hover {
     background-color: #205781;
 }
+#sunriseContainer {
+    justify-content: center;
+    display: flex;
+}
+.sunIcon{
+    width: 20px;
+}
+.iconMargin{
+    margin-right: 10px;
+}
