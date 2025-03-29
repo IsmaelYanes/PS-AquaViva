@@ -39,12 +39,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function abrirPopup(properties, event) {
         const popup = document.querySelector('.popup');
-
+        
         // Actualizar contenido del popup con los datos de la zona
-        document.getElementById('popup-title').innerText = `Información de la zona`;
+        document.getElementById('popup-title').innerText = `Información de la zona seleccionada`;
         document.getElementById('popup-island').innerText = properties.isla || "Desconocida";
         document.getElementById('popup-zone').innerText = properties.zona || "Desconocida";
-        document.getElementById('popup-info').innerText = properties.description || "Sin información disponible.";
+        const coord = properties.coord.split(",");
+        const lat = coord[1].trim();
+        const lon = coord[0].trim();
+        properties.description = getPrincipalData(lat, lon);
+        
+        document.getElementById("popup-link").href = `../HTML/MoreInfoPage.html?lat=${lat}&lon=${lon}`;
 
         // Manejo de la imagen
         const imgElement = document.getElementById('popup-image');
@@ -54,20 +59,32 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             imgElement.style.display = "none";
         }
-
-        // Manejo del enlace "Ver más"
-        const moreInfoLink = document.getElementById('popup-link');
-        if (properties.moreInfoURL) {
-            moreInfoLink.href = properties.moreInfoURL;
-            moreInfoLink.style.display = "inline-block";
-        } else {
-            moreInfoLink.style.display = "none";
-        }
+        
 
         // Convertir coordenadas del mapa a posición en la pantalla
         let point = window.map.latLngToContainerPoint(event.latlng);
         popup.style.left = `${point.x + 280}px`;
         popup.style.top = `${point.y + 280}px`;
         popup.style.display = 'block';
+    }
+
+    function getPrincipalData(lat, lon) {
+        const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=8eff48f079e44211b52124000251703&q=${lat},${lon}&days=7&aqi=no&alerts=no`;
+        console.log(jsonURL);
+        fetch (jsonURL, {
+            method: "GET",
+            headers: {'Content-Type': 'application/json'}
+        })
+            .then(response => response.json())
+            .then(json => {
+                const icon = json.current.condition.icon;
+                const temp = json.current.temp_c;
+                const wind = json.current.wind_kph;
+                const humidity = json.current.humidity;
+                document.getElementById("temperature").innerHTML = `${temp}ºC`;
+                document.getElementById("wind").innerHTML = `${wind}km/h`;
+                document.getElementById("humidity").innerHTML = `${humidity}%`;
+                document.getElementById("iconImg").src = icon;
+            })
     }
 });

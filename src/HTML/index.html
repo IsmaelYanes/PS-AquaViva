@@ -47,7 +47,26 @@
                     <img id="popup-image" src="" alt="Imagen de la zona seleccionada" class="popup-image" style="display: none;">
                     <p><strong>Nombre de la isla:</strong> <span id="popup-island">-</span></p>
                     <p><strong>Zona:</strong> <span id="popup-zone">-</span></p>
-                    <p><strong>Información adicional:</strong> <span id="popup-info">-</span></p>
+                    <p><strong>Información adicional:</strong> <span id="popup-info"></span></p>
+                    <table class="weather-table">
+                        <thead>
+                        <tr>
+                            <th>Temperatura</th>
+                            <th>Viento</th>
+                            <th>Humedad</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td id="temperature-cell">
+                                <img id="iconImg" src="../../icons/sunny-clearCloud.png" class="weather-icon">
+                                <span id="temperature"></span>
+                            </td>
+                            <td><span id="wind"></span></td>
+                            <td><span id="humidity"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="popup-footer">
                     <a id="popup-link" href="#" class="more-info">Ver más</a>
@@ -110,6 +129,8 @@
         });
     }
 
+
 </script>
 </body>
 </html>
+

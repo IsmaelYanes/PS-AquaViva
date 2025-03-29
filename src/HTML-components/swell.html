@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información oleaje</title>
+    <link rel="stylesheet" href="../CSS/swell.css">
+</head>
+<body>
+
+<div class="hours-container">
+    <h2 id="zoneName"></h2>
+    <ul id="hoursList"></ul>
+    <div class="wave-box" id="waveInfo">
+        <h3>Información del oleaje</h3>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <div class="wellInfoBox">
+                <img src="https://cdn-icons-png.freepik.com/512/10816/10816576.png" class="wellPhoto">
+                <p class="waveDescription">Dirección de oleaje</p>
+                <p id="swellDirection"></p>
+            </div>
+            <div class="wellInfoBox">
+                <img src="https://cdn-icons-png.flaticon.com/256/2267/2267491.png" class="wellPhoto">
+                <p class="waveDescription">Altura significativa</p>
+                <p id="swellHeight"></p>
+            </div>
+            <div class="wellInfoBox">
+                <img src="https://cdn-icons-png.flaticon.com/512/10086/10086830.png" class="wellPhoto">
+                <p class="waveDescription">Periodo de olas</p>
+                <p id="swellPeriod"></p>
+            </div>
+            <div class="wellInfoBox">
+                <img src="https://cdn-icons-png.flaticon.com/512/11653/11653089.png" class="wellPhoto">
+                <p class="waveDescription">Temperatura de agua</p>
+                <p id="waterTemperature"></p>
+            </div>
+            <div class="wellInfoBox">
+                <img src="https://cdn-icons-png.flaticon.com/512/4115/4115904.png" class="wellPhoto">
+                <p class="waveDescription">Presión</p>
+                <p id="pressure"></p>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../JS/swell.js"></script>
+</body>
+</html>
