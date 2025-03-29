@@ -39,6 +39,7 @@ function loadHourButton(){
         let li = document.createElement('li');
         let button = document.createElement('button');
         button.innerHTML = `${i}:00`;
+        button.style.background = "blue";
         button.addEventListener('click', () => {selectTime(i);});
         li.appendChild(button);
         hoursList.appendChild(li);
