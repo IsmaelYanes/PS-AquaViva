@@ -5,42 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Detalles del Pez</title>
   <link rel="stylesheet" href="../CSS/FishDetailStyle.css">
-  <link rel="stylesheet" href="../CSS/MenuStyle.css">
-  <link rel="stylesheet" href="../CSS/homeHeader.css">
 </head>
 <body>
-
-<div id="container">
-  <div id="body-container">
-    <div id="fish-details">
-      <img id="fish-image" src="" alt="">
-      <h1 id="fish-title"></h1>
-      <p><strong>Nombre científico: </strong><span id="scientific-name"></span></p>
-      <p><strong>Estado IUCN: </strong><span id="iucn"></span></p>
-      <p><strong>Descripción: </strong><span id="description"></span></p>
-      <p><strong>Género: </strong><span id="gender-description"></span></p>
-      <p><strong>Tipo: </strong><span id="type"></span></p>
-      <p><strong>Tamaño: </strong><span id="average-size"></span></p>
-      <p><strong>Tamaño máximo: </strong><span id="max-size"></span></p>
-      <p><strong>Mimetismo: </strong><span id="mimetism"></span></p>
-      <p><strong>Reconocimiento: </strong><span id="recognize"></span></p>
-      <p><strong>Diferencias macho/hembra: </strong><span id="male-female-differences"></span></p>
-      <p><strong>Dieta: </strong><span id="diet"></span></p>
-      <p><strong>Territorial: </strong><span id="territorial"></span></p>
-      <p><strong>Modo de vida: </strong><span id="life-mode"></span></p>
-      <p><strong>Descripción del hábitat: </strong><span id="life-description"></span></p>
-      <p><strong>Reproducción: </strong><span id="reproduction-mode"></span></p>
-      <p><strong>Migración: </strong><span id="migration"></span></p>
-      <p><strong>Descripción de la reproducción: </strong><span id="reproduction-description"></span></p>
-      <p><strong>¿Veneno?: </strong><span id="poison"></span></p>
-      <p><strong>Peligro: </strong><span id="danger"></span></p>
-      <p><strong>Rango de profundidad: </strong><span id="depth-range"></span></p>
-      <img id="map-image" src="" alt="Mapa de distribución" style="max-width: 100%; height: auto;">
+<div class="container">
+  <div class="fish-details">
+    <img id="fish-image" src="" alt="Imagen del pez">
+    <h1 id="fish-title"></h1>
+    <div class="info-group">
+      <h2>Información Básica</h2>
+      <p><strong>Nombre científico:</strong> <span id="scientific-name"></span></p>
+      <p><strong>Estado IUCN:</strong> <span id="iucn"></span></p>
+      <p><strong>Descripción:</strong> <span id="description"></span></p>
     </div>
+    <div class="info-group">
+      <h2>Características Físicas</h2>
+      <p><strong>Género:</strong> <span id="gender-description"></span></p>
+      <p><strong>Tipo:</strong> <span id="type"></span></p>
+      <p><strong>Tamaño promedio:</strong> <span id="average-size"></span></p>
+      <p><strong>Tamaño máximo:</strong> <span id="max-size"></span></p>
+      <p><strong>Mimetismo:</strong> <span id="mimetism"></span></p>
+      <p><strong>Reconocimiento:</strong> <span id="recognize"></span></p>
+      <p><strong>Diferencias macho/hembra:</strong> <span id="male-female-differences"></span></p>
+    </div>
+    <div class="info-group">
+      <h2>Ecología</h2>
+      <p><strong>Dieta:</strong> <span id="diet"></span></p>
+      <p><strong>Territorial:</strong> <span id="territorial"></span></p>
+      <p><strong>Modo de vida:</strong> <span id="life-mode"></span></p>
+      <p><strong>Hábitat:</strong> <span id="life-description"></span></p>
+      <p><strong>Rango de profundidad:</strong> <span id="depth-range"></span></p>
+    </div>
+    <div class="info-group">
+      <h2>Reproducción y Movimiento</h2>
+      <p><strong>Reproducción:</strong> <span id="reproduction-mode"></span></p>
+      <p><strong>Descripción:</strong> <span id="reproduction-description"></span></p>
+      <p><strong>Migración:</strong> <span id="migration"></span></p>
+    </div>
+    <div class="info-group">
+      <h2>Peligrosidad</h2>
+      <p><strong>¿Veneno?:</strong> <span id="poison"></span></p>
+      <p><strong>Peligro:</strong> <span id="danger"></span></p>
+    </div>
+    <img id="map-image" src="" alt="Mapa de distribución">
   </div>
 </div>
-
 <script src="../JS/FishDetail.js"></script>
-
 </body>
 </html>
