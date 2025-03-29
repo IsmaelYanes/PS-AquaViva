@@ -6,39 +6,69 @@
     <title>Información</title>
     <link rel="stylesheet" href="../CSS/MoreInfoPageStyle.css">
     <link rel="stylesheet" href="../CSS/MenuStyle.css">
-    <link rel="stylesheet" href="../CSS/services.css">
     <link rel="stylesheet" href="../CSS/homeHeader.css">
+    <link rel="stylesheet" href="../CSS/services.css">
 </head>
 <body>
 <div id="header"></div>
 
 <div id="container">
-    <div id="body-container">
-        <iframe id="content-frame" src="../HTML-components/mainWeather.html" width="100%" height="100%"></iframe>
-    </div>
+    <div id="body-container"></div>
     <div id="menu-container">
         <nav id="side-menu">
             <ul>
-                <li><a href="#" onclick="loadTemplate('../HTML-components/mainWeather.html')">Tiempo atmosférico</a></li>
-                <li><a href="#" onclick="loadTemplate('wavesInfo.html')">Oleaje</a></li>
-                <li><a href="#" onclick="loadTemplate('windInfo.html')">Viento</a></li>
-                <li><a href="#" onclick="loadTemplate('climateInfo.html')">Temperaturas y clima</a></li>
-                <li><a href="#" onclick="loadTemplate('facilitiesInfo.html')">Instalaciones y prestaciones</a></li>
-                <li><a href="#" onclick="loadTemplate('../HTML-components/FishInfo.html')">Galería de peces</a></li>
-                <li><a href="#" onclick="loadTemplate('downloadTable.html')">Descargar tabla pdf</a></li>
+                <li><a href="#" onclick="loadTemplate('../HTML-components/mainWeather.html', document.getElementById('body-container'))">Tiempo atmosférico</a></li>
+                <li><a href="#" onclick="loadTemplate('../HTML-components/swell.html', document.getElementById('body-container'))">Oleaje</a></li>
+                <li><a href="#" onclick="loadTemplate('../HTML-components/wave.html', document.getElementById('body-container'))">Marea</a></li>
+                <li id="facilities-item"><a href="#" onclick="loadTemplate('#', document.getElementById('body-container'))">Instalaciones y prestaciones</a></li>
+                <li><a href="#" onclick="loadTemplate('../HTML-components/FishInfo.html', document.getElementById('body-container'))">Galería de peces</a></li>
+                <li><a href="#" onclick="loadTemplate('#', document.getElementById('body-container'))">Descargar tabla pdf</a></li>
             </ul>
         </nav>
     </div>
 </div>
-<script src="../JS/MoreInfoPagejs.js"></script>
-<script src="../JS/services.js" defer></script>
+
+<script src="../JS/services.js"></script>
+<script src="../JS/wave.js"></script>
+<script src="../JS/swell.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', init);
-    function loadTemplate(page) {
-        document.getElementById('content-frame').src = page;
+    document.addEventListener("DOMContentLoaded", function () {
+        init();
+        detectSourceAndLoad();
+    });
+
+    let defaultPage;
+
+    function detectSourceAndLoad() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get("id");
+        const lat = urlParams.get("lat");
+        const lon = urlParams.get("lon");
+
+        if (id) {
+            defaultPage = '../HTML-components/services.html';
+            // Mostrar la opción "Instalaciones y prestaciones" si es una playa
+            document.getElementById("facilities-item").style.display = "block";
+        } else if (lat && lon) {
+            defaultPage = '../HTML-components/mainWeather.html';
+            // Ocultar la opción "Instalaciones y prestaciones" si no es una playa
+            document.getElementById("facilities-item").style.display = "none";
+        } else {
+            defaultPage = '../HTML-components/mainWeather.html';
+            // Ocultar la opción "Instalaciones y prestaciones" si no se encuentra un origen válido
+            document.getElementById("facilities-item").style.display = "none";
+        }
+
+        console.log("Cargando página por defecto: " + defaultPage);
+        loadTemplate(defaultPage, document.getElementById('body-container'));
     }
 
-    function loadComponent(fileName, element, callback) {
+    function loadTemplate(fileName, element, callback) {
+        if (!element) {
+            console.error("Elemento no encontrado para", fileName);
+            return;
+        }
+
         fetch(fileName)
             .then((res) => {
                 if (!res.ok) {
@@ -58,7 +88,7 @@
     }
 
     function init() {
-        loadComponent('../HTML-components/header.html', document.getElementById('header'));
+        loadTemplate('../HTML-components/header.html', document.getElementById('header'));
     }
 </script>
 </body>
