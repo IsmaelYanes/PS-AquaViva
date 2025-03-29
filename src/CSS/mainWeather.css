@@ -6,19 +6,17 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f8ff;
-    text-align: center;
     margin: 0;
     padding: 0;
 }
 
 #main-container {
     padding: 1em;
-    height: 45em;
     width: 70%;
     min-width: 25rem;
     height: auto;
     border-radius: 10px;
-    //background: linear-gradient(180deg, lightskyblue, powderblue);
+    background: linear-gradient(180deg, lightskyblue, powderblue);
 }
 
 #place-text {
@@ -34,6 +32,8 @@ body {
     flex-direction: row;
     align-items: center;
     gap: 1.5em;
+    text-align: center;
+
 }
 
 #temperature {
@@ -115,6 +115,7 @@ h2, h3 {
     font-size: 1.2em;
     color: #333;
     cursor: pointer;
+    text-align: center;
 }
 
 h2 {
@@ -159,6 +160,8 @@ tr:nth-child(3) td {
 #container-last-updated {
     margin-top: 1rem;
     margin-bottom: 0;
+    text-align: center;
+
 }
 
 #last-updated {

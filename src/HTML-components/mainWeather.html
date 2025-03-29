@@ -94,9 +94,9 @@
 
 
     function getDataJson(url) {
-        /*const jsonURL = "https://api.weatherapi.com/v1/forecast.json?key=8eff48f079e44211b52124000251703&q=28.771831683485686,%20-17.750202868741685&days=7&aqi=no&alerts=no";
-        */
-        fetch(url, {
+        const jsonURL = "https://api.weatherapi.com/v1/forecast.json?key=8eff48f079e44211b52124000251703&q=28.771831683485686,%20-17.750202868741685&days=7&aqi=no&alerts=no";
+
+        fetch(jsonURL, {
             method: "GET",
             headers: {'Content-Type': 'application/json'}
         })
@@ -201,7 +201,7 @@
                         for(let j=0; j<textElements.length; j++) {
                             textElements[j].style.color = "ghostwhite";
                         }
-                        document.getElaementById("last-updated").style.color = "white";
+                        document.getElementById("last-updated").style.color = "white";
                     } else {
                         // Día (de 08:01 a 19:59)
                         document.getElementById("main-container").style.background = "linear-gradient(180deg, lightskyblue, powderblue)";
