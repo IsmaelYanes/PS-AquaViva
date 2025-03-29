@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    fetch("../HTML-components/InfoPageBody.html")
+    fetch("../HTML-components/services.html")
         .then(response => response.text())
         .then(data => {
             document.getElementById("body-container").innerHTML = data;
