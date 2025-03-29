@@ -50,6 +50,6 @@ function mostrarDetallesPlaya(fields) {
 
     document.getElementById("beachImage").src = fields.imageURL?.stringValue || "https://via.placeholder.com/300";
 
-    window.coordLAT = fields.LAT?.stringValue || '';
-    window.coordLON = fields.LON?.stringValue || '';
+    window.coordLAT = fields.LAT?.stringValue.replace(",", ".") || '';
+    window.coordLON = fields.LON?.stringValue.replace(",", ".") || '';
 }
