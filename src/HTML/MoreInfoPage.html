@@ -10,25 +10,7 @@
     <link rel="stylesheet" href="../CSS/homeHeader.css">
 </head>
 <body>
-<header class="homeHeader-container">
-    <div id="header-container">
-        <div>
-            <figure>
-                <img src="../images/wave.png" id="imageLogo" alt="logo">
-            </figure>
-        </div>
-        <div class="search-container">
-            <input type="text" id="search" class="search-box" placeholder="Buscar...">
-            <button id="search-button">
-                <img src="../images/buscador.png" id="search-icon" alt="buscar">
-            </button>
-        </div>
-        <div id="optionButtons">
-            <button class="home-button" type="button">Iniciar sesión</button>
-            <button class="home-button" type="button">Registrarse</button>
-        </div>
-    </div>
-</header>
+<div id="header"></div>
 
 <div id="container">
     <div id="body-container">
@@ -51,8 +33,32 @@
 <script src="../JS/MoreInfoPagejs.js"></script>
 <script src="../JS/services.js" defer></script>
 <script>
+    document.addEventListener('DOMContentLoaded', init);
     function loadTemplate(page) {
         document.getElementById('content-frame').src = page;
+    }
+
+    function loadComponent(fileName, element, callback) {
+        fetch(fileName)
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`Error cargando ${fileName}: ${res.status}`);
+                }
+                return res.text();
+            })
+            .then((text) => {
+                element.innerHTML = text;
+                if (callback) {
+                    callback();
+                }
+            })
+            .catch((error) => {
+                console.error("Error al cargar componente:", error);
+            });
+    }
+
+    function init() {
+        loadComponent('../HTML-components/header.html', document.getElementById('header'));
     }
 </script>
 </body>
