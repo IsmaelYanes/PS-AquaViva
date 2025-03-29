@@ -1,6 +1,5 @@
 const KEY = "8eff48f079e44211b52124000251703";
 const DAY = 7;
-let coordinate = "28.771831683485686, -17.750202868741685"
 let datesList = [];
 let tidesData = [];
 let sunrise = [];
@@ -24,13 +23,12 @@ async function loadWaves() {
             moonrise.push(extractHoursToSunrise(forecastData[i].astro.moonrise));
             moonset.push(extractHoursToSunrise(forecastData[i].astro.moonset));
         }
-        loadButton(datesList);
-        updateChart(0);
+
     } catch (error) {
         console.error('Hubo un problema:', error);
     }
-}
 
+}
 function loadButton(dateList){
     const container = document.getElementById("selectTideDayButtonContainer");
     for (let i = 0; i < dateList.length; i++) {
@@ -43,7 +41,7 @@ function loadButton(dateList){
         container.appendChild(button);
     }
 }
-loadWaves();
+
 
 function prepareChartData(dayData) {
     const labels = dayData.map(tide => extractHours(tide.tide_time));
@@ -119,4 +117,9 @@ function extractHoursToSunrise(dateTimeStr) {
     const [time, ap] = dateTimeStr.split(' ');
     return time;
 }
-
+function initWavePage(){
+    loadWaves().then(r=>{
+        loadButton(datesList);
+        updateChart(0);
+    });
+}

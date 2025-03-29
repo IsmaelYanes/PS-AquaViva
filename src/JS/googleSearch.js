@@ -1,1 +1,0 @@
-const googleApiKey = "AIzaSyAJcUArxOSgu22PiX7Y0W3c-9Od21ZygA0"
