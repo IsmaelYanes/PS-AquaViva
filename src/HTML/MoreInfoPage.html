@@ -38,7 +38,7 @@
         <nav id="side-menu">
             <ul>
                 <li><a href="#" onclick="loadTemplate('../HTML-components/mainWeather.html')">Tiempo atmosférico</a></li>
-                <li><a href="#" onclick="loadTemplate('wavesInfo.html')">Oleaje</a></li>
+                <li><a href="#" onclick="loadTemplateWithCallback('../HTML-components/swell.html')">Oleaje</a></li>
                 <li><a href="#" onclick="loadTemplate('windInfo.html')">Viento</a></li>
                 <li><a href="#" onclick="loadTemplate('climateInfo.html')">Temperaturas y clima</a></li>
                 <li><a href="#" onclick="loadTemplate('facilitiesInfo.html')">Instalaciones y prestaciones</a></li>
@@ -53,6 +53,16 @@
 <script>
     function loadTemplate(page) {
         document.getElementById('content-frame').src = page;
+    }
+    function loadTemplateWithCallback(fileName,callback) {
+        fetch(fileName).then((res) => {
+            return res.text();
+        }).then((text) => {
+            document.getElementById('body-container').src = text;
+            if(callback){
+                callback();
+            }
+        })
     }
 </script>
 </body>
