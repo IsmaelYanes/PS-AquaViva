@@ -31,7 +31,6 @@ async function cargarDatosPlaya(id) {
 function mostrarDetallesPlaya(fields) {
     document.getElementById("beachName").textContent = fields.beachName?.stringValue || "Playa Desconocida";
     document.getElementById("composition").textContent = fields["Composición"]?.stringValue || "No especificado";
-    document.getElementById("type").textContent = fields.type?.stringValue || "N/A";
     document.getElementById("classification").textContent = fields.classification?.stringValue || "N/A";
     document.getElementById("access").textContent = fields["Condiciones de acceso"]?.stringValue || "No disponible";
     document.getElementById("bathConditions").textContent = fields["Condiciones de baño"]?.stringValue || "No disponible";
@@ -44,8 +43,6 @@ function mostrarDetallesPlaya(fields) {
     document.getElementById("sportsArea").textContent = fields["Area Deportiva"]?.stringValue || "No disponible";
     document.getElementById("childrenArea").textContent = fields["Area Infantil"]?.stringValue || "No disponible";
     document.getElementById("toilets").textContent = fields.Aseo?.stringValue || "No disponible";
-    document.getElementById("adaptedToilets").textContent = fields["Aseo adaptado"]?.stringValue || "No disponible";
-    document.getElementById("assistedBathroom").textContent = fields["Baño asistido"]?.stringValue || "No disponible";
     document.getElementById("footWash").textContent = fields.Lavapies?.stringValue || "No disponible";
 
     document.getElementById("beachImage").src = fields.imageURL?.stringValue || "https://via.placeholder.com/300";
