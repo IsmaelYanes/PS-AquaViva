@@ -23,6 +23,7 @@ body {
     padding: 0.5em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 2em;
+    text-align: center;
 }
 
 #temp-container {
