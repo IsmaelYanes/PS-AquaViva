@@ -40,6 +40,8 @@
     });
 
     let defaultPage;
+    let coordLAT;
+    let coordLON;
 
     function detectSourceAndLoad() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -55,6 +57,8 @@
             defaultPage = '../HTML-components/mainWeather.html';
             // Ocultar la opción "Instalaciones y prestaciones" si no es una playa
             document.getElementById("facilities-item").style.display = "none";
+            coordLAT = lat;
+            coordLON = lon;
         } else {
             defaultPage = '../HTML-components/mainWeather.html';
             // Ocultar la opción "Instalaciones y prestaciones" si no se encuentra un origen válido
