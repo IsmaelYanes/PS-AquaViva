@@ -20,7 +20,7 @@
                 <li><a href="#" onclick="loadTemplate('../HTML-components/mainWeather.html', document.getElementById('body-container'))">Tiempo atmosférico</a></li>
                 <li><a href="#" onclick="loadTemplate('../HTML-components/swell.html', document.getElementById('body-container'))">Oleaje</a></li>
                 <li><a href="#" onclick="loadTemplate('../HTML-components/wave.html', document.getElementById('body-container'))">Marea</a></li>
-                <li id="facilities-item"><a href="#" onclick="loadTemplate('#', document.getElementById('body-container'))">Instalaciones y prestaciones</a></li>
+                <li id="facilities-item"><a href="#" onclick="loadTemplate('../HTML-components/services.html', document.getElementById('body-container'))">Instalaciones y prestaciones</a></li>
                 <li><a href="#" onclick="loadTemplate('../HTML-components/FishInfo.html', document.getElementById('body-container'))">Galería de peces</a></li>
                 <li><a href="#" onclick="loadTemplate('#', document.getElementById('body-container'))">Descargar tabla pdf</a></li>
             </ul>
@@ -38,6 +38,8 @@
     });
 
     let defaultPage;
+    let coordLAT="28.16792536796312";
+    let coordLON="-15.70954044037984";
 
     function detectSourceAndLoad() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -53,6 +55,8 @@
             defaultPage = '../HTML-components/mainWeather.html';
             // Ocultar la opción "Instalaciones y prestaciones" si no es una playa
             document.getElementById("facilities-item").style.display = "none";
+            coordLAT = lat;
+            coordLON = lon;
         } else {
             defaultPage = '../HTML-components/mainWeather.html';
             // Ocultar la opción "Instalaciones y prestaciones" si no se encuentra un origen válido
