@@ -10,9 +10,10 @@ let sunset = [];
 let moonrise= [];
 let moonset = [];
 
+
 async function loadSwell() {
     try {
-        const response = await fetch(`https://api.weatherapi.com/v1/marine.json?key=${KEY}&q=${coordLAT},${coordLON}&days=${DAY}`);
+        const response = await fetch(`https://api.weatherapi.com/v1/marine.json?key=${KEY}&q=${lat},${lon}&days=${DAY}`);
         const data = await response.json();
         zoneName = data.location.name;
         foresCastDay = data.forecast.forecastday;
@@ -75,7 +76,8 @@ function initSwellPage(){
 
 async function loadWaves() {
     try {
-        const response = await fetch(`https://api.weatherapi.com/v1/marine.json?key=${KEY}&q=${coordLAT},${coordLON}&days=${DAY}`);
+        const response = await fetch(`https://api.weatherapi.com/v1/marine.json?key=${KEY}&q=${lat},${lon}&days=${DAY}`);
+        console.log(`${coordLAT},${coordLON}`);
         if (!response.ok) {
             throw new Error('Error en la solicitud');
         }

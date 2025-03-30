@@ -1,8 +1,11 @@
 // Elimina el listener de DOMContentLoaded y encapsula la lógica en initWeather()
+let lat;
+let lon;
 function initWeather() {
     const urlParams = new URLSearchParams(window.location.search);
-    const lat = urlParams.get("lat");
-    const lon = urlParams.get("lon");
+    lat = urlParams.get("lat");
+    lon = urlParams.get("lon");
+    console.log(lat, lon);
 
     // Si no existen lat y lon, no se ejecuta nada
     if (!lat || !lon) return;
