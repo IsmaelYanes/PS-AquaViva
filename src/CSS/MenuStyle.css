@@ -1,6 +1,8 @@
 #side-menu {
     height: 100vh;
     padding: 10px;
+    width: 100%; /* Asegura que ocupe el ancho de #menu-container */
+    box-sizing: border-box; /* Incluye padding en el ancho total */
 
     /* From https://css.glass */
     background: rgba(56, 99, 174, 0.08);
@@ -12,7 +14,7 @@
 #side-menu ul {
     list-style: none;
     padding: 0;
-
+    margin: 0; /* Elimina márgenes para que el contenido llene el espacio */
 }
 
 #side-menu li {

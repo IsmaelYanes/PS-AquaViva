@@ -15,15 +15,15 @@ html {
     scrollbar-width: none; /* Oculta la barra en Firefox */
 }
 
-/* Ajuste del header para que ocupe menos espacio */
-.homeHeader-container {
-    height: 10vh;
-    padding: 0.2em;
-    display: flex;
-    align-items: center;
+/* Título */
+h1 {
+    font-size: 2rem;
+    color: #0077ff;
+    text-align: center;
+    margin: 20px 0;
 }
 
-/* Contenedor principal ocupa el resto de la pantalla */
+/* Contenedor principal */
 #container {
     display: flex;
     height: 90vh;
@@ -36,30 +36,15 @@ html {
     min-width: 180px;
     display: flex;
     justify-content: flex-end;
-}
-
-/* Estilos del menú */
-#side-menu {
-    font-size: 0.9em;
-    padding: 10px;
-    text-align: right;
-}
-
-#side-menu ul {
-    padding: 0;
-    list-style: none;
-}
-
-#side-menu li {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    position: sticky;
+    top: 0;
+    background: none; /* Elimina cualquier fondo que pueda ser visible */
 }
 
 /* Contenido principal */
 #body-container {
     width: 82%;
-    overflow: hidden; /* Evita barras de desplazamiento */
+    overflow-y: auto; /* Permite desplazamiento vertical si hay muchos peces */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,11 +53,11 @@ html {
 
 /* Grid para los peces */
 .fish-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
+    display: flex;
+    flex-wrap: wrap; /* Organiza en filas */
+    justify-content: center; /* Centra las filas */
+    gap: 20px; /* Espacio entre los peces */
     width: 100%;
-    height: 100%;
 }
 
 /* Tarjetas de peces */
@@ -82,9 +67,8 @@ html {
     overflow: hidden;
     transition: transform 0.3s;
     text-align: center;
-    width: 100%;
-    padding-bottom: 5px;
-    padding-right: 5px;
+    width: 200px; /* Tamaño fijo para consistencia */
+    padding-bottom: 10px;
 }
 
 a {
@@ -98,8 +82,8 @@ a {
 /* Imágenes */
 .fish-item img {
     width: 100%;
-    height: 120px;
-    object-fit: cover;
+    height: auto; /* Muestra la imagen completa */
+    object-fit: contain; /* Asegura que la imagen no se recorte */
     border-bottom: 3px solid #0077ff;
 }
 
@@ -107,24 +91,27 @@ a {
 .fish-item h2 {
     font-size: 1rem;
     color: white;
-
+    margin: 10px 0 0 0; /* Espacio arriba del nombre */
 }
 
-/* Media queries para mejorar responsividad */
+/* Media queries para responsividad */
 @media (max-width: 1024px) {
-    .fish-grid {
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    .fish-item {
+        width: 180px;
     }
 }
 
 @media (max-width: 768px) {
-    .fish-grid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    .fish-item {
+        width: 150px;
     }
 }
 
 @media (max-width: 480px) {
-    .fish-grid {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    .fish-item {
+        width: 120px;
+    }
+    h1 {
+        font-size: 1.5rem;
     }
 }

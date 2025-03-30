@@ -1,48 +1,89 @@
+/* Base Styles */
 body {
-    background-color: #0a0f1e;
-    color: white;
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 20px;
+    background: #0a0f1e;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
 }
 
+/* Container */
 .container {
-    width: 80%;
-    max-width: 800px;
-    text-align: center;
-    background-color: #12192b;
-    padding: 20px;
-    border-radius: 10px;
+    width: 90%;
+    max-width: 900px;
+    background: #12192b;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-h1, h2 {
-    margin: 0;
-    display: inline;
-}
-
-.separator {
-    margin: 0 10px;
-    font-size: 1.5rem;
-}
-
-img {
-    width: 100%;
-    max-height: 400px;
-    object-fit: contain;
-    margin: 20px 0;
-    border-bottom: 3px solid #0077ff;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
+/* Fish Details */
+.fish-details {
     text-align: left;
 }
 
-li {
+.fish-details h1 {
+    font-size: 2.5rem;
+    color: #0077ff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.fish-details img#fish-image {
+    width: 100%;
+    max-height: 450px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.fish-details img#map-image {
+    width: 100%;
+    max-height: 350px;
+    object-fit: contain;
+    margin-top: 25px;
+    border: 2px solid #0077ff;
+    border-radius: 8px;
+}
+
+/* Info Groups */
+.info-group {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #1a2336;
+    border-radius: 8px;
+}
+
+.info-group h2 {
+    font-size: 1.5rem;
+    color: #00aaff;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #0077ff;
+    padding-bottom: 5px;
+}
+
+.info-group p {
     margin: 10px 0;
+    line-height: 1.5;
+}
+
+.info-group strong {
+    color: #66ccff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .fish-details h1 { font-size: 2rem; }
+    .info-group h2 { font-size: 1.3rem; }
+    .container { padding: 15px; }
+}
+
+@media (max-width: 480px) {
+    .fish-details h1 { font-size: 1.8rem; }
+    .info-group h2 { font-size: 1.2rem; }
+    .fish-details img#fish-image { max-height: 300px; }
+    .fish-details img#map-image { max-height: 250px; }
 }
