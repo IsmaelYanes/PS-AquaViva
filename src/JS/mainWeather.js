@@ -9,48 +9,55 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-function getDataJson(url) {
+function getDataJson(url, retries = 3, delay = 1000) {
     const jsonURL = "https://api.weatherapi.com/v1/forecast.json?key=8eff48f079e44211b52124000251703&q=28.771831683485686,%20-17.750202868741685&days=7&aqi=no&alerts=no";
 
     fetch(url, {
         method: "GET",
-        headers: {'Content-Type': 'application/json'}
+        headers: { 'Content-Type': 'application/json' }
     })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error en la respuesta: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(json => {
-            //principal information
+            // Información principal
             document.getElementById("place-text").textContent = json.location.name;
             document.getElementById("grados").textContent = Math.round(json.current.temp_c);
-            document.getElementById("precipitation").textContent = json.current.precip_mm + "mm";
-            document.getElementById("wind").textContent = json.current.wind_kph + "km/h";
+            document.getElementById("precipitation").textContent = json.current.precip_mm + " mm";
+            document.getElementById("wind").textContent = json.current.wind_kph + " km/h";
             document.getElementById("humedad").textContent = json.current.humidity + "%";
-
             document.getElementById("weather-principal-icon").src = json.current.condition.icon;
 
-            //forecast 7 days
+            // Forecast 7 días
             let dayWeek = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
             let numDayWeek = new Date(json.location.localtime).getDay();
-            console.log(numDayWeek);
             let days = document.getElementsByClassName("day-week");
             for (let i = 0; i < days.length; i++) {
                 days[i].textContent = dayWeek[(i + numDayWeek) % 7];
-
             }
             let temps = document.getElementsByClassName("temp-day");
             for (let i = 0; i < temps.length; i++) {
-                temps[i].textContent = Math.round(json.forecast.forecastday[i].day.mintemp_c) + "º/" + Math.round(json.forecast.forecastday[i].day.maxtemp_c) + "º";
-                //temps[i].textContent = Math.round(json.forecast.forecastday[i].day.maxtemp_c) + "ºC";
+                temps[i].textContent = Math.round(json.forecast.forecastday[i].day.mintemp_c) + "º/" +
+                    Math.round(json.forecast.forecastday[i].day.maxtemp_c) + "º";
                 document.getElementById(`img-day${i}`).src = json.forecast.forecastday[i].day.condition.icon;
             }
 
-            //forecast by hour
+            // Forecast por hora y actualización del estilo
             showWeatherData(json);
 
-            //last update
-            const lastUpdate = document.getElementById("last-updated");
-            lastUpdate.textContent = "Última actualización: " + json.current.last_updated;
+            // Última actualización
+            document.getElementById("last-updated").textContent = "Última actualización: " + json.current.last_updated;
         })
-        .catch(error => console.log(error));
+        .catch(error => {
+            console.error("Error al cargar datos del tiempo:", error);
+            if (retries > 0) {
+                console.warn(`Reintentando en ${delay} ms... (Intentos restantes: ${retries})`);
+                setTimeout(() => getDataJson(url, retries - 1, delay * 2), delay);
+            }
+        });
 }
 
 function showWeatherData(json) {
