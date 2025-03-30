@@ -1,6 +1,5 @@
 const KEY = "8eff48f079e44211b52124000251703";
 let swellDataList = []
-let coordinate = "28.771831683485686, -17.750202868741685"
 let zoneName;
 let foresCastDay;
 const DAY = 7;
@@ -11,9 +10,10 @@ let sunset = [];
 let moonrise= [];
 let moonset = [];
 
+
 async function loadSwell() {
     try {
-        const response = await fetch(`https://api.weatherapi.com/v1/marine.json?key=8eff48f079e44211b52124000251703&q=${coordinate}&days=7`);
+        const response = await fetch(`https://api.weatherapi.com/v1/marine.json?key=${KEY}&q=${lat},${lon}&days=${DAY}`);
         const data = await response.json();
         zoneName = data.location.name;
         foresCastDay = data.forecast.forecastday;
@@ -39,6 +39,7 @@ function loadHourButton(){
         let li = document.createElement('li');
         let button = document.createElement('button');
         button.innerHTML = `${i}:00`;
+        button.style.background = "blue";
         button.addEventListener('click', () => {selectTime(i);});
         li.appendChild(button);
         hoursList.appendChild(li);
@@ -75,7 +76,8 @@ function initSwellPage(){
 
 async function loadWaves() {
     try {
-        const response = await fetch(`https://api.weatherapi.com/v1/marine.json?key=${KEY}&q=${coordinate}&days=${DAY}`);
+        const response = await fetch(`https://api.weatherapi.com/v1/marine.json?key=${KEY}&q=${lat},${lon}&days=${DAY}`);
+        console.log(`${coordLAT},${coordLON}`);
         if (!response.ok) {
             throw new Error('Error en la solicitud');
         }
@@ -97,6 +99,7 @@ async function loadWaves() {
 }
 function loadButton(dateList){
     const container = document.getElementById("selectTideDayButtonContainer");
+    container.innerHTML="";
     for (let i = 0; i < dateList.length; i++) {
         let button = document.createElement("button");
         button.innerText = dateList[i];
@@ -106,6 +109,7 @@ function loadButton(dateList){
         }
         container.appendChild(button);
     }
+    datesList = [];
 }
 
 

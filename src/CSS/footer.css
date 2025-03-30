@@ -1,0 +1,10 @@
+footer {
+    background-color: #162A5C;
+    color: white;
+    text-align: center;
+    padding: 4em 0;
+    font-family: Arial, sans-serif;
+}
+.footer-text{
+    width: 100%;
+}

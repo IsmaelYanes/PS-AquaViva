@@ -1,11 +1,11 @@
-document.addEventListener("DOMContentLoaded", function () {
+function initBeach() {
     const urlParams = new URLSearchParams(window.location.search);
     const beachId = urlParams.get("id");
     if (beachId) {
         console.log("📌 ID de la playa obtenida:", beachId);
-        cargarDatosPlaya(beachId);  // Cargar datos de la playa
+        cargarDatosPlaya(beachId);
     }
-});
+}
 
 async function cargarDatosPlaya(id) {
     const url = `https://firestore.googleapis.com/v1/projects/playascanarias-f83a8/databases/(default)/documents/playas/${id}`;
@@ -31,7 +31,7 @@ async function cargarDatosPlaya(id) {
 }
 
 function mostrarDetallesPlaya(fields) {
-    // Asegurarse de que cada campo existe y asignar un valor por defecto si es undefined
+
     document.getElementById("beachName").textContent = fields.beachName?.stringValue || "Playa Desconocida";
     document.getElementById("composition").textContent = fields["Composición"]?.stringValue || "No especificado";
     document.getElementById("classification").textContent = fields.classification?.stringValue || "N/A";

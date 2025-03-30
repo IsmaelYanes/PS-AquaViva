@@ -8,7 +8,7 @@
 header {
     width: 100%;
     height: 100vh;
-    background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+    background: linear-gradient(60deg, rgba(102, 204, 242, 1) 0%, rgba(22, 42, 92, 1) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,7 +17,6 @@ header {
 }
 
 .nav-bar_logo {
-    margin-left: 4em;
     width: 27%;
 }
 
@@ -29,7 +28,7 @@ button {
     border: none;
     border-radius: 1em;
     text-decoration: none;
-    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+
 }
 
 
@@ -38,8 +37,8 @@ button {
     display: flex;
     align-items: center;
     margin-right: 2%;
+    gap: 2em;
 }
-
 
 .search-container {
     position: absolute;
@@ -48,10 +47,11 @@ button {
 
 .search-container input {
     width: 100%;
-    padding: 10px 40px 10px 10px;
+    padding: 12px 37px 9px 29px;
     border-radius: 25px;
     border: 1px solid #ccc;
     font-size: 16px;
+    text-align: left;
 }
 
 .search-container button {
@@ -68,15 +68,17 @@ button {
 .search-container button img {
     width: 20px;
     height: 20px;
+    margin-right: -4em;
 }
 
-html {
-    margin: 0;
-    padding: 0;
-}
-
-{
+* {
     margin: 0;
     padding: 0;
     text-decoration: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }

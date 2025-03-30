@@ -65,11 +65,11 @@ function showCustomPopup(fields) {
                 <p><strong>Acceso:</strong> ${fields["Condiciones de acceso"]?.stringValue || "N/A"}</p>
             </div>
             <div class="popup-footer">
-                <a href="../HTML/MoreInfoPage.html?id=${fields["ID DGE"]?.integerValue}" class="more-info">Ver más</a>
+                <a href="../HTML/MoreInfoPage.html?id=${fields["ID DGE"]?.integerValue}&lat=${fields.LAT.stringValue.replace(",", ".")}&lon=-${fields.LOG.stringValue.replace(",", ".")}" class="more-info">Ver más</a>
             </div>
         </div>
     </div>`;
-    
+
     document.body.insertAdjacentHTML("beforeend", popupHTML);
 }
 

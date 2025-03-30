@@ -17,12 +17,12 @@
     <div id="menu-container">
         <nav id="side-menu">
             <ul>
-                <li><a href="#" onclick="loadTemplate('../HTML-components/mainWeather.html', document.getElementById('body-container'))">Tiempo atmosférico</a></li>
-                <li><a href="#" onclick="loadTemplate('../HTML-components/swell.html', document.getElementById('body-container'),initSwellPage)">Oleaje</a></li>
-                <li><a href="#" onclick="loadTemplate('../HTML-components/wave.html', document.getElementById('body-container'), initWavePage)">Marea</a></li>
-                <li id="facilities-item"><a href="#" onclick="loadTemplate('#', document.getElementById('body-container'))">Instalaciones y prestaciones</a></li>
-                <li><a href="#" onclick="loadTemplate('../HTML-components/FishInfo.html', document.getElementById('body-container'))">Galería de peces</a></li>
-                <li><a href="#" onclick="loadTemplate('#', document.getElementById('body-container'))">Descargar tabla pdf</a></li>
+                <li><a onclick="loadDefaulPage()">Tiempo atmosférico</a></li>
+                <li><a onclick="loadTemplate('../HTML-components/swell.html', document.getElementById('body-container'), initSwellPage)">Oleaje</a></li>
+                <li><a  onclick="loadTemplate('../HTML-components/wave.html', document.getElementById('body-container'), initWavePage)">Marea</a></li>
+                <li id="facilities-item"><a onclick="loadTemplate('../HTML-components/services.html', document.getElementById('body-container'), function () {initBeach();})">Instalaciones y prestaciones</a></li>
+                <li><a onclick="loadTemplate('../HTML-components/FishInfo.html', document.getElementById('body-container'))">Galería de peces</a></li>
+                <li><a>Descargar tabla pdf</a></li>
             </ul>
         </nav>
     </div>
@@ -30,14 +30,28 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="../JS/services.js"></script>
 <script src="../JS/swell.js"></script>
-<script src="../JS/marea.js" defer></script>
+<script src="../JS/FishInfo.js"></script>
+<script src="../JS/FishDetail.js"></script>
+<script src="../JS/mainWeather.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         init();
         detectSourceAndLoad();
-        });
+    });
 
     let defaultPage;
+    let coordLAT;
+    let coordLON;
+
+    function loadDefaulPage() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const lat = urlParams.get("lat");
+        const lon = urlParams.get("lon");
+        const id = urlParams.get("id");
+        // Carga el template y, una vez cargado, llama a initWeather()
+        loadTemplate(`../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`, document.getElementById('body-container'), initWeather);
+    }
+
 
     function detectSourceAndLoad() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -49,8 +63,13 @@
             defaultPage = '../HTML-components/services.html';
             // Mostrar la opción "Instalaciones y prestaciones" si es una playa
             document.getElementById("facilities-item").style.display = "block";
+            loadTemplate(defaultPage, document.getElementById('body-container'),initBeach);
+            return;
         } else if (lat && lon) {
-            defaultPage = '../HTML-components/mainWeather.html';
+            coordLAT = lat;
+            coordLON = lon;
+            defaultPage = `../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`;
+
             // Ocultar la opción "Instalaciones y prestaciones" si no es una playa
             document.getElementById("facilities-item").style.display = "none";
         } else {
@@ -60,7 +79,7 @@
         }
 
         console.log("Cargando página por defecto: " + defaultPage);
-        loadTemplate(defaultPage, document.getElementById('body-container'));
+        loadTemplate(defaultPage, document.getElementById('body-container'),initWeather);
     }
 
     function loadTemplate(fileName, element, callback) {
@@ -90,7 +109,6 @@
     function init() {
         loadTemplate('../HTML-components/header.html', document.getElementById('header'));
     }
-
 </script>
 </body>
 </html>

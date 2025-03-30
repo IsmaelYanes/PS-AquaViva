@@ -6,25 +6,25 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f8ff;
-    text-align: center;
     margin: 0;
     padding: 0;
+    text-align: start;
 }
 
 #main-container {
     padding: 1em;
-    height: 45em;
     width: 70%;
     min-width: 25rem;
     height: auto;
     border-radius: 10px;
-    //background: linear-gradient(180deg, lightskyblue, powderblue);
+    background: linear-gradient(180deg, lightskyblue, powderblue);
 }
 
 #place-text {
     padding: 0.5em;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 2em;
+    text-align: center;
 }
 
 #temp-container {
@@ -34,6 +34,8 @@ body {
     flex-direction: row;
     align-items: center;
     gap: 1.5em;
+    text-align: center;
+
 }
 
 #temperature {
@@ -159,6 +161,8 @@ tr:nth-child(3) td {
 #container-last-updated {
     margin-top: 1rem;
     margin-bottom: 0;
+    text-align: center;
+
 }
 
 #last-updated {
