@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
     const lat = urlParams.get("lat");
     const lon = urlParams.get("lon");
-    const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=8eff48f079e44211b52124000251703&q=${lat.replaceAll(".", ",")},${lon.replaceAll(".", ",")}&days=7&aqi=no&alerts=no`;
+    const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=8eff48f079e44211b52124000251703&q=${lat},${lon}&days=7&aqi=no&alerts=no`;
+    console.log(jsonURL);
     getDataJson(jsonURL);
 });
 
