@@ -17,7 +17,7 @@
     <div id="menu-container">
         <nav id="side-menu">
             <ul>
-                <li><a onclick="loadTemplate('../HTML-components/mainWeather.html', document.getElementById('body-container'))">Tiempo atmosférico</a></li>
+                <li><a onclick="loadDefaulPage()">Tiempo atmosférico</a></li>
                 <li><a onclick="loadTemplate('../HTML-components/swell.html', document.getElementById('body-container'))">Oleaje</a></li>
                 <li><a  onclick="loadTemplate('../HTML-components/wave.html', document.getElementById('body-container'))">Marea</a></li>
                 <li id="facilities-item"><a onclick="loadTemplate('../HTML-components/services.html', document.getElementById('body-container'))">Instalaciones y prestaciones</a></li>
@@ -33,6 +33,7 @@
 <script src="../JS/swell.js"></script>
 <script src="../JS/FishInfo.js"></script>
 <script src="../JS/FishDetail.js"></script>
+<script src="../JS/mainWeather.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         init();
@@ -42,6 +43,15 @@
     let defaultPage;
     let coordLAT;
     let coordLON;
+
+    function loadDefaulPage() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const lat = urlParams.get("lat");
+        const lon = urlParams.get("lon");
+        loadTemplate(defaultPage, document.getElementById('body-container'), function () {
+            loadTemplate(`../HTML-components/mainWeather.html?lat=${lat.replaceAll(".", ",")}&lon=${lon.replaceAll(".", ",")}`, document.getElementById('body-container'));
+        });
+    }
 
     function detectSourceAndLoad() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -54,11 +64,12 @@
             // Mostrar la opción "Instalaciones y prestaciones" si es una playa
             document.getElementById("facilities-item").style.display = "block";
         } else if (lat && lon) {
-            defaultPage = '../HTML-components/mainWeather.html';
-            // Ocultar la opción "Instalaciones y prestaciones" si no es una playa
-            document.getElementById("facilities-item").style.display = "none";
             coordLAT = lat;
             coordLON = lon;
+            defaultPage = `../HTML-components/mainWeather.html?lat=${lat.replaceAll(".", ",")}&lon=${lon.replaceAll(".", ",")}`;
+
+            // Ocultar la opción "Instalaciones y prestaciones" si no es una playa
+            document.getElementById("facilities-item").style.display = "none";
         } else {
             defaultPage = '../HTML-components/mainWeather.html';
             // Ocultar la opción "Instalaciones y prestaciones" si no se encuentra un origen válido
