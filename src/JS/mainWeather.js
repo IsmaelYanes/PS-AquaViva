@@ -1,17 +1,18 @@
-document.addEventListener("DOMContentLoaded", function () {
+// Elimina el listener de DOMContentLoaded y encapsula la lógica en initWeather()
+function initWeather() {
     const urlParams = new URLSearchParams(window.location.search);
     const lat = urlParams.get("lat");
     const lon = urlParams.get("lon");
+
+    // Si no existen lat y lon, no se ejecuta nada
+    if (!lat || !lon) return;
+
     const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=8eff48f079e44211b52124000251703&q=${lat},${lon}&days=7&aqi=no&alerts=no`;
-    console.log(jsonURL);
+    console.log("Cargando clima desde:", jsonURL);
     getDataJson(jsonURL);
-});
-
-
+}
 
 function getDataJson(url, retries = 3, delay = 1000) {
-    const jsonURL = "https://api.weatherapi.com/v1/forecast.json?key=8eff48f079e44211b52124000251703&q=28.771831683485686,%20-17.750202868741685&days=7&aqi=no&alerts=no";
-
     fetch(url, {
         method: "GET",
         headers: { 'Content-Type': 'application/json' }
@@ -61,11 +62,11 @@ function getDataJson(url, retries = 3, delay = 1000) {
 }
 
 function showWeatherData(json) {
-    //hora actual
+    // hora actual
     const now = new Date();
     let currentHour = now.getHours();
 
-    //horas a mostrar hasta q termine el dia
+    // Horas a mostrar hasta que termine el día
     const hoursRow = document.getElementById("hours-row");
     const weatherIconsRow = document.getElementById("weather-icons-hour");
     const temperatureRow = document.getElementById("temperature-hour");
@@ -81,32 +82,29 @@ function showWeatherData(json) {
         }
         const dayCeroInfo = json.forecast.forecastday[day];
 
-        for (let i=hour; i<= 23; i++) {
+        for (let i = hour; i <= 23; i++) {
             let hourInfo = dayCeroInfo.hour[i];
 
-            //hora
+            // Hora
             const hourCell = document.createElement("th");
-            hourCell.textContent = i.toString().padStart(2,"0") + ":00";
+            hourCell.textContent = i.toString().padStart(2, "0") + ":00";
             hoursRow.appendChild(hourCell);
 
-            //icono
+            // Icono
             const iconCell = document.createElement("td");
             const iconImg = document.createElement("img");
             iconImg.src = hourInfo.condition.icon;
             iconCell.appendChild(iconImg);
             weatherIconsRow.appendChild(iconCell);
 
-            //temperatura
+            // Temperatura
             const tempCell = document.createElement("td");
-            console.log(dayCeroInfo.day.mintemp_c)
-            console.log(dayCeroInfo.day.maxtemp_c)
             tempCell.textContent = Math.round(hourInfo.temp_c) + "ºC";
             temperatureRow.appendChild(tempCell);
 
-            //viento
+            // Viento
             const windCell = document.createElement("td");
             let flecha = classifyWindDirection(hourInfo.wind_dir);
-
             const arrow = document.createElement("span");
             arrow.textContent = flecha;
             arrow.style.display = "inline-flex";
@@ -118,18 +116,18 @@ function showWeatherData(json) {
 
             if (day === 0) {
                 if (hour >= 20 || hour <= 8) {
-                    // Noche (de 20:00 a 08:00)
+                    // Noche
                     document.getElementById("main-container").style.background = "linear-gradient(180deg, midnightblue, steelblue)";
                     const textElements = document.getElementsByClassName("info-text");
-                    for(let j=0; j<textElements.length; j++) {
+                    for (let j = 0; j < textElements.length; j++) {
                         textElements[j].style.color = "ghostwhite";
                     }
                     document.getElementById("last-updated").style.color = "white";
                 } else {
-                    // Día (de 08:01 a 19:59)
+                    // Día
                     document.getElementById("main-container").style.background = "linear-gradient(180deg, lightskyblue, powderblue)";
                     const textElements = document.getElementsByClassName("info-text");
-                    for(let j=0; j<textElements.length; j++) {
+                    for (let j = 0; j < textElements.length; j++) {
                         textElements[j].style.color = "black";
                     }
                     document.getElementById("last-updated").style.color = "black";
@@ -175,6 +173,5 @@ function classifyWindDirection(direction) {
         "S": "↓", "SSW": "↙", "SW": "↙", "WSW": "↙",
         "W": "←", "WNW": "↖", "NW": "↖", "NNW": "↖"
     };
-
     return directionMap[direction];
 }

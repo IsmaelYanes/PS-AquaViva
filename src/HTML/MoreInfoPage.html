@@ -20,7 +20,7 @@
                 <li><a onclick="loadDefaulPage()">Tiempo atmosférico</a></li>
                 <li><a onclick="loadTemplate('../HTML-components/swell.html', document.getElementById('body-container'))">Oleaje</a></li>
                 <li><a  onclick="loadTemplate('../HTML-components/wave.html', document.getElementById('body-container'))">Marea</a></li>
-                <li id="facilities-item"><a onclick="loadTemplate('../HTML-components/services.html', document.getElementById('body-container'))">Instalaciones y prestaciones</a></li>
+                <li id="facilities-item"><a onclick="loadTemplate('../HTML-components/services.html', document.getElementById('body-container'), function () {initBeach();})">Instalaciones y prestaciones</a></li>
                 <li><a onclick="loadTemplate('../HTML-components/FishInfo.html', document.getElementById('body-container'))">Galería de peces</a></li>
                 <li><a onclick="loadTemplate('#', document.getElementById('body-container'))">Descargar tabla pdf</a></li>
             </ul>
@@ -48,10 +48,11 @@
         const urlParams = new URLSearchParams(window.location.search);
         const lat = urlParams.get("lat");
         const lon = urlParams.get("lon");
-        loadTemplate(defaultPage, document.getElementById('body-container'), function () {
-            loadTemplate(`../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`, document.getElementById('body-container'));
-        });
+        const id = urlParams.get("id");
+        // Carga el template y, una vez cargado, llama a initWeather()
+        loadTemplate(`../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`, document.getElementById('body-container'), initWeather);
     }
+
 
     function detectSourceAndLoad() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -63,6 +64,8 @@
             defaultPage = '../HTML-components/services.html';
             // Mostrar la opción "Instalaciones y prestaciones" si es una playa
             document.getElementById("facilities-item").style.display = "block";
+            loadTemplate(defaultPage, document.getElementById('body-container'),initBeach);
+            return;
         } else if (lat && lon) {
             coordLAT = lat;
             coordLON = lon;
@@ -77,7 +80,7 @@
         }
 
         console.log("Cargando página por defecto: " + defaultPage);
-        loadTemplate(defaultPage, document.getElementById('body-container'));
+        loadTemplate(defaultPage, document.getElementById('body-container'),initWeather);
     }
 
     function loadTemplate(fileName, element, callback) {

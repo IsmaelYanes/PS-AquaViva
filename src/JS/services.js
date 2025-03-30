@@ -7,6 +7,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+function initBeach() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const beachId = urlParams.get("id");
+    if (beachId) {
+        console.log("📌 ID de la playa obtenida:", beachId);
+        cargarDatosPlaya(beachId);
+    }
+}
+
 async function cargarDatosPlaya(id) {
     const url = `https://firestore.googleapis.com/v1/projects/playascanarias-f83a8/databases/(default)/documents/playas/${id}`;
 
