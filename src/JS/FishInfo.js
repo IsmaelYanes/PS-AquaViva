@@ -1,9 +1,14 @@
-document.addEventListener("DOMContentLoaded", function() {
+// ../JS/FishInfo.js
+function initFishGallery() {
     fetch('../Data/fish.json')
         .then(response => response.json())
         .then(data => {
             const fishGrid = document.getElementById('fish-grid');
-
+            if (!fishGrid) {
+                console.error("No se encontró el elemento #fish-grid");
+                return;
+            }
+            fishGrid.innerHTML = ''; // Limpia el contenedor por si acaso
             data.forEach(fish => {
                 const fishItem = document.createElement('div');
                 fishItem.classList.add('fish-item');
@@ -25,4 +30,10 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         })
         .catch(error => console.error('Error al cargar los peces:', error));
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    if (document.getElementById('fish-grid')) {
+        initFishGallery();
+    }
 });

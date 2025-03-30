@@ -19,9 +19,9 @@
             <ul>
                 <li><a onclick="loadDefaulPage()">Tiempo atmosférico</a></li>
                 <li><a onclick="loadTemplate('../HTML-components/swell.html', document.getElementById('body-container'), initSwellPage)">Oleaje</a></li>
-                <li><a  onclick="loadTemplate('../HTML-components/wave.html', document.getElementById('body-container'), initWavePage)">Marea</a></li>
+                <li><a onclick="loadTemplate('../HTML-components/wave.html', document.getElementById('body-container'), initWavePage)">Marea</a></li>
                 <li id="facilities-item"><a onclick="loadTemplate('../HTML-components/services.html', document.getElementById('body-container'), function () {initBeach();})">Instalaciones y prestaciones</a></li>
-                <li><a onclick="loadTemplate('../HTML-components/FishInfo.html', document.getElementById('body-container'))">Galería de peces</a></li>
+                <li><a onclick="loadTemplate('../HTML-components/FishInfo.html', document.getElementById('body-container'), initFishGallery)">Galería de peces</a></li>
                 <li><a>Descargar tabla pdf</a></li>
             </ul>
         </nav>
@@ -48,10 +48,8 @@
         const lat = urlParams.get("lat");
         const lon = urlParams.get("lon");
         const id = urlParams.get("id");
-        // Carga el template y, una vez cargado, llama a initWeather()
         loadTemplate(`../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`, document.getElementById('body-container'), initWeather);
     }
-
 
     function detectSourceAndLoad() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -61,25 +59,21 @@
 
         if (id) {
             defaultPage = '../HTML-components/services.html';
-            // Mostrar la opción "Instalaciones y prestaciones" si es una playa
             document.getElementById("facilities-item").style.display = "block";
-            loadTemplate(defaultPage, document.getElementById('body-container'),initBeach);
+            loadTemplate(defaultPage, document.getElementById('body-container'), initBeach);
             return;
         } else if (lat && lon) {
             coordLAT = lat;
             coordLON = lon;
             defaultPage = `../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`;
-
-            // Ocultar la opción "Instalaciones y prestaciones" si no es una playa
             document.getElementById("facilities-item").style.display = "none";
         } else {
             defaultPage = '../HTML-components/mainWeather.html';
-            // Ocultar la opción "Instalaciones y prestaciones" si no se encuentra un origen válido
             document.getElementById("facilities-item").style.display = "none";
         }
 
         console.log("Cargando página por defecto: " + defaultPage);
-        loadTemplate(defaultPage, document.getElementById('body-container'),initWeather);
+        loadTemplate(defaultPage, document.getElementById('body-container'), initWeather);
     }
 
     function loadTemplate(fileName, element, callback) {
