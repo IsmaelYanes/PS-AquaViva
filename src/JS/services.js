@@ -49,7 +49,4 @@ function mostrarDetallesPlaya(fields) {
     document.getElementById("footWash").textContent = fields.Lavapies?.stringValue || "No disponible";
 
     document.getElementById("beachImage").src = fields.imageURL?.stringValue || "https://via.placeholder.com/300";
-
-    window.coordLAT = fields.LAT?.stringValue.replace(",", ".") || '';
-    window.coordLON = fields.LON?.stringValue.replace(",", ".") || '';
 }
