@@ -97,7 +97,6 @@ p {
 }
 
 .more-info {
-    color: #007acc;
     font-weight: bold;
     text-decoration: none;
     padding: 10px 15px;
@@ -110,4 +109,24 @@ p {
 .more-info:hover {
     background: #007acc;
     text-decoration: none;
+}
+
+.weather-table {
+    width: 80%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+#temperature-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#iconImg {
+    width: 2em;
+}
+
+th,td {
+    font-size: 0.9em;
 }

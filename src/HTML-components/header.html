@@ -1,30 +1,22 @@
-<header>
+<head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../CSS/homeHeader.css">
-    <style>
-
-    </style>
-</header>
-
+</head>
 <body>
-<div class="homeHeader-container">
-    <div id="header-container">
-        <div>
-            <figure>
-                <img src="../images/wave.png" id="imageLogo" alt="logo">
-            </figure>
-        </div>
-        <div class="search-container">
-            <input type="text" id="search" class="search-box" placeholder="Buscar...">
-            <button id="search-button">
-                <img src="../images/buscador.png" id="search-icon" alt="buscar">
-            </button>
-        </div>
-        <div id="optionButtons">
-            <button class="home-button" type="button" >inicia sección</button>
-            <button class="home-button" type="button">registrarse</button>
-        </div>
+<header class="nav-bar" id="header-nav">
+    <a href="index.html"  class="nav-bar_logo">
+        <img src="/src/Images/logo.png" class="nav-bar_logo" alt="">
+    </a>
+    <div class="search-container">
+        <input type="text" id="search" class="search-box" placeholder="Buscar...">
+        <button id="search-button">
+            <img src="../Images/lupa.png" class="search-button" id="search-icon" alt="buscar">
+        </button>
     </div>
-
-</div>
+    <div id="aside-buttons">
+        <a href="../HTML-components/register.html"> <button>Registrarse</button></a>
+        <a href="../HTML-components/login.html"> <button id="iniciarSesion">Iniciar sesión</button></a>
+    </div>
+</header>
 </body>
+
