@@ -1,12 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const beachId = urlParams.get("id");
-    if (beachId) {
-        console.log("📌 ID de la playa obtenida:", beachId);
-        cargarDatosPlaya(beachId);
-    }
-});
-
 function initBeach() {
     const urlParams = new URLSearchParams(window.location.search);
     const beachId = urlParams.get("id");
