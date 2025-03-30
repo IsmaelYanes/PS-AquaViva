@@ -8,6 +8,7 @@ body {
     background-color: #f0f8ff;
     margin: 0;
     padding: 0;
+    text-align: start;
 }
 
 #main-container {
@@ -116,7 +117,6 @@ h2, h3 {
     font-size: 1.2em;
     color: #333;
     cursor: pointer;
-    text-align: center;
 }
 
 h2 {
