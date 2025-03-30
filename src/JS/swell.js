@@ -58,7 +58,7 @@ function selectTime(index) {
     let swellData = swellDataList[index];
     document.getElementById("swellDirection").innerHTML = swellData.swellDirection + " grado";
     document.getElementById("swellHeight").innerHTML = swellData.swellHeight + " metros";
-    document.getElementById("swellPeriod").innerHTML = swellData.swellPeriod + " por segundo";
+    document.getElementById("swellPeriod").innerHTML = swellData.swellPeriod + " s";
     document.getElementById("pressure").innerHTML = swellData.pressure + " hPa";
     document.getElementById("waterTemperature").innerHTML = swellData.waterTemperature + "°C";
     document.getElementById("zoneName").innerHTML = zoneName;
@@ -77,10 +77,7 @@ function initSwellPage(){
 async function loadWaves() {
     try {
         const response = await fetch(`https://api.weatherapi.com/v1/marine.json?key=${KEY}&q=${lat},${lon}&days=${DAY}`);
-        console.log(`${coordLAT},${coordLON}`);
-        if (!response.ok) {
-            throw new Error('Error en la solicitud');
-        }
+
         const data = await response.json();
         let forecastData = data.forecast.forecastday;
         for (let i = 0; i < forecastData.length; i++) {
@@ -91,7 +88,6 @@ async function loadWaves() {
             moonrise.push(extractHoursToSunrise(forecastData[i].astro.moonrise));
             moonset.push(extractHoursToSunrise(forecastData[i].astro.moonset));
         }
-
     } catch (error) {
         console.error('Hubo un problema:', error);
     }
@@ -145,40 +141,41 @@ function updateChart(dayIndex) {
     document.getElementById("sunsetTime").innerHTML = sunset[dayIndex] + " PM";
     document.getElementById("moonriseTime").innerHTML = moonrise[dayIndex] + " PM";
     document.getElementById("moonsetTime").innerHTML = moonset[dayIndex] + " AM";
+
     const currentDayData = tidesData[dayIndex];
     const chartData = prepareChartData(currentDayData);
 
     if (tideChart) {
-        tideChart.data = chartData;
-        tideChart.update();
-    } else {
-        const ctx = document.getElementById('tideChart').getContext('2d');
-        tideChart = new Chart(ctx, {
-            type: 'line',
-            data: chartData,
-            options: {
-                scales: {
-                    x: {
-                        min:0,
-                        max:24,
-                        title: {
-                            display: true,
-                            text: 'Hora del Día'
-                        }
-                    },
-                    y: {
-                        min: -0.5,
-                        max:2.5,
-                        title: {
-                            display: true,
-                            text: 'Altura de la Marea (m)'
-                        }
+        tideChart.destroy();
+    }
+
+    const ctx = document.getElementById('tideChart').getContext('2d');
+    tideChart = new Chart(ctx, {
+        type: 'line',
+        data: chartData,
+        options: {
+            scales: {
+                x: {
+                    min: 0,
+                    max: 24,
+                    title: {
+                        display: true,
+                        text: 'Hora del Día'
+                    }
+                },
+                y: {
+                    min: -1,
+                    max: 2.5,
+                    title: {
+                        display: true,
+                        text: 'Altura de la Marea (m)'
                     }
                 }
             }
-        });
-    }
+        }
+    });
 }
+
 function extractHours(dateTimeStr) {
     const [date, time] = dateTimeStr.split(' ');
     return time;
@@ -188,8 +185,17 @@ function extractHoursToSunrise(dateTimeStr) {
     return time;
 }
 function initWavePage(){
+    reset();
     loadWaves().then(r=>{
         loadButton(datesList);
         updateChart(0);
     });
+}
+function reset(){
+    datesList = [];
+    tidesData = [];
+    sunrise = [];
+    sunset = [];
+    moonrise= [];
+    moonset = [];
 }

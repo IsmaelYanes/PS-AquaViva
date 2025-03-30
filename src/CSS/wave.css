@@ -23,10 +23,36 @@ button:hover {
 #sunriseContainer {
     justify-content: center;
     display: flex;
+    margin-top: 2em;
 }
 .sunIcon{
-    width: 20px;
+    width: 40px;
 }
 .iconMargin{
-    margin-right: 10px;
+    margin-right: 20px;
+}
+.background-div {
+    position: relative;
+    margin: 20px auto;
+    padding: 1em;
+    width: 70%;
+    min-width: 25rem;
+    height: auto;
+    border-radius: 10px;
+}
+
+.background-div::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://www.ecoticias.com/wp-content/uploads/2022/01/174__38_rotador.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    pointer-events: none;
+    border-radius: 20px;
 }
