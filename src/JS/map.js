@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+    let apiKey = "53790680c5ed4646adb171903252103";
+
     // Hacer el mapa global
     window.map = L.map('map', {
         center: [28.299, -16.413],
@@ -69,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function getPrincipalData(lat, lon) {
-        const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=8eff48f079e44211b52124000251703&q=${lat},${lon}&days=7&aqi=no&alerts=no`;
+        const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lon}&days=7&aqi=no&alerts=no`;
         console.log(jsonURL);
         fetch (jsonURL, {
             method: "GET",

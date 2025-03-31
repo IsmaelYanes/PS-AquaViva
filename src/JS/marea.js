@@ -1,4 +1,4 @@
-const KEY = "8eff48f079e44211b52124000251703";
+const KEY = "53790680c5ed4646adb171903252103";
 const DAY = 7;
 let datesList = [];
 let tidesData = [];

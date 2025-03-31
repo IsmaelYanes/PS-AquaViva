@@ -1,6 +1,7 @@
 // Elimina el listener de DOMContentLoaded y encapsula la lógica en initWeather()
 let lat;
 let lon;
+const apiKey = "53790680c5ed4646adb171903252103";
 function initWeather() {
     const urlParams = new URLSearchParams(window.location.search);
     lat = urlParams.get("lat");
@@ -10,7 +11,7 @@ function initWeather() {
     // Si no existen lat y lon, no se ejecuta nada
     if (!lat || !lon) return;
 
-    const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=8eff48f079e44211b52124000251703&q=${lat},${lon}&days=7&aqi=no&alerts=no`;
+    const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lon}&days=7&aqi=no&alerts=no`;
     console.log("Cargando clima desde:", jsonURL);
     getDataJson(jsonURL);
 }
