@@ -120,7 +120,10 @@ async function showBeaches() {
             window.map.removeLayer(window.zonasLitoralLayer);
         }
 
-        beaches.forEach((doc, index) => {
+        // Crear un grupo de clústeres
+        let markersCluster = L.markerClusterGroup();
+
+        beaches.forEach((doc) => {
             let fields = doc.fields;
 
             let lat = fields.LAT ? parseFloat(fields.LAT.stringValue.replace(",", ".")) : null;
@@ -135,17 +138,21 @@ async function showBeaches() {
 
             console.log(`📍 Intentando agregar marcador en coordenadas: ${coords}`);
 
-            //Popup emergente al clickar en un marcador.
-            let marker = L.marker(coords).addTo(window.map);
-
+            // Crear marcador y agregarlo al grupo de clústeres
+            let marker = L.marker(coords);
             marker.on("click", function () {
-                showCustomPopup(fields);
+                if (marker.getPopup()) {
+                    showCustomPopup(fields);
+                } else {
+                    window.map.setView(coords, window.map.getZoom() + 2);
+                }
             });
 
-            beachMarkers.push(marker);
-
-            console.log("✅ Marcador agregado al mapa");
+            markersCluster.addLayer(marker);
         });
+
+        // Agregar el grupo de clústeres al mapa
+        window.map.addLayer(markersCluster);
 
         window.map.invalidateSize();
         isBeachViewActive = true;
