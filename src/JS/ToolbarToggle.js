@@ -79,7 +79,68 @@ let beachMarkers = [];
 let isBeachViewActive = false;
 
 function showLocation() {
-    alert("Agregado a favoritos");
+    if (!window.map) {
+        console.error("❌ El mapa aún no está disponible.");
+        return;
+    }
+
+    try {
+        let beaches =  fetchAllBeaches();
+        console.log(`✅ Se han obtenido ${beaches.length} playas en total.`);
+
+        if (window.zonasLitoralLayer) {
+            window.map.removeLayer(window.zonasLitoralLayer);
+        }
+
+        // Crear un grupo de clústeres
+        let markersCluster = L.markerClusterGroup();
+
+        beaches.forEach((doc) => {
+            let fields = doc.fields;
+
+            let lat = fields.LAT ? parseFloat(fields.LAT.stringValue.replace(",", ".")) : null;
+            let lng = fields.LOG ? parseFloat(fields.LOG.stringValue.replace(",", ".")) : null;
+
+            if (lat === null || lng === null || isNaN(lat) || isNaN(lng)) {
+                console.warn(`⚠️ Coordenadas inválidas para la playa ${fields.beachName?.stringValue || "Desconocida"} (ID: ${doc.name})`);
+                return;
+            }
+
+            let coords = [lat, -lng];
+
+            console.log(`📍 Intentando agregar marcador en coordenadas: ${coords}`);
+
+            // Crear marcador
+            let marker = L.marker(coords);
+
+            // Asociar los datos al marcador
+            marker.beachData = fields;
+
+            // Agregar el marcador al grupo de clústeres
+            markersCluster.addLayer(marker);
+        });
+
+        // Evento cuando un marcador es clickeado
+        markersCluster.on("clusterclick", function (event) {
+            window.map.setView(event.latlng, window.map.getZoom() + 2);
+        });
+
+        markersCluster.on("click", function (event) {
+            let marker = event.layer;
+            if (marker.beachData) {
+                showCustomPopup(marker.beachData); // Mostrar el popup cuando un marcador individual es clickeado
+            }
+        });
+
+        // Agregar el grupo de clústeres al mapa
+        window.map.addLayer(markersCluster);
+
+        window.map.invalidateSize();
+        isBeachViewActive = true;
+        console.log("✅ Playas mostradas en el mapa correctamente.");
+    } catch (error) {
+        console.error("❌ Error al mostrar las playas:", error);
+    }
 }
 
 function addToFavorites() {
@@ -138,17 +199,33 @@ async function showBeaches() {
 
             console.log(`📍 Intentando agregar marcador en coordenadas: ${coords}`);
 
-            // Crear marcador y agregarlo al grupo de clústeres
+            // Crear marcador
             let marker = L.marker(coords);
-            marker.on("click", function () {
-                if (marker.getPopup()) {
+
+            // Guardar los datos de la playa en el marcador
+            marker.beachData = fields;
+
+            // Evento de clic en el marcador individual
+            marker.on("click", function (event) {
+                let currentZoom = window.map.getZoom();
+
+                // Si el marcador está visible sin agrupar, mostrar el popup sin hacer zoom
+                if (currentZoom >= 14 || !marker._icon.classList.contains("leaflet-cluster-icon")) {
+                    // Si está suficientemente cerca o no está agrupado, mostrar el popup
                     showCustomPopup(fields);
                 } else {
-                    window.map.setView(coords, window.map.getZoom() + 2);
+                    // Si el marcador está agrupado, hacer zoom para verlo mejor
+                    window.map.setView(event.latlng, currentZoom + 2);
                 }
             });
 
+            // Agregar el marcador al grupo de clústeres
             markersCluster.addLayer(marker);
+        });
+
+        // Evento cuando se hace clic en un clúster
+        markersCluster.on("clusterclick", function (event) {
+            window.map.setView(event.latlng, window.map.getZoom() + 2);
         });
 
         // Agregar el grupo de clústeres al mapa
