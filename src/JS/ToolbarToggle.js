@@ -153,17 +153,21 @@ function measureDistance() {
 
 function defineZone() {
     if (isBeachViewActive) {
-        console.log("🔄 Restaurando zonas litoral y eliminando todos los marcadores...");
+        console.log("🔄 Restaurando zonas litoral y eliminando todos los marcadores y clústeres...");
 
-        beachMarkers.forEach(marker => window.map.removeLayer(marker));
-        beachMarkers = [];
+        // Eliminar el grupo de clústeres si existe
+        if (window.markersCluster) {
+            window.map.removeLayer(window.markersCluster);
+            window.markersCluster = null;
+        }
 
+        // Restaurar la capa de zonas litoral si existe
         if (window.zonasLitoralLayer) {
             window.zonasLitoralLayer.addTo(window.map);
         }
 
         isBeachViewActive = false;
-        console.log("✅ Zonas litoral restauradas y marcadores eliminados.");
+        console.log("✅ Zonas litoral restauradas y todos los marcadores eliminados.");
     }
 }
 
@@ -181,8 +185,11 @@ async function showBeaches() {
             window.map.removeLayer(window.zonasLitoralLayer);
         }
 
-        // Crear un grupo de clústeres
-        let markersCluster = L.markerClusterGroup();
+        // Eliminar clústeres y marcadores anteriores si existen
+        if (window.markersCluster) {
+            window.map.removeLayer(window.markersCluster);
+        }
+        window.markersCluster = L.markerClusterGroup(); // Guardar en variable global
 
         beaches.forEach((doc) => {
             let fields = doc.fields;
@@ -199,37 +206,26 @@ async function showBeaches() {
 
             console.log(`📍 Intentando agregar marcador en coordenadas: ${coords}`);
 
-            // Crear marcador
             let marker = L.marker(coords);
-
-            // Guardar los datos de la playa en el marcador
             marker.beachData = fields;
 
-            // Evento de clic en el marcador individual
             marker.on("click", function (event) {
                 let currentZoom = window.map.getZoom();
-
-                // Si el marcador está visible sin agrupar, mostrar el popup sin hacer zoom
                 if (currentZoom >= 14 || !marker._icon.classList.contains("leaflet-cluster-icon")) {
-                    // Si está suficientemente cerca o no está agrupado, mostrar el popup
                     showCustomPopup(fields);
                 } else {
-                    // Si el marcador está agrupado, hacer zoom para verlo mejor
                     window.map.setView(event.latlng, currentZoom + 2);
                 }
             });
 
-            // Agregar el marcador al grupo de clústeres
-            markersCluster.addLayer(marker);
+            window.markersCluster.addLayer(marker); // Agregar al grupo global
         });
 
-        // Evento cuando se hace clic en un clúster
-        markersCluster.on("clusterclick", function (event) {
+        window.markersCluster.on("clusterclick", function (event) {
             window.map.setView(event.latlng, window.map.getZoom() + 2);
         });
 
-        // Agregar el grupo de clústeres al mapa
-        window.map.addLayer(markersCluster);
+        window.map.addLayer(window.markersCluster); // Agregar al mapa
 
         window.map.invalidateSize();
         isBeachViewActive = true;
