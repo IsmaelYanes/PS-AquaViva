@@ -1,23 +1,7 @@
 /* Estilo general de la ventana emergente */
 .popup {
     display: none; /* Inicialmente oculta */
-    position: absolute; /* Cambiado de 'fixed' a 'absolute' */
-    width: 300px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 10px;
-    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    color: #333;
-    flex-direction: column;
-    overflow: hidden;
-    z-index: 1000; /* Asegura que esté sobre el mapa */
-}
-
-/* Estilo general de la ventana emergente */
-.popup {
-    display: flex;
-    position: fixed;
+    position: absolute; /* Se posiciona sobre el mapa */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -31,7 +15,9 @@
     color: #333;
     flex-direction: column;
     overflow: hidden;
+    z-index: 1000; /* Asegura que esté sobre el mapa */
 }
+
 
 /* Contenedor con scroll si el contenido es grande */
 .popup-content {

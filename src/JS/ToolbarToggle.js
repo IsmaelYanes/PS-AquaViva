@@ -246,8 +246,8 @@ function toggleSatelliteView() {
     }
 
     if (!isSatelliteView) {
-        satelliteLayer = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://opentopomap.org">OpenTopoMap</a> contributors'
+        satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: '&copy; <a href="https://www.esri.com">Esri</a> contributors'
         }).addTo(window.map);
         window.map.removeLayer(window.defaultLayer);
     }

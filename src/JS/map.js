@@ -41,16 +41,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function abrirPopup(properties, event) {
         const popup = document.querySelector('.popup');
-        
+
+        // Ocultar el popup temporalmente para evitar que se desplace de forma incorrecta
+        popup.style.display = 'none';
+
         // Actualizar contenido del popup con los datos de la zona
         document.getElementById('popup-title').innerText = `Información de la zona seleccionada`;
         document.getElementById('popup-island').innerText = properties.isla || "Desconocida";
         document.getElementById('popup-zone').innerText = properties.zona || "Desconocida";
-        const coord = properties.coord.split(",");
-        const lat = coord[1].trim();
-        const lon = coord[0].trim();
+
+        const coord = event.latlng;
+        const lat = coord.lat;
+        const lon = coord.lng;
         properties.description = getPrincipalData(lat, lon);
-        
+
         document.getElementById("popup-link").href = `../HTML/MoreInfoPage.html?lat=${lat}&lon=${lon}`;
 
         // Manejo de la imagen
@@ -61,13 +65,15 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             imgElement.style.display = "none";
         }
-        
 
-        // Convertir coordenadas del mapa a posición en la pantalla
-        let point = window.map.latLngToContainerPoint(event.latlng);
-        popup.style.left = `${point.x + 280}px`;
-        popup.style.top = `${point.y + 280}px`;
-        popup.style.display = 'block';
+        // Pequeño retraso para recalcular el tamaño correcto antes de posicionar
+        setTimeout(() => {
+            popup.style.left = `${(window.innerWidth - popup.offsetWidth) / 2}px`;
+            popup.style.top = `${(window.innerHeight - popup.offsetHeight) / 2}px`;
+
+            // Mostrar el popup correctamente centrado
+            popup.style.display = 'block';
+        }, 10);
     }
 
     function getPrincipalData(lat, lon) {
