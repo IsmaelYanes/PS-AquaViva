@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../CSS/mainWeather.css">
 <meta charset="UTF-8">
 
-<body>
+<video src="../Videos/skyBlue.mp4" autoplay muted loop id="background-video"></video>
 <div id="main-container">
     <div id="location-text">
         <h1 class="info-text" id="place-text"></h1>
@@ -14,11 +14,11 @@
         </div>
         <div class="information">
             <span class="info-text box-text">Precipitación: </span>
-            <span class="info-text box-text" id="precipitation"></span><br>
+            <span class="info-text box-text" id="precipitation">No disponible</span><br>
             <span class="info-text box-text">Viento: </span>
-            <span class="info-text box-text" id="wind"></span><br>
+            <span class="info-text box-text" id="wind">No disponible</span><br>
             <span class="info-text box-text">Humedad: </span>
-            <span class="info-text box-text" id="humedad"></span><br>
+            <span class="info-text box-text" id="humedad">No disponible</span><br>
         </div>
     </section>
     <section>
@@ -64,8 +64,15 @@
     </section>
     <section class="section3">
         <div class="forecast-table-hour">
-            <h2 id="todayInfo">Hoy</h2>
-            <h3 id="tomorrowInfo">Mañana</h3>
+            <div class="buttonDays">
+                <h2 class="buttonDay day-week" id="firstInfo"></h2>
+                <h2 class="buttonDay day-week" id="secondInfo"></h2>
+                <h2 class="buttonDay day-week" id="thirdInfo"></h2>
+                <h2 class="buttonDay day-week" id="fourthInfo"></h2>
+                <h2 class="buttonDay day-week" id="fifthInfo"></h2>
+                <h2 class="buttonDay day-week" id="sixthInfo"></h2>
+                <h2 class="buttonDay day-week" id="seventhInfo"></h2>
+            </div>
             <table id="weather-table">
                 <thead>
                 <tr id="hours-row"></tr>
@@ -79,7 +86,8 @@
         </div>
     </section>
     <div id="container-last-updated">
-        <span id="last-updated"></span>
+        <span class="info-text" id="last-updated"></span>
     </div>
 </div>
-</body>
+
+

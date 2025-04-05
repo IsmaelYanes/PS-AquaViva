@@ -76,14 +76,20 @@ function showWeatherData(json) {
     const temperatureRow = document.getElementById("temperature-hour");
     const windRow = document.getElementById("wind-hour");
 
-    const todayInfo = document.getElementById("todayInfo");
-    const tomorrowInfo = document.getElementById("tomorrowInfo");
+    const firstInfo = document.getElementById("firstInfo");
+    const secondInfo = document.getElementById("secondInfo");
+    const thirdInfo = document.getElementById("thirdInfo");
+    const fourthInfo = document.getElementById("fourthInfo");
+    const fifthInfo = document.getElementById("fifthInfo");
+    const sixthInfo = document.getElementById("sixthInfo");
+    const seventhInfo = document.getElementById("seventhInfo");
 
     function fillTable(day) {
-        let hour = currentHour;
-        if (day === 1) {
-            hour = 0;
+        let hour = 0;
+        if (day === 0) {
+            hour = currentHour;
         }
+
         const dayCeroInfo = json.forecast.forecastday[day];
         console.log(dayCeroInfo);
         for (let i = hour; i <= 23; i++) {
@@ -109,32 +115,21 @@ function showWeatherData(json) {
             // Viento
             const windCell = document.createElement("td");
             let flecha = classifyWindDirection(hourInfo.wind_dir);
-            const arrow = document.createElement("span");
+            const arrow = document.createElement("div");
             arrow.textContent = flecha;
             arrow.style.display = "inline-flex";
-            arrow.style.marginLeft = "0.313em";
             arrow.style.color = "dodgerblue";
-            windCell.innerHTML = parseFloat(hourInfo.wind_kph).toFixed(1) + " km/h";
+            windCell.innerHTML = parseFloat(hourInfo.wind_kph).toFixed(1) + " km/h<br>";
             windCell.appendChild(arrow);
             windRow.appendChild(windCell);
 
             if (day === 0) {
-                if (hour >= 20 || hour <= 8) {
+                if (hour >= 21 || hour <= 8) {
                     // Noche
-                    document.getElementById("main-container").style.background = "linear-gradient(180deg, midnightblue, steelblue)";
-                    const textElements = document.getElementsByClassName("info-text");
-                    for (let j = 0; j < textElements.length; j++) {
-                        textElements[j].style.color = "ghostwhite";
-                    }
-                    document.getElementById("last-updated").style.color = "white";
+                    document.getElementById("background-video").src = "../Videos/nightSkyClearRecortado.mp4";
                 } else {
                     // Día
-                    document.getElementById("main-container").style.background = "linear-gradient(180deg, lightskyblue, powderblue)";
-                    const textElements = document.getElementsByClassName("info-text");
-                    for (let j = 0; j < textElements.length; j++) {
-                        textElements[j].style.color = "black";
-                    }
-                    document.getElementById("last-updated").style.color = "black";
+                    document.getElementById("background-video").src = "../Videos/skyBlue.mp4";
                 }
             }
         }
@@ -148,26 +143,36 @@ function showWeatherData(json) {
     }
 
     fillTable(0);
-    todayInfo.style.backgroundColor = "#007bff";
-    todayInfo.style.color = "#fff";
+    firstInfo.style.backgroundColor = "#007bff";
+    firstInfo.style.color = "#fff";
+    let lastSelectedDay = 0;
 
-    todayInfo.addEventListener("click", () => {
-        clearTable();
-        fillTable(0);
-        todayInfo.style.backgroundColor = "#007bff";
-        todayInfo.style.color = "#fff";
-        tomorrowInfo.style.backgroundColor = "";
-        tomorrowInfo.style.color = "";
-    });
+    firstInfo.addEventListener("click", () => { styleButtons(0, firstInfo); });
+    secondInfo.addEventListener("click", () => { styleButtons(1, secondInfo); });
+    thirdInfo.addEventListener("click", () => { styleButtons(2, thirdInfo); });
+    fourthInfo.addEventListener("click", () => { styleButtons(3, fourthInfo); });
+    fifthInfo.addEventListener("click", () => { styleButtons(4, fifthInfo); });
+    sixthInfo.addEventListener("click", () => { styleButtons(5, sixthInfo); });
+    seventhInfo.addEventListener("click", () => { styleButtons(6, seventhInfo); });
 
-    tomorrowInfo.addEventListener("click", () => {
+    function styleButtons(day, actual, anterior) {
         clearTable();
-        fillTable(1);
-        tomorrowInfo.style.backgroundColor = "#007bff";
-        tomorrowInfo.style.color = "#fff";
-        todayInfo.style.backgroundColor = "";
-        todayInfo.style.color = "";
-    });
+        fillTable(day);
+        actual.style.backgroundColor = "#007bff";
+        actual.style.color = "#fff";
+        deleteStyle(day);
+    }
+
+    function deleteStyle(day) {
+        const days = document.getElementsByClassName("buttonDay");
+        for (let i = 0; i < days.length; i++) {
+            if (day !== i) {
+                days[i].style.backgroundColor = "";
+                days[i].style.color = "";
+            }
+        }
+    }
+
 }
 
 function classifyWindDirection(direction) {
