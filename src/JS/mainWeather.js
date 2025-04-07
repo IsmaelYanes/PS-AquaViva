@@ -145,7 +145,6 @@ function showWeatherData(json) {
     fillTable(0);
     firstInfo.style.backgroundColor = "#007bff";
     firstInfo.style.color = "#fff";
-    let lastSelectedDay = 0;
 
     firstInfo.addEventListener("click", () => { styleButtons(0, firstInfo); });
     secondInfo.addEventListener("click", () => { styleButtons(1, secondInfo); });
@@ -155,7 +154,7 @@ function showWeatherData(json) {
     sixthInfo.addEventListener("click", () => { styleButtons(5, sixthInfo); });
     seventhInfo.addEventListener("click", () => { styleButtons(6, seventhInfo); });
 
-    function styleButtons(day, actual, anterior) {
+    function styleButtons(day, actual) {
         clearTable();
         fillTable(day);
         actual.style.backgroundColor = "#007bff";

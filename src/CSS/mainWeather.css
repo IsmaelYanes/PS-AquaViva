@@ -3,20 +3,29 @@
     padding: 0;
 }
 
-#background-video, #main-container {
-    width: 70%;
-    min-width: 26rem;
-    border-radius: 10px;
+#wrapper-mainWeather {
+    position: relative;
+    /*width: 70%;*/
+    /*min-width: 26rem;*/
+    width: 100%;
+    height: 100%;
+    /*border-radius: 10px;*/
+    overflow: hidden;
 }
 
 #background-video {
     position: absolute;
     object-fit: cover;
     opacity: 0.9;
-    height: 78%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
 }
 
 #main-container {
+    position: relative;
     padding: 1rem;
     height: auto;
     /*background: linear-gradient(180deg, lightskyblue, powderblue);*/
@@ -107,6 +116,12 @@
 .weather-forecast {
     overflow-x: auto;
     scrollbar-width: none;
+}
+
+.weather-forecast:hover, .forecast-table-hour:hover {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.4) transparent; /* thumb color, track color */
 }
 
 .section3 {
