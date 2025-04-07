@@ -75,72 +75,45 @@ function showCustomPopup(fields) {
 
 let satelliteLayer;
 let isSatelliteView = false;
-let beachMarkers = [];
 let isBeachViewActive = false;
 
 function showLocation() {
-    if (!window.map) {
-        console.error("❌ El mapa aún no está disponible.");
+    if (window.userLocationMarker) {
+        window.map.removeLayer(window.userLocationMarker);
+        window.userLocationMarker = null; // Resetear la variable
+        console.log("📍 Marcador de ubicación eliminado.");
         return;
     }
 
-    try {
-        let beaches =  fetchAllBeaches();
-        console.log(`✅ Se han obtenido ${beaches.length} playas en total.`);
-
-        if (window.zonasLitoralLayer) {
-            window.map.removeLayer(window.zonasLitoralLayer);
-        }
-
-        // Crear un grupo de clústeres
-        let markersCluster = L.markerClusterGroup();
-
-        beaches.forEach((doc) => {
-            let fields = doc.fields;
-
-            let lat = fields.LAT ? parseFloat(fields.LAT.stringValue.replace(",", ".")) : null;
-            let lng = fields.LOG ? parseFloat(fields.LOG.stringValue.replace(",", ".")) : null;
-
-            if (lat === null || lng === null || isNaN(lat) || isNaN(lng)) {
-                console.warn(`⚠️ Coordenadas inválidas para la playa ${fields.beachName?.stringValue || "Desconocida"} (ID: ${doc.name})`);
-                return;
-            }
-
-            let coords = [lat, -lng];
-
-            console.log(`📍 Intentando agregar marcador en coordenadas: ${coords}`);
-
-            // Crear marcador
-            let marker = L.marker(coords);
-
-            // Asociar los datos al marcador
-            marker.beachData = fields;
-
-            // Agregar el marcador al grupo de clústeres
-            markersCluster.addLayer(marker);
-        });
-
-        // Evento cuando un marcador es clickeado
-        markersCluster.on("clusterclick", function (event) {
-            window.map.setView(event.latlng, window.map.getZoom() + 2);
-        });
-
-        markersCluster.on("click", function (event) {
-            let marker = event.layer;
-            if (marker.beachData) {
-                showCustomPopup(marker.beachData); // Mostrar el popup cuando un marcador individual es clickeado
-            }
-        });
-
-        // Agregar el grupo de clústeres al mapa
-        window.map.addLayer(markersCluster);
-
-        window.map.invalidateSize();
-        isBeachViewActive = true;
-        console.log("✅ Playas mostradas en el mapa correctamente.");
-    } catch (error) {
-        console.error("❌ Error al mostrar las playas:", error);
+    if (!navigator.geolocation) {
+        alert("⚠️ La geolocalización no está soportada en tu navegador.");
+        return;
     }
+
+    navigator.geolocation.getCurrentPosition(
+        function (position) {
+            let userLat = position.coords.latitude;
+            let userLng = position.coords.longitude;
+
+            console.log(`📍 Ubicación actual: ${userLat}, ${userLng}`);
+
+            window.userLocationMarker = L.marker([userLat, userLng], {
+                icon: L.icon({
+                    iconUrl: "https://cdn3.iconfinder.com/data/icons/map-navigation-8/512/location-pin-coordinate-point-128.png",
+                    iconSize: [35, 35],
+                    iconAnchor: [17, 34],
+                    popupAnchor: [0, -34]
+                })
+            }).addTo(window.map)
+                .bindPopup("📍 Estás aquí").openPopup();
+
+            window.map.setView([userLat, userLng], 12);
+        },
+        function (error) {
+            console.error("❌ Error obteniendo la ubicación:", error);
+            alert("⚠️ No se pudo obtener tu ubicación.");
+        }
+    );
 }
 
 function addToFavorites() {
