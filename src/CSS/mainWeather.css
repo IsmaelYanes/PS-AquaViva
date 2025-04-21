@@ -3,21 +3,36 @@
     padding: 0;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
-    margin: 0;
-    padding: 0;
-    text-align: start;
+#wrapper-mainWeather {
+    position: relative;
+    /*width: 70%;*/
+    /*min-width: 26rem;*/
+    width: 100%;
+    height: 100%;
+    /*border-radius: 10px;*/
+    overflow: hidden;
+}
+
+#background-video {
+    position: absolute;
+    object-fit: cover;
+    opacity: 0.9;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
 }
 
 #main-container {
-    padding: 1em;
-    width: 70%;
-    min-width: 25rem;
+    position: relative;
+    padding: 1rem;
     height: auto;
-    border-radius: 10px;
-    background: linear-gradient(180deg, lightskyblue, powderblue);
+    /*background: linear-gradient(180deg, lightskyblue, powderblue);*/
+    font-family: Arial, sans-serif;
+    text-align: start;
+    background: transparent;
+    z-index: 1;
 }
 
 #place-text {
@@ -35,7 +50,6 @@ body {
     align-items: center;
     gap: 1.5em;
     text-align: center;
-
 }
 
 #temperature {
@@ -52,6 +66,7 @@ body {
 }
 
 .info-text {
+    color: whitesmoke;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -87,16 +102,26 @@ body {
 }
 
 .grid-item {
-    background-color: #fff;
     box-sizing: border-box;
-    border-radius: 0.25rem;
+    border-radius: 16px;
     padding: 1rem 0.5rem;
+
+    /*hacer el fondo glassmorphism*/
+    background: rgba(255, 255, 255, 0.60);
+    backdrop-filter: blur(9.1px);
+    -webkit-backdrop-filter: blur(9.1px);
 }
 
 /*movimiento en horizontal*/
 .weather-forecast {
     overflow-x: auto;
     scrollbar-width: none;
+}
+
+.weather-forecast:hover, .forecast-table-hour:hover {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.4) transparent; /* thumb color, track color */
 }
 
 .section3 {
@@ -111,9 +136,14 @@ body {
     font-family: Arial, sans-serif;
     overflow-x: auto;
     scrollbar-width: none;
+
+    /*hacer el fondo glassmorphism*/
+    background: rgba(255, 255, 255, 0.60);
+    backdrop-filter: blur(9.1px);
+    -webkit-backdrop-filter: blur(9.1px);
 }
 
-h2, h3 {
+.buttonDay {
     font-size: 1.2em;
     color: #333;
     cursor: pointer;
@@ -167,4 +197,9 @@ tr:nth-child(3) td {
 
 #last-updated {
     font-size: 0.8em;
+}
+
+.buttonDays {
+    display: flex;
+    flex-direction: row;
 }
