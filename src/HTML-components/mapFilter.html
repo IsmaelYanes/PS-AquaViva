@@ -9,10 +9,11 @@
   <div>
     <p class="filterContentTitle">Filtrar por localidad</p>
     <div class="filterElementsContainer">
+
       <div class="filter-element">
-        <label for="provinceFilter">Provincia</label>
-        <select id="provinceFilter" class="filterBox" name="provinceFilter">
-          <option value="">Todas las provincias</option>
+        <label for="islandFilter">Islas</label>
+        <select id="islandFilter" class="filterBox" name="islandFilter">
+          <option value="">Todas las islas</option>
         </select>
       </div>
 
@@ -23,16 +24,7 @@
         </select>
       </div>
 
-      <div class="filter-element">
-        <label for="islandFilter">Islas</label>
-        <select id="islandFilter" class="filterBox" name="islandFilter">
-          <option value="">Todas las islas</option>
-        </select>
-      </div>
-
     </div>
-
-
   </div>
 
   <div>
@@ -42,6 +34,8 @@
         <label for="zoneTypeFilter">Tipo de baño</label>
         <select id="zoneTypeFilter" class="filterBox" name="zoneTypeFilter">
           <option value="">Todos los tipos</option>
+          <option value="ZBM">Zona de baño marítimo</option>
+          <option value="Playa">Playa</option>
         </select>
       </div>
 
@@ -76,10 +70,8 @@
 
   </div>
   <p class="filterContentTitle">Filtar por las instalaciones</p>
-  <label><input type="checkbox" value="duchas" class="filter-instalaciones"> Ducha</label>
-  <label><input type="checkbox" value="acceso-discapacitados" class="filter-instalaciones"> Acceso discapacitados</label>
-  <label><input type="checkbox" value="socorrista" class="filter-instalaciones"> Socorrista</label>
-  <button id="filterButton">Filtrar</button>
+  <div id="checkbox-container"></div>
+  <button id="filterButton">Buscar</button>
 </div>
 
 </div>

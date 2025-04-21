@@ -23,6 +23,7 @@
 #filterButton {
     width: 15em;
     height: 2em;
+    padding: 0;
 }
 .mapFilterContainer {
     width: 89%;
@@ -39,4 +40,11 @@
     margin-bottom: 5px;
     font-size: 15px;
 
+}
+.checkboxLabel{
+    margin-right: 15px;
+    font-size: 15px;
+}
+.checkboxInput{
+    margin-right: 4px;
 }

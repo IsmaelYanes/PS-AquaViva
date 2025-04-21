@@ -101,6 +101,7 @@
 </script>
 
 <script src="../JS/ToolbarToggle.js"></script>
+<script src="../JS/mapFilter.js"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', init);
@@ -127,7 +128,7 @@
     function init() {
         loadTemplate('../HTML-components/header.html', document.getElementById('header'), initSearcher);
         loadTemplate('../HTML-components/footer.html', document.getElementById('footer'));
-        loadTemplate('../HTML-components/mapFilter.html', document.getElementById('mapFilter'));
+        loadTemplate('../HTML-components/mapFilter.html', document.getElementById('mapFilter'), initFilters);
 
         // Cargar dinámicamente todos los textBlocks
         document.querySelectorAll('.textBlock').forEach((el) => {
