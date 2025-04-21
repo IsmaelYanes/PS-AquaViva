@@ -77,6 +77,73 @@ let satelliteLayer;
 let isSatelliteView = false;
 let isBeachViewActive = false;
 
+//Funcion para mostrar las playas filtradas (Se le pasa las playas)
+function showFilteredBeaches(filteredBeaches) {
+    if (!window.map) {
+        console.error("❌ El mapa aún no está disponible.");
+        return;
+    }
+
+    try {
+        // Ocultamos capa de zonas litoral si está activa
+        if (window.zonasLitoralLayer) {
+            window.map.removeLayer(window.zonasLitoralLayer);
+        }
+
+        // Limpiamos clústeres anteriores
+        if (window.markersCluster) {
+            window.map.removeLayer(window.markersCluster);
+        }
+        window.markersCluster = L.markerClusterGroup();
+
+        let boundsCoords = [];
+
+        filteredBeaches.forEach((doc) => {
+            let fields = doc.fields;
+
+            let lat = fields.LAT ? parseFloat(fields.LAT.stringValue.replace(",", ".")) : null;
+            let lng = fields.LOG ? parseFloat(fields.LOG.stringValue.replace(",", ".")) : null;
+
+            if (lat === null || lng === null || isNaN(lat) || isNaN(lng)) {
+                console.warn(`⚠️ Coordenadas inválidas para la playa ${fields.beachName?.stringValue || "Desconocida"}`);
+                return;
+            }
+
+            let coords = [lat, -lng]; // Negativo para corregir longitudes del oeste
+
+            let marker = L.marker(coords);
+            marker.beachData = fields;
+
+            marker.on("click", function (event) {
+                let currentZoom = window.map.getZoom();
+                if (currentZoom >= 14 || !marker._icon.classList.contains("leaflet-cluster-icon")) {
+                    showCustomPopup(fields);
+                } else {
+                    window.map.setView(event.latlng, currentZoom + 2);
+                }
+            });
+
+            window.markersCluster.addLayer(marker);
+            boundsCoords.push(coords);
+        });
+
+        // Agregar clúster al mapa
+        window.map.addLayer(window.markersCluster);
+
+        // Centrar el mapa automáticamente si hay coordenadas válidas
+        if (boundsCoords.length > 0) {
+            let bounds = L.latLngBounds(boundsCoords);
+            window.map.fitBounds(bounds, { padding: [50, 50] });
+        }
+
+        window.map.invalidateSize();
+        isBeachViewActive = true;
+        console.log(`✅ Mostradas ${filteredBeaches.length} playas filtradas.`);
+    } catch (error) {
+        console.error("❌ Error al mostrar playas filtradas:", error);
+    }
+}
+
 function showLocation() {
     if (window.userLocationMarker) {
         window.map.removeLayer(window.userLocationMarker);
