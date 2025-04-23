@@ -54,11 +54,15 @@ async function fetchAllBeaches() {
 }
 
 //Funcion de abrir popup de marcador de playa.
-function showCustomPopup(fields) {
+function showCustomPopup(fields, showRouteButton = false) {
     let existingPopup = document.getElementById("custom-popup");
     if (existingPopup) {
         existingPopup.remove();
     }
+
+    let routeButtonHTML = showRouteButton
+        ? `<button class="route-btn" onclick="alert('Iniciar ruta aún no implementado')">Iniciar ruta</button>`
+        : "";
 
     let popupHTML = `
     <div id="custom-popup" class="popup">
@@ -77,6 +81,7 @@ function showCustomPopup(fields) {
             </div>
             <div class="popup-footer">
                 <a href="../HTML/MoreInfoPage.html?id=${fields["ID DGE"]?.integerValue}&lat=${fields.LAT.stringValue.replace(",", ".")}&lon=-${fields.LOG.stringValue.replace(",", ".")}" class="more-info">Ver más</a>
+                ${routeButtonHTML}
             </div>
         </div>
     </div>`;
@@ -104,33 +109,6 @@ function getIslandFromCoords(lat, lng) {
     }
 
     return null;
-}
-
-async function getRoadDistance(lat1, lon1, lat2, lon2) {
-    const apiKey = "5b3ce3597851110001cf62489491c8fc7ce04b4d9cd3809505e013ab";
-
-    try {
-        const response = await fetch("https://api.openrouteservice.org/v2/directions/driving-car", {
-            method: "POST",
-            headers: {
-                "Authorization": apiKey,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                coordinates: [
-                    [lon1, lat1], // origen
-                    [lon2, lat2]  // destino
-                ]
-            })
-        });
-
-        const data = await response.json();
-        const distanceMeters = data.routes[0].summary.distance;
-        return distanceMeters / 1000; // Convertir a km
-    } catch (error) {
-        console.error("❌ Error al obtener distancia:", error);
-        return null;
-    }
 }
 
 let routeLayer;
@@ -260,25 +238,22 @@ async function measureDistance() {
             const userLng = position.coords.longitude;
 
             // 🧼 LIMPIEZA DEL MAPA
-            if (window.zonasLitoralLayer) {
-                window.map.removeLayer(window.zonasLitoralLayer);
-            }
-
-            if (window.markersCluster) {
-                window.map.removeLayer(window.markersCluster);
-            }
-
+            if (window.zonasLitoralLayer) window.map.removeLayer(window.zonasLitoralLayer);
+            if (window.markersCluster) window.map.removeLayer(window.markersCluster);
             if (window.routeLayer) {
                 window.map.removeLayer(window.routeLayer);
                 window.routeLayer = null;
             }
-
             if (window.userLocationMarker) {
                 window.map.removeLayer(window.userLocationMarker);
                 window.userLocationMarker = null;
             }
+            if (window.selectedBeachMarker) {
+                window.map.removeLayer(window.selectedBeachMarker);
+                window.selectedBeachMarker = null;
+            }
 
-            // 📍 Mostrar nueva ubicación
+            // 📍 Mostrar nueva ubicación del usuario
             window.userLocationMarker = L.marker([userLat, userLng], {
                 icon: L.icon({
                     iconUrl: "https://cdn3.iconfinder.com/data/icons/map-navigation-8/512/location-pin-coordinate-point-128.png",
@@ -289,41 +264,54 @@ async function measureDistance() {
             }).addTo(window.map)
                 .bindPopup("📍 Estás aquí").openPopup();
 
-            // 🏝️ Detectar isla actual
             const currentIsland = getIslandFromCoords(userLat, userLng);
             if (!currentIsland) {
                 alert("⚠️ No se pudo determinar en qué isla te encuentras.");
                 return;
             }
 
-            console.log(`🗾 Usuario está en la isla: ${currentIsland}`);
-
-            // 🔍 Filtrar playas por isla
             const allBeaches = await fetchAllBeaches();
-            const islandBeaches = allBeaches.filter(beach => {
-                return beach.fields?.island?.stringValue === currentIsland;
-            });
+            const islandBeaches = allBeaches.filter(beach =>
+                beach.fields?.island?.stringValue === currentIsland
+            );
 
             if (islandBeaches.length === 0) {
                 alert("❌ No se encontraron playas en esta isla.");
                 return;
             }
 
-            // 📍 Mostrar playas en esa isla
             window.markersCluster = L.markerClusterGroup();
+
             islandBeaches.forEach((doc) => {
                 const fields = doc.fields;
                 const lat = parseFloat(fields.LAT.stringValue.replace(",", "."));
                 const lng = -parseFloat(fields.LOG.stringValue.replace(",", "."));
-
                 if (isNaN(lat) || isNaN(lng)) return;
 
                 const marker = L.marker([lat, lng]);
                 marker.beachData = fields;
 
                 marker.on("click", async function () {
+                    // 🧼 Limpiar marcadores anteriores
+                    if (window.markersCluster) {
+                        window.map.removeLayer(window.markersCluster);
+                        window.markersCluster = null;
+                    }
+                    if (window.routeLayer) {
+                        window.map.removeLayer(window.routeLayer);
+                        window.routeLayer = null;
+                    }
+                    if (window.selectedBeachMarker) {
+                        window.map.removeLayer(window.selectedBeachMarker);
+                        window.selectedBeachMarker = null;
+                    }
+
+                    // 📍 Mostrar solo playa seleccionada
+                    window.selectedBeachMarker = L.marker([lat, lng]).addTo(window.map);
+
+                    // 🔷 Dibujar la ruta con OpenRouteService
                     const apiKey = "5b3ce3597851110001cf62489491c8fc7ce04b4d9cd3809505e013ab";
-                    const url = `https://api.openrouteservice.org/v2/directions/driving-car?api_key=${apiKey}`;
+                    const url = `https://api.openrouteservice.org/v2/directions/driving-car/geojson?api_key=${apiKey}`;
 
                     const body = {
                         coordinates: [
@@ -333,7 +321,6 @@ async function measureDistance() {
                     };
 
                     try {
-                        // Realizamos la solicitud a la API
                         const response = await fetch(url, {
                             method: "POST",
                             headers: { "Content-Type": "application/json" },
@@ -341,25 +328,19 @@ async function measureDistance() {
                         });
 
                         const data = await response.json();
-
-                        // Imprimir la respuesta completa para inspeccionar
-                        console.log("Respuesta completa de la API: ", data);
-
-                        // Si no encontramos la geometría, lanzamos un error
-                        if (!data || !data.routes || !data.routes[0] || !data.routes[0].geometry) {
-                            throw new Error("No se pudo obtener la ruta válida. La respuesta de la API no contiene la geometría.");
+                        if (
+                            !data ||
+                            !data.features ||
+                            !data.features[0] ||
+                            !data.features[0].geometry ||
+                            !data.features[0].geometry.coordinates
+                        ) {
+                            throw new Error("La respuesta no contiene GeoJSON válido.");
                         }
 
-                        // Decodificar la geometría utilizando la librería polyline
-                        const polylineEncoded = data.routes[0].geometry;
-                        const latlngs = polyline.decode(polylineEncoded).map(c => [c[0], c[1]]); // Decodificamos la ruta
+                        const coords = data.features[0].geometry.coordinates;
+                        const latlngs = coords.map(c => [c[1], c[0]]);
 
-                        // Eliminar ruta previa si existe
-                        if (window.routeLayer) {
-                            window.map.removeLayer(window.routeLayer);
-                        }
-
-                        // Crear y agregar la nueva ruta en el mapa
                         window.routeLayer = L.polyline(latlngs, {
                             color: "blue",
                             weight: 5,
@@ -367,14 +348,17 @@ async function measureDistance() {
                             smoothFactor: 1
                         }).addTo(window.map);
 
-                        const bounds = L.latLngBounds(latlngs);
-                        window.map.fitBounds(bounds, { padding: [50, 50] });
+                        window.map.fitBounds(window.routeLayer.getBounds(), {
+                            padding: [50, 50]
+                        });
 
-                        console.log("✅ Ruta mostrada correctamente.");
                     } catch (error) {
                         console.error("❌ Error al obtener la ruta:", error);
                         alert("Error al calcular la ruta. " + (error.message || "Inténtalo más tarde."));
                     }
+
+                    // ✅ Mostrar popup personalizado
+                    showCustomPopup(fields, true);
                 });
 
                 window.markersCluster.addLayer(marker);
@@ -382,18 +366,6 @@ async function measureDistance() {
 
             window.map.addLayer(window.markersCluster);
             window.map.setView([userLat, userLng], 11);
-
-            // 🗨️ Mostrar popup con un mensaje que desaparece después de 3 segundos
-            const popup = L.popup()
-                .setLatLng([userLat, userLng])
-                .setContent("📍 Selecciona una playa para calcular la ruta desde tu ubicación.")
-                .openOn(window.map);
-
-            setTimeout(() => {
-                popup.remove();
-            }, 3000);
-
-            console.log("✅ Playas mostradas correctamente.");
         },
         function (error) {
             console.error("❌ Error obteniendo ubicación del usuario:", error);
