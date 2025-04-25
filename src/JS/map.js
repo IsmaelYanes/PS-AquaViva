@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Capa base estándar
     window.defaultLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(window.map);
 
     fetch('../Data/zonas_litoral.json')
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function abrirPopup(properties, event) {
         const popup = document.querySelector('.popup');
-        
+
         // Actualizar contenido del popup con los datos de la zona
         document.getElementById('popup-title').innerText = `Información de la zona seleccionada`;
         document.getElementById('popup-island').innerText = properties.isla || "Desconocida";
@@ -47,8 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const coord = properties.coord.split(",");
         const lat = coord[1].trim();
         const lon = coord[0].trim();
+        console.log(`Map.js - Zone: ${properties.name}, Coord: ${properties.coord}, Parsed: lat=${lat}, lon=${lon}`);
         properties.description = getPrincipalData(lat, lon);
-        
+
         document.getElementById("popup-link").href = `../HTML/MoreInfoPage.html?lat=${lat}&lon=${lon}`;
 
         // Manejo de la imagen
@@ -59,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             imgElement.style.display = "none";
         }
-        
+
 
         // Convertir coordenadas del mapa a posición en la pantalla
         let point = window.map.latLngToContainerPoint(event.latlng);
