@@ -27,12 +27,16 @@
         </nav>
     </div>
 </div>
+<script src="../JS/weatherAPI.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="../JS/services.js"></script>
 <script src="../JS/swell.js"></script>
+<script src="../JS/services.js"></script>
 <script src="../JS/FishInfo.js"></script>
 <script src="../JS/FishDetail.js"></script>
 <script src="../JS/mainWeather.js"></script>
+<script src="../JS/ToolbarToggle.js"></script>
+<script src="../JS/searcher.js"></script>
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         init();
@@ -101,7 +105,7 @@
     }
 
     function init() {
-        loadTemplate('../HTML-components/header.html', document.getElementById('header'));
+        loadTemplate('../HTML-components/header.html', document.getElementById('header'), initSearcher);
     }
 </script>
 </body>

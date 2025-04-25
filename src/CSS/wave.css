@@ -1,6 +1,6 @@
 canvas {
-    width: 80%;
-    height: 400px;
+    width: 80%; !important;
+    height: 400px; !important;
     margin: 20px auto;
     display: block;
 }
