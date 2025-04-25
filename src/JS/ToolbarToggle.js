@@ -351,10 +351,9 @@ function getUserLocation(callback) {
 
             if (window.userLocationMarker) {
                 window.map.removeLayer(window.userLocationMarker);
-                window.userLocationMarker = null; // Resetear la variable
+                window.userLocationMarker = null;
             }
 
-            // Crear y mostrar el marcador de ubicación
             window.userLocationMarker = L.marker([userLat, userLng], {
                 icon: L.icon({
                     iconUrl: "https://cdn3.iconfinder.com/data/icons/map-navigation-8/512/location-pin-coordinate-point-128.png",
@@ -362,15 +361,22 @@ function getUserLocation(callback) {
                     iconAnchor: [17, 34],
                     popupAnchor: [0, -34]
                 })
-            }).addTo(window.map)
-                .bindPopup("📍 Estás aquí").openPopup();
+            }).addTo(window.map).bindPopup("📍 Estás aquí").openPopup();
 
-            // Ejecutar la función de callback pasada como argumento
             callback(userLat, userLng);
         },
         function (error) {
             console.error("❌ Error obteniendo la ubicación:", error);
-            alert("⚠️ No se pudo obtener tu ubicación.");
+
+            if (error.code === 1) {
+                alert("📵 Has denegado el acceso a tu ubicación. No se podrá mostrar tu posición actual.");
+            } else if (error.code === 2) {
+                alert("⚠️ La ubicación no está disponible.");
+            } else if (error.code === 3) {
+                alert("⏱ La solicitud de ubicación ha tardado demasiado.");
+            } else {
+                alert("⚠️ No se pudo obtener tu ubicación.");
+            }
         }
     );
 }
