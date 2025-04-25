@@ -375,7 +375,6 @@ function getUserLocation(callback) {
     );
 }
 
-let routeLayer;
 let satelliteLayer;
 let isSatelliteView = false;
 let isBeachViewActive = false;
