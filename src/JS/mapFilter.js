@@ -9,7 +9,6 @@ const beachFacilities = [
     "Area Infantil",
     "Area Deportiva"
 ]
-const provinceList = ["Las Palmas", "Santa Cruz de Tenerife"];
 
 const islandList= [
     "Tenerife",
@@ -189,6 +188,7 @@ function completeCheckBoxSection(id, facilities){
         const input = document.createElement("input");
         input.type = "checkbox";
         input.value = facility;
+        input.name = "facility";
         input.classList.add("checkboxInput");
         label.textContent = facility;
         label.prepend(input);
@@ -207,4 +207,92 @@ function initFilters(){
     completeFilter("InfluenceFilter", influenceList);
     completeFilter("environmentConditionFilter", environmentList);
     completeCheckBoxSection("checkbox-container", beachFacilities);
+    const button = document.getElementById("filterButton");
+    button.addEventListener("click", initAdvancedSearch);
+}
+
+class AdvancedSearcher{
+    constructor() {
+        this.beachNameInput = document.getElementById("filterName").value;
+        this.islandSelect = document.getElementById("islandFilter").value;
+        this.townSelect = document.getElementById("townFilter").value;
+        this.bathingCondition = document.getElementById("bathingConditionFilter").value;
+        this.accessCondition = document.getElementById("accessConditionFilter").value;
+        this.influenceCondition = document.getElementById("InfluenceFilter").value;
+        this.environmentCondition = document.getElementById("InfluenceFilter").value;
+        this.bathType = document.getElementById("zoneTypeFilter").value;
+        this.facilities = Array.from(
+            document.querySelectorAll("input[name='facilities']:checked"))
+            .map(checkbox => checkbox.value);
+    }
+
+    getResultsOfFilter(beachesList){
+        const results = [];
+        beachesList.forEach(beach => {
+            if (this.filterBeach(beach)) {
+                console.log(this.filterBeach(beach));
+                results.push(beach)}
+        })
+        return results;
+    }
+
+    getBeachName(beach){
+        return beach.fields.beachName.stringValue;
+    }
+    getIsland(beach){
+        return beach.fields.island?.stringValue;
+    }
+    getTown(beach){
+        return beach.fields.town?.stringValue;
+    }
+    getBathingCondition(beach){
+        return beach["Condiciones de baño"]?.stringValue;
+    }
+    getAccessCondition(beach){
+        return beach["Condiciones de acceso"]?.stringValue;
+    }
+    getInfluenceCondition(beach){
+        return beach.maxAnnualInflux?.stringValue;
+    }
+    getEnvironmentCondition(beach){
+        return beach["Condiciones de entorno"]?.stringValue;
+    }
+    getBathTypeCondition(beach){
+        return beach.fields.type?.stringValue;
+    }
+    getFacilitiesCondition(beach){
+        const facilities = {
+            "Aparcamientos": beach.Aparcamientos?.stringValue,
+            "Aseo": beach.Aseo?.stringValue,
+            "Lavapies": beach.Lavapies?.stringValue,
+            "Duchas": beach.Duchas?.stringValue,
+            "Alquiler de sombrillas": beach["Alquiler de sombrillas"]?.stringValue,
+            "Alquiler de hamacas": beach["Alquiler de hamacas"]?.stringValue,
+            "Alquiler nautico": beach["Alquiler nautico"]?.stringValue,
+            "Area Infantil": beach["Area Infantil"]?.stringValue,
+            "Area Deportiva": beach["Area Deportiva"]?.stringValue,
+        };
+        return Object.entries(facilities)
+            .filter(([_, value]) => value === "Si")
+            .map(([key]) => key);
+    }
+    filterBeach(beach){
+        const name = !(this.beachNameInput) || this.getBeachName(beach).toLowerCase().includes(this.beachNameInput);
+        const island = !(this.islandSelect) || this.islandSelect === (this.getIsland(beach));
+        const town = !(this.townSelect) || this.townSelect === (this.getTown(beach));
+        const bathing = !(this.bathingCondition) || this.bathingCondition === (this.getBathingCondition(beach));
+        const access = !(this.accessCondition) || this.accessCondition === (this.getAccessCondition(beach));
+        const influence = !(this.influenceCondition) || this.influenceCondition === (this.getInfluenceCondition(beach));
+        const environmentCondition = !(this.environmentCondition) || this.environmentCondition === (this.getEnvironmentCondition(beach));
+        const bath = !(this.bathType) || this.bathType === (this.getBathTypeCondition(beach));
+        const facilities = !(this.facilities) || this.facilities.every(facility => this.getFacilitiesCondition(beach).includes(facility));
+        return name & island & town & bathing & access & influence & environmentCondition & bath & facilities;
+    }
+
+}
+
+function initAdvancedSearch(){
+    const advancedSearch = new AdvancedSearcher();
+    const result = advancedSearch.getResultsOfFilter(beachSearcher.getBeachesList());
+    showFilteredBeaches(result);
 }
