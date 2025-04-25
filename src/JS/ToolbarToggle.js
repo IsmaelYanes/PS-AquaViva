@@ -346,8 +346,8 @@ function getUserLocation(callback) {
 
     navigator.geolocation.getCurrentPosition(
         function (position) {
-            const userLat = position.coords.latitude;
-            const userLng = position.coords.longitude;
+            window.userLat = position.coords.latitude;
+            window.userLng = position.coords.longitude;
 
             if (window.userLocationMarker) {
                 window.map.removeLayer(window.userLocationMarker);
@@ -505,47 +505,71 @@ async function measureDistance() {
 }
 
 function defineZone() {
-    if (isBeachViewActive) {
-        console.log("🔄 Restaurando zonas litoral y eliminando todos los marcadores, rutas y clústeres...");
+    console.log("🔄 Restaurando zonas litoral y limpiando elementos del mapa...");
 
-        // Eliminar clústeres si existen
-        if (window.markersCluster) {
-            window.map.removeLayer(window.markersCluster);
-            window.markersCluster = null;
-        }
-
-        // Eliminar ruta si existe
-        if (window.routeLayer) {
-            window.map.removeLayer(window.routeLayer);
-            window.routeLayer = null;
-        }
-
-        // Eliminar marcador de ubicación del usuario
-        if (window.userLocationMarker) {
-            window.map.removeLayer(window.userLocationMarker);
-            window.userLocationMarker = null;
-        }
-
-        // Eliminar marcador de playa seleccionada
-        if (window.selectedBeachMarker) {
-            window.map.removeLayer(window.selectedBeachMarker);
-            window.selectedBeachMarker = null;
-        }
-
-        // Eliminar botón de volver si existe
-        if (window.backButtonControl) {
-            window.map.removeControl(window.backButtonControl);
-            window.backButtonControl = null;
-        }
-
-        // Restaurar capa de zonas litoral si existe
-        if (window.zonasLitoralLayer) {
-            window.zonasLitoralLayer.addTo(window.map);
-        }
-
-        isBeachViewActive = false;
-        console.log("✅ Zonas litoral restauradas y elementos anteriores eliminados.");
+    // Eliminar clústeres si existen
+    if (window.markersCluster) {
+        window.map.removeLayer(window.markersCluster);
+        window.markersCluster = null;
     }
+
+    // Eliminar ruta si existe
+    if (window.routeLayer) {
+        window.map.removeLayer(window.routeLayer);
+        window.routeLayer = null;
+    }
+
+    // Eliminar marcador de ubicación del usuario
+    if (window.userLocationMarker) {
+        window.map.removeLayer(window.userLocationMarker);
+        window.userLocationMarker = null;
+    }
+
+    // Eliminar marcador de playa seleccionada
+    if (window.selectedBeachMarker) {
+        window.map.removeLayer(window.selectedBeachMarker);
+        window.selectedBeachMarker = null;
+    }
+
+    // Eliminar botón de volver si existe
+    if (window.backButtonControl) {
+        window.map.removeControl(window.backButtonControl);
+        window.backButtonControl = null;
+    }
+
+    // Restaurar o cargar la capa de zonas litoral
+    if (window.zonasLitoralLayer) {
+        window.zonasLitoralLayer.addTo(window.map);
+        console.log("✅ Capa de zonas litoral restaurada.");
+    } else {
+        // Si no existe, la cargamos desde el archivo JSON
+        fetch('../Data/zonas_litoral.json')
+            .then(response => response.json())
+            .then(geojsonData => {
+                window.zonasLitoralLayer = L.geoJSON(geojsonData, {
+                    style: feature => ({
+                        color: feature.properties.color || "blue",
+                        weight: 2,
+                        opacity: 0.8,
+                        fillOpacity: 0.4
+                    }),
+                    onEachFeature: (feature, layer) => {
+                        if (feature.properties) {
+                            layer.on('click', (e) => {
+                                abrirPopup(feature.properties, e);
+                            });
+                        }
+                    }
+                }).addTo(window.map);
+                console.log("✅ Capa de zonas litoral cargada por primera vez.");
+            })
+            .catch(error => {
+                console.error("❌ Error al cargar zonas_litoral.json:", error);
+                alert("No se pudo cargar la capa de zonas litoral.");
+            });
+    }
+
+    isBeachViewActive = false;
 }
 
 async function showBeaches() {
