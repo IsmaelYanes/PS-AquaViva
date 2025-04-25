@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Capa base estándar
     window.defaultLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(window.map);
 
     fetch('../Data/zonas_litoral.json')
@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function abrirPopup(properties, event) {
         const popup = document.querySelector('.popup');
 
+
         // Ocultar el popup temporalmente para evitar que se desplace de forma incorrecta
         popup.style.display = 'none';
 
@@ -65,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             imgElement.style.display = "none";
         }
+
 
         // Pequeño retraso para recalcular el tamaño correcto antes de posicionar
         setTimeout(() => {
