@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="../CSS/ToolbarStyle.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+    <script src="../JS/auth.js"></script>
 </head>
 <body>
 <div id="header"></div>
@@ -131,8 +134,27 @@
             loadTemplate('../HTML-components/textContainer.html', el);
         });
     }
+</script>
+<script>
+    firebase.auth().onAuthStateChanged(user => {
+        const asideButtons = document.getElementById('aside-buttons');
 
+        if (user) {
+            asideButtons.innerHTML = `
+      <a href="../HTML-components/account.html">
+        <button>Cuenta</button>
+      </a>
+      <button id="logout-button">Cerrar sesión</button>
+    `;
 
+            const logoutButton = document.getElementById('logout-button');
+            logoutButton.addEventListener('click', async () => {
+                await firebase.auth().signOut();
+                window.location.reload();
+            });
+
+        }
+    });
 </script>
 </body>
 </html>
