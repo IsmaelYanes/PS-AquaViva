@@ -1,4 +1,4 @@
-const KEY = "e05df82d22234b399b8113631253103";
+const KEY = "5aee2dd3671346f6b1c144401252104";
 let swellDataList = []
 let zoneName;
 let foresCastDay;
