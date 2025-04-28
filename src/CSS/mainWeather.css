@@ -192,7 +192,6 @@ tr:nth-child(3) td {
     margin-top: 1rem;
     margin-bottom: 0;
     text-align: center;
-
 }
 
 #last-updated {
@@ -200,6 +199,7 @@ tr:nth-child(3) td {
 }
 
 .buttonDays {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    justify-content: space-between;
 }

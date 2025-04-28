@@ -75,6 +75,8 @@ function showWeatherData(json) {
     const weatherIconsRow = document.getElementById("weather-icons-hour");
     const temperatureRow = document.getElementById("temperature-hour");
     const windRow = document.getElementById("wind-hour");
+    const prepRow = document.getElementById("prep-hour");
+    const humidityRow = document.getElementById("humi-hour");
 
     const firstInfo = document.getElementById("firstInfo");
     const secondInfo = document.getElementById("secondInfo");
@@ -123,6 +125,17 @@ function showWeatherData(json) {
             windCell.appendChild(arrow);
             windRow.appendChild(windCell);
 
+            // Precipitacion
+            const prepCell = document.createElement("td");
+            prepCell.textContent = (hourInfo.precip_mm) + 'mm';
+            prepRow.appendChild(prepCell);
+
+            // Humedad
+            const humidityCell = document.createElement("td");
+            humidityCell.textContent = (hourInfo.humidity) + '%';
+            humidityRow.appendChild(humidityCell);
+
+
             if (day === 0) {
                 if (hour >= 21 || hour <= 8) {
                     // Noche
@@ -140,6 +153,8 @@ function showWeatherData(json) {
         weatherIconsRow.textContent = "";
         temperatureRow.textContent = "";
         windRow.textContent = "";
+        prepRow.textContent = "";
+        humidityRow.textContent = "";
     }
 
     fillTable(0);
