@@ -1,0 +1,50 @@
+{
+    font: normal 1rem / 1.5rem 'bernino-regular', Verdana, Arial, Geneva, sans-serif !important;
+}
+.filter-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+.filter-element {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+}
+.filterElementsContainer {
+    display: flex;
+}
+.filterBox {
+    margin-top: 5px;
+    margin-right: 20px;
+    height: 30px;
+}
+#filterButton {
+    width: 15em;
+    height: 2em;
+    padding: 0;
+}
+.mapFilterContainer {
+    width: 89%;
+    border: 5px solid #b1bfce;
+    background: #F7F7F7;
+}
+#mapFilterBody {
+    margin-top: 2em;
+    margin-left: 2em;
+}
+.filterContentTitle {
+    margin-top: 5px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 15px;
+
+}
+.checkboxLabel{
+    margin-right: 15px;
+    font-size: 15px;
+}
+.checkboxInput{
+    margin-right: 4px;
+}

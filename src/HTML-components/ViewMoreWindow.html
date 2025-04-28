@@ -44,7 +44,7 @@
     getPrincipalData();
 
     function getPrincipalData() {
-        const jsonURL = "https://api.weatherapi.com/v1/forecast.json?key=8eff48f079e44211b52124000251703&q=28.771831683485686,%20-17.750202868741685&days=7&aqi=no&alerts=no";
+        const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=${KEY}&q=28.771831683485686,%20-17.750202868741685&days=7&aqi=no&alerts=no`;
         fetch (jsonURL, {
             method: "GET",
             headers: {'Content-Type': 'application/json'}
