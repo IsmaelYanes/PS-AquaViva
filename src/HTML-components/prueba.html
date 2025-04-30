@@ -3,34 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pronóstico con Scroll</title>
+    <title>Pronóstico 7 días</title>
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
+
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
             padding: 20px;
+            display: flex;
+            justify-content: center;
         }
+
         .weather-container {
-            width: 100%;
-            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 100%;
+            width: 800px;
             position: relative;
         }
+
+        .scroll-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px 15px;
+            color: #333;
+            z-index: 2;
+            flex-shrink: 0;
+        }
+
+        .scroll-btn:hover {
+            color: #ff9900;
+        }
+
         .weather-scroll {
             display: flex;
-            gap: 15px;
-            padding: 10px 0;
+            gap: 10px;
             overflow-x: auto;
             scroll-behavior: smooth;
-            scrollbar-width: none; /* Ocultar scrollbar en Firefox */
+            scrollbar-width: none;
+            width: 100%;
+            padding: 10px 0;
         }
+
         .weather-scroll::-webkit-scrollbar {
-            display: none; /* Ocultar scrollbar en Chrome/Safari */
+            display: none;
         }
+
         .weather-day {
-            min-width: 80px;
+            min-width: 100px;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 8px;
@@ -40,87 +67,83 @@
             align-items: center;
             flex-shrink: 0;
         }
+
         .weather-icon {
             width: 40px;
             height: 40px;
             margin: 5px 0;
-        }
-        .scroll-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.8);
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            padding: 10px;
-            z-index: 10;
-            border-radius: 50%;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .left-btn {
-            left: 10px;
-        }
-        .right-btn {
-            right: 10px;
+            object-fit: contain;
         }
 
-        /* Responsive: Mostrar solo 5 días en móviles */
         @media (max-width: 768px) {
             .weather-day {
-                min-width: calc(20% - 12px); /* 5 días visibles */
+                min-width: 90px;
             }
         }
     </style>
 </head>
 <body>
 <div class="weather-container">
-    <button class="scroll-btn left-btn">‹</button>
+    <!-- Flecha izquierda -->
+    <button class="scroll-btn left-btn">&lt;</button>
+
+    <!-- Contenedor de días -->
     <div class="weather-scroll" id="weather-scroll">
-        <!-- Los días se generarán con JavaScript -->
+        <!-- Los días se generarán aquí -->
     </div>
-    <button class="scroll-btn right-btn">›</button>
+
+    <!-- Flecha derecha -->
+    <button class="scroll-btn right-btn">&gt;</button>
 </div>
 
 <script>
-    // Datos de ejemplo (14 días para demostrar el scroll)
+    // Datos de ejemplo para 14 días (2 semanas)
     const weatherData = [
-        { day: "Mié", icon: "sun.png", temp: "22°C" },
-        { day: "Jue", icon: "cloud.png", temp: "20°C" },
-        { day: "Vie", icon: "rain.png", temp: "18°C" },
-        { day: "Sáb", icon: "sun.png", temp: "25°C" },
-        { day: "Dom", icon: "storm.png", temp: "19°C" },
-        { day: "Lun", icon: "sun.png", temp: "24°C" },
-        { day: "Mar", icon: "cloud.png", temp: "21°C" },
-        { day: "Mié", icon: "rain.png", temp: "17°C" },
-        { day: "Jue", icon: "sun.png", temp: "23°C" },
-        { day: "Vie", icon: "storm.png", temp: "16°C" }
+        { day: "Mié", date: "07 MAY", icon: "sunny.png", temp: "22°C" },
+        { day: "Jue", date: "08 MAY", icon: "cloudy.png", temp: "20°C" },
+        { day: "Vie", date: "09 MAY", icon: "rain.png", temp: "18°C" },
+        { day: "Sáb", date: "10 MAY", icon: "sunny.png", temp: "25°C" },
+        { day: "Dom", date: "11 MAY", icon: "storm.png", temp: "19°C" },
+        { day: "Lun", date: "12 MAY", icon: "sunny.png", temp: "24°C" },
+        { day: "Mar", date: "13 MAY", icon: "cloudy.png", temp: "21°C" },
+        { day: "Mié", date: "14 MAY", icon: "rain.png", temp: "17°C" },
+        { day: "Jue", date: "15 MAY", icon: "sunny.png", temp: "23°C" },
+        { day: "Vie", date: "16 MAY", icon: "storm.png", temp: "16°C" },
+        { day: "Sáb", date: "17 MAY", icon: "cloudy.png", temp: "20°C" },
+        { day: "Dom", date: "18 MAY", icon: "sunny.png", temp: "26°C" },
+        { day: "Lun", date: "19 MAY", icon: "rain.png", temp: "18°C" },
+        { day: "Mar", date: "20 MAY", icon: "sunny.png", temp: "24°C" }
     ];
 
     const weatherScroll = document.getElementById('weather-scroll');
 
-    // Generar los días
+    // Generar los días iniciales (7 días)
     function renderDays() {
         weatherScroll.innerHTML = '';
-        weatherData.forEach(day => {
+        const daysToShow = 7; // Mostrar siempre 7 días
+
+        for (let i = 0; i < daysToShow; i++) {
+            const dayData = weatherData[i] || { day: "-", date: "-", icon: "default.png", temp: "-" };
+
             const dayElement = document.createElement('div');
             dayElement.className = 'weather-day';
             dayElement.innerHTML = `
-                    <span>${day.day}</span>
-                    <img class="weather-icon" src="images/${day.icon}" alt="${day.day}">
-                    <span>${day.temp}</span>
+                    <span>${dayData.day}</span>
+                    <span>${dayData.date}</span>
+                    <img class="weather-icon" src="images/${dayData.icon}" alt="${dayData.day}">
+                    <span>${dayData.temp}</span>
                 `;
             weatherScroll.appendChild(dayElement);
-        });
+        }
     }
 
     // Scroll con flechas
     document.querySelector('.left-btn').addEventListener('click', () => {
-        weatherScroll.scrollBy({ left: -200, behavior: 'smooth' });
+        weatherScroll.scrollBy({ left: -150, behavior: 'smooth' });
     });
 
     document.querySelector('.right-btn').addEventListener('click', () => {
-        weatherScroll.scrollBy({ left: 200, behavior: 'smooth' });
+        weatherScroll.scrollBy({ left: 150, behavior: 'smooth' });
     });
 
     // Inicializar
