@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario con Avisos y Flechas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .calendar-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .arrow {
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+            user-select: none;
+        }
+        .arrow:hover {
+            color: #ff9900;
+        }
+        .calendar {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 10px;
+        }
+        .calendar th, .calendar td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        .calendar th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        .notification {
+            background-color: #fffacd;
+            font-weight: bold;
+            border-radius: 4px;
+            padding: 5px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Hay <span class="notification">36 avisos amarillos</span></h1>
+
+<div class="calendar-container">
+    <div class="arrow" id="prev-week">&#9664;</div> <!-- Flecha izquierda -->
+    <table class="calendar" id="calendar">
+        <tr>
+            <th>Miércoles</th>
+            <th>Jueves</th>
+            <th>Viernes</th>
+            <th>Sábado</th>
+            <th>Domingo</th>
+            <th>Lunes</th>
+            <th>Martes</th>
+        </tr>
+        <tr id="dates-row">
+            <td>07 MAY.</td>
+            <td>08 MAY.</td>
+            <td>09 MAY.</td>
+            <td>10 MAY.</td>
+            <td>11 MAY.</td>
+            <td>12 MAY.</td>
+            <td>13 MAY.</td>
+        </tr>
+    </table>
+    <div class="arrow" id="next-week">&#9654;</div> <!-- Flecha derecha -->
+</div>
+
+<script>
+    // Datos iniciales (semana del 07 al 13 de mayo de 2024)
+    let currentDate = new Date(2024, 4, 7); // 7 de mayo de 2024 (mes 4 = mayo)
+
+    // Función para actualizar el calendario
+    function updateCalendar() {
+        const datesRow = document.getElementById('dates-row');
+        const days = ['DOM.', 'LUN.', 'MAR.', 'MIÉ.', 'JUE.', 'VIE.', 'SÁB.'];
+        let datesHTML = '';
+
+        // Clonar la fecha para no modificar la original
+        let date = new Date(currentDate);
+
+        // Generar las celdas de fechas para la semana actual
+        for (let i = 0; i < 7; i++) {
+            const dayName = days[date.getDay()];
+            const dayNumber = date.getDate();
+            const month = date.toLocaleString('es-ES', { month: 'short' }).toUpperCase();
+            datesHTML += `<td>${dayNumber} ${month}</td>`;
+            date.setDate(date.getDate() + 1); // Siguiente día
+        }
+
+        datesRow.innerHTML = datesHTML;
+    }
+
+    // Eventos para las flechas
+    document.getElementById('prev-week').addEventListener('click', () => {
+        currentDate.setDate(currentDate.getDate() - 7); // Restar 7 días
+        updateCalendar();
+    });
+
+    document.getElementById('next-week').addEventListener('click', () => {
+        currentDate.setDate(currentDate.getDate() + 7); // Sumar 7 días
+        updateCalendar();
+    });
+
+    // Inicializar calendario
+    updateCalendar();
+</script>
+</body>
+</html>

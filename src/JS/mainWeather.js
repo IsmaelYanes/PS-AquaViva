@@ -140,6 +140,7 @@ function showWeatherData(json) {
                 if (hour >= 21 || hour <= 8) {
                     // Noche
                     document.getElementById("background-video").src = "../Videos/nightSkyClearRecortado.mp4";
+                    document.getElementById("place-text").style.color = "whitesmoke";
                 } else {
                     // Día
                     document.getElementById("background-video").src = "../Videos/skyBlue.mp4";
