@@ -3,121 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendario con Avisos y Flechas</title>
+    <title>Pronóstico con Scroll</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
-            text-align: center;
+            margin: 0;
+            padding: 20px;
         }
-        h1 {
-            color: #333;
+        .weather-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
         }
-        .calendar-container {
+        .weather-scroll {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px 0;
+            gap: 15px;
+            padding: 10px 0;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Ocultar scrollbar en Firefox */
         }
-        .arrow {
-            font-size: 24px;
+        .weather-scroll::-webkit-scrollbar {
+            display: none; /* Ocultar scrollbar en Chrome/Safari */
+        }
+        .weather-day {
+            min-width: 80px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .weather-icon {
+            width: 40px;
+            height: 40px;
+            margin: 5px 0;
+        }
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            font-size: 20px;
             cursor: pointer;
             padding: 10px;
-            user-select: none;
+            z-index: 10;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-        .arrow:hover {
-            color: #ff9900;
+        .left-btn {
+            left: 10px;
         }
-        .calendar {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 0 10px;
+        .right-btn {
+            right: 10px;
         }
-        .calendar th, .calendar td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: center;
-        }
-        .calendar th {
-            background-color: #f4f4f4;
-            font-weight: bold;
-        }
-        .notification {
-            background-color: #fffacd;
-            font-weight: bold;
-            border-radius: 4px;
-            padding: 5px;
-            display: inline-block;
-            margin-bottom: 10px;
+
+        /* Responsive: Mostrar solo 5 días en móviles */
+        @media (max-width: 768px) {
+            .weather-day {
+                min-width: calc(20% - 12px); /* 5 días visibles */
+            }
         }
     </style>
 </head>
 <body>
-<h1>Hay <span class="notification">36 avisos amarillos</span></h1>
-
-<div class="calendar-container">
-    <div class="arrow" id="prev-week">&#9664;</div> <!-- Flecha izquierda -->
-    <table class="calendar" id="calendar">
-        <tr>
-            <th>Miércoles</th>
-            <th>Jueves</th>
-            <th>Viernes</th>
-            <th>Sábado</th>
-            <th>Domingo</th>
-            <th>Lunes</th>
-            <th>Martes</th>
-        </tr>
-        <tr id="dates-row">
-            <td>07 MAY.</td>
-            <td>08 MAY.</td>
-            <td>09 MAY.</td>
-            <td>10 MAY.</td>
-            <td>11 MAY.</td>
-            <td>12 MAY.</td>
-            <td>13 MAY.</td>
-        </tr>
-    </table>
-    <div class="arrow" id="next-week">&#9654;</div> <!-- Flecha derecha -->
+<div class="weather-container">
+    <button class="scroll-btn left-btn">‹</button>
+    <div class="weather-scroll" id="weather-scroll">
+        <!-- Los días se generarán con JavaScript -->
+    </div>
+    <button class="scroll-btn right-btn">›</button>
 </div>
 
 <script>
-    // Datos iniciales (semana del 07 al 13 de mayo de 2024)
-    let currentDate = new Date(2024, 4, 7); // 7 de mayo de 2024 (mes 4 = mayo)
+    // Datos de ejemplo (14 días para demostrar el scroll)
+    const weatherData = [
+        { day: "Mié", icon: "sun.png", temp: "22°C" },
+        { day: "Jue", icon: "cloud.png", temp: "20°C" },
+        { day: "Vie", icon: "rain.png", temp: "18°C" },
+        { day: "Sáb", icon: "sun.png", temp: "25°C" },
+        { day: "Dom", icon: "storm.png", temp: "19°C" },
+        { day: "Lun", icon: "sun.png", temp: "24°C" },
+        { day: "Mar", icon: "cloud.png", temp: "21°C" },
+        { day: "Mié", icon: "rain.png", temp: "17°C" },
+        { day: "Jue", icon: "sun.png", temp: "23°C" },
+        { day: "Vie", icon: "storm.png", temp: "16°C" }
+    ];
 
-    // Función para actualizar el calendario
-    function updateCalendar() {
-        const datesRow = document.getElementById('dates-row');
-        const days = ['DOM.', 'LUN.', 'MAR.', 'MIÉ.', 'JUE.', 'VIE.', 'SÁB.'];
-        let datesHTML = '';
+    const weatherScroll = document.getElementById('weather-scroll');
 
-        // Clonar la fecha para no modificar la original
-        let date = new Date(currentDate);
-
-        // Generar las celdas de fechas para la semana actual
-        for (let i = 0; i < 7; i++) {
-            const dayName = days[date.getDay()];
-            const dayNumber = date.getDate();
-            const month = date.toLocaleString('es-ES', { month: 'short' }).toUpperCase();
-            datesHTML += `<td>${dayNumber} ${month}</td>`;
-            date.setDate(date.getDate() + 1); // Siguiente día
-        }
-
-        datesRow.innerHTML = datesHTML;
+    // Generar los días
+    function renderDays() {
+        weatherScroll.innerHTML = '';
+        weatherData.forEach(day => {
+            const dayElement = document.createElement('div');
+            dayElement.className = 'weather-day';
+            dayElement.innerHTML = `
+                    <span>${day.day}</span>
+                    <img class="weather-icon" src="images/${day.icon}" alt="${day.day}">
+                    <span>${day.temp}</span>
+                `;
+            weatherScroll.appendChild(dayElement);
+        });
     }
 
-    // Eventos para las flechas
-    document.getElementById('prev-week').addEventListener('click', () => {
-        currentDate.setDate(currentDate.getDate() - 7); // Restar 7 días
-        updateCalendar();
+    // Scroll con flechas
+    document.querySelector('.left-btn').addEventListener('click', () => {
+        weatherScroll.scrollBy({ left: -200, behavior: 'smooth' });
     });
 
-    document.getElementById('next-week').addEventListener('click', () => {
-        currentDate.setDate(currentDate.getDate() + 7); // Sumar 7 días
-        updateCalendar();
+    document.querySelector('.right-btn').addEventListener('click', () => {
+        weatherScroll.scrollBy({ left: 200, behavior: 'smooth' });
     });
 
-    // Inicializar calendario
-    updateCalendar();
+    // Inicializar
+    renderDays();
 </script>
 </body>
 </html>
