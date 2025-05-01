@@ -15,80 +15,95 @@
                     <span class="temp-text info-text">ºC</span>
                 </div>
                 <div class="information">
-                    <span class="info-text box-text">Viento: </span>
-                    <span class="info-text box-text" id="wind">No disponible</span><br>
-                    <span class="info-text box-text">Precipitación: </span>
-                    <span class="info-text box-text" id="precipitation">No disponible</span><br>
-                    <span class="info-text box-text">Humedad: </span>
-                    <span class="info-text box-text" id="humedad">No disponible</span><br>
+                    <section class="section-information">
+                        <img id="wind-icon" src="/src/Images/icons/wind.png" style="height: 2em; margin-right: 0.5em"/></img>
+                        <span class="info-text box-text">Viento: </span>
+                        <span class="info-text box-text" id="wind">No disponible</span>
+                    </section>
+                    <section class="section-information">
+                        <img id="precipitation-icon" src="/src/Images/icons/precipitation.png" style="height: 2em; margin-right: 0.5em"/></img>
+                        <span class="info-text box-text">Precipitación: </span>
+                        <span class="info-text box-text" id="precipitation">No disponible</span>
+                    </section>
+                    <section class="section-information">
+                        <img id="humidity-icon" src="/src/Images/icons/humidity.png" style="height: 2em; margin-left: 0.2em"/></img>
+                        <span class="info-text box-text" style="margin-left: 0.8em">Humedad: </span>
+                        <span class="info-text box-text" id="humedad">No disponible</span><br>
+                    </section>
                 </div>
             </section>
             <section>
                 <div class="weather-forecast">
-                    <button class="scroll-btn left-btn"><</button>
-                    <ul class="grid-container-7">
-                        <li class="grid-item group-weather">
-                            <span class="day-week" id="day0"></span>
-                            <img class="weather-icon" id="img-day0" src="../Images/icons/sunny-clearCloud.png"/></img>
-                            <span class="temp-day" id="temp1"></span>
-                        </li>
-                        <li class="grid-item group-weather">
-                            <span class="day-week" id="day1"></span>
-                            <img class="weather-icon" id="img-day1" src="../Images/icons/sunny-clearCloud.png"/></img>
-                            <span class="temp-day" id="temp2"></span>
-                        </li>
-                        <li class="grid-item group-weather">
-                            <span class="day-week" id="day2"></span>
-                            <img class="weather-icon" id="img-day2" src="../Images/icons/sunny-clearCloud.png"/></img>
-                            <span class="temp-day" id="temp3"></span>
-                        </li>
-                        <li class="grid-item group-weather">
-                            <span class="day-week" id="day3"></span>
-                            <img class="weather-icon" id="img-day3" src="../Images/icons/sunny-clearCloud.png"/></img>
-                            <span class="temp-day" id="temp4"></span>
-                        </li>
-                        <li class="grid-item group-weather">
-                            <span class="day-week" id="day4"></span>
-                            <img class="weather-icon" id="img-day4" src="../Images/icons/sunny-clearCloud.png"/></img>
-                            <span class="temp-day" id="temp5"></span>
-                        </li>
-                        <li class="grid-item group-weather">
-                            <span class="day-week" id="day5"></span>
-                            <img class="weather-icon" id="img-day5" src="../Images/icons/sunny-clearCloud.png"/></img>
-                            <span class="temp-day" id="temp6"></span>
-                        </li>
-                        <li class="grid-item group-weather">
-                            <span class="day-week" id="day6"></span>
-                            <img class="weather-icon" id="img-day6" src="../Images/icons/sunny-clearCloud.png"/></img>
-                            <span class="temp-day" id="temp7"></span>
-                        </li>
-                    </ul>
-                    <button class="scroll-btn right-btn">></button>
+                    <button class="scroll-btn left-btn">&lt;</button>
+                    <div id="weather-scroll">
+                        <ul class="grid-container-7">
+                            <li class="grid-item group-weather">
+                                <span class="day-week" id="day0"></span>
+                                <img class="weather-icon" id="img-day0" src="../Images/icons/sunny-clearCloud.png"/></img>
+                                <span class="temp-day" id="temp1"></span>
+                            </li>
+                            <li class="grid-item group-weather">
+                                <span class="day-week" id="day1"></span>
+                                <img class="weather-icon" id="img-day1" src="../Images/icons/sunny-clearCloud.png"/></img>
+                                <span class="temp-day" id="temp2"></span>
+                            </li>
+                            <li class="grid-item group-weather">
+                                <span class="day-week" id="day2"></span>
+                                <img class="weather-icon" id="img-day2" src="../Images/icons/sunny-clearCloud.png"/></img>
+                                <span class="temp-day" id="temp3"></span>
+                            </li>
+                            <li class="grid-item group-weather">
+                                <span class="day-week" id="day3"></span>
+                                <img class="weather-icon" id="img-day3" src="../Images/icons/sunny-clearCloud.png"/></img>
+                                <span class="temp-day" id="temp4"></span>
+                            </li>
+                            <li class="grid-item group-weather">
+                                <span class="day-week" id="day4"></span>
+                                <img class="weather-icon" id="img-day4" src="../Images/icons/sunny-clearCloud.png"/></img>
+                                <span class="temp-day" id="temp5"></span>
+                            </li>
+                            <li class="grid-item group-weather">
+                                <span class="day-week" id="day5"></span>
+                                <img class="weather-icon" id="img-day5" src="../Images/icons/sunny-clearCloud.png"/></img>
+                                <span class="temp-day" id="temp6"></span>
+                            </li>
+                            <li class="grid-item group-weather">
+                                <span class="day-week" id="day6"></span>
+                                <img class="weather-icon" id="img-day6" src="../Images/icons/sunny-clearCloud.png"/></img>
+                                <span class="temp-day" id="temp7"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="scroll-btn right-btn">&gt;</button>
                 </div>
             </section>
             <section class="section3">
                 <div class="forecast-table-hour">
-                    <div class="buttonDays">
-                        <h2 class="buttonDay day-week" id="firstInfo"></h2>
-                        <h2 class="buttonDay day-week" id="secondInfo"></h2>
-                        <h2 class="buttonDay day-week" id="thirdInfo"></h2>
-                        <h2 class="buttonDay day-week" id="fourthInfo"></h2>
-                        <h2 class="buttonDay day-week" id="fifthInfo"></h2>
-                        <h2 class="buttonDay day-week" id="sixthInfo"></h2>
-                        <h2 class="buttonDay day-week" id="seventhInfo"></h2>
+                    <button class="scroll-btn left-btn-hour">&lt;</button>
+                    <div id="table-scroll">
+                        <div class="buttonDays">
+                            <h2 class="buttonDay day-week" id="firstInfo"></h2>
+                            <h2 class="buttonDay day-week" id="secondInfo"></h2>
+                            <h2 class="buttonDay day-week" id="thirdInfo"></h2>
+                            <h2 class="buttonDay day-week" id="fourthInfo"></h2>
+                            <h2 class="buttonDay day-week" id="fifthInfo"></h2>
+                            <h2 class="buttonDay day-week" id="sixthInfo"></h2>
+                            <h2 class="buttonDay day-week" id="seventhInfo"></h2>
+                        </div>
+                        <table id="weather-table">
+                            <thead>
+                            <tr id="hours-row"></tr>
+                            </thead>
+                            <tbody>
+                            <tr id="weather-icons-hour"></tr>
+                            <tr id="temperature-hour"></tr>
+                            <tr id="wind-hour"></tr>
+                            <tr id="prep-hour"></tr>
+                            <tr id="humi-hour"></tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <table id="weather-table">
-                        <thead>
-                        <tr id="hours-row"></tr>
-                        </thead>
-                        <tbody>
-                        <tr id="weather-icons-hour"></tr>
-                        <tr id="temperature-hour"></tr>
-                        <tr id="wind-hour"></tr>
-                        <tr id="prep-hour"></tr>
-                        <tr id="humi-hour"></tr>
-                        </tbody>
-                    </table>
+                    <button class="scroll-btn right-btn-hour">&gt;</button>
                 </div>
             </section>
             <div id="container-last-updated">

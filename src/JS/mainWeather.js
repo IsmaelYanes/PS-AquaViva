@@ -2,6 +2,8 @@
 let lat;
 let lon;
 const apiKey = "5aee2dd3671346f6b1c144401252104";
+
+
 function initWeather() {
     const urlParams = new URLSearchParams(window.location.search);
     lat = urlParams.get("lat");
@@ -14,6 +16,25 @@ function initWeather() {
     const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lon}&days=7&aqi=no&alerts=no`;
     console.log("Cargando clima desde:", jsonURL);
     getDataJson(jsonURL);
+
+    //Eventos de flecha hora/dia
+    const weatherScroll = document.getElementById('weather-scroll');
+    document.querySelector('.left-btn').addEventListener('click', () => {
+        weatherScroll.scrollBy({ left: -150, behavior: 'smooth' });
+    });
+
+    document.querySelector('.right-btn').addEventListener('click', () => {
+        weatherScroll.scrollBy({ left: 150, behavior: 'smooth' });
+    });
+
+    //Eventos de flecha tabla
+    const tableScroll = document.getElementById('table-scroll');
+    document.querySelector('.left-btn-hour').addEventListener('click', () => {
+        tableScroll.scrollBy({ left: -150, behavior: 'smooth' });
+    });
+    document.querySelector('.right-btn-hour').addEventListener('click', () => {
+        tableScroll.scrollBy({ left:  150, behavior: 'smooth' });
+    });
 }
 
 function getDataJson(url, retries = 3, delay = 1000) {
@@ -55,6 +76,8 @@ function getDataJson(url, retries = 3, delay = 1000) {
 
             // Última actualización
             document.getElementById("last-updated").textContent = "Última actualización: " + json.current.last_updated;
+
+
         })
         .catch(error => {
             console.error("Error al cargar datos del tiempo:", error);
@@ -187,7 +210,6 @@ function showWeatherData(json) {
             }
         }
     }
-
 }
 
 function classifyWindDirection(direction) {
