@@ -33,12 +33,15 @@
                 <img src="../Images/distance.png" class="toolbar-icon" id="btn-distance" onclick="measureDistance()">
                 <img src="../Images/zone.png" class="toolbar-icon" id="btn-zone" onclick="defineZone()">
                 <img src="../Images/beach.png" class="toolbar-icon" id="btn-beach" onclick="showBeaches()">
-                <img src="../Images/sateliteview.png" class="toolbar-icon" id="btn-satellite" onclick="toggleSatelliteView()">
-                <img src="../Images/streetview.png" class="toolbar-icon" id="btn-streetview" onclick="toggleStreetView()">
             </div>
         </div>
 
         <div id="map"></div>
+
+        <div id="layer-selector" class="layer-selector">
+            <div id="street-thumb" class="layer-option active" title="Vista de calle"></div>
+            <div id="satellite-thumb" class="layer-option" title="Vista satélite"></div>
+        </div>
 
         <div class="popup" style="display: none;">
             <div class="popup-content">
@@ -103,6 +106,33 @@
 </script>
 
 <script src="../JS/ToolbarToggle.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const streetThumb = document.getElementById("street-thumb");
+        const satelliteThumb = document.getElementById("satellite-thumb");
+
+        if (!streetThumb || !satelliteThumb) return;
+
+        streetThumb.addEventListener("click", () => {
+            toggleStreetView();
+            setLayerSelectorActive("street-thumb");
+        });
+
+        satelliteThumb.addEventListener("click", () => {
+            toggleSatelliteView();
+            setLayerSelectorActive("satellite-thumb");
+        });
+
+        function setLayerSelectorActive(activeId) {
+            document.querySelectorAll('.layer-option').forEach(el => {
+                el.classList.remove("active");
+            });
+            const active = document.getElementById(activeId);
+            if (active) active.classList.add("active");
+        }
+    });
+</script>
+
 <script src="../JS/mapFilter.js"></script>
 
 <script>
