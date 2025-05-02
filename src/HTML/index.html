@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../CSS/MapStyles.css"/>
     <link rel="stylesheet" href="../CSS/ViewMoreWindowStyle.css"/>
     <link rel="stylesheet" href="../CSS/ToolbarStyle.css">
+    <link rel="stylesheet" href="../CSS/mapFilter.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
 </head>
@@ -76,6 +77,7 @@
             </div>
         </div>
     </div>
+    <div id="mapFilter" class="mapFilterContainer"></div>
 </div>
 <div id="imageContainer">
     <div class="textBlock" data-template="textContainer"></div>
@@ -84,12 +86,14 @@
 </div>
 <div id="gap"></div>
 <div id="footer"></div>
-
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
 <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/polyline@1.0.0/lib/polyline.min.js"></script>
 
+
+<script src="../JS/searcher.js"></script>
 <script src="../JS/map.js"></script>
 
 <script>
@@ -99,6 +103,7 @@
 </script>
 
 <script src="../JS/ToolbarToggle.js"></script>
+<script src="../JS/mapFilter.js"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', init);
@@ -123,8 +128,9 @@
     }
 
     function init() {
-        loadTemplate('../HTML-components/header.html', document.getElementById('header'));
+        loadTemplate('../HTML-components/header.html', document.getElementById('header'), initSearcher);
         loadTemplate('../HTML-components/footer.html', document.getElementById('footer'));
+        loadTemplate('../HTML-components/mapFilter.html', document.getElementById('mapFilter'), initFilters);
 
         // Cargar dinámicamente todos los textBlocks
         document.querySelectorAll('.textBlock').forEach((el) => {

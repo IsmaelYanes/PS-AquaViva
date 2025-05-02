@@ -1,4 +1,3 @@
-const KEY = "5aee2dd3671346f6b1c144401252104";
 let swellDataList = []
 let zoneName;
 let foresCastDay;
@@ -9,7 +8,23 @@ let sunrise = [];
 let sunset = [];
 let moonrise= [];
 let moonset = [];
+let tideChart;
 
+
+function initSwellPage(){
+    loadSwell().then(r => {
+        loadHourButton();
+        selectTime(new Date().getHours());
+    });
+}
+
+function initWavePage(){
+    reset();
+    loadWaves().then(r=>{
+        loadButton(datesList);
+        updateChart(0);
+    });
+}
 
 async function loadSwell() {
     try {
@@ -65,13 +80,7 @@ function selectTime(index) {
 
 }
 
-function initSwellPage(){
-    loadSwell().then(r => {
-        loadHourButton();
-        selectTime(new Date().getHours());
-    });
 
-}
 
 
 async function loadWaves() {
@@ -134,7 +143,6 @@ function prepareChartData(dayData) {
     };
 }
 
-let tideChart;
 
 function updateChart(dayIndex) {
     document.getElementById("sunriseTime").innerHTML = sunrise[dayIndex] + " AM";
@@ -184,13 +192,7 @@ function extractHoursToSunrise(dateTimeStr) {
     const [time, ap] = dateTimeStr.split(' ');
     return time;
 }
-function initWavePage(){
-    reset();
-    loadWaves().then(r=>{
-        loadButton(datesList);
-        updateChart(0);
-    });
-}
+
 function reset(){
     datesList = [];
     tidesData = [];
