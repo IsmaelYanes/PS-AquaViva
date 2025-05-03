@@ -1,5 +1,6 @@
 .nav-bar {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     height: 6em;
     width: 100%;
@@ -8,29 +9,35 @@
 header {
     width: 100%;
     height: 100vh;
-    background: linear-gradient(60deg, rgba(102, 204, 242, 1) 0%, rgba(22, 42, 92, 1) 100%);
+    /*background: linear-gradient(60deg, rgba(102, 204, 242, 1) 0%, rgba(22, 42, 92, 1) 100%);*/
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     text-align: center;
+    background-color: #cfdae3;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav-bar_logo {
-    width: 27%;
+    width: 9em;
 }
 
 
-button {
+.homeHeader-button {
     padding: 10px 10px;
-    background: linear-gradient(#33CCCC, #0099CC);
-    color: white;
+    /*background: linear-gradient(#33CCCC, #0099CC);*/
+    background-color: steelblue;
+    color: whitesmoke;
     border: none;
     border-radius: 1em;
     text-decoration: none;
-
 }
-
 
 #aside-buttons {
     margin-left: auto;
@@ -40,36 +47,7 @@ button {
     gap: 2em;
 }
 
-.search-container {
-    position: absolute;
-    width: 300px;
-}
 
-.search-container input {
-    width: 100%;
-    padding: 12px 37px 9px 29px;
-    border-radius: 25px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    text-align: left;
-}
-
-.search-container button {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-}
-
-.search-container button img {
-    width: 20px;
-    height: 20px;
-    margin-right: -4em;
-}
 
 * {
     margin: 0;
@@ -82,44 +60,4 @@ body {
     margin: 0;
     padding: 0;
 }
-.search-container {
-    position: relative;
-    display: inline-block;
-}
 
-.search-box {
-    width: 200px;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-#resultList {
-    position: absolute;
-    top: 100%;
-    left: 20px;
-    width: 100%;
-    max-height: 200px;
-    overflow-y: auto;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-top: none;
-    z-index: 10;
-}
-
-#resultList li {
-    padding: 8px;
-    cursor: pointer;
-    border: 1px solid #DBDBDB;
-    color: black;
-}
-
-#resultList li:hover {
-    background-color: #f0f0f0;
-}
-li.selected {
-    background-color: #e0e0e0;
-}

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let apiKey = "5aee2dd3671346f6b1c144401252104";
+    let apiKey = "8b85f367751d4882aab231335250305";
 
     // Hacer el mapa global
     window.map = L.map('map', {

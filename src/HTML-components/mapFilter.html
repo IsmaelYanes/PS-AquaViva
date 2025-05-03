@@ -1,78 +1,83 @@
-
 <div id = "mapFilterBody">
-<div class="filter-container">
-  <div class="filter-element">
-    <p class="filterContentTitle">Filtrar por nombre</p>
-    <input class="filterBox" type="text" id="filterName" placeholder="Nombre de la playa">
-  </div>
-
-  <div>
-    <p class="filterContentTitle">Filtrar por localidad</p>
-    <div class="filterElementsContainer">
-
-      <div class="filter-element">
-        <label for="islandFilter">Islas</label>
-        <select id="islandFilter" class="filterBox" name="islandFilter">
-          <option value="">Todas las islas</option>
-        </select>
-      </div>
-
-      <div class="filter-element">
-        <label for="townFilter">Municipios</label>
-        <select id="townFilter" class="filterBox" name="townFilter">
-          <option value="">Todos los municipios</option>
-        </select>
-      </div>
-
+  <div class="filter-container">
+    <div class="filter-element-title">
+      <p class="filterContentTitle">Filtrar por nombre</p>
+      <input class="filterBox" type="text" id="filterName" placeholder="Nombre de la playa">
     </div>
-  </div>
 
-  <div>
-    <p class="filterContentTitle">Filtar por la condiciones</p>
-    <div class="filterElementsContainer">
-      <div class="filter-element">
-        <label for="zoneTypeFilter">Tipo de baño</label>
-        <select id="zoneTypeFilter" class="filterBox" name="zoneTypeFilter">
-          <option value="">Todos los tipos</option>
-          <option value="ZBM">Zona de baño marítimo</option>
-          <option value="Playa">Playa</option>
-        </select>
-      </div>
+    <div class="filter-cuality">
+      <p class="filterContentTitle">Filtrar por localidad</p>
+      <div class="filterCualityContainer">
 
-      <div class="filter-element">
-        <label for="environmentConditionFilter">Condición de entorno</label>
-        <select id="environmentConditionFilter" class="filterBox" name="environmentConditionFilter">
-          <option value="">Todas las condiciones</option>
-        </select>
-      </div>
+        <div class="filter-element-locality">
+          <label for="islandFilter" class="titleFilter-text">Islas</label>
+          <select id="islandFilter" class="filterBox" name="islandFilter">
+            <option value="">Todas las islas</option>
+          </select>
+        </div>
 
-      <div class="filter-element">
-        <label for="bathingConditionFilter">Condición de baño</label>
-        <select id="bathingConditionFilter" class="filterBox" name="bathingConditionFilter">
-          <option value="">Todas las condiciones</option>
-        </select>
-      </div>
+        <div></div>
 
-      <div class="filter-element">
-        <label for="accessConditionFilter">Condición de acceso</label>
-        <select id="accessConditionFilter" class="filterBox" name="accessConditionFilter">
-          <option value="">Todas las condiciones</option>
-        </select>
-      </div>
-
-      <div class="filter-element">
-        <label for="InfluenceFilter">Infuencia</label>
-        <select id="InfluenceFilter" class="filterBox" name="InfluenceFilter">
-          <option value="">Todas las condiciones</option>
-        </select>
+        <div class="filter-element-locality">
+          <label for="townFilter" class="titleFilter-text">Municipios</label>
+          <select id="townFilter" class="filterBox" name="townFilter">
+            <option value="">Todos los municipios</option>
+          </select>
+        </div>
       </div>
     </div>
 
-  </div>
-  <p class="filterContentTitle">Filtar por las instalaciones</p>
-  <div id="checkbox-container"></div>
-  <button id="filterButton">Buscar</button>
-</div>
+    <div>
+      <p class="filterContentTitle">Filtrar por condiciones</p>
+      <div class="filterConditionContainer">
+        <div class="filter-element-conditions">
+          <label for="zoneTypeFilter" class="titleFilter-text">Tipo de baño</label>
+          <select id="zoneTypeFilter" class="filterBox" name="zoneTypeFilter">
+            <option value="">Todos los tipos</option>
+            <option value="ZBM">Zona de baño marítimo</option>
+            <option value="Playa">Playa</option>
+          </select>
+        </div>
 
+        <div class="filter-element-conditions">
+          <label for="environmentConditionFilter" class="titleFilter-text">Condición de entorno</label>
+          <select id="environmentConditionFilter" class="filterBox" name="environmentConditionFilter">
+            <option value="">Todas las condiciones</option>
+          </select>
+        </div>
+
+        <div class="filter-element-conditions">
+          <label for="bathingConditionFilter" class="titleFilter-text">Condición de baño</label>
+          <select id="bathingConditionFilter" class="filterBox" name="bathingConditionFilter">
+            <option value="">Todas las condiciones</option>
+          </select>
+        </div>
+
+        <div class="filter-element-conditions">
+          <label for="accessConditionFilter" class="titleFilter-text">Condición de acceso</label>
+          <select id="accessConditionFilter" class="filterBox" name="accessConditionFilter">
+            <option value="">Todas las condiciones</option>
+          </select>
+        </div>
+
+        <div class="filter-element-conditions">
+          <label for="InfluenceFilter" class="titleFilter-text">Infuencia</label>
+          <select id="InfluenceFilter" class="filterBox" name="InfluenceFilter">
+            <option value="">Todas las condiciones</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="filter-element-instalations">
+      <p class="filterContentTitle">Filtar por las instalaciones</p>
+      <div id="checkbox-container"></div>
+    </div>
+
+    <div class="filter-element-button">
+      <button id="filterButton">Filtrar</button>
+    </div>
+  </div>
 </div>
 

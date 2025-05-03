@@ -3,7 +3,6 @@ let lat;
 let lon;
 const apiKey = "5aee2dd3671346f6b1c144401252104";
 
-
 function initWeather() {
     const urlParams = new URLSearchParams(window.location.search);
     lat = urlParams.get("lat");
@@ -14,6 +13,7 @@ function initWeather() {
     if (!lat || !lon) return;
 
     const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lon}&days=7&aqi=no&alerts=no`;
+    //const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=5aee2dd3671346f6b1c144401252104&q=28.017741567446105,-15.349360695425524&days=7&aqi=no&alerts=no`;
     console.log("Cargando clima desde:", jsonURL);
     getDataJson(jsonURL);
 

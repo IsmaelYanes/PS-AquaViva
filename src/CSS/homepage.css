@@ -7,30 +7,37 @@
     color: #666666;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /*align-items: center;*/
 }
+
 #description-container {
-    background-color: #b1bfce;
-    width: 78%;
-    padding: 20px;
-    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    /*background-color: #b1bfce;*/
+    width: 100%;
     margin-bottom: 1em;
 }
+
+#description-text {
+    height: 100%;
+    margin: 4em 0 2em 2em;
+}
+
+#description-text h2 {
+    color: black;
+    font-weight: 600;
+    font-size: 2.25rem;
+    margin-bottom: 1em;
+}
+
 #description {
-    line-height: 1.6;
+    width: 100%;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
     font-family: Arial, sans-serif;
-    font-size: 22px;
     color:black;
 }
-#imageContainer{
-    position: relative;
-    width: 100%;
-    height: 600px;
-    background-image: url('../Images/surfer.png');
-    background-size: cover;
-    opacity: 60%;
-    margin-top: 10em;
-}
+
 .textBlock{
     position: absolute;
     width: 13em;
@@ -84,4 +91,138 @@
     padding: 1%;
     width: 89%;
     height: 20%;
+}
+
+.map-main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+/*search container*/
+.buscador-container {
+    margin-left: 2em;
+    width: 93%;
+    height: 8.5rem;
+}
+
+.search-container {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e9f0f8;
+    /*#f1f5f9*/
+    padding: 0 2rem;
+    border-radius: 8px;
+}
+
+.search-text-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1em auto;
+    border-color: transparent;
+}
+
+.search-text-container h2 {
+    color: black;
+    font-weight: 600;
+    margin-left: 0.5em;
+    font-size: 1.4rem;
+}
+
+.search-text-container img {
+    width: 2.3rem;
+    height: 2.3rem;
+    border-radius: 50%;
+}
+
+.input-container {
+    display: grid;
+    grid-template-columns: auto 4%;
+    width: 100%;
+}
+.search-container input {
+    width: 100%;
+    height: 2.3rem;
+    border-radius: 8px;
+    padding-left: 1rem;
+}
+.search-container button {
+    width: 100%;
+    height: 2.3rem;
+    padding-left: 1rem;
+    background-color: white;
+}
+
+.search-box {
+    border: 1px solid #ccc;
+    padding: 0.625em 1.25em;
+    font-size: 16px;
+    outline: none;
+}
+
+#search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: -1.5em;
+    margin-top: 1em;
+}
+
+#search-button img {
+    width: 1.6em;
+    opacity: 0.7;
+}
+
+#search-button:hover img {
+    opacity: 1;
+}
+
+/*
+wei lista
+#resultList {
+    position: absolute;
+    top: 100%;
+    left: 20px;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-top: none;
+    z-index: 10;
+}
+
+#resultList li {
+    padding: 8px;
+    cursor: pointer;
+    border: 1px solid #DBDBDB;
+    color: black;
+}
+
+#resultList li:hover {
+    background-color: #f0f0f0;
+}
+li.selected {
+    background-color: #e0e0e0;
+}
+*/
+
+#carrusel-container{
+    position: relative;
+    width: 100%;
+    height: 600px;
+    background-image: url('../Videos/prueba-playa.jpg');
+    background-size: cover;
+    opacity: 60%;
+    margin-top: 10em;
 }
