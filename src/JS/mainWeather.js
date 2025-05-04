@@ -112,7 +112,7 @@ function showWeatherData(json) {
     function fillTable(day) {
         let hour = 0;
         if (day === 0) {
-            hour = 14;
+            hour = currentHour;
         }
 
         const dayCeroInfo = json.forecast.forecastday[day];

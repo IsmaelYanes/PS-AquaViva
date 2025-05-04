@@ -128,22 +128,24 @@
 
 <div id="carrusel-container">
     <div class="carrusel">
-        <div class="back">
-            <img id="back" src="../Videos/carrusel/img_1.png" alt="back" loading="lazy">
-        </div>
+        <div class="carrusel-image">
+            <div class="back">
+                <img id="back" src="../Videos/carrusel/img_1.png" alt="back" loading="lazy">
+            </div>
 
-        <div class="widgetContainer">
-            <div id="widget">
-                <img id="image" src="../Videos/playa-widget.png" alt="imagen 1" loading="lazy">
+            <div class="widgetContainer">
+                <div id="widget">
+                    <img id="image" src="../Videos/playa-widget.png" alt="imagen 1" loading="lazy">
+                </div>
+            </div>
+
+            <div class="forward" id="forward">
+                <img src="../Videos/carrusel/img.png" alt="forward" loading="lazy">
             </div>
         </div>
 
-        <div class="forward" id="forward">
-            <img src="../Videos/carrusel/img.png" alt="forward" loading="lazy">
-        </div>
+        <div id="puntos"></div>
     </div>
-
-    <div class="puntos" id="puntos"></div>
 </div>
 
 
@@ -212,8 +214,9 @@
     /*carrusel*/
     let widgetContainer = [
         { url: "../Videos/playa-widget.png" },
+        { url: "../Videos/filtro-widget.png" },
+        { url: "../Videos/oleaje-widget.png" },
         { url: "../Videos/pescados-widget.png" },
-        { url: "../Videos/imagenplaya-ps.jpg" }
     ];
 
     let imagenPrincipal = document.getElementById('image');
@@ -244,7 +247,7 @@
     function actualizarPuntos() {
         puntos.innerHTML = "";
         for (let i = 0; i < widgetContainer.length; i++) {
-            puntos.innerHTML += `<p class="${i === actual ? 'bold' : ''}">.</p>`;
+            puntos.innerHTML += `<p class="${i === actual ? 'bold' : ''}">•</p>`;
         }
     }
 
