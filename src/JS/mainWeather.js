@@ -2,6 +2,7 @@
 let lat;
 let lon;
 const apiKey = "5aee2dd3671346f6b1c144401252104";
+
 function initWeather() {
     const urlParams = new URLSearchParams(window.location.search);
     lat = urlParams.get("lat");
@@ -12,8 +13,28 @@ function initWeather() {
     if (!lat || !lon) return;
 
     const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lon}&days=7&aqi=no&alerts=no`;
+    //const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=5aee2dd3671346f6b1c144401252104&q=28.017741567446105,-15.349360695425524&days=7&aqi=no&alerts=no`;
     console.log("Cargando clima desde:", jsonURL);
     getDataJson(jsonURL);
+
+    //Eventos de flecha hora/dia
+    const weatherScroll = document.getElementById('weather-scroll');
+    document.querySelector('.left-btn').addEventListener('click', () => {
+        weatherScroll.scrollBy({ left: -150, behavior: 'smooth' });
+    });
+
+    document.querySelector('.right-btn').addEventListener('click', () => {
+        weatherScroll.scrollBy({ left: 150, behavior: 'smooth' });
+    });
+
+    //Eventos de flecha tabla
+    const tableScroll = document.getElementById('table-scroll');
+    document.querySelector('.left-btn-hour').addEventListener('click', () => {
+        tableScroll.scrollBy({ left: -150, behavior: 'smooth' });
+    });
+    document.querySelector('.right-btn-hour').addEventListener('click', () => {
+        tableScroll.scrollBy({ left:  150, behavior: 'smooth' });
+    });
 }
 
 function getDataJson(url, retries = 3, delay = 1000) {
@@ -55,6 +76,8 @@ function getDataJson(url, retries = 3, delay = 1000) {
 
             // Última actualización
             document.getElementById("last-updated").textContent = "Última actualización: " + json.current.last_updated;
+
+
         })
         .catch(error => {
             console.error("Error al cargar datos del tiempo:", error);
@@ -75,6 +98,8 @@ function showWeatherData(json) {
     const weatherIconsRow = document.getElementById("weather-icons-hour");
     const temperatureRow = document.getElementById("temperature-hour");
     const windRow = document.getElementById("wind-hour");
+    const prepRow = document.getElementById("prep-hour");
+    const humidityRow = document.getElementById("humi-hour");
 
     const firstInfo = document.getElementById("firstInfo");
     const secondInfo = document.getElementById("secondInfo");
@@ -87,7 +112,7 @@ function showWeatherData(json) {
     function fillTable(day) {
         let hour = 0;
         if (day === 0) {
-            hour = currentHour;
+            hour = 14;
         }
 
         const dayCeroInfo = json.forecast.forecastday[day];
@@ -123,13 +148,25 @@ function showWeatherData(json) {
             windCell.appendChild(arrow);
             windRow.appendChild(windCell);
 
+            // Precipitacion
+            const prepCell = document.createElement("td");
+            prepCell.textContent = (hourInfo.precip_mm) + 'mm';
+            prepRow.appendChild(prepCell);
+
+            // Humedad
+            const humidityCell = document.createElement("td");
+            humidityCell.textContent = (hourInfo.humidity) + '%';
+            humidityRow.appendChild(humidityCell);
+
+
             if (day === 0) {
                 if (hour >= 21 || hour <= 8) {
                     // Noche
                     document.getElementById("background-video").src = "../Videos/nightSkyClearRecortado.mp4";
+                    document.getElementById("place-text").style.color = "whitesmoke";
                 } else {
                     // Día
-                    document.getElementById("background-video").src = "../Videos/skyBlue.mp4";
+                    document.getElementById("background-video").src = "../Videos/sky3.mp4";
                 }
             }
         }
@@ -140,6 +177,8 @@ function showWeatherData(json) {
         weatherIconsRow.textContent = "";
         temperatureRow.textContent = "";
         windRow.textContent = "";
+        prepRow.textContent = "";
+        humidityRow.textContent = "";
     }
 
     fillTable(0);
@@ -171,7 +210,6 @@ function showWeatherData(json) {
             }
         }
     }
-
 }
 
 function classifyWindDirection(direction) {

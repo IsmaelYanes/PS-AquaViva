@@ -54,7 +54,7 @@
         const lat = urlParams.get("lat");
         const lon = urlParams.get("lon");
         const id = urlParams.get("id");
-        loadTemplate(`../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`, document.getElementById('body-container'));
+        loadTemplate(`../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`, document.getElementById('body-container'), initWeather);
     }
 
     function detectSourceAndLoad() {
@@ -81,7 +81,7 @@
         }
 
         console.log("Cargando página por defecto: " + defaultPage);
-        loadTemplate(defaultPage, document.getElementById('body-container'));
+        loadTemplate(defaultPage, document.getElementById('body-container'), initWeather);
     }
 
     function loadTemplate(fileName, element, callback) {
