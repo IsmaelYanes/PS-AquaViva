@@ -6,42 +6,44 @@
     <title>Gráfica de Mareas</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../CSS/wave.css">
+    <link rel="stylesheet" href="../CSS/swell.css">
 
 </head>
-<body>
-<div class="background-div">
-<div class="btn-container" id="selectTideDayButtonContainer"></div>
-<div id="sunriseContainer">
-    <table>
-        <tr>
-            <td>
-                <img class="sunIcon" src="../Images/sunrise.png" alt="Sunrise" id="sunrise">
-            </td>
-            <td>
-                <p class="iconMargin" id="sunriseTime"></p>
-            </td>
-            <td>
-                <img class="sunIcon" src="../Images/sunset.png" alt="Sunset" id="sunset">
-            </td>
-            <td>
-                <p class="iconMargin" id="sunsetTime"></p>
-            </td>
-            <td>
-                <img class="sunIcon" src="../Images/moonrise.png" alt="Sunset" id="moonrise">
-            </td>
-            <td>
-                <p class="iconMargin" id="moonriseTime"></p>
-            </td>
-            <td>
-                <img class="sunIcon" src="../Images/moonset.png" alt="Sunset" id="moonset">
-            </td>
-            <td>
-                <p id="moonsetTime"></p>
-            </td>
-        </tr>
-    </table>
+<div class="hour-nav">
+    <button id="restDay">&#60;</button>
+    <span id="currentDay">01/05</span>
+    <button id="addDay">&#62;</button>
 </div>
-<canvas id="tideChart"></canvas>
+<div id="waveBody">
+<div class="weather-dashboard">
+    <div class="card mainBody" style="grid-column: span 2; width: 700px">
+        <canvas id="tideChart"></canvas>
+    </div>
+    <div class="waveCard">
+        <div class="gap">
+            <img src='../Images/sunrise.png' alt="Sunrise" class="icons">
+            <p id="sunrise" class="titleStyle"> 10 AM</p>
+        </div>
+
+        <div class="gap">
+            <img src='../Images/sunset.png' alt="Sunset" class="icons">
+            <p id="sunset"  class="titleStyle"> 10 AM</p>
+        </div>
+    </div>
+
+    <div class="waveCard">
+        <div class="gap">
+            <img src='../Images/moonrise.png' alt="Sunrise" class="icons">
+            <p id="moonrise"  class="titleStyle"> 10 AM</p>
+        </div>
+
+        <div class="gap">
+            <img src='../Images/moonset.png' alt="Sunset" class="icons">
+            <p id="moonset"  class="titleStyle"> 10 AM</p>
+        </div>
+    </div>
+
 </div>
-</body>
+
+</div>
 </html>

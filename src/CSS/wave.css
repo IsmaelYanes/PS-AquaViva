@@ -20,39 +20,28 @@ button {
 button:hover {
     background-color: #205781;
 }
-#sunriseContainer {
-    justify-content: center;
-    display: flex;
-    margin-top: 2em;
-}
-.sunIcon{
-    width: 40px;
-}
-.iconMargin{
-    margin-right: 20px;
-}
-.background-div {
-    position: relative;
-    margin: 20px auto;
-    padding: 1em;
-    width: 70%;
-    min-width: 25rem;
-    height: auto;
-    border-radius: 10px;
-}
 
-.background-div::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('https://www.ecoticias.com/wp-content/uploads/2022/01/174__38_rotador.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.1;
-    pointer-events: none;
+#waveBody{
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+.icons{
+    width: 100px;
+    padding: 10px;
+}
+.waveCard{
+    grid-auto-flow: column;
+    place-items: center;
+    display: grid;
+    background: #eaf0fb;
+    padding: 1.5rem;
     border-radius: 20px;
+    text-align: center;
+    font-size: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+.gap{
+    padding: 2rem;
 }
