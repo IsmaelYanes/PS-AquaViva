@@ -8,7 +8,19 @@
         "zona": "Oeste",
         "name": "Gran Canaria - Oeste",
         "color": "#ff9999",
-        "coord": "-15.70954044037984, 28.16792536796312"
+        "coord": "-15.70954044037984, 28.16792536796312",
+        "fish": [
+          "Atún rojo Atlántico",
+          "Bicuda",
+          "Cabecinegro",
+          "Cazón",
+          "Chucla",
+          "Congrio",
+          "Pez limón",
+          "Salmonete de roca",
+          "Tiburón mako",
+          "Tres colas"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -102,7 +114,19 @@
         "zona": "Norte",
         "name": "Gran Canaria - Norte",
         "color": "#ff3333",
-        "coord": "-15.698910522425365, 28.163646967801327"
+        "coord": "-15.698910522425365, 28.163646967801327",
+        "fish": [
+          "Barriguda cornuda",
+          "Congrio",
+          "Galán",
+          "Morena picopato",
+          "Pez escorpión",
+          "Pez limón",
+          "Raya látigo",
+          "Raya mosaico",
+          "Reyezuelo",
+          "Tiburón peregrino"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -236,7 +260,17 @@
         "zona": "Este",
         "name": "Gran Canaria - Este",
         "coord": "-15.403564046735852, 28.174142112829486",
-        "color": "#ff6666"
+        "color": "#ff6666",
+        "fish": [
+          "Dorado",
+          "Gobio de roca",
+          "Jurel limón",
+          "Mero",
+          "Pez roca de Madeira",
+          "Tiburón martillo",
+          "Tiburón nodriza",
+          "Tiburón sedoso"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -362,7 +396,15 @@
         "zona": "Sur",
         "name": "Gran Canaria - Sur",
         "coord": "-16.03674574944796, 27.80385897089471",
-        "color": "#ff0000"
+        "color": "#ff0000",
+        "fish": [
+          "Cabracho",
+          "Dorada",
+          "Murión",
+          "Pez luna",
+          "Raya mariposa",
+          "Tres colas"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -508,7 +550,19 @@
         "isla": "Fuerteventura",
         "name": "Fuerteventura - Sur",
         "color": "#C49A1E",
-        "coord": "-14.736072512471736, 27.984897772017604"
+        "coord": "-14.736072512471736, 27.984897772017604",
+        "fish": [
+          "Alitán",
+          "Baila",
+          "Bonito Atlántico",
+          "Galán",
+          "Manta",
+          "Murión",
+          "Palometa",
+          "Pez boca de oro",
+          "Rascacio negro",
+          "Tiburón blanco"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -618,7 +672,18 @@
         "isla": "Fuerteventura",
         "name": "Fuerteventura - Oeste",
         "color": "#F0D34B",
-        "coord": "-14.500743110388385, 28.074331983302002"
+        "coord": "-14.500743110388385, 28.074331983302002",
+        "fish": [
+          "Bacoreta",
+          "Pez herrera",
+          "Pez víbora",
+          "Raya de clavos",
+          "Serrano",
+          "Tiburón nodriza",
+          "Tiburón sedoso",
+          "Tintorera",
+          "Tremielga"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -772,7 +837,17 @@
         "isla": "Fuerteventura",
         "name": "Fuerteventura - Norte",
         "color": "#C49A1E",
-        "coord": "-14.01475281324062, 28.709079662273325"
+        "coord": "-14.01475281324062, 28.709079662273325",
+        "fish": [
+          "Cazón",
+          "Moma",
+          "Palometa",
+          "Pez Perro",
+          "Pez araña",
+          "Pez piloto",
+          "Pez víbora",
+          "Raya redonda"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -962,7 +1037,20 @@
         "isla": "Fuerteventura",
         "name": "Fuerteventura - Este",
         "color": "#F0D34B",
-        "coord": "-13.697516225613413, 28.24752256121441"
+        "coord": "-13.697516225613413, 28.24752256121441",
+        "fish": [
+          "Abade",
+          "Breca",
+          "Escórpora",
+          "Gobio negro",
+          "Manta",
+          "Moma",
+          "Morena picopato",
+          "Pez araña",
+          "Salpa",
+          "Serrano imperial",
+          "Tiburón nodriza"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -1172,7 +1260,19 @@
         "isla": "Lanzarote",
         "name": "Lanzarote - Sur",
         "color": "#7A9F1A",
-        "coord": "-14.007265800164959, 28.885723702088043"
+        "coord": "-14.007265800164959, 28.885723702088043",
+        "fish": [
+          "Aguja mula",
+          "Barriguda cornuda",
+          "Bicuda",
+          "Caballito de mar",
+          "Chopa",
+          "Fula Blanca",
+          "Pejerrey mediterráneo",
+          "Salmonete de fango",
+          "Tremielga",
+          "Trompetero"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -1346,7 +1446,19 @@
         "isla": "Lanzarote",
         "name": "Lanzarote - Oeste",
         "color": "#A9F54D",
-        "coord": "-13.873621609544188, 28.893645562463718"
+        "coord": "-13.873621609544188, 28.893645562463718",
+        "fish": [
+          "Aguja mula",
+          "Breca",
+          "Chucla",
+          "Mero",
+          "Pargo",
+          "Pez roca de Madeira",
+          "Raspallón",
+          "Salvariego",
+          "Sargo breado",
+          "Serrano"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -1704,7 +1816,19 @@
         "isla": "Lanzarote",
         "name": "Lanzarote - Este",
         "color": "#A9F54D",
-        "coord": "-13.601469081799706, 28.784076533044626"
+        "coord": "-13.601469081799706, 28.784076533044626",
+        "fish": [
+          "Aguja de mar",
+          "Cherna",
+          "Mojarra",
+          "Pez verde",
+          "Rascacio negro",
+          "Raya pelágica",
+          "Raya pintada",
+          "Raya torpedo",
+          "Salpa",
+          "Serrano imperial"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -1922,7 +2046,20 @@
         "zona": "Lanzarote",
         "name": "Lanzarote - Norte",
         "color": "#7A9F1A",
-        "coord": "-13.51448867305777, 29.177185682007163"
+        "coord": "-13.51448867305777, 29.177185682007163",
+        "fish": [
+          "Aguja de mar",
+          "Falso abadejo",
+          "Gallinita",
+          "Lenguado",
+          "Manta",
+          "Pez escorpión",
+          "Pez trompeta oriental",
+          "Pez ángel",
+          "Rascacio negro",
+          "Salmonete de fango",
+          "Sargo breado"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -2072,7 +2209,14 @@
         "isla": "Graciosa",
         "name": "Graciosa - Norte",
         "color": "#A9F54D",
-        "coord": "-13.547778430209718, 29.222553654525484"
+        "coord": "-13.547778430209718, 29.222553654525484",
+        "fish": [
+          "Ballesta",
+          "Cabrilla reina",
+          "Pez boca de oro",
+          "Pez roca de Madeira",
+          "Águila de mar"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -2314,7 +2458,20 @@
         "isla": "Tenerife",
         "name": "Tenerife - Sureste",
         "color": "#D68A2E",
-        "coord": "-16.12823576673611, 28.54768680160518"
+        "coord": "-16.12823576673611, 28.54768680160518",
+        "fish": [
+          "Bonito Atlántico",
+          "Congrio",
+          "Galán",
+          "Gobio de roca",
+          "Pintarroja",
+          "Raya torpedo",
+          "Reyezuelo",
+          "Salmonete de roca",
+          "Sargo breado",
+          "Serrano imperial",
+          "Vieja colorada"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -2560,7 +2717,14 @@
         "isla": "Tenerife",
         "name": "Tenerife - Norte",
         "color": "#EDA242",
-        "coord": "-15.880559290786408, 28.54258117128387"
+        "coord": "-15.880559290786408, 28.54258117128387",
+        "fish": [
+          "Aguja de mar",
+          "Pez jabalí",
+          "Salvariego",
+          "Tiburón blanco",
+          "Trompetero"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -3118,7 +3282,18 @@
         "isla": "Gomera",
         "name": "Gomera - Oeste",
         "color": "#4FA6B9",
-        "coord": "-17.209041643300708, 28.024481819949813"
+        "coord": "-17.209041643300708, 28.024481819949813",
+        "fish": [
+          "Gobio de roca",
+          "Mero",
+          "Pez Perro",
+          "Pez jabalí",
+          "Pintarroja",
+          "Raya de clavos",
+          "Raya toro",
+          "Sargo picudo",
+          "Tordo"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -3376,7 +3551,16 @@
         "isla": "Hierro",
         "name": "Hierro - Sureste",
         "color": "#4A3BEE",
-        "coord": "-17.949733466263666, 27.547112759707872"
+        "coord": "-17.949733466263666, 27.547112759707872",
+        "fish": [
+          "Blenio Atlántico",
+          "Pez víbora",
+          "Rape",
+          "Raspallón",
+          "Raya de clavos",
+          "Serrano",
+          "Águila de mar"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -3462,7 +3646,19 @@
         "isla": "Hierro",
         "name": "Hierro - Norte",
         "color": "#110F9A",
-        "coord": "-17.779286574195567, 27.903441507482597"
+        "coord": "-17.779286574195567, 27.903441507482597",
+        "fish": [
+          "Alitán",
+          "Chopa",
+          "Jurel limón",
+          "Lubina",
+          "Oblada",
+          "Palometa",
+          "Pintarroja",
+          "Raya pelágica",
+          "Salmonete de fango",
+          "Sardina"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -3684,7 +3880,15 @@
         "isla": "Hierro",
         "name": "Hierro - Suroeste",
         "color": "#191BED",
-        "coord": "-17.97795880520013, 27.639730478472174"
+        "coord": "-17.97795880520013, 27.639730478472174",
+        "fish": [
+          "Breca",
+          "Cabecinegro",
+          "Doncella",
+          "Pez araña",
+          "Salvariego",
+          "Sardina"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -3886,7 +4090,19 @@
         "isla": "La Palma",
         "name": "La Palma - Este",
         "color": "#23872E",
-        "coord": "-17.845567153083067, 28.328995993366547"
+        "coord": "-17.845567153083067, 28.328995993366547",
+        "fish": [
+          "Aguja mula",
+          "Alitán",
+          "Bicuda",
+          "Cabracho",
+          "Lubina",
+          "Miracielo",
+          "Morena picopato",
+          "Pez Perro",
+          "Pez golondrina",
+          "Salpa"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -4020,7 +4236,25 @@
         "isla": "La Palma",
         "name": "La Palma - Oeste",
         "color": "#4CAF58",
-        "coord": "-17.843489681497005, 28.455770540872024"
+        "coord": "-17.843489681497005, 28.455770540872024",
+        "fish": [
+          "Cabecinegro",
+          "Cazón",
+          "Cherna",
+          "Jurel limón",
+          "Morena",
+          "Oblada",
+          "Pez de San Pedro",
+          "Pez piloto",
+          "Pez verde",
+          "Pez volador",
+          "Raya pintada",
+          "Raya redonda",
+          "Raya toro",
+          "Raya torpedo",
+          "Tordo",
+          "Águila de mar"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -4422,7 +4656,25 @@
         "isla": "Gomera",
         "name": "Gomera - Este",
         "color": "#8EF3F7",
-        "coord": "-17.25380110425695, 28.205699804738842"
+        "coord": "-17.25380110425695, 28.205699804738842",
+        "fish": [
+          "Cabecinegro",
+          "Cazón",
+          "Cherna",
+          "Jurel limón",
+          "Morena",
+          "Oblada",
+          "Pez de San Pedro",
+          "Pez piloto",
+          "Pez verde",
+          "Pez volador",
+          "Raya pintada",
+          "Raya redonda",
+          "Raya toro",
+          "Raya torpedo",
+          "Tordo",
+          "Águila de mar"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -4556,7 +4808,16 @@
         "isla": "Tenerife",
         "name": "Tenerife - Suroeste",
         "color": "#F2B45D",
-        "coord": "-16.7059286304966, 28.011463037926376"
+        "coord": "-16.7059286304966, 28.011463037926376",
+        "fish": [
+          "Boga",
+          "Gorrión",
+          "Lubina",
+          "Merlo",
+          "Raspallón",
+          "Raya pintada",
+          "Tapaculo"
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -4718,7 +4979,17 @@
         "isla": "La Palma",
         "name": "La Palma - Norte",
         "color": "#1A6A23",
-        "coord": "-17.923488041777574, 28.849663792876456"
+        "coord": "-17.923488041777574, 28.849663792876456",
+        "fish": [
+          "Cherna",
+          "Chopa",
+          "Gobio negro",
+          "Miracielo",
+          "Pez boca de oro",
+          "Pez luna",
+          "Raya látigo",
+          "Tapaculo"
+        ]
       },
       "geometry": {
         "coordinates": [
