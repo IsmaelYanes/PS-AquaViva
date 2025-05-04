@@ -18,44 +18,57 @@ window.userLng = null;
 // Variable global para almacenar la caché de playas
 let cachedBeaches = null;
 
-//Función para pasar de página ya que con cada llamada solo te puedes traer una pila de 100 playas.
+/**
+ * Descarga todas las playas desde Firestore y las cachea en memoria.
+ * Usa la REST API de Firestore y maneja paginación automáticamente.
+ * @returns {Promise<Array>} Lista de documentos de playas
+ */
 async function fetchAllBeaches() {
-    // Si ya hay datos en caché, los devolvemos directamente
-    if (cachedBeaches !== null) {
+    if (cachedBeaches) {
         console.log("⚡ Usando playas desde caché.");
         return cachedBeaches;
     }
 
-    let url = "https://firestore.googleapis.com/v1/projects/playascanarias-f83a8/databases/(default)/documents/playas";
+    const baseUrl = "https://firestore.googleapis.com/v1/projects/playascanarias-f83a8/databases/(default)/documents/playas";
     let allBeaches = [];
     let nextPageToken = null;
 
     try {
         do {
-            let fullUrl = nextPageToken ? `${url}?pageToken=${nextPageToken}` : url;
-            const response = await fetch(fullUrl);
-            const data = await response.json();
+            const url = new URL(baseUrl);
+            if (nextPageToken) {
+                url.searchParams.set("pageToken", nextPageToken);
+            }
 
-            if (!data.documents) {
-                console.error("❌ No se encontraron datos de playas en Firebase.");
+            const res = await fetch(url.toString());
+
+            if (!res.ok) {
+                throw new Error(`HTTP error ${res.status}`);
+            }
+
+            const data = await res.json();
+
+            if (!data.documents || !Array.isArray(data.documents)) {
+                console.warn("❌ No se encontraron documentos de playas.");
                 break;
             }
 
             allBeaches.push(...data.documents);
-            nextPageToken = data.nextPageToken || null;
+            console.log(`📥 Descargadas ${data.documents.length} playas, total: ${allBeaches.length}`);
 
-            console.log(`📥 Descargadas ${data.documents.length} playas, total acumulado: ${allBeaches.length}`);
+            nextPageToken = data.nextPageToken || null;
 
         } while (nextPageToken);
 
-        // Guardamos los datos en la caché
         cachedBeaches = allBeaches;
         return allBeaches;
-    } catch (error) {
-        console.error("❌ Error al descargar playas:", error);
+
+    } catch (err) {
+        console.error("❌ Error al obtener playas:", err);
         return [];
     }
 }
+
 
 //Funcion de abrir popup de marcador de playa.
 function showCustomPopup(fields, showRouteButton = false, routeData = null) {
