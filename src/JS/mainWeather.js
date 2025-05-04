@@ -166,7 +166,7 @@ function showWeatherData(json) {
                     document.getElementById("place-text").style.color = "whitesmoke";
                 } else {
                     // Día
-                    document.getElementById("background-video").src = "../Videos/skyBlue.mp4";
+                    document.getElementById("background-video").src = "../Videos/sky3.mp4";
                 }
             }
         }
