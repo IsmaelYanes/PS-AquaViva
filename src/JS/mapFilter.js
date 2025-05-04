@@ -188,7 +188,7 @@ function completeCheckBoxSection(id, facilities){
         const input = document.createElement("input");
         input.type = "checkbox";
         input.value = facility;
-        input.name = "facility";
+        input.name = "facilities";
         input.classList.add("checkboxInput");
         label.textContent = facility;
         label.prepend(input);
@@ -230,7 +230,6 @@ class AdvancedSearcher{
         const results = [];
         beachesList.forEach(beach => {
             if (this.filterBeach(beach)) {
-                console.log(this.filterBeach(beach));
                 results.push(beach)}
         })
         return results;
@@ -246,42 +245,44 @@ class AdvancedSearcher{
         return beach.fields.town?.stringValue;
     }
     getBathingCondition(beach){
-        return beach["Condiciones de baño"]?.stringValue;
+        return beach.fields["Condiciones de baño"]?.stringValue;
     }
     getAccessCondition(beach){
-        return beach["Condiciones de acceso"]?.stringValue;
+        return beach.fields["Condiciones de acceso"]?.stringValue;
     }
     getInfluenceCondition(beach){
-        return beach.maxAnnualInflux?.stringValue;
+        return beach.fields.maxAnnualInflux?.stringValue;
     }
     getEnvironmentCondition(beach){
-        return beach["Condiciones de entorno"]?.stringValue;
+        return beach.fields["Condiciones de entorno"]?.stringValue;
     }
     getBathTypeCondition(beach){
         return beach.fields.type?.stringValue;
     }
     getFacilitiesCondition(beach){
         const facilities = {
-            "Aparcamientos": beach.Aparcamientos?.stringValue,
-            "Aseo": beach.Aseo?.stringValue,
-            "Lavapies": beach.Lavapies?.stringValue,
-            "Duchas": beach.Duchas?.stringValue,
-            "Alquiler de sombrillas": beach["Alquiler de sombrillas"]?.stringValue,
-            "Alquiler de hamacas": beach["Alquiler de hamacas"]?.stringValue,
-            "Alquiler nautico": beach["Alquiler nautico"]?.stringValue,
-            "Area Infantil": beach["Area Infantil"]?.stringValue,
-            "Area Deportiva": beach["Area Deportiva"]?.stringValue,
+            "Aparcamientos": beach.fields.Aparcamientos?.stringValue,
+            "Aseo": beach.fields.Aseo?.stringValue,
+            "Lavapies": beach.fields.Lavapies?.stringValue,
+            "Duchas": beach.fields.Duchas?.stringValue,
+            "Alquiler de sombrillas": beach.fields["Alquiler de sombrillas"]?.stringValue,
+            "Alquiler de hamacas": beach.fields["Alquiler de hamacas"]?.stringValue,
+            "Alquiler nautico": beach.fields["Alquiler nautico"]?.stringValue,
+            "Area Infantil": beach.fields["Area Infantil"]?.stringValue,
+            "Area Deportiva": beach.fields["Area Deportiva"]?.stringValue,
         };
         return Object.entries(facilities)
             .filter(([_, value]) => value === "Si")
             .map(([key]) => key);
     }
+
+
     filterBeach(beach){
         const name = !(this.beachNameInput) || this.getBeachName(beach).toLowerCase().includes(this.beachNameInput);
         const island = !(this.islandSelect) || this.islandSelect === (this.getIsland(beach));
         const town = !(this.townSelect) || this.townSelect === (this.getTown(beach));
-        const bathing = !(this.bathingCondition) || this.bathingCondition === (this.getBathingCondition(beach));
-        const access = !(this.accessCondition) || this.accessCondition === (this.getAccessCondition(beach));
+        const bathing = !(this.bathingCondition) || this.getBathingCondition(beach).includes(this.bathingCondition);
+        const access = !(this.accessCondition) || this.getAccessCondition(beach).includes(this.accessCondition);
         const influence = !(this.influenceCondition) || this.influenceCondition === (this.getInfluenceCondition(beach));
         const environmentCondition = !(this.environmentCondition) || this.environmentCondition === (this.getEnvironmentCondition(beach));
         const bath = !(this.bathType) || this.bathType === (this.getBathTypeCondition(beach));

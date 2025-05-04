@@ -1,100 +1,116 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Información</title>
-    <link rel="stylesheet" href="../CSS/MoreInfoPageStyle.css" />
-    <link rel="stylesheet" href="../CSS/MenuStyle.css" />
-    <link rel="stylesheet" href="../CSS/homeHeader.css" />
-    <link rel="stylesheet" href="../CSS/services.css" />
+    <link rel="stylesheet" href="../CSS/MoreInfoPageStyle.css">
+    <link rel="stylesheet" href="../CSS/MenuStyle.css">
+    <link rel="stylesheet" href="../CSS/homeHeader.css">
+    <link rel="stylesheet" href="../CSS/services.css">
+    <script
+            src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+            type="module"
+    ></script>
 </head>
 <body>
-<div id="header"></div> <!-- El header se cargará dinámicamente aquí -->
+<div id="header"></div>
 
-<div id="menu-container">
-    <nav id="side-menu">
-        <ul>
-            <li><a href="#weather-section">Tiempo atmosférico</a></li>
-            <li><a href="#swell-section">Oleaje</a></li>
-            <li><a href="#wave-section">Marea</a></li>
-            <li><a href="#services-section">Instalaciones</a></li>
-            <li><a href="#fish-gallery-section">Galería de peces</a></li>
-            <li><a href="#fish-zone-section">Peces por zona</a></li>
-        </ul>
-    </nav>
+<div id="container">
+    <div id="body-container"></div>
+    <div id="menu-container">
+        <nav id="side-menu">
+            <ul>
+                <li><a onclick="loadDefaultPage()">Tiempo atmosférico</a></li>
+                <li><a onclick="loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('body-container'), initializeSwellPage)">Oleaje</a></li>
+                <li><a onclick="loadTemplate('../HTML-components/wave.html', document.getElementById('body-container'), initWavePage)">Marea</a></li>
+                <li id="facilities-item"><a onclick="loadTemplate('../HTML-components/services.html', document.getElementById('body-container'), function () {initBeach();})">Instalaciones y prestaciones</a></li>
+                <li><a onclick="loadTemplate('../HTML-components/FishInfo.html', document.getElementById('body-container'), initFishGallery)">Galería de peces</a></li>
+                <li><a>Descargar tabla pdf</a></li>
+            </ul>
+        </nav>
+    </div>
 </div>
-
-<div id="main-content">
-
-    <div id="weather-section" class="scroll-section">Cargando tiempo atmosférico...</div>
-    <div id="swell-section" class="scroll-section">Cargando oleaje...</div>
-    <div id="wave-section" class="scroll-section">Cargando marea...</div>
-    <div id="services-section" class="scroll-section">Cargando instalaciones...</div>
-    <div id="fish-gallery-section" class="scroll-section">Cargando galería de peces...</div>
-    <div id="fish-zone-section" class="scroll-section">Cargando peces por zona...</div>
-</div>
-
+<script src="../JS/weatherAPI.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../JS/swell.js"></script>
+<script src="../JS/services.js"></script>
+<script src="../JS/FishInfo.js"></script>
+<script src="../JS/FishDetail.js"></script>
+<script src="../JS/mainWeather.js"></script>
+<script src="../JS/ToolbarToggle.js"></script>
+<script src="../JS/searcher.js"></script>
+<script src="../JS/dynamicSwell.js"></script>
 <script>
-    // Marcar sección activa al hacer scroll
-    const sections = document.querySelectorAll('.scroll-section');
-    const menuItems = document.querySelectorAll('#side-menu li');
-
-    window.addEventListener('scroll', () => {
-        let currentSectionId = '';
-        const offset = 100; // margen superior
-
-        sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            if (rect.top <= offset && rect.bottom > offset) {
-                currentSectionId = section.id;
-            }
-        });
-
-        menuItems.forEach(item => {
-            item.classList.remove('active');
-            const link = item.querySelector('a');
-            if (link.getAttribute('href') === '#' + currentSectionId) {
-                item.classList.add('active');
-            }
-        });
+    document.addEventListener("DOMContentLoaded", function () {
+        init();
+        detectSourceAndLoad();
     });
 
-    // Cargar templates dinámicamente
-    function loadTemplates() {
-        const templates = {
-            'weather-section': '../HTML-components/mainWeather.html',
-            'swell-section': '../HTML-components/swell.html',
-            'wave-section': '../HTML-components/wave.html',
-            'services-section': '../HTML-components/services.html',
-            'fish-gallery-section': '../HTML-components/FishInfo.html',
-            'fish-zone-section': '../HTML-components/FishByZone.html',
-        };
+    let defaultPage;
+    let coordLAT;
+    let coordLON;
 
-        for (const [id, url] of Object.entries(templates)) {
-            fetch(url)
-                .then(res => res.text())
-                .then(html => {
-                    document.getElementById(id).innerHTML = html;
-                });
-        }
+    function loadDefaultPage() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const lat = urlParams.get("lat");
+        const lon = urlParams.get("lon");
+        const id = urlParams.get("id");
+        loadTemplate(`../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`, document.getElementById('body-container'), initWeather);
     }
 
-    // Cargar el header dinámicamente
-    function loadHeader() {
-        const headerContainer = document.getElementById('header');
-        fetch('../HTML-components/header.html')
-            .then(res => res.text())
-            .then(html => {
-                headerContainer.innerHTML = html;
+    function detectSourceAndLoad() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get("id");
+        const lat = urlParams.get("lat");
+        const lon = urlParams.get("lon");
+
+        if (id) {
+            defaultPage = '../HTML-components/services.html';
+            document.getElementById("facilities-item").style.display = "block";
+            loadTemplate(defaultPage, document.getElementById('body-container'), initBeach);
+            return;
+        } else if (lat && lon) {
+            coordLAT = lat;
+            coordLON = lon;
+            defaultPage = `../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`;
+            document.getElementById("facilities-item").style.display = "none";
+        } else {
+            defaultPage = '../HTML-components/mainWeather.html';
+            document.getElementById("facilities-item").style.display = "none";
+        }
+
+        console.log("Cargando página por defecto: " + defaultPage);
+        loadTemplate(defaultPage, document.getElementById('body-container'), initWeather);
+    }
+
+    function loadTemplate(fileName, element, callback) {
+        if (!element) {
+            console.error("Elemento no encontrado para", fileName);
+            return;
+        }
+
+        fetch(fileName)
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`Error cargando ${fileName}: ${res.status}`);
+                }
+                return res.text();
+            })
+            .then((text) => {
+                element.innerHTML = text;
+                if (callback) {
+                    callback();
+                }
+            })
+            .catch((error) => {
+                console.error("Error al cargar componente:", error);
             });
     }
 
-    // Inicialización cuando el DOM está listo
-    document.addEventListener("DOMContentLoaded", () => {
-        loadHeader();
-        loadTemplates();
-    });
+    function init() {
+        loadTemplate('../HTML-components/header.html', document.getElementById('header'), initSearcher);
+    }
 </script>
 </body>
 </html>
