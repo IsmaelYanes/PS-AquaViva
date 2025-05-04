@@ -1,12 +1,8 @@
 #carrusel-container{
-
-    /* Contenedor */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 70px;
-    overflow: hidden;
 }
 
 .carrusel{
@@ -15,58 +11,67 @@
     justify-content: center;
     overflow: hidden;
     width: 100%;
+    height: 40rem;
+    background-image: url('../Videos/background-carrusel.png');
+    background-size: cover;
+    flex-direction: column;
+}
+
+.carrusel-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.widgetContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 .images-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: end;
+    justify-content: center;
 }
 
 #widget {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50rem;
 }
 
 #image {
     width: 100%;
     border-radius: 10px;
-    max-width: 70%;
+    max-height: 30em;
     box-shadow: 0px 1px 80px 5px #4c5763;
 }
 
-.points {
+#puntos {
     display: flex;
     justify-content: center;
-    gap: 5px;
+    align-items: center;
+    gap: 1em;
 }
-.points p {
-    font-size: 2rem;
-    margin: 0;
-}
-.bold {
+
+#puntos p {
     font-weight: bold;
     color: black;
+    font-size: 1.5rem;
+    margin: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    line-height: 1;
 }
 
-
-#carrusel-container{
-    position: relative;
-    width: 100%;
-    height: 600px;
-    background-image: url('../Videos/background-carrusel.png');
-    background-size: cover;
-    margin-top: 10em;
-}
-
-
-#carrusel-container {
-    position: relative;
-    margin-top: 10em;
-    z-index: 2;
+#puntos p.bold {
+    font-size: 2.5rem;
+    transform: translateY(-5px);
 }
 
 .slide {

@@ -27,6 +27,7 @@
                 <li id="facilities-item"><a onclick="loadTemplate('../HTML-components/services.html', document.getElementById('body-container'), function () {initBeach();})">Instalaciones y prestaciones</a></li>
                 <li><a onclick="loadTemplate('../HTML-components/FishInfo.html', document.getElementById('body-container'), initFishGallery)">Galería de peces</a></li>
                 <li><a>Descargar tabla pdf</a></li>
+                <li><a onclick="loadTemplate('../HTML-components/FishByZone.html?lat=' + coordLAT + '&lon=' + coordLON, document.getElementById('body-container'), initFishByZone)">Peces por zona</a></li>
             </ul>
         </nav>
     </div>
@@ -41,6 +42,8 @@
 <script src="../JS/ToolbarToggle.js"></script>
 <script src="../JS/searcher.js"></script>
 <script src="../JS/dynamicSwell.js"></script>
+<script src="../JS/FishByZone.js"></script>
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         init();
@@ -64,6 +67,8 @@
         const id = urlParams.get("id");
         const lat = urlParams.get("lat");
         const lon = urlParams.get("lon");
+
+        console.log("coordLAT:", lat, "coordLON:", lon);
 
         if (id) {
             defaultPage = '../HTML-components/services.html';
@@ -99,17 +104,57 @@
             })
             .then((text) => {
                 element.innerHTML = text;
+                // Execute inline scripts
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(text, 'text/html');
+                const scripts = doc.getElementsByTagName('script');
+                for (let script of scripts) {
+                    if (script.src) {
+                        // Load external scripts
+                        const newScript = document.createElement('script');
+                        newScript.src = script.src;
+                        newScript.async = false;
+                        document.body.appendChild(newScript);
+                    } else {
+                        // Execute inline scripts
+                        const newScript = document.createElement('script');
+                        newScript.text = script.textContent;
+                        document.body.appendChild(newScript);
+                    }
+                }
                 if (callback) {
-                    callback();
+                    // Delay callback to ensure scripts are loaded
+                    setTimeout(callback, 0);
                 }
             })
             .catch((error) => {
                 console.error("Error al cargar componente:", error);
+                element.innerHTML = '<p>Error al cargar el contenido.</p>';
             });
     }
 
     function init() {
         loadTemplate('../HTML-components/header.html', document.getElementById('header'), initSearcher);
+    }
+
+    function initFishByZone() {
+        if (typeof window.initFishByZoneGallery === 'function') {
+            window.initFishByZoneGallery();
+        } else {
+            console.error("initFishByZoneGallery no está definido");
+            // Fallback: Try loading FishByZone.js manually
+            const script = document.createElement('script');
+            script.src = '../JS/FishByZone.js';
+            script.onload = () => {
+                if (typeof window.initFishByZoneGallery === 'function') {
+                    window.initFishByZoneGallery();
+                } else {
+                    console.error("Failed to load initFishByZoneGallery after manual load");
+                }
+            };
+            script.onerror = () => console.error("Error loading FishByZone.js manually");
+            document.body.appendChild(script);
+        }
     }
 </script>
 </body>
