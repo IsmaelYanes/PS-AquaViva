@@ -11,84 +11,146 @@
     <link rel="stylesheet" href="../CSS/ViewMoreWindowStyle.css"/>
     <link rel="stylesheet" href="../CSS/ToolbarStyle.css">
     <link rel="stylesheet" href="../CSS/mapFilter.css">
+    <link rel="stylesheet" href="../CSS/funcionalities.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
-    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
-    <script src="../JS/auth.js"></script>
 </head>
 <body>
 <div id="header"></div>
 <div id="body-container">
+    <!--<video style="width: 80em" src="../Videos/islasCanarias-video.mp4" autoplay muted loop id="background-video"></video>
+    -->
+    <img style="height: 20rem;  object-fit: cover;" src="../Videos/playa-corralejo.jpg">
+
     <div id="description-container">
-        <p id="description">Descubre las condiciones marítimas en tiempo real en las costas de las Islas Canarias.
-            Nuestra plataforma interactiva te ofrece información actualizada sobre mareas, oleaje, viento, corrientes y más,
-            ideal para pescadores, surfistas, bañistas y amantes del mar.</p>
+        <div id="description-text">
+            <h2>Sobre nosotros</h2>
+            <p id="description">Descubre las condiciones marítimas en tiempo real en las costas de las Islas Canarias.
+                Nuestra plataforma interactiva te ofrece información actualizada sobre mareas, oleaje, viento, corrientes y más,
+                ideal para pescadores, surfistas, bañistas y amantes del mar.</p>
+        </div>
     </div>
-    <div id="map-container">
-        <div id="toolbar">
-            <hr>
-            <img src="../Images/burgerbar.png" id="toolbar-toggle" onclick="toggleToolbar()">
-            <hr>
-            <div id="toolbar-content">
-                <img src="../Images/location.png" class="toolbar-icon" id="btn-location" onclick="showLocation()">
-                <img src="../Images/fav.png" class="toolbar-icon" id="btn-fav" onclick="addToFavorites()">
-                <img src="../Images/distance.png" class="toolbar-icon" id="btn-distance" onclick="measureDistance()">
-                <img src="../Images/zone.png" class="toolbar-icon" id="btn-zone" onclick="defineZone()">
-                <img src="../Images/beach.png" class="toolbar-icon" id="btn-beach" onclick="showBeaches()">
-                <img src="../Images/sateliteview.png" class="toolbar-icon" id="btn-satellite" onclick="toggleSatelliteView()">
-                <img src="../Images/streetview.png" class="toolbar-icon" id="btn-streetview" onclick="toggleStreetView()">
+
+
+    <div class="buscador-container">
+        <div class="search-container">
+            <div class="search-text-container">
+                <img src="/src/Videos/searcher/isla.png" class="search-logo" alt="">
+                <h2>Buscar playa</h2>
+            </div>
+            <div class="input-container">
+                <input type="text" id="search" class="search-box input-with-icon" placeholder="Buscar playa por nombre...">
+                <button id="search-button"><img src="../Images/lupa.png" class="search-button" alt="buscar"></button>
+            </div>
+            <ul id="resultList"></ul>
+        </div>
+    </div>
+
+
+    <div class="map-main-container">
+        <div id="map-container">
+            <div id="toolbar">
+                <div id="toolbar-hamburguer-container" onclick="toggleToolbar()">
+                    <img src="../Videos/toolbar/icono-hamburguesa.png" id="toolbar-icon-hamburguer" >
+                </div>
+                <div id="toolbar-content" style="display: none;">
+                    <div class="toolbar-hamburguer-buttons" onclick="showFilterAdvanced()">
+                        <img src="../Videos/toolbar/icon-filter.png" class="toolbar-icon" id="btn-filter">
+                    </div>
+                    <div class="toolbar-hamburguer-buttons" onclick="showLocation()">
+                        <img src="../Videos/toolbar/icon-whereIam.png" class="toolbar-icon" id="btn-location" >
+                    </div>
+                    <div class="toolbar-hamburguer-buttons" onclick="addToFavorites()">
+                        <img src="../Videos/toolbar/icon-favourites.png" class="toolbar-icon" id="btn-fav" >
+                    </div>
+                    <div class="toolbar-hamburguer-buttons" onclick="measureDistance()">
+                        <img src="../Videos/toolbar/icon-distance.png" class="toolbar-icon" id="btn-distance" >
+                    </div>
+                    <div class="toolbar-hamburguer-buttons" onclick="defineZone()">
+                        <img src="../Videos/toolbar/icon-map.png" class="toolbar-icon" id="btn-zone" >
+                    </div>
+                    <div class="toolbar-hamburguer-buttons" onclick="showBeaches()">
+                        <img src="../Videos/toolbar/icon-beach.png" class="toolbar-icon" id="btn-beach" >
+                    </div>
+
+                    <!--
+                    <img src="../Images/sateliteview.png" class="toolbar-icon" id="btn-satellite" onclick="toggleSatelliteView()">
+                    <img src="../Images/streetview.png" class="toolbar-icon" id="btn-streetview" onclick="toggleStreetView()">
+                    -->
+
+                </div>
+            </div>
+
+            <div id="map"></div>
+
+            <div class="popup" style="display: none;">
+                <div class="popup-content">
+                    <button class="close-btn" onclick="closePopup()">X</button>
+                    <div class="popup-header">
+                        <h2 id="popup-title">Información de la zona</h2>
+                    </div>
+                    <div class="popup-body">
+                        <img id="popup-image" src="" alt="Imagen de la zona seleccionada" class="popup-image" style="display: none;">
+                        <p><strong>Nombre de la isla:</strong> <span id="popup-island">-</span></p>
+                        <p><strong>Zona:</strong> <span id="popup-zone">-</span></p>
+                        <p><strong>Información adicional:</strong> <span id="popup-info"></span></p>
+                        <table class="weather-table">
+                            <thead>
+                            <tr>
+                                <th>Temperatura</th>
+                                <th>Viento</th>
+                                <th>Humedad</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td id="temperature-cell">
+                                    <img id="iconImg" src="../../icons/sunny-clearCloud.png" class="weather-icon">
+                                    <span id="temperature"></span>
+                                </td>
+                                <td><span id="wind"></span></td>
+                                <td><span id="humidity"></span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="popup-footer">
+                        <a id="popup-link" href="#" class="more-info">Ver más</a>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div id="map"></div>
+        <div id="mapFilter" class="mapFilterContainer"></div>
+    </div>
 
-        <div class="popup" style="display: none;">
-            <div class="popup-content">
-                <button class="close-btn" onclick="closePopup()">X</button>
-                <div class="popup-header">
-                    <h2 id="popup-title">Información de la zona</h2>
-                </div>
-                <div class="popup-body">
-                    <img id="popup-image" src="" alt="Imagen de la zona seleccionada" class="popup-image" style="display: none;">
-                    <p><strong>Nombre de la isla:</strong> <span id="popup-island">-</span></p>
-                    <p><strong>Zona:</strong> <span id="popup-zone">-</span></p>
-                    <p><strong>Información adicional:</strong> <span id="popup-info"></span></p>
-                    <table class="weather-table">
-                        <thead>
-                        <tr>
-                            <th>Temperatura</th>
-                            <th>Viento</th>
-                            <th>Humedad</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td id="temperature-cell">
-                                <img id="iconImg" src="../../icons/sunny-clearCloud.png" class="weather-icon">
-                                <span id="temperature"></span>
-                            </td>
-                            <td><span id="wind"></span></td>
-                            <td><span id="humidity"></span></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="popup-footer">
-                    <a id="popup-link" href="#" class="more-info">Ver más</a>
-                </div>
+</div>
+
+<div id="carrusel-container">
+    <div class="carrusel">
+        <div class="back">
+            <img id="back" src="../Videos/carrusel/img_1.png" alt="back" loading="lazy">
+        </div>
+
+        <div class="widgetContainer">
+            <div id="widget">
+                <img id="image" src="../Videos/playa-widget.png" alt="imagen 1" loading="lazy">
             </div>
         </div>
+
+        <div class="forward" id="forward">
+            <img src="../Videos/carrusel/img.png" alt="forward" loading="lazy">
+        </div>
     </div>
-    <div id="mapFilter" class="mapFilterContainer"></div>
+
+    <div class="puntos" id="puntos"></div>
 </div>
-<div id="imageContainer">
-    <div class="textBlock" data-template="textContainer"></div>
-    <div class="textBlock" data-template="textContainer"></div>
-    <div class="textBlock" data-template="textContainer"></div>
-</div>
+
+
 <div id="gap"></div>
 <div id="footer"></div>
+
+
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
@@ -140,27 +202,53 @@
             loadTemplate('../HTML-components/textContainer.html', el);
         });
     }
-</script>
-<script>
-    firebase.auth().onAuthStateChanged(user => {
-        const asideButtons = document.getElementById('aside-buttons');
 
-        if (user) {
-            asideButtons.innerHTML = `
-      <a href="../HTML-components/account.html">
-        <button>Cuenta</button>
-      </a>
-      <button id="logout-button">Cerrar sesión</button>
-    `;
+    function showFilterAdvanced() {
+        const filter = document.getElementById('mapFilter');
 
-            const logoutButton = document.getElementById('logout-button');
-            logoutButton.addEventListener('click', async () => {
-                await firebase.auth().signOut();
-                window.location.reload();
-            });
+        filter.classList.toggle('visible');
+    }
 
-        }
+    /*carrusel*/
+    let widgetContainer = [
+        { url: "../Videos/playa-widget.png" },
+        { url: "../Videos/pescados-widget.png" },
+        { url: "../Videos/imagenplaya-ps.jpg" }
+    ];
+
+    let imagenPrincipal = document.getElementById('image');
+
+    let back = document.getElementById('back');
+    let forward = document.getElementById('forward');
+    let imagen = document.getElementById('widget');
+    let puntos = document.getElementById('puntos');
+    let actual = 0;
+
+    cargarImagen();
+
+    back.addEventListener('click', function () {
+        actual = (actual - 1 + widgetContainer.length) % widgetContainer.length;
+        cargarImagen();
     });
+
+    forward.addEventListener('click', function () {
+        actual = (actual + 1) % widgetContainer.length;
+        cargarImagen();
+    });
+
+    function cargarImagen() {
+        imagenPrincipal.src = widgetContainer[actual].url;
+        actualizarPuntos();
+    }
+
+    function actualizarPuntos() {
+        puntos.innerHTML = "";
+        for (let i = 0; i < widgetContainer.length; i++) {
+            puntos.innerHTML += `<p class="${i === actual ? 'bold' : ''}">.</p>`;
+        }
+    }
+
+
 </script>
 </body>
 </html>

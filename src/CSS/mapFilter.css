@@ -1,50 +1,131 @@
 {
     font: normal 1rem / 1.5rem 'bernino-regular', Verdana, Arial, Geneva, sans-serif !important;
 }
+
+#mapFilterBody {
+    margin-top: 2em;
+    margin-left: 2em;
+}
+
+.mapFilterContainer {
+    width: 89%;
+    border: 5px solid steelblue;
+    border-radius: 15px;
+    background: #F7F7F7;
+}
+
 .filter-container {
     display: flex;
     flex-direction: column;
     gap: 8px;
     margin-bottom: 20px;
 }
-.filter-element {
+
+.filter-element-title {
     display: flex;
     flex-direction: column;
-    width: 15%;
 }
-.filterElementsContainer {
-    display: flex;
+
+.filterContentTitle {
+    margin-top: 5px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 1.3em;
 }
+
+.filter-element-title input{
+    padding-left: 1em;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+}
+
 .filterBox {
     margin-top: 5px;
     margin-right: 20px;
     height: 30px;
 }
-#filterButton {
-    width: 15em;
-    height: 2em;
-    padding: 0;
-}
-.mapFilterContainer {
-    width: 89%;
-    border: 5px solid #b1bfce;
-    background: #F7F7F7;
-}
-#mapFilterBody {
-    margin-top: 2em;
-    margin-left: 2em;
-}
-.filterContentTitle {
-    margin-top: 5px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    font-size: 15px;
 
+.filter-cuality {
+    display: flex;
+    flex-direction: column;
 }
+
+.filterCualityContainer {
+    display: flex;
+}
+
+.filter-element-locality {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.filter-element-locality select {
+    color: #666666;
+    padding-left: 0.5em;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+}
+
+.filterConditionContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.filter-element-conditions {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+    width: 100%;
+}
+
+.filter-element-conditions select {
+    color: #666666;
+    padding-left: 0.5em;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+}
+
+.filter-element-instalations {
+    display: flex;
+    flex-direction: column;
+}
+
+#checkbox-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 .checkboxLabel{
     margin-right: 15px;
     font-size: 15px;
 }
+
 .checkboxInput{
     margin-right: 4px;
+}
+
+.filter-element-button {
+    margin-top: 1.5em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#filterButton {
+    width: 8em;
+    height: 2.3em;
+    border: 1.5px solid steelblue;
+    border-radius: 8px;
+    background-color: steelblue;
+    color: whitesmoke;
+    font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 16.5px;
+}
+
+.titleFilter-text {
+    font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
 }
