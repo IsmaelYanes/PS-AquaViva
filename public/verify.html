@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Verificando correo...</title>
+
+    <style>
+        body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+        #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px 16px; border-radius: 3px; text-align: center; }
+        #message h2 { color: #039be5; font-weight: bold; font-size: 18px; margin-bottom: 12px; }
+        #message p { line-height: 140%; font-size: 14px; margin: 0 0 16px; }
+        #message .success { color: green; }
+        #message .error { color: red; }
+        #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+        @media (max-width: 600px) {
+            body, #message { margin-top: 0; background: white; box-shadow: none; }
+            body { border-top: 16px solid #039be5; }
+        }
+    </style>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCU3fXaXPHYdlb8q4ZKY4iHTmXyvjjpeuQ",
+            authDomain: "playascanarias-f83a8.firebaseapp.com",
+            projectId: "playascanarias-f83a8",
+            storageBucket: "playascanarias-f83a8.appspot.com",
+            messagingSenderId: "524034321433",
+            appId: "1:524034321433:web:b81e26afdf44f82aa34e88",
+            measurementId: "G-W53XJWVN58"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            const params = new URLSearchParams(location.search);
+            const mode = params.get('mode');
+            const code = params.get('oobCode');
+            const messageBox = document.getElementById('message-content');
+
+            if (mode === 'verifyEmail' && code) {
+                try {
+                    await firebase.auth().applyActionCode(code);
+                    messageBox.innerHTML = `
+            <h2>¡Correo verificado!</h2>
+            <p class="success">Tu dirección de correo ha sido verificada correctamente. Ahora puedes iniciar sesión.</p>
+          `;
+                } catch (error) {
+                    messageBox.innerHTML = `
+            <h2>Error al verificar</h2>
+            <p class="error">El enlace ha expirado, ya fue usado o no es válido.</p>
+          `;
+                }
+            } else {
+                messageBox.innerHTML = `
+          <h2>Enlace inválido</h2>
+          <p class="error">No se pudo verificar tu correo. Asegúrate de usar un enlace válido de confirmación.</p>
+        `;
+            }
+        });
+    </script>
+</head>
+<body>
+<div id="message">
+    <div id="message-content">
+        <h2>Verificando tu correo...</h2>
+        <p>Un momento, por favor.</p>
+    </div>
+</div>
+</body>
+</html>
