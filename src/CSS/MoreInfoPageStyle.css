@@ -8,6 +8,7 @@ body {
     display: flex;
     min-height: 100vh;
     font-family: sans-serif;
+    overflow-y: hidden; /* Oculta la barra de scroll vertical del body */
 }
 
 #menu-container {
@@ -62,4 +63,16 @@ body {
     min-height: 100vh;
     padding: 20px;
     border-bottom: 1px solid #ccc;
+}
+
+#side-menu li.active a {
+    background-color: #cce5ff; /* Un color de fondo claro */
+    color: black;
+    font-weight: bold;
+    /* Puedes añadir otros estilos como borde, sombra, etc. */
+}
+
+#side-menu a:hover {
+    background-color: #e0f7fa; /* Un color de fondo diferente para el hover normal */
+    color: #006064;
 }

@@ -17,15 +17,21 @@
 <div id="header"></div>
 
 <div id="container">
-    <div id="body-container"></div>
+    <div id="body-container">
+        <div id="tiempo-atmosferico-container"></div>
+        <div id="oleaje-container"></div>
+        <div id="marea-container"></div>
+        <div id="instalaciones-container"></div>
+        <div id="peces-container"></div>
+    </div>
     <div id="menu-container">
         <nav id="side-menu">
             <ul>
-                <li><a onclick="loadDefaultPage()">Tiempo atmosférico</a></li>
-                <li><a onclick="loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('body-container'), initializeSwellPage)">Oleaje</a></li>
-                <li><a onclick="loadTemplate('../HTML-components/wave.html', document.getElementById('body-container'), initWavePage)">Marea</a></li>
-                <li id="facilities-item"><a onclick="loadTemplate('../HTML-components/services.html', document.getElementById('body-container'), function () {initBeach();})">Instalaciones y prestaciones</a></li>
-                <li><a onclick="loadTemplate('../HTML-components/FishInfo.html', document.getElementById('body-container'), initFishGallery)">Galería de peces</a></li>
+                <li><a href="#tiempo-atmosferico-container" data-section="tiempo-atmosferico-container">Tiempo atmosférico</a></li>
+                <li><a href="#oleaje-container" data-section="oleaje-container">Oleaje</a></li>
+                <li><a href="#marea-container" data-section="marea-container">Marea</a></li>
+                <li id="facilities-item"><a href="#instalaciones-container" data-section="instalaciones-container">Instalaciones y prestaciones</a></li>
+                <li><a href="#peces-container" data-section="peces-container">Galería de peces</a></li>
                 <li><a>Descargar tabla pdf</a></li>
             </ul>
         </nav>
@@ -45,6 +51,7 @@
     document.addEventListener("DOMContentLoaded", function () {
         init();
         detectSourceAndLoad();
+        setupScrollNavigation(); // Agregamos la función para la navegación por scroll
     });
 
     let defaultPage;
@@ -56,7 +63,7 @@
         const lat = urlParams.get("lat");
         const lon = urlParams.get("lon");
         const id = urlParams.get("id");
-        loadTemplate(`../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`, document.getElementById('body-container'), initWeather);
+        loadTemplate('../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}', document.getElementById('tiempo-atmosferico-container'), initWeather);
     }
 
     function detectSourceAndLoad() {
@@ -68,20 +75,32 @@
         if (id) {
             defaultPage = '../HTML-components/services.html';
             document.getElementById("facilities-item").style.display = "block";
-            loadTemplate(defaultPage, document.getElementById('body-container'), initBeach);
+            loadTemplate(defaultPage, document.getElementById('instalaciones-container'), initBeach);
+            loadTemplate('../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}', document.getElementById('tiempo-atmosferico-container'), initWeather);
+            loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('oleaje-container'), initializeSwellPage);
+            loadTemplate('../HTML-components/wave.html', document.getElementById('marea-container'), initWavePage);
+            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('peces-container'), initFishGallery);
             return;
         } else if (lat && lon) {
             coordLAT = lat;
             coordLON = lon;
-            defaultPage = `../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`;
+            defaultPage = '../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}';
             document.getElementById("facilities-item").style.display = "none";
+            loadTemplate(defaultPage, document.getElementById('tiempo-atmosferico-container'), initWeather);
+            loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('oleaje-container'), initializeSwellPage);
+            loadTemplate('../HTML-components/wave.html', document.getElementById('marea-container'), initWavePage);
+            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('peces-container'), initFishGallery);
         } else {
             defaultPage = '../HTML-components/mainWeather.html';
             document.getElementById("facilities-item").style.display = "none";
+            loadTemplate(defaultPage, document.getElementById('tiempo-atmosferico-container'), initWeather);
+            loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('oleaje-container'), initializeSwellPage);
+            loadTemplate('../HTML-components/wave.html', document.getElementById('marea-container'), initWavePage);
+            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('peces-container'), initFishGallery);
         }
 
         console.log("Cargando página por defecto: " + defaultPage);
-        loadTemplate(defaultPage, document.getElementById('body-container'), initWeather);
+        // No necesitamos cargar la página por defecto aquí, ya lo hacemos directamente
     }
 
     function loadTemplate(fileName, element, callback) {
@@ -110,6 +129,49 @@
 
     function init() {
         loadTemplate('../HTML-components/header.html', document.getElementById('header'), initSearcher);
+    }
+
+    function setupScrollNavigation() {
+        const sections = document.querySelectorAll('#body-container > div');
+        const menuLinks = document.querySelectorAll('#side-menu a');
+        const menuItems = document.querySelectorAll('#side-menu li');
+
+        function highlightMenuItem(sectionId) {
+            menuItems.forEach(item => item.classList.remove('active'));
+            menuLinks.forEach(link => {
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                    link.parentNode.classList.add('active');
+                }
+            });
+        }
+
+        function checkVisibleSection() {
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
+                    highlightMenuItem(section.id);
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkVisibleSection);
+
+        // Opcional: Desplazamiento suave al hacer clic en el menú
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Inicialmente, marcar la primera sección como activa
+        if (sections.length > 0) {
+            highlightMenuItem(sections[0].id);
+        }
     }
 </script>
 </body>
