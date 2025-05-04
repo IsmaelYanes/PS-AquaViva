@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 5rem;
 }
 
 .carrusel{
@@ -86,4 +87,42 @@
     justify-content: center;
     align-items: flex-start;
     backdrop-filter: brightness(0.8);
+}
+
+#forward {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+#back {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#back {
+    margin-right: 1em;
+}
+#forward {
+    margin-left: 1em;
+}
+
+.back:hover {
+    transform: translateY(-3px);
+}
+.forward:hover {
+    transform: translateY(-3px);
+}
+
+#contact-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#contact-button p {
+    display: none;
+    width: 100%;
+    margin-top: 1em;
+    text-align: center;
 }

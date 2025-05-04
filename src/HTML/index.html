@@ -18,9 +18,20 @@
 <body>
 <div id="header"></div>
 <div id="body-container">
-    <!--<video style="width: 80em" src="../Videos/islasCanarias-video.mp4" autoplay muted loop id="background-video"></video>
+    <!--
     -->
+    <!--
     <img style="height: 20rem;  object-fit: cover;" src="../Videos/playa-corralejo.jpg">
+    -->
+    <div class="video-container">
+        <video id="mainPage-video" src="../Videos/background-mainpage.mp4" autoplay muted loop></video>
+        <div class="video-overlay"></div>
+        <div class="video-text-container">
+            <h1 id="title-mainPage">Bienvenidos</h1>
+            <h4 id="subtitle-mainPage">Aquí podrás encontrar la playa ideal en base a tus necesidades y mucho más</h4>
+        </div>
+    </div>
+
 
     <div id="description-container">
         <div id="description-text">
@@ -129,8 +140,8 @@
 <div id="carrusel-container">
     <div class="carrusel">
         <div class="carrusel-image">
-            <div class="back">
-                <img id="back" src="../Videos/carrusel/img_1.png" alt="back" loading="lazy">
+            <div class="back" id="back">
+                <img src="../Videos/carrusel/img_1.png" alt="back" loading="lazy">
             </div>
 
             <div class="widgetContainer">
@@ -143,13 +154,24 @@
                 <img src="../Videos/carrusel/img.png" alt="forward" loading="lazy">
             </div>
         </div>
-
         <div id="puntos"></div>
     </div>
 </div>
 
+<div id="contact-container">
+    <div class="contact-content">
+        <h1 id="contact-text">Contacta con nosotros</h1>
+        <div id="contact">
+            <h3 class="contact-information">¡Cuéntanos lo que quieras!</h3>
+            <h3 class="contact-information">Ayúdanos a mejorar, si tienes ideas o dudas no dudes en ponerte en contacto con nosotros.</h3>
+        </div>
+        <div id="contact-button">
+            <button class="contact-button" onclick="copiarCorreo()">Enviar mensaje</button>
+            <p id="mensaje-copiado">¡Correo copiado al portapapeles!</p>
+        </div>
+    </div>
+</div>
 
-<div id="gap"></div>
 <div id="footer"></div>
 
 
@@ -251,6 +273,20 @@
         }
     }
 
+    //copiar correo en portapapeles
+    function copiarCorreo() {
+        const correo = "aquaviva@gmail.com";
+
+        navigator.clipboard.writeText(correo)
+            .then(() => {
+                const mensaje = document.getElementById('mensaje-copiado');
+                mensaje.style.display = 'block';
+                setTimeout(() => mensaje.style.display = 'none', 2000);
+            })
+            .catch(err => {
+                console.error('Error al copiar:', err);
+            });
+    }
 
 </script>
 </body>
