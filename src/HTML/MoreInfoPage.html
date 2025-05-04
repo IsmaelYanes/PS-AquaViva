@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="../CSS/MenuStyle.css">
     <link rel="stylesheet" href="../CSS/homeHeader.css">
     <link rel="stylesheet" href="../CSS/services.css">
+    <script
+            src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+            type="module"
+    ></script>
 </head>
 <body>
 <div id="header"></div>
@@ -17,8 +21,8 @@
     <div id="menu-container">
         <nav id="side-menu">
             <ul>
-                <li><a onclick="loadDefaulPage()">Tiempo atmosférico</a></li>
-                <li><a onclick="loadTemplate('../HTML-components/swell.html', document.getElementById('body-container'), initSwellPage)">Oleaje</a></li>
+                <li><a onclick="loadDefaultPage()">Tiempo atmosférico</a></li>
+                <li><a onclick="loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('body-container'), initializeSwellPage)">Oleaje</a></li>
                 <li><a onclick="loadTemplate('../HTML-components/wave.html', document.getElementById('body-container'), initWavePage)">Marea</a></li>
                 <li id="facilities-item"><a onclick="loadTemplate('../HTML-components/services.html', document.getElementById('body-container'), function () {initBeach();})">Instalaciones y prestaciones</a></li>
                 <li><a onclick="loadTemplate('../HTML-components/FishInfo.html', document.getElementById('body-container'), initFishGallery)">Galería de peces</a></li>
@@ -36,7 +40,7 @@
 <script src="../JS/mainWeather.js"></script>
 <script src="../JS/ToolbarToggle.js"></script>
 <script src="../JS/searcher.js"></script>
-
+<script src="../JS/dynamicSwell.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         init();
@@ -47,7 +51,7 @@
     let coordLAT;
     let coordLON;
 
-    function loadDefaulPage() {
+    function loadDefaultPage() {
         const urlParams = new URLSearchParams(window.location.search);
         const lat = urlParams.get("lat");
         const lon = urlParams.get("lon");
