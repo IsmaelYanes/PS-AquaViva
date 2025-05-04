@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 6em;
+    height: 5.5em;
     width: 100%;
 }
 
@@ -37,6 +37,11 @@ header {
     border: none;
     border-radius: 1em;
     text-decoration: none;
+    cursor: pointer;
+}
+
+.homeHeader-button:hover {
+    background-color: #35648c;
 }
 
 #aside-buttons {

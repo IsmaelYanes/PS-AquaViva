@@ -217,12 +217,3 @@ li.selected {
 }
 */
 
-#carrusel-container{
-    position: relative;
-    width: 100%;
-    height: 600px;
-    background-image: url('../Videos/prueba-playa.jpg');
-    background-size: cover;
-    opacity: 60%;
-    margin-top: 10em;
-}
