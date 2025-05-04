@@ -17,7 +17,10 @@
 /* Estilo general de la ventana emergente */
 .popup {
     display: flex;
-    transform: translate(-120%, -142%);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 400px; /* Aumentamos el ancho */
     max-height: 90vh; /* Ajuste dinámico a la pantalla */
     background: rgba(255, 255, 255, 0.95);
@@ -84,7 +87,6 @@
 p {
     width: 80%;
 }
-
 
 .popup-footer {
     padding: 10px 20px;
