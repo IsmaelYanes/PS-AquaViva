@@ -9,12 +9,51 @@ body {
     margin: 0;
 }
 
+.form-container__recover {
+    text-align: center;
+    font-weight: 600;
+    margin-top: 2.5em;
+    color: #333;
+}
+
+.form-container__recover-link {
+    text-decoration: none;
+    color: #0099CC;
+    border-bottom: 2px solid #0099CC;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+.form-container__recover-link:hover {
+    color: #0077aa;
+    border-bottom: 2px solid #0077aa;
+}
+
+.form-container__google-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 2em auto 0;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.form-container__google-button img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    transition: transform 0.2s ease;
+}
+
+.form-container__google-button:hover img {
+    transform: scale(1.03);
+}
+
 .form-container {
     display: grid;
     grid-template-columns: 1.5fr 1.5fr;
     background-color: white;
     border-radius: 1em;
-    height: 36em;
     width: 70em;
     position: relative;
     box-shadow: 0 -0.0525em 2.5625em #003366;
@@ -56,10 +95,10 @@ body {
 
 .form-container__write-box {
     width: 100%;
-    border: 2px solid #33CCCC;
+    border: 2px solid #0099CC;
     padding: 0.5em 0;
     border-radius:1em;
-    box-shadow: 0 -0.0625em 0.5625em #33CCCC;
+    box-shadow: 0 -0.0625em 0.5625em #0099CC;
     padding-left: 1em;
 }
 
@@ -83,13 +122,124 @@ body {
 .form-container__register {
     text-align: center;
     font-weight: 600;
-    margin-top: 3em;
+    margin-top: 2em;
 }
 
 .form-container__register-link {
     text-decoration: none;
-    border-bottom: 2px solid #33CCCC;
-    color: #33CCCC;
+    color: #0099CC;
+    border-bottom: 2px solid #0099CC;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+.form-container__register-link:hover {
+    text-decoration: none;
+    color: #0077aa;
+    border-bottom: 2px solid #0077aa;
+}
+
+.gsi-material-button {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -webkit-appearance: none;
+    background-color: WHITE;
+    background-image: none;
+    border: 1px solid #747775;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #1f1f1f;
+    cursor: pointer;
+    font-family: 'Roboto', arial, sans-serif;
+    font-size: 14px;
+    height: 40px;
+    letter-spacing: 0.25px;
+    outline: none;
+    overflow: hidden;
+    padding: 0 12px;
+    position: relative;
+    text-align: center;
+    -webkit-transition: background-color .218s, border-color .218s, box-shadow .218s;
+    transition: background-color .218s, border-color .218s, box-shadow .218s;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: auto;
+    max-width: 400px;
+    min-width: min-content;
+}
+
+.gsi-material-button .gsi-material-button-icon {
+    height: 20px;
+    margin-right: 12px;
+    min-width: 20px;
+    width: 20px;
+}
+
+.gsi-material-button .gsi-material-button-content-wrapper {
+    -webkit-align-items: center;
+    align-items: center;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    height: 100%;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+}
+
+.gsi-material-button .gsi-material-button-contents {
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    font-family: 'Roboto', arial, sans-serif;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
+}
+
+.gsi-material-button .gsi-material-button-state {
+    -webkit-transition: opacity .218s;
+    transition: opacity .218s;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.gsi-material-button:disabled {
+    cursor: default;
+    background-color: #ffffff61;
+    border-color: #1f1f1f1f;
+}
+
+.gsi-material-button:disabled .gsi-material-button-contents {
+    opacity: 38%;
+}
+
+.gsi-material-button:disabled .gsi-material-button-icon {
+    opacity: 38%;
+}
+
+.gsi-material-button:not(:disabled):active .gsi-material-button-state,
+.gsi-material-button:not(:disabled):focus .gsi-material-button-state {
+    background-color: #303030;
+    opacity: 12%;
+}
+
+.gsi-material-button:not(:disabled):hover {
+    -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
+}
+
+.gsi-material-button:not(:disabled):hover .gsi-material-button-state {
+    background-color: #303030;
+    opacity: 8%;
 }
 
 

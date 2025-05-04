@@ -1,47 +1,65 @@
-html, body {
+html {
+    scroll-behavior: smooth;
+}
+
+body {
     margin: 0;
     padding: 0;
-    background-color: white; /* Fondo oscuro para toda la página */
-    width: 100%;
-    min-height: 100vh;
-    overflow-y: auto;
-    scrollbar-width: none;
-}
-
-::-webkit-scrollbar {
-    display: none;
-}
-
-#container {
     display: flex;
-    height: 100vh; /* Resta la altura del header */
-    width: 100%;
-}
-
-.homeHeader-container {
-    height: 10vh;
-    padding: 0;
-    margin: 0;
+    min-height: 100vh;
+    font-family: sans-serif;
 }
 
 #menu-container {
     width: 18%;
     min-width: 180px;
     background-color: #061a3a;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1;
 }
 
-#body-container {
-    width: 82%;
-    min-height: 100vh; /* Asegura que crezca si el contenido es mayor */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+#side-menu {
+    padding: 20px;
+}
+
+#side-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#side-menu li {
+    margin: 10px 0;
+}
+
+#side-menu a {
+    color: white;
+    text-decoration: none;
+    display: block;
     padding: 10px;
+    cursor: pointer;
 }
 
-#content-frame {
-    width: 100%;
-    flex-grow: 1; /* Asegura que tome el espacio disponible */
-    border: none;
-    overflow: hidden;
+#side-menu li.active a {
+    background-color: #cce5ff;
+    color: black;
+    font-weight: bold;
+}
+
+#main-content {
+    margin-left: 18%;
+    width: 82%;
+    padding-top: 80px;
+    overflow-y: auto;
+}
+
+.scroll-section {
+    min-height: 100vh;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
 }
