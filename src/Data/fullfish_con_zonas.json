@@ -27,7 +27,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Raya toro.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Raya toro.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Raya toro.jpg",
+    "zonas": [
+      "Gomera - Este",
+      "Gomera - Oeste",
+      "La Palma - Oeste"
+    ]
   },
   {
     "name": "Anthias anthias",
@@ -57,7 +62,11 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Tres colas.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Tres colas.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Tres colas.jpg",
+    "zonas": [
+      "Gran Canaria - Oeste",
+      "Gran Canaria - Sur"
+    ]
   },
   {
     "name": "Apogon imberbis",
@@ -87,7 +96,11 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Reyezuelo.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Reyezuelo.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Reyezuelo.jpg",
+    "zonas": [
+      "Gran Canaria - Norte",
+      "Tenerife - Sureste"
+    ]
   },
   {
     "name": "Atherina boyeri",
@@ -117,7 +130,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Pejerrey mediterráneo.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Pejerrey mediterráneo.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Pejerrey mediterráneo.jpg",
+    "zonas": [
+      "Lanzarote - Sur"
+    ]
   },
   {
     "name": "Aulostomus strigosus",
@@ -147,7 +163,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Pez trompeta oriental.jpg",
-    "mapImage": "../images/MapFishImages/Mapa pez trompeta del atlántico oriental.jpg"
+    "mapImage": "../images/MapFishImages/Mapa pez trompeta del atlántico oriental.jpg",
+    "zonas": [
+      "Fuerteventura - Este"
+    ]
   },
   {
     "name": "Balistes capriscus",
@@ -177,7 +196,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Ballesta.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Ballesta común.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Ballesta común.jpg",
+    "zonas": [
+      "Lanzarote - Norte"
+    ]
   },
   {
     "name": "Bodianus scrofa",
@@ -207,7 +229,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Pez perro.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Pez perro.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Pez perro.jpg",
+    "zonas": [
+      "Fuerteventura - Norte",
+      "Gomera - Oeste",
+      "La Palma - Este"
+    ]
   },
   {
     "name": "Boops boops",
@@ -237,7 +264,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Boga.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Boga.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Boga.jpg",
+    "zonas": [
+      "Tenerife - Suroeste"
+    ]
   },
   {
     "name": "Bothus podas",
@@ -267,7 +297,11 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Tapaculo.jfif",
-    "mapImage": "../images/MapFishImages/Mapa Tapaculo.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Tapaculo.jpg",
+    "zonas": [
+      "La Palma - Norte",
+      "Tenerife - Suroeste"
+    ]
   },
   {
     "name": "Canthigaster capistrata",
@@ -297,7 +331,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Gallinita.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Gallinita.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Gallinita.jpg",
+    "zonas": [
+      "Lanzarote - Norte"
+    ]
   },
   {
     "name": "Capros aper",
@@ -327,7 +364,11 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Pez jabalí.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Pez jabalí.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Pez jabalí.jpg",
+    "zonas": [
+      "Gomera - Oeste",
+      "Tenerife - Norte"
+    ]
   },
   {
     "name": "Carcharhinus falciformis",
@@ -357,7 +398,11 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Tiburón sedoso.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Tiburón sedoso.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Tiburón sedoso.jpg",
+    "zonas": [
+      "Fuerteventura - Oeste",
+      "Gran Canaria - Este"
+    ]
   },
   {
     "name": "Carcharodon carcharias",
@@ -387,7 +432,11 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Tiburón blanco.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Tiburón blanco.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Tiburón blanco.jpg",
+    "zonas": [
+      "Fuerteventura - Sur",
+      "Tenerife - Norte"
+    ]
   },
   {
     "name": "Cetorhinus maximus",
@@ -417,7 +466,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Tiburón peregrino.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Tiburón peregrino.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Tiburón peregrino.jpg",
+    "zonas": [
+      "Gran Canaria - Norte"
+    ]
   },
   {
     "name": "Chromis limbata",
@@ -447,7 +499,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Fula blanca.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Fula blanca.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Fula blanca.jpg",
+    "zonas": [
+      "Lanzarote - Sur"
+    ]
   },
   {
     "name": "Conger conger",
@@ -477,7 +532,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Congrio.jfif",
-    "mapImage": "../images/MapFishImages/Mapa congrio común.jpg"
+    "mapImage": "../images/MapFishImages/Mapa congrio común.jpg",
+    "zonas": [
+      "Fuerteventura - Oeste"
+    ]
   },
   {
     "name": "Coris julis",
@@ -507,7 +565,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Doncella.jpg",
-    "mapImage": "../images/MapFishImages/Mapa doncella común.jpg"
+    "mapImage": "../images/MapFishImages/Mapa doncella común.jpg",
+    "zonas": [
+      "Fuerteventura - Sur"
+    ]
   },
   {
     "name": "Coryphaena hippurus",
@@ -537,7 +598,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Dorado.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Dorado.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Dorado.jpg",
+    "zonas": [
+      "Gran Canaria - Este"
+    ]
   },
   {
     "name": "Dactylopterus volitans",
@@ -567,7 +631,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Pez golondrina.jfif",
-    "mapImage": "../images/MapFishImages/Mapa Pez golondrina.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Pez golondrina.jpg",
+    "zonas": [
+      "La Palma - Este"
+    ]
   },
   {
     "name": "Dasyatis pastinaca",
@@ -597,7 +664,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Raya látigo.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Raya látigo común.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Raya látigo común.jpg",
+    "zonas": [
+      "Lanzarote - Este"
+    ]
   },
   {
     "name": "Dicentrarchus labrax",
@@ -627,7 +697,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Lubina.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Lubina.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Lubina.jpg",
+    "zonas": [
+      "Hierro - Norte",
+      "La Palma - Este",
+      "Tenerife - Suroeste"
+    ]
   },
   {
     "name": "Dicentrarchus punctatus",
@@ -657,7 +732,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Baila.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Baila.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Baila.jpg",
+    "zonas": [
+      "Fuerteventura - Sur"
+    ]
   },
   {
     "name": "Diplodus annularis",
@@ -687,7 +765,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Raspallón.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Raspallón.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Raspallón.jpg",
+    "zonas": [
+      "Hierro - Sureste",
+      "Lanzarote - Oeste",
+      "Tenerife - Suroeste"
+    ]
   },
   {
     "name": "Diplodus cervinus",
@@ -717,7 +800,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Sargo breado.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Sargo breado.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Sargo breado.jpg",
+    "zonas": [
+      "Lanzarote - Norte",
+      "Lanzarote - Oeste",
+      "Tenerife - Sureste"
+    ]
   },
   {
     "name": "Diplodus puntazzo",
@@ -747,7 +835,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Sargo picudo.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Sargo picudo.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Sargo picudo.jpg",
+    "zonas": [
+      "Gomera - Oeste"
+    ]
   },
   {
     "name": "Diplodus sargus",
@@ -777,7 +868,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Sargo.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Sargo común.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Sargo común.jpg",
+    "zonas": [
+      "Tenerife - Suroeste"
+    ]
   },
   {
     "name": "Diplodus vulgaris",
@@ -807,7 +901,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Mojarra.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Mojarra.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Mojarra.jpg",
+    "zonas": [
+      "Lanzarote - Este"
+    ]
   },
   {
     "name": "Echiichthys vipera",
@@ -837,7 +934,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Salvariego.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Salvariego.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Salvariego.jpg",
+    "zonas": [
+      "Hierro - Suroeste",
+      "Lanzarote - Oeste",
+      "Tenerife - Norte"
+    ]
   },
   {
     "name": "Enchelycore anatina",
@@ -867,7 +969,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Morena picopato.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Morena picopato.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Morena picopato.jpg",
+    "zonas": [
+      "Fuerteventura - Este",
+      "Gran Canaria - Norte",
+      "La Palma - Este"
+    ]
   },
   {
     "name": "Epinephelus costae",
@@ -897,7 +1004,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Falso abadejo.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Falso abadejo.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Falso abadejo.jpg",
+    "zonas": [
+      "Lanzarote - Norte"
+    ]
   },
   {
     "name": "Epinephelus itajara",
@@ -927,7 +1037,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Mero guasa.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Mero guasa.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Mero guasa.jpg",
+    "zonas": [
+      "Gomera - Este"
+    ]
   },
   {
     "name": "Epinephelus marginatus",
@@ -957,7 +1070,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Mero.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Mero.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Mero.jpg",
+    "zonas": [
+      "Gomera - Oeste",
+      "Gran Canaria - Este",
+      "Lanzarote - Oeste"
+    ]
   },
   {
     "name": "euthynnus alletteratus",
@@ -987,7 +1105,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Bacoreta.webp",
-    "mapImage": "../images/MapFishImages/Mapa Bacoreta.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Bacoreta.jpg",
+    "zonas": [
+      "Fuerteventura - Oeste"
+    ]
   },
   {
     "name": "Exocoetus volitans",
@@ -1017,7 +1138,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Pez volador.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Pez volador común.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Pez volador común.jpg",
+    "zonas": [
+      "La Palma - Norte"
+    ]
   },
   {
     "name": "Ginglymostoma cirratum",
@@ -1047,7 +1171,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Tiburón nodriza.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Tiburón nodriza.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Tiburón nodriza.jpg",
+    "zonas": [
+      "Fuerteventura - Este",
+      "Fuerteventura - Oeste",
+      "Gran Canaria - Este"
+    ]
   },
   {
     "name": "Gobius niger",
@@ -1077,7 +1206,11 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Gobio negro.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Gobio negro.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Gobio negro.jpg",
+    "zonas": [
+      "Fuerteventura - Este",
+      "La Palma - Norte"
+    ]
   },
   {
     "name": "Gobius paganellus",
@@ -1107,7 +1240,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Gobio de roca.jfif",
-    "mapImage": "../images/MapFishImages/Mapa Gobio de roca.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Gobio de roca.jpg",
+    "zonas": [
+      "Gomera - Oeste",
+      "Gran Canaria - Este",
+      "Tenerife - Sureste"
+    ]
   },
   {
     "name": "Gymnothorax unicolor",
@@ -1137,7 +1275,11 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Murión.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Murión.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Murión.jpg",
+    "zonas": [
+      "Fuerteventura - Sur",
+      "Gran Canaria - Sur"
+    ]
   },
   {
     "name": "Gymnura altavela",
@@ -1167,7 +1309,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Raya mariposa.webp",
-    "mapImage": "../images/MapFishImages/Mapa Raya mariposa.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Raya mariposa.jpg",
+    "zonas": [
+      "Gran Canaria - Sur"
+    ]
   },
   {
     "name": "Hippocampus guttulatus",
@@ -1197,7 +1342,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Caballito de mar mediterráneo.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Caballito de mar mediterráneo.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Caballito de mar mediterráneo.jpg",
+    "zonas": [
+      "La Palma - Este"
+    ]
   },
   {
     "name": "Hippocampus hippocampus",
@@ -1227,7 +1375,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Caballito de mar.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Caballito de mar común.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Caballito de mar común.jpg",
+    "zonas": [
+      "Gran Canaria - Oeste"
+    ]
   },
   {
     "name": "Isurus oxyrinchus",
@@ -1257,7 +1408,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Tiburón mako.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Tiburón mako.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Tiburón mako.jpg",
+    "zonas": [
+      "Gran Canaria - Oeste"
+    ]
   },
   {
     "name": "Kyphosus sectatrix",
@@ -1287,7 +1441,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Chopa.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Chopa.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Chopa.jpg",
+    "zonas": [
+      "Hierro - Norte",
+      "La Palma - Norte",
+      "Lanzarote - Sur"
+    ]
   },
   {
     "name": "Labrus merula",
@@ -1317,7 +1476,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Merlo.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Merlo.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Merlo.jpg",
+    "zonas": [
+      "Tenerife - Suroeste"
+    ]
   },
   {
     "name": "Labrus mixtus",
@@ -1347,7 +1509,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Gorrión.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Gorrión.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Gorrión.jpg",
+    "zonas": [
+      "Tenerife - Suroeste"
+    ]
   },
   {
     "name": "Lithognathus mormyrus",
@@ -1377,7 +1542,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Pez herrera.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Pez herrera.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Pez herrera.jpg",
+    "zonas": [
+      "Fuerteventura - Oeste"
+    ]
   },
   {
     "name": "Lophius budegassa",
@@ -1407,7 +1575,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Rape negro.jpeg",
-    "mapImage": "../images/MapFishImages/Mapa Rape negro.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Rape negro.jpg",
+    "zonas": [
+      "Gran Canaria - Norte"
+    ]
   },
   {
     "name": "Lophius piscatorius",
@@ -1437,7 +1608,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Rape.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Rape común.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Rape común.jpg",
+    "zonas": [
+      "Gran Canaria - Este"
+    ]
   },
   {
     "name": "Macroramphosus scolopax",
@@ -1467,7 +1641,11 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Trompetero.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Trompetero.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Trompetero.jpg",
+    "zonas": [
+      "Lanzarote - Sur",
+      "Tenerife - Norte"
+    ]
   },
   {
     "name": "Mobula mobular",
@@ -1497,7 +1675,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Manta.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Manta.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Manta.jpg",
+    "zonas": [
+      "Fuerteventura - Este",
+      "Fuerteventura - Sur",
+      "Lanzarote - Norte"
+    ]
   },
   {
     "name": "Mola mola",
@@ -1527,7 +1710,11 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Pez luna.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Pez luna.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Pez luna.jpg",
+    "zonas": [
+      "Gran Canaria - Sur",
+      "La Palma - Norte"
+    ]
   },
   {
     "name": "Mullus barbatus",
@@ -1557,7 +1744,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Salmonete de fango.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Salmonete de fango.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Salmonete de fango.jpg",
+    "zonas": [
+      "Hierro - Norte",
+      "Lanzarote - Norte",
+      "Lanzarote - Sur"
+    ]
   },
   {
     "name": "Mullus surmuletus",
@@ -1587,7 +1779,11 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Salmonete de roca.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Salmonete de roca.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Salmonete de roca.jpg",
+    "zonas": [
+      "Gran Canaria - Oeste",
+      "Tenerife - Sureste"
+    ]
   },
   {
     "name": "Muraena helena",
@@ -1617,7 +1813,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Morena.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Morena común.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Morena común.jpg",
+    "zonas": [
+      "Hierro - Suroeste"
+    ]
   },
   {
     "name": "Mustelus mustelus",
@@ -1647,7 +1846,13 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Cazón.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Cazón.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Cazón.jpg",
+    "zonas": [
+      "Fuerteventura - Norte",
+      "Gomera - Este",
+      "Gran Canaria - Oeste",
+      "La Palma - Oeste"
+    ]
   },
   {
     "name": "Mycteroperca fusca",
@@ -1677,7 +1882,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Abade.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Abade.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Abade.jpg",
+    "zonas": [
+      "Fuerteventura - Este"
+    ]
   },
   {
     "name": "Myliobatis aquila",
@@ -1707,7 +1915,13 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Águila de mar.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Águila de mar.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Águila de mar.jpg",
+    "zonas": [
+      "Gomera - Este",
+      "Graciosa - Norte",
+      "Hierro - Sureste",
+      "La Palma - Oeste"
+    ]
   },
   {
     "name": "Naucrates ductor",
@@ -1737,7 +1951,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Pez piloto.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Pez piloto.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Pez piloto.jpg",
+    "zonas": [
+      "Fuerteventura - Norte",
+      "Gomera - Este",
+      "La Palma - Oeste"
+    ]
   },
   {
     "name": "Oblada melanura",
@@ -1767,7 +1986,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Oblada.webp",
-    "mapImage": "../images/MapFishImages/Mapa Oblada.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Oblada.jpg",
+    "zonas": [
+      "Gomera - Este",
+      "Hierro - Norte",
+      "La Palma - Oeste"
+    ]
   },
   {
     "name": "Ophioblennius atlanticus",
@@ -1797,7 +2021,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Blenio Atlántico.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Blenio del Atlántico.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Blenio del Atlántico.jpg",
+    "zonas": [
+      "Hierro - Sureste"
+    ]
   },
   {
     "name": "Pagellus erythrinus",
@@ -1827,7 +2054,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Breca.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Breca.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Breca.jpg",
+    "zonas": [
+      "Fuerteventura - Este",
+      "Hierro - Suroeste",
+      "Lanzarote - Oeste"
+    ]
   },
   {
     "name": "Pagrus pagrus",
@@ -1857,7 +2089,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Pargo.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Pargo común.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Pargo común.jpg",
+    "zonas": [
+      "Gran Canaria - Este"
+    ]
   },
   {
     "name": "Parablennius incognitus",
@@ -1887,7 +2122,11 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Barriguda cornuda.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Barriguda cornuda.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Barriguda cornuda.jpg",
+    "zonas": [
+      "Gran Canaria - Norte",
+      "Lanzarote - Sur"
+    ]
   },
   {
     "name": "Parablennius pilicornis",
@@ -1917,7 +2156,11 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Moma.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Moma.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Moma.jpg",
+    "zonas": [
+      "Fuerteventura - Este",
+      "Fuerteventura - Norte"
+    ]
   },
   {
     "name": "Parapristipoma octolineatum",
@@ -1947,7 +2190,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Pez boca de oro.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Pez boca de oro.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Pez boca de oro.jpg",
+    "zonas": [
+      "Fuerteventura - Sur",
+      "Graciosa - Norte",
+      "La Palma - Norte"
+    ]
   },
   {
     "name": "Polyprion americanus",
@@ -1977,7 +2225,13 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Cherna.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Cherna.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Cherna.jpg",
+    "zonas": [
+      "Gomera - Este",
+      "La Palma - Norte",
+      "La Palma - Oeste",
+      "Lanzarote - Este"
+    ]
   },
   {
     "name": "Prionace glauca",
@@ -2007,7 +2261,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Tintorera.jfif",
-    "mapImage": "../images/MapFishImages/Mapa Tintorera.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Tintorera.jpg",
+    "zonas": [
+      "Fuerteventura - Oeste"
+    ]
   },
   {
     "name": "Pseudocaranx dentex",
@@ -2037,7 +2294,13 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Jurel limón.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Jurel limón.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Jurel limón.jpg",
+    "zonas": [
+      "Gomera - Este",
+      "Gran Canaria - Este",
+      "Hierro - Norte",
+      "La Palma - Oeste"
+    ]
   },
   {
     "name": "Pteroplatytrygon violacea",
@@ -2067,7 +2330,11 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Raya pelágica.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Raya pelágica.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Raya pelágica.jpg",
+    "zonas": [
+      "Hierro - Norte",
+      "Lanzarote - Este"
+    ]
   },
   {
     "name": "Raja brachyura",
@@ -2097,7 +2364,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Raya boca de rosa.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Raya boca de rosa.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Raya boca de rosa.jpg",
+    "zonas": [
+      "Fuerteventura - Sur"
+    ]
   },
   {
     "name": "Raja clavata",
@@ -2127,7 +2397,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Raya de clavos.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Raya de clavos.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Raya de clavos.jpg",
+    "zonas": [
+      "Fuerteventura - Oeste",
+      "Gomera - Oeste",
+      "Hierro - Sureste"
+    ]
   },
   {
     "name": "Raja montagui",
@@ -2157,7 +2432,13 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Raya pintada.webp",
-    "mapImage": "../images/MapFishImages/Mapa Raya pintada.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Raya pintada.jpg",
+    "zonas": [
+      "Gomera - Este",
+      "La Palma - Oeste",
+      "Lanzarote - Este",
+      "Tenerife - Suroeste"
+    ]
   },
   {
     "name": "Raja undulata",
@@ -2187,7 +2468,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Raya mosaico.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Raya mosaico.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Raya mosaico.jpg",
+    "zonas": [
+      "Gran Canaria - Norte"
+    ]
   },
   {
     "name": "Sarda sarda",
@@ -2217,7 +2501,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Bonito Atlántico.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Bonito del Atlántico.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Bonito del Atlántico.jpg",
+    "zonas": [
+      "Lanzarote - Oeste"
+    ]
   },
   {
     "name": "Sardina pilchardus",
@@ -2247,7 +2534,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Sardina.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Sardina común.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Sardina común.jpg",
+    "zonas": [
+      "La Palma - Oeste"
+    ]
   },
   {
     "name": "Sarpa salpa",
@@ -2277,7 +2567,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Salpa.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Salpa.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Salpa.jpg",
+    "zonas": [
+      "Fuerteventura - Este",
+      "La Palma - Este",
+      "Lanzarote - Este"
+    ]
   },
   {
     "name": "Sciaena umbra",
@@ -2307,7 +2602,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Corvina negra.jpeg",
-    "mapImage": "../images/MapFishImages/Mapa Corvina negra.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Corvina negra.jpg",
+    "zonas": [
+      "La Palma - Oeste"
+    ]
   },
   {
     "name": "Scomber colias",
@@ -2337,7 +2635,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Caballa del Atlántico.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Caballa del Atlántico.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Caballa del Atlántico.jpg",
+    "zonas": [
+      "Fuerteventura - Norte"
+    ]
   },
   {
     "name": "Scomber scombrus",
@@ -2367,7 +2668,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Caballa.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Caballa.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Caballa.jpg",
+    "zonas": [
+      "Tenerife - Suroeste"
+    ]
   },
   {
     "name": "Scorpaena maderensis",
@@ -2397,7 +2701,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Pez roca de Madeira.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Pez roca de Madeira.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Pez roca de Madeira.jpg",
+    "zonas": [
+      "Graciosa - Norte",
+      "Gran Canaria - Este",
+      "Lanzarote - Oeste"
+    ]
   },
   {
     "name": "Scorpaena notata",
@@ -2427,7 +2736,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Escórpora.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Escórpora.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Escórpora.jpg",
+    "zonas": [
+      "Fuerteventura - Este"
+    ]
   },
   {
     "name": "Scorpaena porcus",
@@ -2457,7 +2769,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Rascacio negro.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Rascacio negro.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Rascacio negro.jpg",
+    "zonas": [
+      "Fuerteventura - Sur",
+      "Lanzarote - Este",
+      "Lanzarote - Norte"
+    ]
   },
   {
     "name": "Scorpaena scrofa",
@@ -2487,7 +2804,11 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Cabracho.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Cabracho.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Cabracho.jpg",
+    "zonas": [
+      "Gran Canaria - Sur",
+      "La Palma - Este"
+    ]
   },
   {
     "name": "Scyliorhinus canicula",
@@ -2517,7 +2838,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Pintarroja.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Pintarroja.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Pintarroja.jpg",
+    "zonas": [
+      "Gomera - Oeste",
+      "Hierro - Norte",
+      "Tenerife - Sureste"
+    ]
   },
   {
     "name": "Scyliorhinus stellaris",
@@ -2547,7 +2873,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Alitán.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Alitán.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Alitán.jpg",
+    "zonas": [
+      "Fuerteventura - Sur",
+      "Hierro - Norte",
+      "La Palma - Este"
+    ]
   },
   {
     "name": "Seriola dumerili",
@@ -2577,7 +2908,11 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Pez limón.jpeg",
-    "mapImage": "../images/MapFishImages/Mapa Pez limón.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Pez limón.jpg",
+    "zonas": [
+      "Gran Canaria - Norte",
+      "Gran Canaria - Oeste"
+    ]
   },
   {
     "name": "Serranus atricauda",
@@ -2607,7 +2942,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Serrano imperial.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Serrano imperial.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Serrano imperial.jpg",
+    "zonas": [
+      "Fuerteventura - Este",
+      "Lanzarote - Este",
+      "Tenerife - Sureste"
+    ]
   },
   {
     "name": "Serranus cabrilla",
@@ -2637,7 +2977,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Cabrilla reina.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Cabrilla reina.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Cabrilla reina.jpg",
+    "zonas": [
+      "Graciosa - Norte"
+    ]
   },
   {
     "name": "Serranus scriba",
@@ -2667,7 +3010,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Serrano.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Serrano.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Serrano.jpg",
+    "zonas": [
+      "Fuerteventura - Oeste",
+      "Hierro - Sureste",
+      "Lanzarote - Oeste"
+    ]
   },
   {
     "name": "Solea solea",
@@ -2697,7 +3045,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Lenguado.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Lenguado.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Lenguado.jpg",
+    "zonas": [
+      "Lanzarote - Norte"
+    ]
   },
   {
     "name": "Sparisoma cretense",
@@ -2727,7 +3078,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Vieja colorada.webp",
-    "mapImage": "../images/MapFishImages/Mapa Vieja colorada.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Vieja colorada.jpg",
+    "zonas": [
+      "Tenerife - Sureste"
+    ]
   },
   {
     "name": "Sparus aurata",
@@ -2757,7 +3111,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Dorada.webp",
-    "mapImage": "../images/MapFishImages/Mapa Dorada.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Dorada.jpg",
+    "zonas": [
+      "Gran Canaria - Sur"
+    ]
   },
   {
     "name": "Sphyraena viridensis",
@@ -2787,7 +3144,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Bicuda.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Bicuda.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Bicuda.jpg",
+    "zonas": [
+      "Gran Canaria - Oeste",
+      "La Palma - Este",
+      "Lanzarote - Sur"
+    ]
   },
   {
     "name": "Sphyrna lewini",
@@ -2817,7 +3179,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Tiburón martillo común.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Tiburón martillo común.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Tiburón martillo común.jpg",
+    "zonas": [
+      "Gran Canaria - Norte"
+    ]
   },
   {
     "name": "Sphyrna mokarran",
@@ -2847,7 +3212,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Tiburón martillo.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Tiburón martillo gigante.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Tiburón martillo gigante.jpg",
+    "zonas": [
+      "Tenerife - Sureste"
+    ]
   },
   {
     "name": "Spicara maena",
@@ -2877,7 +3245,11 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Chucla.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Chucla.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Chucla.jpg",
+    "zonas": [
+      "Gran Canaria - Oeste",
+      "Lanzarote - Oeste"
+    ]
   },
   {
     "name": "Spondyliosoma cantharus",
@@ -2907,7 +3279,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Chopa.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Chopa.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Chopa.jpg",
+    "zonas": [
+      "Hierro - Norte",
+      "La Palma - Norte",
+      "Lanzarote - Sur"
+    ]
   },
   {
     "name": "Squatina squatina",
@@ -2937,7 +3314,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Pez ángel.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Pez ángel.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Pez ángel.jpg",
+    "zonas": [
+      "Lanzarote - Norte"
+    ]
   },
   {
     "name": "Symphodus mediterraneus",
@@ -2967,7 +3347,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Tordo rojo.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Tordo rojo.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Tordo rojo.jpg",
+    "zonas": [
+      "Gran Canaria - Este"
+    ]
   },
   {
     "name": "Symphodus tinca",
@@ -2997,7 +3380,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Tordo.webp",
-    "mapImage": "../images/MapFishImages/Mapa Tordo.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Tordo.jpg",
+    "zonas": [
+      "Gomera - Este",
+      "Gomera - Oeste",
+      "La Palma - Oeste"
+    ]
   },
   {
     "name": "Syngnathus acus",
@@ -3027,7 +3415,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Aguja de mar.jfif",
-    "mapImage": "../images/MapFishImages/Mapa Aguja de mar.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Aguja de mar.jpg",
+    "zonas": [
+      "Lanzarote - Este",
+      "Lanzarote - Norte",
+      "Tenerife - Norte"
+    ]
   },
   {
     "name": "Syngnathus typhle",
@@ -3057,7 +3450,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Aguja mula.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Aguja mula.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Aguja mula.jpg",
+    "zonas": [
+      "La Palma - Este",
+      "Lanzarote - Oeste",
+      "Lanzarote - Sur"
+    ]
   },
   {
     "name": "Taeniura grabata",
@@ -3087,7 +3485,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Raya redonda.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Raya redonda.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Raya redonda.jpg",
+    "zonas": [
+      "Fuerteventura - Norte",
+      "Gomera - Este",
+      "La Palma - Oeste"
+    ]
   },
   {
     "name": "Thalassoma pavo",
@@ -3117,7 +3520,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Pez verde.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Pez verde.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Pez verde.jpg",
+    "zonas": [
+      "Gomera - Este",
+      "La Palma - Oeste",
+      "Lanzarote - Este"
+    ]
   },
   {
     "name": "Thunnus thynnus",
@@ -3147,7 +3555,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Atún rojo Atlántico.jpg",
-    "mapImage": "../images/MapFishImages/Mapa atún rojo del Atlántico.jpg"
+    "mapImage": "../images/MapFishImages/Mapa atún rojo del Atlántico.jpg",
+    "zonas": [
+      "Lanzarote - Sur"
+    ]
   },
   {
     "name": "Torpedo marmorata",
@@ -3177,7 +3588,13 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Raya torpedo.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Raya torpedo.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Raya torpedo.jpg",
+    "zonas": [
+      "Gomera - Este",
+      "La Palma - Oeste",
+      "Lanzarote - Este",
+      "Tenerife - Sureste"
+    ]
   },
   {
     "name": "Torpedo torpedo",
@@ -3207,7 +3624,11 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Tremielga.png",
-    "mapImage": "../images/MapFishImages/Mapa Tremielga.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Tremielga.jpg",
+    "zonas": [
+      "Fuerteventura - Oeste",
+      "Lanzarote - Sur"
+    ]
   },
   {
     "name": "Trachinotus ovatus",
@@ -3237,7 +3658,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Palometa.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Palometa.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Palometa.jpg",
+    "zonas": [
+      "Fuerteventura - Norte",
+      "Fuerteventura - Sur",
+      "Hierro - Norte"
+    ]
   },
   {
     "name": "Trachinus araneus",
@@ -3267,7 +3693,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Pez araña.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Pez araña.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Pez araña.jpg",
+    "zonas": [
+      "Fuerteventura - Este",
+      "Fuerteventura - Norte",
+      "Hierro - Suroeste"
+    ]
   },
   {
     "name": "Trachinus draco",
@@ -3297,7 +3728,11 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Pez escorpión.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Pez escorpión.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Pez escorpión.jpg",
+    "zonas": [
+      "Gran Canaria - Norte",
+      "Lanzarote - Norte"
+    ]
   },
   {
     "name": "Trachinus radiatus",
@@ -3327,7 +3762,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Pez víbora.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Pez víbora.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Pez víbora.jpg",
+    "zonas": [
+      "Fuerteventura - Norte",
+      "Fuerteventura - Oeste",
+      "Hierro - Sureste"
+    ]
   },
   {
     "name": "Tripterygion delaisi",
@@ -3357,7 +3797,13 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Cabecinegro.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Cabecinegro.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Cabecinegro.jpg",
+    "zonas": [
+      "Gomera - Este",
+      "Gran Canaria - Oeste",
+      "Hierro - Suroeste",
+      "La Palma - Oeste"
+    ]
   },
   {
     "name": "Uranoscopus scaber",
@@ -3387,7 +3833,11 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Miracielo.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Miracielo.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Miracielo.jpg",
+    "zonas": [
+      "La Palma - Este",
+      "La Palma - Norte"
+    ]
   },
   {
     "name": "Xyrichtys novacula",
@@ -3417,7 +3867,12 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Galán.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Galán.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Galán.jpg",
+    "zonas": [
+      "Fuerteventura - Sur",
+      "Gran Canaria - Norte",
+      "Tenerife - Sureste"
+    ]
   },
   {
     "name": "Zeus faber",
@@ -3447,6 +3902,10 @@
       "is_poissons": true
     },
     "image": "../images/FishImages/Pez de san Pedro.jpg",
-    "mapImage": "../images/MapFishImages/Mapa Pez de san Pedro.jpg"
+    "mapImage": "../images/MapFishImages/Mapa Pez de san Pedro.jpg",
+    "zonas": [
+      "Gomera - Este",
+      "La Palma - Oeste"
+    ]
   }
 ]
