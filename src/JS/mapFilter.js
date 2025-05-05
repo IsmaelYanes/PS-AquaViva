@@ -294,6 +294,6 @@ class AdvancedSearcher{
 
 function initAdvancedSearch(){
     const advancedSearch = new AdvancedSearcher();
-    const result = advancedSearch.getResultsOfFilter(beachSearcher.getBeachesList());
+    const result = advancedSearch.getResultsOfFilter(fetchAllBeaches());
     showFilteredBeaches(result);
 }

@@ -125,7 +125,7 @@ ul#hoursList li button:hover {
 }
 
 .hour-nav button {
-    background-color: #0077b6;
+    background-color: steelblue;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -136,7 +136,7 @@ ul#hoursList li button:hover {
 }
 
 .hour-nav button:hover {
-    background-color: #023e8a;
+    background: #023e8a;
     transform: scale(1.1);
 }
 

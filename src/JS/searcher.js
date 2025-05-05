@@ -13,9 +13,23 @@ class BeachSearcher {
     }
 
     async init() {
-        this.beaches = await fetchAllBeaches();
+        this.beaches = await this.fetchBeaches();
         this.setupEventListeners();
     }
+
+    async fetchBeaches() {
+        try {
+            const response = await fetch('../Data/beaches.json');
+            if (!response.ok) {
+                throw new Error('No se pudo cargar las playas');
+            }
+            return await response.json();
+        } catch (error) {
+            console.error('Error al obtener las playas:', error);
+            return [];
+        }
+    }
+
 
     setupEventListeners() {
         this.searcher.addEventListener("input", () => this.handleSearchInput());
@@ -39,10 +53,10 @@ class BeachSearcher {
     filterBeaches(searchText) {
         this.beachesInfo = this.beaches
             .filter(beach =>
-                beach.fields.beachName.stringValue.toLowerCase().includes(searchText)
+                this.getBeachName(beach).toLowerCase().includes(searchText)
             )
             .slice(0, 6)
-            .map(beach => beach.fields);
+            .map(beach => beach);
     }
 
     displayResults() {
@@ -56,11 +70,11 @@ class BeachSearcher {
 
     createBeachListItem(beach) {
         const li = document.createElement("li");
-        li.textContent = beach.beachName.stringValue;
+        li.textContent = this.getBeachName(beach);
         li.classList.add("beach-item");
-        li.setAttribute("lat", beach.LAT.stringValue);
-        li.setAttribute("lon", beach.LOG.stringValue);
-        li.setAttribute("id", beach["ID DGE"]?.integerValue);
+        li.setAttribute("lat", this.getBeachLog(beach));
+        li.setAttribute("lon", this.getBeachLat(beach));
+        li.setAttribute("id", this.getBeachId(beach));
 
         li.addEventListener("click", () => this.selectBeach(li));
         return li;
@@ -138,6 +152,18 @@ class BeachSearcher {
 
     getBeachesList() {
         return this.beaches;
+    }
+    getBeachName(beach){
+        return beach.beachName;
+    }
+    getBeachLog(beach){
+        return beach.LOG;
+    }
+    getBeachLat(beach){
+        return beach.LAT;
+    }
+    getBeachId(beach){
+        return beach["ID DGE"];
     }
 }
 
