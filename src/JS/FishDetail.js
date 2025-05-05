@@ -15,39 +15,40 @@ document.addEventListener("DOMContentLoaded", () => {
                 "scientific-name": fish.name,
                 "fish-image": fish.image,
                 "description": fish.description_summary,
-                "iucn": fish.species_ecology?.description,
-                "gender-description": fish.genderDescription,
-                "type": fish.familia?.name,
+                "family": fish.familia?.name,
                 "average-size": fish.species_morphology?.size_average ? `${fish.species_morphology.size_average} cm` : null,
                 "max-size": fish.species_morphology?.size_max ? `${fish.species_morphology.size_max} cm` : null,
-                "mimetism": fish.mimetism,
-                "recognize": fish.recognize,
-                "male-female-differences": fish.feMaleDifferences,
+                // Estado IUCN ahora usa el campo description de species_ecology
+                "iucn": fish.species_ecology?.description || "No evaluado",  // Si description no existe, muestra "No evaluado"
+                "sociability": fish.species_behavior?.sociability?.label,
                 "diet": fish.species_behavior?.regime?.translated_name,
-                "territorial": fish.territorial,
-                "life-mode": fish.species_behavior?.sociability?.label,
-                "life-description": fish.lifeDescription,
-                "reproduction-mode": fish.reproductionMode,
-                "migration": fish.migration,
-                "reproduction-description": fish.reproductionDescription,
-                "poison": fish.poison === "No" ? "No" : (fish.poison ? "Sí" : null),
-                "danger": fish.danger,
-                "depth-range": fish.depth,
+                // Veneno (is_poissons es booleano)
+                "venom": typeof fish.species_data?.is_poissons === "boolean"
+                    ? (fish.species_data.is_poissons ? "Sí" : "No")
+                    : "No disponible", // Si no está definido
                 "map-image": fish.mapImage
             };
 
             Object.entries(fields).forEach(([id, value]) => {
                 const el = document.getElementById(id);
+                const container = el?.closest(".info-group") || el; // Para ocultar secciones enteras si es posible
                 if (!el) return;
+
+                if (!value || value.trim?.() === "") {
+                    if (container) container.style.display = "none";
+                    return;
+                }
 
                 if (el.tagName === "IMG") {
                     const isMap = id === "map-image";
                     const defaultImg = isMap ? "../images/no-map.jpg" : "../images/no-image.jpg";
-                    el.src = value && value.trim() !== "" ? value : defaultImg;
-                    el.alt = fish.nom_commun || fish.name || "Imagen no disponible";
+                    el.src = value;
+                    el.alt = fields["fish-title"] || "Imagen no disponible";
                 } else {
-                    el.textContent = value || "No disponible";
+                    el.textContent = value;
                 }
+
+                if (container) container.style.display = "";
             });
         })
         .catch(err => console.error("Error al cargar la información del pez:", err));
