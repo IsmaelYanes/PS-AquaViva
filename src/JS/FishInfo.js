@@ -1,6 +1,5 @@
-// ../JS/FishInfo.js
 function initFishGallery() {
-    fetch('../Data/fish.json')
+    fetch('../Data/fullfish.json')
         .then(response => response.json())
         .then(data => {
             const fishGrid = document.getElementById('fish-grid');
@@ -14,14 +13,14 @@ function initFishGallery() {
                 fishItem.classList.add('fish-item');
 
                 const fishLink = document.createElement('a');
-                fishLink.href = `../HTML-components/FishDetail.html?name=${encodeURIComponent(fish.name)}`;
+                fishLink.href = `../HTML-components/FishDetail.html?name=${encodeURIComponent(fish.nom_commun)}`;
 
                 const fishImage = document.createElement('img');
                 fishImage.src = fish.image;
-                fishImage.alt = fish.name;
+                fishImage.alt = fish.nom_commun || fish.name;
 
                 const fishName = document.createElement('h2');
-                fishName.textContent = fish.name;
+                fishName.textContent = fish.nom_commun || fish.name;
 
                 fishLink.appendChild(fishImage);
                 fishLink.appendChild(fishName);

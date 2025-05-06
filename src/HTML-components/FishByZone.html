@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Peces por Zona</title>
     <link rel="stylesheet" href="../CSS/FishInfoStyle.css">
 </head>
 <body>
 <h1>Peces en esta Zona</h1>
-<div class="fish-grid" id="fish-grid"></div>
+<div id="zone-name" style="text-align: center; margin-bottom: 10px; font-weight: bold;"></div>
+<div class="fish-grid" id="fish-grid">
+    <p>Cargando peces...</p>
+</div>
+
 <script src="../JS/FishByZone.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        if (typeof initFishByZoneGallery === "function") {
+            initFishByZoneGallery();
+        } else {
+            console.error("initFishByZoneGallery no está definida.");
+        }
+    });
+</script>
 </body>
 </html>

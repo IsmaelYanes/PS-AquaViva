@@ -21,7 +21,7 @@ function initFishByZoneGallery() {
     }
 
     // Fetch zones data to find zone with fish
-    fetch('../Data/zonas_litoral.json')
+    fetch('../Data/zonas_litoral_reconstruido.json')
         .then(response => {
             if (!response.ok) throw new Error(`Error al cargar zonas_litoral.json: ${response.status}`);
             return response.json();
@@ -61,28 +61,30 @@ function initFishByZoneGallery() {
             }
 
             // Fetch fish details
-            fetch('../Data/fish.json')
+            fetch('../Data/fullfish.json')
                 .then(response => {
-                    if (!response.ok) throw new Error(`Error al cargar fish.json: ${response.status}`);
+                    if (!response.ok) throw new Error(`Error al cargar fullfish.json: ${response.status}`);
                     return response.json();
                 })
                 .then(fishData => {
                     fishGrid.innerHTML = ''; // Clear grid
                     fishData.forEach(fish => {
-                        if (fishInZone.includes(fish.name)) {
+                        if (fishInZone.some(fishName => fishName.toLowerCase() === fish.nom_commun.toLowerCase()))
+                        {
                             const fishItem = document.createElement('div');
                             fishItem.classList.add('fish-item');
 
                             const fishLink = document.createElement('a');
-                            fishLink.href = `../HTML-components/FishDetail.html?name=${encodeURIComponent(fish.name)}`;
+                            fishLink.href = `../HTML-components/FishDetail.html?name=${encodeURIComponent(fish.nom_commun)}`;
 
                             const fishImage = document.createElement('img');
                             fishImage.src = fish.image;
-                            fishImage.alt = fish.name;
+                            fishImage.alt = fish.nom_commun || fish.name;
 
                             const fishName = document.createElement('h2');
-                            fishName.textContent = fish.name;
+                            fishName.textContent = fish.nom_commun || fish.name;
 
+                            // Wrap image and name into a link for navigation to the detail page
                             fishLink.appendChild(fishImage);
                             fishLink.appendChild(fishName);
                             fishItem.appendChild(fishLink);
