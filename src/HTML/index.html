@@ -14,15 +14,18 @@
     <link rel="stylesheet" href="../CSS/funcionalities.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+
+    <!--estilos de fuente del titulo-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+
 </head>
 <body>
 <div id="header"></div>
 <div id="body-container">
-    <!--
-    -->
-    <!--
-    <img style="height: 20rem;  object-fit: cover;" src="../Videos/playa-corralejo.jpg">
-    -->
+
     <div class="video-container">
         <video id="mainPage-video" src="../Videos/background-mainpage.mp4" autoplay muted loop></video>
         <div class="video-overlay"></div>
@@ -45,17 +48,19 @@
 
     <div class="map-main-container">
 
-        <div class="buscador-container">
+        <div class="buscador-container" id="buscador-container">
             <div class="search-container">
                 <div class="search-text-container">
                     <img src="/src/Videos/searcher/isla.png" class="search-logo" alt="">
                     <h2>Buscar playa</h2>
                 </div>
                 <div class="input-container">
-                    <input type="text" id="search" class="search-box input-with-icon" placeholder="Buscar playa por nombre...">
+                    <input autocomplete="off" type="text" id="search" class="search-box input-with-icon" placeholder="Buscar playa por nombre...">
                     <button id="search-button"><img src="../Images/lupa.png" class="search-button" alt="buscar"></button>
                 </div>
-                <ul id="resultList"></ul>
+                <div id="results-searcher">
+                    <ul id="resultList"></ul>
+                </div>
             </div>
         </div>
 
@@ -227,10 +232,11 @@
         });
     }
 
+    /*mostrar filtro*/
     function showFilterAdvanced() {
         const filter = document.getElementById('mapFilter');
-
         filter.classList.toggle('visible');
+        initAdvancedSearch();
     }
 
     /*carrusel*/

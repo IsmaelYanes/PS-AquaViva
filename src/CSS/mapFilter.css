@@ -123,6 +123,11 @@
     font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 16.5px;
+    cursor: pointer;
+}
+
+#filterButton:hover {
+    background-color: #35648c;
 }
 
 .titleFilter-text {
