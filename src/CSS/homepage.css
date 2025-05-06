@@ -53,14 +53,14 @@
     font-optical-sizing: auto;
     font-weight: 700;
     font-style: normal;
-    font-size: 12rem;
+    font-size: 14em;
 }
 #subtitle-mainPage {
     font-family: "Caveat", cursive;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
-    font-size: 3rem;
+    font-size: 4em;
 }
 
 #description-container {
@@ -355,3 +355,4 @@ li.selected {
     right: -1.875em;
     z-index: 1;
 }
+
