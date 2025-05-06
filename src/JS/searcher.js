@@ -36,6 +36,7 @@ class BeachSearcher {
         document.addEventListener("click", (e) => this.handleDocumentClick(e));
         this.searchButton.addEventListener("click", () => this.handleSearchClick());
         this.searcher.addEventListener('keydown', (e) => this.handleKeyEvents(e));
+        this.movementOfSearcher();
     }
 
     handleSearchInput() {
@@ -65,6 +66,27 @@ class BeachSearcher {
         this.beachesInfo.forEach(beach => {
             const li = this.createBeachListItem(beach);
             this.resultList.appendChild(li);
+        });
+    }
+
+    movementOfSearcher() {
+        const buscadorContainer = document.querySelector('.buscador-container');
+        const resultListContainer = document.getElementById('results-searcher');
+
+        this.searcher.addEventListener('input', () => {
+            const resultados = this.resultList.querySelectorAll('li').length;
+            const alturaExtra = Math.min(resultados, 10) * 3;
+
+            buscadorContainer.style.marginBottom = `${alturaExtra}em`;
+            const valor = this.searcher.value.trim();
+
+            if (valor.length === 0) {
+                this.resultList.innerHTML = '';
+                buscadorContainer.style.marginBottom = '0px';
+                resultListContainer.style.display = 'none';
+            } else {
+                resultListContainer.style.display = 'block';
+            }
         });
     }
 
