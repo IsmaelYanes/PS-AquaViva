@@ -139,33 +139,155 @@ function showCustomPopup(fields, showRouteButton = false, routeData = null) {
 
     // Construcción del popup
     const html = `
-    <div id="custom-popup" class="popup">
-      <div class="popup-content">
-        <button class="close-btn" onclick="document.getElementById('custom-popup').remove()">X</button>
-        <div class="popup-header">
-          <h2>${fields.beachName?.stringValue || "Playa Desconocida"}</h2>
-        </div>
-        <div class="popup-body">
-          <img src="${fields.imageURL?.stringValue || 'https://via.placeholder.com/300'}"
-               alt="Imagen de la playa" class="popup-image">
-          <p><strong>Composición:</strong> ${fields["Composición"]?.stringValue || "Desconocida"}</p>
-          <p><strong>Tipo:</strong> ${fields.type?.stringValue || "N/A"}</p>
-          <p><strong>Clasificación:</strong> ${fields.classification?.stringValue || "N/A"}</p>
-          <p><strong>Acceso:</strong> ${fields["Condiciones de acceso"]?.stringValue || "N/A"}</p>
-          ${routeInfoHTML}
-        </div>
-        <div class="popup-footer">
-          <a href="../HTML/MoreInfoPage.html?id=${fields["ID DGE"]?.integerValue}
-                 &lat=${fields.LAT.stringValue.replace(",", ".")}
-                 &lon=-${fields.LOG.stringValue.replace(",", ".")}"
-             class="more-info">Ver más</a>
-          ${routeButtonHTML}
-        </div>
+  <div id="custom-popup" class="popup">
+    <div class="popup-content">
+      <button class="close-btn" onclick="document.getElementById('custom-popup').remove()">X</button>
+      <div class="popup-header">
+        <h2>
+          ${fields.beachName?.stringValue || "Playa Desconocida"}
+          <span 
+            class="favorite-icon" 
+            id="fav-${fields["ID DGE"]?.integerValue}" 
+            onclick="toggleFavorite(this)" 
+            title="Añadir a favoritos"
+            style="cursor: pointer; color: grey; font-size: 1.2em; margin-left: 10px;"
+          >☆</span>
+        </h2>
       </div>
-    </div>`;
+      <div class="popup-body">
+        <img src="${fields.imageURL?.stringValue || 'https://via.placeholder.com/300'}"
+             alt="Imagen de la playa" class="popup-image">
+        <p><strong>Composición:</strong> ${fields["Composición"]?.stringValue || "Desconocida"}</p>
+        <p><strong>Tipo:</strong> ${fields.type?.stringValue || "N/A"}</p>
+        <p><strong>Clasificación:</strong> ${fields.classification?.stringValue || "N/A"}</p>
+        <p><strong>Acceso:</strong> ${fields["Condiciones de acceso"]?.stringValue || "N/A"}</p>
+        ${routeInfoHTML}
+      </div>
+      <div class="popup-footer">
+        <a href="../HTML/MoreInfoPage.html?id=${fields["ID DGE"]?.integerValue}
+               &lat=${fields.LAT.stringValue.replace(",", ".")}
+               &lon=-${fields.LOG.stringValue.replace(",", ".")}"
+           class="more-info">Ver más</a>
+        ${routeButtonHTML}
+      </div>
+    </div>
+  </div>`;
 
     document.body.insertAdjacentHTML("beforeend", html);
 }
+
+//Añadir/quitar de favorito
+async function toggleFavorite(starElement) {
+    const isActive = starElement.classList.toggle("favorited");
+
+    // Cambiar icono
+    if (isActive) {
+        starElement.textContent = "★";
+        starElement.style.color = "gold";
+    } else {
+        starElement.textContent = "☆";
+        starElement.style.color = "grey";
+    }
+
+    const beachId = starElement.id.replace("fav-", "");
+    console.log(`📌 Playa ${beachId} marcada como ${isActive ? "favorita" : "no favorita"}`);
+
+    // 🔒 Obtener el UID desde localStorage
+    const uid = localStorage.getItem("uid");
+    const idToken = localStorage.getItem("idToken");
+
+    // Verificar si el usuario está autenticado
+    if (!window.isUserLoggedIn) {
+        console.warn("⚠️ Usuario no autenticado");
+        localStorage.removeItem("uid");
+        localStorage.removeItem("idToken");
+        return;
+    }
+
+    // 🔒 Verificar si necesitamos hacer una llamada a Firebase
+    let lastUpdatedFav = localStorage.getItem("lastUpdatedFav"); // Obtener el valor de lastUpdatedFav desde localStorage
+    const currentTimestamp = Date.now();
+
+    // Hacer la llamada a Firebase solo si no hay un valor en localStorage o si lastUpdatedFav ha cambiado
+    if (lastUpdatedFav) {
+        // Si han pasado más de 5 minutos desde la última actualización, usar datos de Firebase
+        if (currentTimestamp - parseInt(lastUpdatedFav) > 5 * 60 * 1000) {
+            console.log("Datos antiguos, haciendo llamada a Firebase...");
+            await actualizarFavoritosFirebase(uid, idToken, beachId, isActive);
+        } else {
+            console.log("Usando datos de localStorage, no es necesario hacer llamada a Firebase.");
+        }
+    } else {
+        // Si lastUpdatedFav no está en localStorage, hacerlo desde Firebase
+        console.log("No existe lastUpdatedFav, obteniendo desde Firebase...");
+        await actualizarFavoritosFirebase(uid, idToken, beachId, isActive);
+    }
+}
+
+async function actualizarFavoritosFirebase(uid, idToken, beachId, isActive) {
+    const userDocUrl = `https://firestore.googleapis.com/v1/projects/playascanarias-f83a8/databases/(default)/documents/users/${uid}`;
+
+    // Primero obtener los datos actuales para mantener la consistencia de favoritos
+    try {
+        const res = await fetch(userDocUrl + `?key=AIzaSyCU3fXaXPHYdlb8q4ZKY4iHTmXyvjjpeuQ`, {
+            headers: {
+                Authorization: `Bearer ${idToken}`,
+            }
+        });
+
+        if (!res.ok) {
+            throw new Error(`HTTP error ${res.status}`);
+        }
+
+        const data = await res.json();
+        const favoritos = data.fields?.favoritos?.arrayValue?.values?.map(v => v.stringValue) || [];
+
+        // Crear cuerpo de la solicitud PATCH para actualizar favoritos y lastUpdatedFav
+        const body = {
+            fields: {
+                favoritos: {
+                    arrayValue: {
+                        values: isActive ?
+                            [...favoritos, { stringValue: beachId }] :
+                            favoritos.filter(id => id !== beachId).map(id => ({ stringValue: id }))
+                    }
+                },
+                lastUpdatedFav: {
+                    timestampValue: {
+                        seconds: Math.floor(Date.now() / 1000), // Obtiene el tiempo en segundos
+                        nanos: (Date.now() % 1000) * 1000000 // Nanosegundos
+                    }
+                }
+            }
+        };
+
+        // Enviar PATCH con los cambios
+        const response = await fetch(userDocUrl + `?updateMask.fieldPaths=favoritos,lastUpdatedFav&key=AIzaSyCU3fXaXPHYdlb8q4ZKY4iHTmXyvjjpeuQ`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${idToken}`,
+            },
+            body: JSON.stringify(body)
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error ${response.status}`);
+        }
+
+        console.log("✅ Favoritos actualizados correctamente");
+
+        // Actualizar el campo lastUpdatedFav en localStorage
+        localStorage.setItem("lastUpdatedFav", Date.now().toString());
+
+        // Actualizar los favoritos en localStorage
+        localStorage.setItem("favoritos", JSON.stringify(body.fields.favoritos.arrayValue.values));
+
+    } catch (err) {
+        console.error("❌ Error al guardar favoritos:", err);
+    }
+}
+
 
 function startRoute() {
     if (window.userLat === null || window.userLng === null) {
