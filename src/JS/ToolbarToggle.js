@@ -15,20 +15,60 @@ function toggleToolbar() {
 window.userLat = null;
 window.userLng = null;
 
-// Variable global para almacenar la caché de playas
-let cachedBeaches = null;
-
 /**
  * Descarga todas las playas desde Firestore y las cachea en memoria.
  * Usa la REST API de Firestore y maneja paginación automáticamente.
  * @returns {Promise<Array>} Lista de documentos de playas
  */
+// Claves y TTL
+const CACHE_KEY = "playasCache";
+const CACHE_TS_KEY = "playasCacheTimestamp";
+
+async function getRemoteLastUpdated() {
+    const url = "https://firestore.googleapis.com/v1/projects/playascanarias-f83a8/databases/(default)/documents/config/meta";
+
+    try {
+        const res = await fetch(url);
+
+        if (!res.ok) {
+            const errorText = await res.text();
+            throw new Error(`HTTP error ${res.status} - ${errorText}`);
+        }
+
+        const data = await res.json();
+        const timestampStr = data.fields?.lastUpdated?.timestampValue;
+
+        if (timestampStr) {
+            return new Date(timestampStr).getTime();
+        } else {
+            throw new Error("Campo lastUpdated no encontrado");
+        }
+
+    } catch (err) {
+        console.error("❌ Error al obtener lastUpdated:", err.message);
+        return null;
+    }
+}
+
 async function fetchAllBeaches() {
-    if (cachedBeaches) {
-        console.log("⚡ Usando playas desde caché.");
-        return cachedBeaches;
+    // Consultamos si hay datos en caché
+    const cachedData = localStorage.getItem(CACHE_KEY);
+    const cachedTimestamp = localStorage.getItem(CACHE_TS_KEY);
+
+    // Obtenemos la fecha de última actualización en Firestore
+    const remoteTimestamp = await getRemoteLastUpdated();
+
+    // Comprobamos si debemos usar la caché
+    if (cachedData && cachedTimestamp && remoteTimestamp) {
+        if (remoteTimestamp <= parseInt(cachedTimestamp, 10)) {
+            console.log("⚡ Usando playas desde localStorage (sin cambios remotos).");
+            return JSON.parse(cachedData);
+        } else {
+            console.log("🔄 Cambios detectados en Firestore. Recargando datos.");
+        }
     }
 
+    // Si no hay caché válida o hay cambios → descargamos los datos
     const baseUrl = "https://firestore.googleapis.com/v1/projects/playascanarias-f83a8/databases/(default)/documents/playas";
     let allBeaches = [];
     let nextPageToken = null;
@@ -36,31 +76,24 @@ async function fetchAllBeaches() {
     try {
         do {
             const url = new URL(baseUrl);
-            if (nextPageToken) {
-                url.searchParams.set("pageToken", nextPageToken);
-            }
+            if (nextPageToken) url.searchParams.set("pageToken", nextPageToken);
 
             const res = await fetch(url.toString());
-
-            if (!res.ok) {
-                throw new Error(`HTTP error ${res.status}`);
-            }
+            if (!res.ok) throw new Error(`HTTP error ${res.status}`);
 
             const data = await res.json();
-
-            if (!data.documents || !Array.isArray(data.documents)) {
-                console.warn("❌ No se encontraron documentos de playas.");
-                break;
-            }
+            if (!data.documents || !Array.isArray(data.documents)) break;
 
             allBeaches.push(...data.documents);
-            console.log(`📥 Descargadas ${data.documents.length} playas, total: ${allBeaches.length}`);
-
             nextPageToken = data.nextPageToken || null;
 
         } while (nextPageToken);
 
-        cachedBeaches = allBeaches;
+        // Guardamos en caché
+        localStorage.setItem(CACHE_KEY, JSON.stringify(allBeaches));
+        localStorage.setItem(CACHE_TS_KEY, remoteTimestamp?.toString() || Date.now().toString());
+
+        console.log(`✅ Guardadas ${allBeaches.length} playas en caché local.`);
         return allBeaches;
 
     } catch (err) {
@@ -68,7 +101,6 @@ async function fetchAllBeaches() {
         return [];
     }
 }
-
 
 //Funcion de abrir popup de marcador de playa.
 function showCustomPopup(fields, showRouteButton = false, routeData = null) {
@@ -641,8 +673,6 @@ async function showBeaches() {
             }
 
             let coords = [lat, -lng];
-
-            console.log(`📍 Intentando agregar marcador en coordenadas: ${coords}`);
 
             let marker = L.marker(coords);
             marker.beachData = fields;
