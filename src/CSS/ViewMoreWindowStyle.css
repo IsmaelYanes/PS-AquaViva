@@ -114,6 +114,7 @@
 .route-btn {
     border: none;
     font-size: 1em;
+    cursor: pointer;
 }
 
 .more-info:hover, .route-btn:hover {
