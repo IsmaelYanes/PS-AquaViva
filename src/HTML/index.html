@@ -208,34 +208,36 @@
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 <script src="../JS/auth.js"></script>
 <script>
-    //Botones de altenar tipo de vista del mapa
+    // Botones de alternar tipo de vista del mapa y control de opacidad del selector
     document.addEventListener("DOMContentLoaded", () => {
         const streetThumb = document.getElementById("street-thumb");
         const satelliteThumb = document.getElementById("satellite-thumb");
+        const layerSelector = document.getElementById("layer-selector");
 
-        //Control del botón de fav
+        // Control del botón de favoritos
         const favButton = document.getElementById("favorites-button");
         if (!favButton) return;
 
-        // Espera a que Firebase esté listo antes de comprobar
+        // Espera a que Firebase esté listo antes de comprobar login
         setTimeout(async () => {
             const isLoggedIn = await comprobarUsuario();
             console.log(isLoggedIn);
             favButton.style.display = isLoggedIn ? "flex" : "none";
         }, 500);
 
-
-        //Configuracion del boton de las capas de vistas
-        if (!streetThumb || !satelliteThumb) return;
+        // Configuración de botones de vista del mapa
+        if (!streetThumb || !satelliteThumb || !layerSelector) return;
 
         streetThumb.addEventListener("click", () => {
             toggleStreetView();
             setLayerSelectorActive("street-thumb");
+            resetLayerSelectorFade(); // Reinicia temporizador de opacidad
         });
 
         satelliteThumb.addEventListener("click", () => {
             toggleSatelliteView();
             setLayerSelectorActive("satellite-thumb");
+            resetLayerSelectorFade(); // Reinicia temporizador de opacidad
         });
 
         function setLayerSelectorActive(activeId) {
@@ -245,6 +247,23 @@
             const active = document.getElementById(activeId);
             if (active) active.classList.add("active");
         }
+
+        // ───────────── EFECTO DE OPACIDAD AUTOMÁTICA ─────────────
+        let hideTimeout;
+
+        function resetLayerSelectorFade() {
+            clearTimeout(hideTimeout);
+            hideTimeout = setTimeout(() => {
+                layerSelector.style.opacity = "0.2";
+            }, 2000); // Ocultar tras 3 segundos
+        }
+
+        layerSelector.addEventListener("mouseenter", () => {
+            clearTimeout(hideTimeout);
+            layerSelector.style.opacity = "1";
+        });
+
+        layerSelector.addEventListener("mouseleave", resetLayerSelectorFade);
     });
 </script>
 
