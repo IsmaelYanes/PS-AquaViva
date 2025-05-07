@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../CSS/MenuStyle.css">
     <link rel="stylesheet" href="../CSS/homeHeader.css">
     <link rel="stylesheet" href="../CSS/services.css">
+    <link rel="stylesheet" href="../CSS/fishActivitiesPrediction.css">
+    <script src="https://unpkg.com/suncalc@1.8.0/suncalc.js"></script>
     <script
             src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
             type="module"
@@ -21,6 +23,7 @@
         <div id="tiempo-atmosferico-container"></div>
         <div id="oleaje-container"></div>
         <div id="marea-container"></div>
+        <div id="fish-activities-container"> </div>
         <div id="instalaciones-container"></div>
         <div id="peces-container"></div>
     </div>
@@ -30,6 +33,7 @@
                 <li><a href="#tiempo-atmosferico-container" data-section="tiempo-atmosferico-container">Tiempo atmosférico</a></li>
                 <li><a href="#oleaje-container" data-section="oleaje-container">Oleaje</a></li>
                 <li><a href="#marea-container" data-section="marea-container">Marea</a></li>
+                <li><a href="#fish-activities-container" data-section="fish-activities-container">Actividad de peces</a> </li>
                 <li id="facilities-item"><a href="#instalaciones-container" data-section="instalaciones-container">Instalaciones y prestaciones</a></li>
                 <li><a href="#peces-container" data-section="peces-container">Galería de peces</a></li>
                 <li><a>Descargar tabla pdf</a></li>
@@ -47,6 +51,7 @@
 <script src="../JS/ToolbarToggle.js"></script>
 <script src="../JS/searcher.js"></script>
 <script src="../JS/dynamicSwell.js"></script>
+<script src="../JS/fishActivityPrediction.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         init();
@@ -79,6 +84,7 @@
             loadTemplate('../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}', document.getElementById('tiempo-atmosferico-container'), initWeather);
             loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('oleaje-container'), initializeSwellPage);
             loadTemplate('../HTML-components/wave.html', document.getElementById('marea-container'), initWavePage);
+            loadTemplate('../HTML-components/fishPrediction.html', document.getElementById('fish-activities-container'), loadPrediction);
             loadTemplate('../HTML-components/FishInfo.html', document.getElementById('peces-container'), initFishGallery);
             return;
         } else if (lat && lon) {
@@ -89,6 +95,7 @@
             loadTemplate(defaultPage, document.getElementById('tiempo-atmosferico-container'), initWeather);
             loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('oleaje-container'), initializeSwellPage);
             loadTemplate('../HTML-components/wave.html', document.getElementById('marea-container'), initWavePage);
+            loadTemplate('../HTML-components/fishPrediction.html', document.getElementById('fish-activities-container'), loadPrediction);
             loadTemplate('../HTML-components/FishInfo.html', document.getElementById('peces-container'), initFishGallery);
         } else {
             defaultPage = '../HTML-components/mainWeather.html';
@@ -96,6 +103,7 @@
             loadTemplate(defaultPage, document.getElementById('tiempo-atmosferico-container'), initWeather);
             loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('oleaje-container'), initializeSwellPage);
             loadTemplate('../HTML-components/wave.html', document.getElementById('marea-container'), initWavePage);
+            loadTemplate('../HTML-components/fishPrediction.html', document.getElementById('fish-activities-container'), loadPrediction);
             loadTemplate('../HTML-components/FishInfo.html', document.getElementById('peces-container'), initFishGallery);
         }
 
