@@ -1,7 +1,7 @@
 // Elimina el listener de DOMContentLoaded y encapsula la lógica en initWeather()
 let lat;
 let lon;
-const apiKey = "5aee2dd3671346f6b1c144401252104";
+const apiKey = "8b85f367751d4882aab231335250305";
 
 function initWeather() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -112,7 +112,7 @@ function showWeatherData(json) {
     function fillTable(day) {
         let hour = 0;
         if (day === 0) {
-            hour = 14;
+            hour = currentHour;
         }
 
         const dayCeroInfo = json.forecast.forecastday[day];

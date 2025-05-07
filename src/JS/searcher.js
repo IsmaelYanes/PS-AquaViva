@@ -13,15 +13,30 @@ class BeachSearcher {
     }
 
     async init() {
-        //this.beaches = await fetchAllBeaches();
+        this.beaches = await this.fetchBeaches();
         this.setupEventListeners();
     }
+
+    async fetchBeaches() {
+        try {
+            const response = await fetch('../Data/beaches.json');
+            if (!response.ok) {
+                throw new Error('No se pudo cargar las playas');
+            }
+            return await response.json();
+        } catch (error) {
+            console.error('Error al obtener las playas:', error);
+            return [];
+        }
+    }
+
 
     setupEventListeners() {
         this.searcher.addEventListener("input", () => this.handleSearchInput());
         document.addEventListener("click", (e) => this.handleDocumentClick(e));
         this.searchButton.addEventListener("click", () => this.handleSearchClick());
         this.searcher.addEventListener('keydown', (e) => this.handleKeyEvents(e));
+        this.movementOfSearcher();
     }
 
     handleSearchInput() {
@@ -39,10 +54,10 @@ class BeachSearcher {
     filterBeaches(searchText) {
         this.beachesInfo = this.beaches
             .filter(beach =>
-                beach.fields.beachName.stringValue.toLowerCase().includes(searchText)
+                this.getBeachName(beach).toLowerCase().includes(searchText)
             )
             .slice(0, 6)
-            .map(beach => beach.fields);
+            .map(beach => beach);
     }
 
     displayResults() {
@@ -54,13 +69,34 @@ class BeachSearcher {
         });
     }
 
+    movementOfSearcher() {
+        const buscadorContainer = document.querySelector('.buscador-container');
+        const resultListContainer = document.getElementById('results-searcher');
+
+        this.searcher.addEventListener('input', () => {
+            const resultados = this.resultList.querySelectorAll('li').length;
+            const alturaExtra = Math.min(resultados, 10) * 3;
+
+            buscadorContainer.style.marginBottom = `${alturaExtra}em`;
+            const valor = this.searcher.value.trim();
+
+            if (valor.length === 0) {
+                this.resultList.innerHTML = '';
+                buscadorContainer.style.marginBottom = '0px';
+                resultListContainer.style.display = 'none';
+            } else {
+                resultListContainer.style.display = 'block';
+            }
+        });
+    }
+
     createBeachListItem(beach) {
         const li = document.createElement("li");
-        li.textContent = beach.beachName.stringValue;
+        li.textContent = this.getBeachName(beach);
         li.classList.add("beach-item");
-        li.setAttribute("lat", beach.LAT.stringValue);
-        li.setAttribute("lon", beach.LOG.stringValue);
-        li.setAttribute("id", beach["ID DGE"]?.integerValue);
+        li.setAttribute("lat", this.getBeachLog(beach));
+        li.setAttribute("lon", this.getBeachLat(beach));
+        li.setAttribute("id", this.getBeachId(beach));
 
         li.addEventListener("click", () => this.selectBeach(li));
         return li;
@@ -138,6 +174,18 @@ class BeachSearcher {
 
     getBeachesList() {
         return this.beaches;
+    }
+    getBeachName(beach){
+        return beach.beachName;
+    }
+    getBeachLog(beach){
+        return beach.LOG;
+    }
+    getBeachLat(beach){
+        return beach.LAT;
+    }
+    getBeachId(beach){
+        return beach["ID DGE"];
     }
 }
 

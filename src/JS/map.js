@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(window.map);
 
+    // Cargar capa de zonas litoral
     fetch('../Data/zonas_litoral.json')
         .then(response => response.json())
         .then(geojsonData => {
@@ -31,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 onEachFeature: (feature, layer) => {
                     if (feature.properties) {
                         layer.on('click', (e) => {
-                            abrirPopup(feature.properties, e);
+                            window.abrirPopup(feature.properties, e);
                         });
                     }
                 }
@@ -39,9 +40,9 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error('Error al cargar el archivo zonas_litoral.json:', error));
 
-    function abrirPopup(properties, event) {
+    // Hacer global la función abrirPopup
+    window.abrirPopup = function (properties, event) {
         const popup = document.querySelector('.popup');
-
 
         // Ocultar el popup temporalmente para evitar que se desplace de forma incorrecta
         popup.style.display = 'none';
@@ -54,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const coord = event.latlng;
         const lat = coord.lat;
         const lon = coord.lng;
-        properties.description = getPrincipalData(lat, lon);
+        properties.description = window.getPrincipalData(lat, lon);
 
         document.getElementById("popup-link").href = `../HTML/MoreInfoPage.html?lat=${lat}&lon=${lon}`;
 
@@ -67,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function () {
             imgElement.style.display = "none";
         }
 
-
         // Pequeño retraso para recalcular el tamaño correcto antes de posicionar
         setTimeout(() => {
             popup.style.left = `${(window.innerWidth - popup.offsetWidth) / 2}px`;
@@ -76,14 +76,16 @@ document.addEventListener("DOMContentLoaded", function () {
             // Mostrar el popup correctamente centrado
             popup.style.display = 'block';
         }, 10);
-    }
+    };
 
-    function getPrincipalData(lat, lon) {
+    // Hacer global la función getPrincipalData
+    window.getPrincipalData = function (lat, lon) {
         const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lon}&days=7&aqi=no&alerts=no`;
         console.log(jsonURL);
-        fetch (jsonURL, {
+
+        fetch(jsonURL, {
             method: "GET",
-            headers: {'Content-Type': 'application/json'}
+            headers: { 'Content-Type': 'application/json' }
         })
             .then(response => response.json())
             .then(json => {
@@ -95,6 +97,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById("wind").innerHTML = `${wind}km/h`;
                 document.getElementById("humidity").innerHTML = `${humidity}%`;
                 document.getElementById("iconImg").src = icon;
-            })
-    }
+            });
+    };
 });

@@ -31,6 +31,7 @@
     color: #333;
     flex-direction: column;
     overflow: hidden;
+    z-index: 1000;
 }
 
 /* Contenedor con scroll si el contenido es grande */
@@ -63,7 +64,7 @@
 .popup-header h2 {
     font-size: 18px;
     margin: 0;
-    color: #007acc;
+    color: steelblue;
     font-weight: bold;
     border-bottom: 1px solid #ddd;
     padding-bottom: 5px;
@@ -84,31 +85,39 @@
     margin-bottom: 15px;
 }
 
-p {
+.popup-body p {
+    margin-bottom: 10px;
     width: 80%;
 }
 
-
 .popup-footer {
-    padding: 10px 20px;
-    text-align: right;
     background: #f9f9f9;
+    width: 90%;
     border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: end;
+    align-items: end;
 }
 
-.more-info {
+.more-info, .route-btn {
     font-weight: bold;
     text-decoration: none;
     padding: 10px 15px;
-    background: #007acc;
-    color: white;
+    background: steelblue;
+    color: whitesmoke;
     display: inline-block;
-    margin-right: 20px;
+    margin: 0.8em 0.5em;
+    border-radius: 10px;
 }
 
-.more-info:hover {
-    background: #007acc;
-    text-decoration: none;
+.route-btn {
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.more-info:hover, .route-btn:hover {
+    background: #35648c;
 }
 
 .weather-table {

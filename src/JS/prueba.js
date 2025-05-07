@@ -38,7 +38,7 @@ rl.question('Enter the code from that page here: ', async (code) => {
 });
 
 // Función para listar archivos en Google Drive
-async function listFiles(auth: any) {
+/*async function listFiles(auth: any) {
     const drive = google.drive({ version: 'v3', auth });
 
     try {
@@ -59,3 +59,4 @@ async function listFiles(auth: any) {
         console.error('The API returned an error: ' + error);
     }
 }
+*/
