@@ -1,5 +1,3 @@
-import firebase from "firebase/compat";
-
 const firebaseConfig = {
     apiKey: "AIzaSyCU3fXaXPHYdlb8q4ZKY4iHTmXyvjjpeuQ",
     authDomain: "playascanarias-f83a8.firebaseapp.com",
@@ -34,7 +32,7 @@ async function registrarUsuario(nombre, email, password, confirmPassword) {
 
         // Crear documento vacío en Firestore solo con el UID como ID
         await db.collection("users").doc(user.uid).set({
-            favoritos: [], // puedes iniciarlo vacío
+            favoritos: [],
             creadoEn: firebase.firestore.FieldValue.serverTimestamp(),
             lastUpdatedFav: firebase.firestore.FieldValue.serverTimestamp()
         });
@@ -87,7 +85,6 @@ async function iniciarSesionConGoogle() {
             window.location.href = "register.html";
         } else {
             alert("Inicio de sesión con Google exitoso.");
-            guardarUsuarioActual();
             window.location.href = "../HTML/index.html";
         }
     } catch (error) {
@@ -104,6 +101,7 @@ async function registrarConGoogle() {
         const result = await auth.signInWithPopup(provider);
         if (result.additionalUserInfo.isNewUser) {
             alert("Registro con Google exitoso.");
+            guardarUsuarioActual();
             window.location.href = "../HTML/index.html";
         } else {
             await auth.signOut();
@@ -165,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function guardarUsuarioActual() {
-    const user = firebase.auth().currentUser;
+    const user = auth.currentUser;
 
     if (user) {
         // Guardar el uid, email y token en localStorage
@@ -185,11 +183,11 @@ function guardarUsuarioActual() {
 
 async function comprobarUsuario() {
     // Comprobar si hay un usuario logueado usando Firebase
-    const user = firebase.auth().currentUser;
+    const currentUser = auth.currentUser;
 
-    if (user) {
+    if (currentUser) {
         // Imprimir el email del usuario en la consola si está autenticado
-        console.log("Usuario autenticado: ", user.email);
+        console.log("Usuario autenticado: ", currentUser.email);
         return true; // Usuario autenticado
     } else {
         console.log("No hay usuario autenticado.");
@@ -200,7 +198,7 @@ async function comprobarUsuario() {
 async function cerrarSesion() {
     try {
         // Cerrar sesión en Firebase
-        await firebase.auth().signOut();
+        await auth.signOut();
 
         // Eliminar el UID, email y idToken del localStorage
         localStorage.removeItem("uid");
@@ -210,11 +208,38 @@ async function cerrarSesion() {
         console.log("✅ Sesión cerrada y datos eliminados de localStorage.");
 
         // Redirigir a la página de inicio o login después de cerrar sesión
-        window.location.href = "login.html";
+        window.location.href = "index.html";
     } catch (error) {
         console.error("⚠️ Error al cerrar sesión:", error.message);
     }
 }
+
+// Añadir una playa a favoritos
+async function añadirFavorito(uid, beachId) {
+    try {
+        await db.collection("users").doc(uid).update({
+            favoritos: firebase.firestore.FieldValue.arrayUnion(beachId),
+            lastUpdatedFav: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        console.log(`✅ Playa ${beachId} añadida a favoritos del usuario ${uid}`);
+    } catch (error) {
+        console.error(`❌ Error al añadir favorito: ${error.message}`);
+    }
+}
+
+// Eliminar una playa de favoritos
+async function eliminarFavorito(uid, beachId) {
+    try {
+        await db.collection("users").doc(uid).update({
+            favoritos: firebase.firestore.FieldValue.arrayRemove(beachId),
+            lastUpdatedFav: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        console.log(`🗑️ Playa ${beachId} eliminada de favoritos del usuario ${uid}`);
+    } catch (error) {
+        console.error(`❌ Error al eliminar favorito: ${error.message}`);
+    }
+}
+
 
 
 

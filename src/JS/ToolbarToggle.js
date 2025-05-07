@@ -103,7 +103,7 @@ async function fetchAllBeaches() {
 }
 
 //Funcion de abrir popup de marcador de playa.
-function showCustomPopup(fields, showRouteButton = false, routeData = null) {
+async function showCustomPopup(fields, showRouteButton = false, routeData = null) {
     // Eliminar popup existente
     const existing = document.getElementById("custom-popup");
     if (existing) existing.remove();
@@ -131,163 +131,125 @@ function showCustomPopup(fields, showRouteButton = false, routeData = null) {
             const minutes = Math.floor((durationInSec % 3600) / 60); // Obtener minutos
             const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
 
-            routeInfoHTML = `
+            routeInfoHTML = ` 
                 <p><strong>Distancia:</strong> ${km} km <strong>Duración:</strong> ${formattedTime}</p>
             `;
         }
     }
 
+    // Verificar si el usuario está logueado
+    const userLoggedIn = await comprobarUsuario();
+
+    // Comprobar si esta playa ya está en los favoritos
+    const uid = localStorage.getItem("uid");
+    let isFavorite = false;
+
+    if (uid) {
+        // Obtener favoritos del usuario desde localStorage
+        const favoritosRaw = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+        // Normalizar a string los IDs de favoritos
+        const favoritos = favoritosRaw.map(fav => typeof fav === "object" && fav.stringValue ? fav.stringValue : String(fav));
+
+        const beachId = String(fields["ID DGE"]?.integerValue);
+        isFavorite = favoritos.includes(beachId);
+    }
+
     // Construcción del popup
     const html = `
-  <div id="custom-popup" class="popup">
-    <div class="popup-content">
-      <button class="close-btn" onclick="document.getElementById('custom-popup').remove()">X</button>
-      <div class="popup-header">
-        <h2>
-          ${fields.beachName?.stringValue || "Playa Desconocida"}
-          <span 
-            class="favorite-icon" 
-            id="fav-${fields["ID DGE"]?.integerValue}" 
-            onclick="toggleFavorite(this)" 
-            title="Añadir a favoritos"
-            style="cursor: pointer; color: grey; font-size: 1.2em; margin-left: 10px;"
-          >☆</span>
-        </h2>
-      </div>
-      <div class="popup-body">
-        <img src="${fields.imageURL?.stringValue || 'https://via.placeholder.com/300'}"
-             alt="Imagen de la playa" class="popup-image">
-        <p><strong>Composición:</strong> ${fields["Composición"]?.stringValue || "Desconocida"}</p>
-        <p><strong>Tipo:</strong> ${fields.type?.stringValue || "N/A"}</p>
-        <p><strong>Clasificación:</strong> ${fields.classification?.stringValue || "N/A"}</p>
-        <p><strong>Acceso:</strong> ${fields["Condiciones de acceso"]?.stringValue || "N/A"}</p>
-        ${routeInfoHTML}
-      </div>
-      <div class="popup-footer">
-        <a href="../HTML/MoreInfoPage.html?id=${fields["ID DGE"]?.integerValue}
-               &lat=${fields.LAT.stringValue.replace(",", ".")}
-               &lon=-${fields.LOG.stringValue.replace(",", ".")}"
-           class="more-info">Ver más</a>
-        ${routeButtonHTML}
-      </div>
-    </div>
-  </div>`;
+        <div id="custom-popup" class="popup">
+            <div class="popup-content">
+                <button class="close-btn" onclick="document.getElementById('custom-popup').remove()">X</button>
+                <div class="popup-header">
+                    <h2>
+                        ${fields.beachName?.stringValue || "Playa Desconocida"}
+                        ${userLoggedIn ?
+        `<span 
+        class="favorite-icon" 
+        id="fav-${fields["ID DGE"]?.integerValue}" 
+        onclick="toggleFavorite(this)" 
+        title="${isFavorite ? "Eliminar de favoritos" : "Añadir a favoritos"}"
+        style="cursor: pointer; font-size: 1.2em; margin-left: 10px; color: ${isFavorite ? "gold" : "grey"}"
+    >${isFavorite ? "★" : "☆"}</span>`
+        : ""
+    }
+                    </h2>
+                </div>
+                <div class="popup-body">
+                    <img src="${fields.imageURL?.stringValue || 'https://via.placeholder.com/300'}"
+                        alt="Imagen de la playa" class="popup-image">
+                    <p><strong>Composición:</strong> ${fields["Composición"]?.stringValue || "Desconocida"}</p>
+                    <p><strong>Tipo:</strong> ${fields.type?.stringValue || "N/A"}</p>
+                    <p><strong>Clasificación:</strong> ${fields.classification?.stringValue || "N/A"}</p>
+                    <p><strong>Acceso:</strong> ${fields["Condiciones de acceso"]?.stringValue || "N/A"}</p>
+                    ${routeInfoHTML}
+                </div>
+                <div class="popup-footer">
+                    <a href="../HTML/MoreInfoPage.html?id=${fields["ID DGE"]?.integerValue}
+                        &lat=${fields.LAT.stringValue.replace(",", ".")}
+                        &lon=-${fields.LOG.stringValue.replace(",", ".")}"
+                        class="more-info">Ver más</a>
+                    ${routeButtonHTML}
+                </div>
+            </div>
+        </div>
+    `;
 
     document.body.insertAdjacentHTML("beforeend", html);
 }
 
-//Añadir/quitar de favorito
+//Añadir-quitar de favorito
 async function toggleFavorite(starElement) {
-    const isActive = starElement.classList.toggle("favorited");
-
-    // Cambiar icono
-    if (isActive) {
-        starElement.textContent = "★";
-        starElement.style.color = "gold";
-    } else {
-        starElement.textContent = "☆";
-        starElement.style.color = "grey";
-    }
-
     const beachId = starElement.id.replace("fav-", "");
-    console.log(`📌 Playa ${beachId} marcada como ${isActive ? "favorita" : "no favorita"}`);
+
+    // Determinar el estado actual del favorito a través del color o contenido del icono
+    const isCurrentlyFavorited = starElement.textContent === "★" || starElement.style.color === "gold";
 
     // 🔒 Obtener el UID desde localStorage
     const uid = localStorage.getItem("uid");
-    const idToken = localStorage.getItem("idToken");
 
     // Verificar si el usuario está autenticado
-    if (!window.isUserLoggedIn) {
+    const usuarioAutenticado = await comprobarUsuario();
+    if (!usuarioAutenticado) {
         console.warn("⚠️ Usuario no autenticado");
         localStorage.removeItem("uid");
         localStorage.removeItem("idToken");
         return;
     }
 
-    // 🔒 Verificar si necesitamos hacer una llamada a Firebase
-    let lastUpdatedFav = localStorage.getItem("lastUpdatedFav"); // Obtener el valor de lastUpdatedFav desde localStorage
-    const currentTimestamp = Date.now();
-
-    // Hacer la llamada a Firebase solo si no hay un valor en localStorage o si lastUpdatedFav ha cambiado
-    if (lastUpdatedFav) {
-        // Si han pasado más de 5 minutos desde la última actualización, usar datos de Firebase
-        if (currentTimestamp - parseInt(lastUpdatedFav) > 5 * 60 * 1000) {
-            console.log("Datos antiguos, haciendo llamada a Firebase...");
-            await actualizarFavoritosFirebase(uid, idToken, beachId, isActive);
-        } else {
-            console.log("Usando datos de localStorage, no es necesario hacer llamada a Firebase.");
-        }
-    } else {
-        // Si lastUpdatedFav no está en localStorage, hacerlo desde Firebase
-        console.log("No existe lastUpdatedFav, obteniendo desde Firebase...");
-        await actualizarFavoritosFirebase(uid, idToken, beachId, isActive);
-    }
-}
-
-async function actualizarFavoritosFirebase(uid, idToken, beachId, isActive) {
-    const userDocUrl = `https://firestore.googleapis.com/v1/projects/playascanarias-f83a8/databases/(default)/documents/users/${uid}`;
-
-    // Primero obtener los datos actuales para mantener la consistencia de favoritos
     try {
-        const res = await fetch(userDocUrl + `?key=AIzaSyCU3fXaXPHYdlb8q4ZKY4iHTmXyvjjpeuQ`, {
-            headers: {
-                Authorization: `Bearer ${idToken}`,
-            }
-        });
-
-        if (!res.ok) {
-            throw new Error(`HTTP error ${res.status}`);
+        if (isCurrentlyFavorited) {
+            // Eliminar favorito
+            await eliminarFavorito(uid, beachId);
+            starElement.textContent = "☆";
+            starElement.style.color = "grey";
+            console.log(`📌 Playa ${beachId} eliminada de favoritos`);
+        } else {
+            // Añadir favorito
+            await añadirFavorito(uid, beachId);
+            starElement.textContent = "★";
+            starElement.style.color = "gold";
+            console.log(`📌 Playa ${beachId} añadida a favoritos`);
         }
 
-        const data = await res.json();
-        const favoritos = data.fields?.favoritos?.arrayValue?.values?.map(v => v.stringValue) || [];
-
-        // Crear cuerpo de la solicitud PATCH para actualizar favoritos y lastUpdatedFav
-        const body = {
-            fields: {
-                favoritos: {
-                    arrayValue: {
-                        values: isActive ?
-                            [...favoritos, { stringValue: beachId }] :
-                            favoritos.filter(id => id !== beachId).map(id => ({ stringValue: id }))
-                    }
-                },
-                lastUpdatedFav: {
-                    timestampValue: {
-                        seconds: Math.floor(Date.now() / 1000), // Obtiene el tiempo en segundos
-                        nanos: (Date.now() % 1000) * 1000000 // Nanosegundos
-                    }
-                }
-            }
-        };
-
-        // Enviar PATCH con los cambios
-        const response = await fetch(userDocUrl + `?updateMask.fieldPaths=favoritos,lastUpdatedFav&key=AIzaSyCU3fXaXPHYdlb8q4ZKY4iHTmXyvjjpeuQ`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${idToken}`,
-            },
-            body: JSON.stringify(body)
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error ${response.status}`);
-        }
-
-        console.log("✅ Favoritos actualizados correctamente");
-
-        // Actualizar el campo lastUpdatedFav en localStorage
+        // Actualizar valores en localStorage
         localStorage.setItem("lastUpdatedFav", Date.now().toString());
 
-        // Actualizar los favoritos en localStorage
-        localStorage.setItem("favoritos", JSON.stringify(body.fields.favoritos.arrayValue.values));
+        // Actualizar array local de favoritos
+        let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
 
-    } catch (err) {
-        console.error("❌ Error al guardar favoritos:", err);
+        if (isCurrentlyFavorited) {
+            favoritos = favoritos.filter(item => (item.stringValue || item) !== beachId);
+        } else {
+            favoritos.push({ stringValue: beachId });
+        }
+
+        localStorage.setItem("favoritos", JSON.stringify(favoritos));
+
+    } catch (error) {
+        console.error("❌ Error al actualizar favoritos:", error.message);
     }
 }
-
 
 function startRoute() {
     if (window.userLat === null || window.userLng === null) {
@@ -627,8 +589,108 @@ function showLocation() {
     });
 }
 
-function addToFavorites() {
-    alert("Agregado a favoritos");
+async function showFavorites() {
+    if (!window.map) {
+        console.error("❌ El mapa aún no está disponible.");
+        return;
+    }
+
+    const uid = localStorage.getItem("uid");
+    const autenticado = await comprobarUsuario();
+
+    if (!autenticado || !uid) {
+        alert("⚠️ Debes iniciar sesión para ver tus playas favoritas.");
+        return;
+    }
+
+    // Obtener favoritos desde localStorage
+    let favoritosRaw = localStorage.getItem("favoritos");
+    let favoritos = favoritosRaw ? JSON.parse(favoritosRaw).map(f => f.stringValue) : [];
+
+    if (favoritos.length === 0) {
+        alert("ℹ️ No tienes playas favoritas guardadas.");
+        return;
+    }
+
+    try {
+        // 🧼 LIMPIEZA GENERAL DEL MAPA
+        if (window.zonasLitoralLayer) {
+            window.map.removeLayer(window.zonasLitoralLayer);
+            window.zonasLitoralLayer = null;
+        }
+        if (window.markersCluster) {
+            window.map.removeLayer(window.markersCluster);
+            window.markersCluster = null;
+        }
+        if (window.routeLayer) {
+            window.map.removeLayer(window.routeLayer);
+            window.routeLayer = null;
+        }
+        if (window.userLocationMarker) {
+            window.map.removeLayer(window.userLocationMarker);
+            window.userLocationMarker = null;
+        }
+        if (window.selectedBeachMarker) {
+            window.map.removeLayer(window.selectedBeachMarker);
+            window.selectedBeachMarker = null;
+        }
+        if (window.backButtonControl) {
+            window.map.removeControl(window.backButtonControl);
+            window.backButtonControl = null;
+        }
+
+        let allBeaches = await fetchAllBeaches();
+        let favoriteBeaches = allBeaches.filter(beach =>
+            favoritos.includes(beach.fields["ID DGE"]?.integerValue?.toString())
+        );
+
+        if (favoriteBeaches.length === 0) {
+            alert("⚠️ No se encontraron coincidencias en los datos de playas.");
+            return;
+        }
+
+        console.log(`🌟 Mostrando ${favoriteBeaches.length} playas favoritas.`);
+
+        window.markersCluster = L.markerClusterGroup();
+
+        favoriteBeaches.forEach(doc => {
+            let fields = doc.fields;
+
+            let lat = fields.LAT ? parseFloat(fields.LAT.stringValue.replace(",", ".")) : null;
+            let lng = fields.LOG ? parseFloat(fields.LOG.stringValue.replace(",", ".")) : null;
+
+            if (lat === null || lng === null || isNaN(lat) || isNaN(lng)) {
+                console.warn(`⚠️ Coordenadas inválidas para la playa ${fields.beachName?.stringValue}`);
+                return;
+            }
+
+            let coords = [lat, -lng];
+
+            let marker = L.marker(coords);
+            marker.beachData = fields;
+
+            marker.on("click", function (event) {
+                let currentZoom = window.map.getZoom();
+                if (currentZoom >= 14 || !marker._icon.classList.contains("leaflet-cluster-icon")) {
+                    showCustomPopup(fields);
+                } else {
+                    window.map.setView(event.latlng, currentZoom + 2);
+                }
+            });
+
+            window.markersCluster.addLayer(marker);
+        });
+
+        window.markersCluster.on("clusterclick", function (event) {
+            window.map.setView(event.latlng, window.map.getZoom() + 2);
+        });
+
+        window.map.addLayer(window.markersCluster);
+        window.map.invalidateSize();
+        isBeachViewActive = true;
+    } catch (error) {
+        console.error("❌ Error al mostrar las playas favoritas:", error);
+    }
 }
 
 async function measureDistance() {
