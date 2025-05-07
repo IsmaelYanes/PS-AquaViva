@@ -289,11 +289,10 @@ class AdvancedSearcher{
         const facilities = !(this.facilities) || this.facilities.every(facility => this.getFacilitiesCondition(beach).includes(facility));
         return name & island & town & bathing & access & influence & environmentCondition & bath & facilities;
     }
-
 }
 
 function initAdvancedSearch(){
     const advancedSearch = new AdvancedSearcher();
-    const result = advancedSearch.getResultsOfFilter(fetchAllBeaches());
+    const result = advancedSearch.getResultsOfFilter(beachSearcher.getBeachesList());
     showFilteredBeaches(result);
 }

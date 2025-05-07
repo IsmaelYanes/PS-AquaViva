@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "firebase": "^11.6.1",
+    "fs": "^0.0.1-security",
+    "fs-extra": "^11.3.0",
+    "node-fetch": "^2.7.0",
+    "path": "^0.12.7",
+    "sharp": "^0.34.1"
+  },
+  "name": "aquaviva",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IsmaelYanes/PS-AquaViva.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IsmaelYanes/PS-AquaViva/issues"
+  },
+  "homepage": "https://github.com/IsmaelYanes/PS-AquaViva#readme",
+  "description": ""
+}

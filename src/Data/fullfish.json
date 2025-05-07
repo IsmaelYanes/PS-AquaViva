@@ -1,17 +1,3452 @@
 [
-  { "name": "Raya toro", "sciname": "Aetomylaeus bovinus"  , "image": "../images/FishImages/Raya toro.jpg" ,
-    "IUCN":  "CR",
-    "description":  "Conocida comúnmente como raya toro o pez obispo. Puede llegar a medir más de dos metros, lo que la convierte en una de las rayas de mayor tamaño que se conocen en el Mediterráneo. Esta especie ha sido documentada en las aguas tropicales y cálidas del Atlántico oriental. A día de hoy, sigue siendo poco conocida, y parece que podría encontrarse en vías de extinción en el Mediterráneo y el mar Negro. Habiendo ya desaparecido prácticamente del mar Egeo. Las poblaciones presentes en el océano Atlántico parecen gozar de una situación algo mejor. Sus principales amenazas son la sobrepesca y las capturas accidentales.",
-   "genderDescription":  " Las especies del género  Aetomylaeus  son comúnmente conocidas como rayas águila, a veces también como rayas toro. Pertenecen a la familia de los Myliobatidae. Al igual que ocurre con otras rayas, las aletas pectorales y el cuerpo se confunden. Sin embargo, las aletas pueden distinguirse por la posición de la cabeza que sobresale del resto del cuerpo.\n\nEstos peces de tamaño imponente poseen una pequeña aleta dorsal bien visible, y un aguijón en la base de la cola. Esta última es más larga que el resto del cuerpo. Las mandíbulas son poderosas con numerosas filas de grandes dientes. Los especímenes de mayor tamaño pueden llegar a sobrepasar los 2 metros. Estas rayas son parientes de los Myliobatis  pero al contrario que ocurre en estos últimos, las Aetomylaeus poseen unas aletas pectorales separadas del lóbulo rostral que se juntan al nivel de los ojos. La espina de la cola está poco desarrollada. Las Aetomylaeus  fueron durante mucho tiempo clasificadas con otras especies de rayas bajo el género Pteromylaeus. Su biología es aún en día poco conocida, y se trata de un animal inofensivo para el hombre.\n\nFrecuentan principalmente las aguas costeras pero pueden ser vistas en aguas abiertas, solas o formando pequeños grupos. Las rayas águila se alimentan de crustáceos y moluscos que habitan en el fondo. Son ovovivíparas y dan a luz a crías completamente formadas. Tan solo una especie está presente en el océano Atlántico y en el mar Mediterráneo, las otras 6 restantes se encuentran en el océano Pacífico.\n\nApreciadas por su carne, han sido objeto importante de la pesca. El desconocimiento de su ciclo biológico y su baja tasa de crecimiento han provocado una escasez de sus poblaciones. En 2020, de 7 especies, 5 estaban consideradas como vulnerables por el IUCN, de las otras dos, de una no se tiene información y la otra es actualmente una preocupación menor. ",
-    "type": "Raya", "size": "150cm" , "maxSize" : "220cm", "mimetism": "Fondo arenoso",
-    "recognize" : "Esta especie es fácilmente reconocible frente a otras rayas. Su cuerpo es de un color marrón-beige con numerosas líneas azul pálido repartidas sobre el dorso. El vientre, sin embargo, es de color blanco. Posee una imponente cabeza, en la que resalta su hocico, alargado y plano, con forma de pico de pato. La boca contiene 7 filas de dientes planos.",
-    "fe/maleDifferences" : "Macho y hembra son muy similares, sin embargo los individuos de mayor tamaño son siempre hembras.",
-    "diet": "Carnívoro", "territorial": "No", "social" : "Grupos o en solitario", "lifeMode": "Diurno",
-    "mapImage": "../images/MapFishImages/Mapa Raya Toro.jpg",
-    "lifeDescription": "La raya toro vive tanto en grupo como en solitario. Generalmente, suele frecuentar las zonas costeras aunque ha sido también observada en aguas abiertas. Habitualmente suele encontrarse próxima al fondo, en busca de crustáceos y moluscos con los que alimentarse. En particular, mejillones, ostras y gasterópodos. También ha sido observada en aguas salobres. Se trata de una especie migratoria, las hembras se desplazan para dar a luz.",
-    "reproductionMode": "Ovovivíparo", "migration" : "Sí",
-    "reproductionDescription": "Se trata de una especie ovovivípara. Los embriones son incubados en el interior de las hembras. Alimentándose inicialmente de la yema del huevo para después recibir un complemento alimenticio por parte de la madre, por absorción indirecta del líquido uterino enriquecido en grasa o proteínas. Esta forma de alimentación sigue una estructura compleja. La gestación dura en torno a 6 meses, y de ella nacerán entre 3 y 7 crías, totalmente formadas y con un tamaño cercano a los 45 cm.",
-    "poison": "No", "danger": "La especie parece inofensiva para el hombre. Sin embargo, conviene mantener una cierta prudencia en caso de encontrarse con individuos de gran tamaño.",
-    "depth": "10 - 150m"
+  {
+    "name": "Aetomylaeus bovinus",
+    "nom_commun": "raya toro",
+    "description_summary": "Aetomylaeus bovinus, conocido como raya toro, es una de las rayas más grandes del Mediterráneo. Esta especie, que se encuentra en las aguas tropicales y cálidas del este del Atlántico, ha sido poco estudiada pero parece estar en peligro de extinción en el Mar Mediterráneo y el Mar Negro. Habita en zonas costeras y se alimenta principalmente de crustáceos y moluscos, como mejillones, ostras y gasterópodos.",
+    "familia": {
+      "name": "Myliobatidae"
+    },
+    "species_morphology": {
+      "name": "Aetomylaeus bovinus",
+      "size_average": 150,
+      "size_max": 220
+    },
+    "species_ecology": {
+      "index_statut": 7,
+      "description": "En peligro crítico de extinción"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Raya toro.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Raya toro.jpg"
+  },
+  {
+    "name": "Anthias anthias",
+    "nom_commun": "tres colas",
+    "description_summary": "Puede ser observado entre los 30 y 200 metros de profundidad. Habita cerca de cavidades donde encuentra refugio en caso de peligro. El macho posee unas grandes aletas pectorales y vive rodeado por un harén de una docena de hembras. Si este muere, la hembra dominante se convertirá en macho (hermafroditismo protógino).",
+    "familia": {
+      "name": "Anthiadidae"
+    },
+    "species_morphology": {
+      "name": "Anthias anthias",
+      "size_average": 15,
+      "size_max": 27
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Tres colas.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Tres colas.jpg"
+  },
+  {
+    "name": "Apogon imberbis",
+    "nom_commun": "reyezuelo",
+    "description_summary": "La fecundación es interna. El macho usa su aleta anal para fertilizar a la hembra. Esta pone un paquete de huevos que el macho mantendrá en su boca hasta que las crías eclosionen. Durante este período, no come y puede morir de \"hambre\" si no ha acumulado suficientes reservas.",
+    "familia": {
+      "name": "Apogonidae"
+    },
+    "species_morphology": {
+      "name": "Apogon imberbis",
+      "size_average": 12,
+      "size_max": 15
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Reyezuelo.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Reyezuelo.jpg"
+  },
+  {
+    "name": "Atherina boyeri",
+    "nom_commun": "pejerrey mediterráneo",
+    "description_summary": "Esta especie presenta un cuerpo mayoritariamente plateado y gris. El dorso varía del amarillo verdoso al azul con puntos negros, la zona del vientre es de color gris plateado. Una línea de color amarillo y azul divide su cuerpo en dos de forma horizontal. Esta banda característica de esta especie, se sitúa en lugar de la que debería ser la línea lateral del cuerpo. Las aletas son translúcidas, situándose las pectorales en la parte alta del cuerpo. Esta especie tiene un ojo de gran tamaño.",
+    "familia": {
+      "name": "Atherinidae"
+    },
+    "species_morphology": {
+      "name": "Atherina boyeri",
+      "size_average": 18,
+      "size_max": 20
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Pejerrey mediterráneo.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Pejerrey mediterráneo.jpg"
+  },
+  {
+    "name": "Aulostomus strigosus",
+    "nom_commun": "pez trompeta del atlántico oriental",
+    "description_summary": "Habita en aguas tropicales y subtropicales del Océano Atlántico oriental, desde Marruecos hasta Senegal. También es habitual en la mayoría de las islas oceánicas de estas regiones, incluidas las Islas Canarias, las Islas de Cabo Verde y Madeira.",
+    "familia": {
+      "name": "Aulostomidae"
+    },
+    "species_morphology": {
+      "name": "Aulostomus strigosus",
+      "size_average": 60,
+      "size_max": 75
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Pez trompeta oriental.jpg",
+    "mapImage": "../images/MapFishImages/Mapa pez trompeta del atlántico oriental.jpg"
+  },
+  {
+    "name": "Balistes capriscus",
+    "nom_commun": "ballesta común",
+    "description_summary": "El pez ballesta, también conocido como « ballesta gris », « ballesta común » y de forma más ocasional como « cerdo de mar », es un pez que puede ser observado desde las aguas del mar Negro hasta el mar del Caribe. Habita también las costas desde el Sudeste de Brasil hasta Canadá, en la zona Oeste del océano Atlántico. En la cara Este, ha sido documentado desde Angola hasta Irlanda. Su presencia en zonas limítrofes es más esporádica. Forma parte de las especies con el área más grande de repartición en la zona Atlántica.\n Los ballesta son peces conocidos por su carne, hecho poco conocido en Europa. Es por ello, que han sido objeto de una pesca intensiva histórica al otro lado del Atlántico así como en las costas africanas. Varios estudios realizados sobre la población de este pez en México han demostrado que las tasas de captura inducidas por la pesca comercial y recreativa no son sostenibles.  Después de un pico de capturas en el año 1990, las poblaciones no han dejado de disminuir.",
+    "familia": {
+      "name": "Balistidae"
+    },
+    "species_morphology": {
+      "name": "Balistes capriscus",
+      "size_average": 44,
+      "size_max": 66
+    },
+    "species_ecology": {
+      "index_statut": 5,
+      "description": "Vulnerable"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Ballesta.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Ballesta común.jpg"
+  },
+  {
+    "name": "Bodianus scrofa",
+    "nom_commun": "pez perro",
+    "description_summary": "Conocido como pez perro según recoge Fishbase, es un pez marino endémico de la Macaronesia. Este lábrido multicolor ha sido fruto de una pesca intensiva y está actualmente considerado como vulnerable desde 2008 por la IUCN. Las poblaciones alrededor de las Islas Canarias y Madeira son particularmente pequeñas, siendo su situación también complicada en Cabo Verde.",
+    "familia": {
+      "name": "Labridae"
+    },
+    "species_morphology": {
+      "name": "Bodianus scrofa",
+      "size_average": 70,
+      "size_max": 80
+    },
+    "species_ecology": {
+      "index_statut": 5,
+      "description": "Vulnerable"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Pez perro.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Pez perro.jpg"
+  },
+  {
+    "name": "Boops boops",
+    "nom_commun": "boga",
+    "description_summary": "A menudo busca su comida en el fondo. Al caer la noche, asciende a la superficie con el fin de alimentarse de zooplancton. A veces es objeto de pesca en el Mediterráneo. También se utiliza como carnada para pescar atunes.",
+    "familia": {
+      "name": "Sparidae"
+    },
+    "species_morphology": {
+      "name": "Boops boops",
+      "size_average": 20,
+      "size_max": 40
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Boga.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Boga.jpg"
+  },
+  {
+    "name": "Bothus podas",
+    "nom_commun": "tapaculo",
+    "description_summary": "Más comúnmente conocido como tapaculo, y a menudo mal denominado con el nombre de rodaballo debido a su parecido, nombre que en realidad pertenece a las especies Scophthalmus maximus y Scophthalmus rhombus. Un pez plano que vive en el Mar Mediterráneo y en la costa oriental templada del Océano Atlántico.",
+    "familia": {
+      "name": "Bothidae"
+    },
+    "species_morphology": {
+      "name": "Bothus podas",
+      "size_average": 15,
+      "size_max": 45
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "omnívoro con tendencia carnívora"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Tapaculo.jfif",
+    "mapImage": "../images/MapFishImages/Mapa Tapaculo.jpg"
+  },
+  {
+    "name": "Canthigaster capistrata",
+    "nom_commun": "gallinita",
+    "description_summary": "Estos peces se caracterizan por poseer un cuerpo comprimido, un hocico alargado y puntiagudo y la ausencia de aletas pélvicas. La boca es pequeña y está provista de dientes similares a los de los Tétraodon  encontrándose fusionados en dos dientes en cada mandíbula, formando una especie de pico. Gracias a la particular forma de su boca, el Canthigaster,  puede picotear fácilmente algas y otros organismos bénticos.",
+    "familia": {
+      "name": "Tetraodontidae"
+    },
+    "species_morphology": {
+      "name": "Canthigaster capistrata",
+      "size_average": 9,
+      "size_max": 11
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Gallinita.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Gallinita.jpg"
+  },
+  {
+    "name": "Capros aper",
+    "nom_commun": "pez jabalí",
+    "description_summary": "Capros aper, comúnmente conocido como pez jabalí, es un pez marino originario de la parte este del océano Atlántico y del mar Mediterráneo. Esta especie bentónica habita en zonas rocosas y corallígenas a profundidades intermedias, generalmente entre 30 y 700 metros de profundidad.\r\n\r\nEl jabalí habita en fondos suaves o rocosos profundos del Mediterráneo y el noreste del Atlántico, llegando hasta los 700 metros de profundidad. Reconocible por su cuerpo lateralmente comprimido y su hocico puntiagudo, puede proyectar rápidamente su boca hacia adelante para capturar pequeñas presas.",
+    "familia": {
+      "name": "Caproidae"
+    },
+    "species_morphology": {
+      "name": "Capros aper",
+      "size_average": 13,
+      "size_max": 25
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Pez jabalí.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Pez jabalí.jpg"
+  },
+  {
+    "name": "Carcharhinus falciformis",
+    "nom_commun": "tiburón sedoso",
+    "description_summary": "Carcharhinus falciformis, conocido como tiburón sedoso, está ampliamente distribuido en los mares tropicales y subtropicales. Sin embargo, esta especie se encuentra amenazada debido a la sobrepesca, y está clasificada como vulnerable por la IUCN. Reconocible gracias a su cuerpo alargado y delgado, su dorso gris y su vientre blanco, este depredador rápido y agresivo se alimenta de peces, moluscos y crustáceos.",
+    "familia": {
+      "name": "Carcharhinidae"
+    },
+    "species_morphology": {
+      "name": "Carcharhinus falciformis",
+      "size_average": 200,
+      "size_max": 260
+    },
+    "species_ecology": {
+      "index_statut": 5,
+      "description": "Vulnerable"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Tiburón sedoso.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Tiburón sedoso.jpg"
+  },
+  {
+    "name": "Carcharodon carcharias",
+    "nom_commun": "tiburón blanco",
+    "description_summary": "Carcharodon carcharias, conocido como tiburón blanco, se encuentra en las aguas costeras y oceánicas de la mayor parte de los océanos así como en los mares templados y subtropicales en todo el mundo. Depredador solitario, se alimenta de peces, tiburones, rayas y mamíferos marinos, pudiendo también aprovecharse de las carcasas de ballenas a la deriva. Con un sentido de la vista muy desarrollado, se muestra curioso y observador con respecto a objetos y actividades. En ocasiones, pueden producirse ataques a surfistas.",
+    "familia": {
+      "name": "Lamnidae"
+    },
+    "species_morphology": {
+      "name": "Carcharodon carcharias",
+      "size_average": 450,
+      "size_max": 750
+    },
+    "species_ecology": {
+      "index_statut": 5,
+      "description": "Vulnerable"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Tiburón blanco.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Tiburón blanco.jpg"
+  },
+  {
+    "name": "Cetorhinus maximus",
+    "nom_commun": "tiburón peregrino",
+    "description_summary": "El tiburón peregrino se encuentra en las aguas costeras y oceánicas de la mayoría de los mares y océanos templados. Es el segundo tiburón más grande del mundo después del tiburón ballena. Su dieta consiste principalmente en zooplancton. Aunque es imponente, no representa un peligro para los humanos.",
+    "familia": {
+      "name": "Cetorhinidae"
+    },
+    "species_morphology": {
+      "name": "Cetorhinus maximus",
+      "size_average": 1000,
+      "size_max": 1200
+    },
+    "species_ecology": {
+      "index_statut": 6,
+      "description": "En peligro"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Tiburón peregrino.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Tiburón peregrino.jpg"
+  },
+  {
+    "name": "Chromis limbata",
+    "nom_commun": "fula blanca",
+    "description_summary": "Los peces del género son presa frecuente de los pescadores, con la intención de venderlos en el mercado destinado a la acuariofilia. Sin embargo, el impacto vinculado a esta pesca sigue siendo insignificante debido a la alta densidad de población. Numerosas especies costeras tropicales son muy resistentes a las variaciones en los parámetros fisicoquímicos y es probable que, en caso de desplazamiento de la población, lleguen a colonizar nuevos nichos ecológicos. Este es el caso, por ejemplo, de ",
+    "familia": {
+      "name": "Pomacentridae"
+    },
+    "species_morphology": {
+      "name": "Chromis limbata",
+      "size_average": 9,
+      "size_max": 12
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "omnívoro con tendencia carnívora"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Fula blanca.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Fula blanca.jpg"
+  },
+  {
+    "name": "Conger conger",
+    "nom_commun": "congrio común",
+    "description_summary": "Esta especie, apreciada por su carne, es capturada de manera regular y es posible encontrarla fácilmente en las pescaderías. De comportamiento más bien nocturno, rara vez se le observa durante el día en su entorno natural. Para poder avistarlo es necesario observar pacientemente el fondo de las cavidades rocosas o cuevas en las que puede asomar su característica cabeza. Generalmente se le atribuyen algunas leves mordeduras a bañistas y buceadores. Estos incidentes suelen tener lugar principalmente cuando las víctimas ponen sus manos o pies en las rocas. Los congrios protegen su espacio vital durante el día y no dudan en atacar a cualquier intruso que entre en su territorio.",
+    "familia": {
+      "name": "Congridae"
+    },
+    "species_morphology": {
+      "name": "Conger conger",
+      "size_average": 150,
+      "size_max": 300
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Congrio.jfif",
+    "mapImage": "../images/MapFishImages/Mapa congrio común.jpg"
+  },
+  {
+    "name": "Coris julis",
+    "nom_commun": "doncella común",
+    "description_summary": "Los machos más grandes son reconocibles por un dorso de color verde, un vientre blanco y una amplia línea naranja en los laterales. Esta coloración, asociada a su nado característico, es utilizada para impresionar a otros machos y atraer la atención de las hembras, aunque a veces también atrae a los depredadores.",
+    "familia": {
+      "name": "Labridae"
+    },
+    "species_morphology": {
+      "name": "Coris julis",
+      "size_average": 25,
+      "size_max": 30
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "omnívoro con tendencia carnívora"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Doncella.jpg",
+    "mapImage": "../images/MapFishImages/Mapa doncella común.jpg"
+  },
+  {
+    "name": "Coryphaena hippurus",
+    "nom_commun": "dorado",
+    "description_summary": "Más conocido como dorado, llampuga o mahi-mahi en la Polinesia, es un pez marino de la familia Coryphaenidae. Se encuentra en las cálidas aguas de los océanos Atlántico, Índico y Pacífico. Se trata de una especie que pareciera estar aprovechando el calentamiento de los océanos, recientemente ha ingresado en el mar Mediterráneo.Como migrante, sus límites están determinados por la temperatura del agua, que debe superar siempre los 20 °C. Con una velocidad de carrera cercana a los 100 km/h, el dorado es uno de los animales acuáticos más rápidos del mundo.",
+    "familia": {
+      "name": "Coryphaenidae"
+    },
+    "species_morphology": {
+      "name": "Coryphaena hippurus",
+      "size_average": 100,
+      "size_max": 210
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Dorado.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Dorado.jpg"
+  },
+  {
+    "name": "Dactylopterus volitans",
+    "nom_commun": "pez golondrina",
+    "description_summary": "Es conocido por múltiples nombres dependiendo de la región, algunos de los más comunes son pez golondrina, alón volador o chicharra. Se trata de un pez marino originario del océano Atlántico. Se encuentra desde Canadá hasta Argentina en la costa oeste del Atlántico y desde el Canal de la Mancha hasta las Azores en la costa este. También está presente en el mar Mediterráneo, desde Gibraltar hasta Chipre. Al igual que otras especies de su familia, este pez realiza un movimiento característico que recuerda a la marcha terrestre utilizando sus aletas pélvicas. Estas aletas no son muy diferentes de las extremidades de los animales terrestres.",
+    "familia": {
+      "name": "Dactylopteridae"
+    },
+    "species_morphology": {
+      "name": "Dactylopterus volitans",
+      "size_average": 38,
+      "size_max": 50
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Pez golondrina.jfif",
+    "mapImage": "../images/MapFishImages/Mapa Pez golondrina.jpg"
+  },
+  {
+    "name": "Dasyatis pastinaca",
+    "nom_commun": "raya látigo común",
+    "description_summary": "Las rayas se diferencian por poseer un cuerpo plano y la presencia de espiráculos en su parte dorsal. Se trata de un sistema de respiración especializado que les permite aspirar el agua y expulsarla por las hendiduras branquiales en la parte ventral, sin tomar arena. Todas las especies del género poseen una cola larga con un aguijón venenoso.",
+    "familia": {
+      "name": "Dasyatidae"
+    },
+    "species_morphology": {
+      "name": "Dasyatis pastinaca",
+      "size_average": 60,
+      "size_max": 250
+    },
+    "species_ecology": {
+      "index_statut": 5,
+      "description": "Vulnerable"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Raya látigo.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Raya látigo común.jpg"
+  },
+  {
+    "name": "Dicentrarchus labrax",
+    "nom_commun": "lubina",
+    "description_summary": "Conocida como lubina o róbalo. Esta especie ha sido conocida y apreciada por su carne desde la antigüedad. Desafortunadamente, su presencia se ha visto amenazada debido a la pesca intensiva. Hoy en día, la mayoría de las lubinas que se consumen en Europa se crían en granjas acuícolas.",
+    "familia": {
+      "name": "Moronidae"
+    },
+    "species_morphology": {
+      "name": "Dicentrarchus labrax",
+      "size_average": 50,
+      "size_max": 100
+    },
+    "species_ecology": {
+      "index_statut": 4,
+      "description": "Casi amenazado"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Lubina.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Lubina.jpg"
+  },
+  {
+    "name": "Dicentrarchus punctatus",
+    "nom_commun": "baila",
+    "description_summary": "La lubina no es directamente sensible al calor y se adapta tanto a las aguas frías del Canal de la Mancha como a las aguas más cálidas del Mediterráneo. Sin embargo, algunos estudios han demostrado que el aumento de CO2 en el agua perturba sus habilidades olfativas, aumentando su dificultad para alimentarse. Por lo tanto, la acidificación del Mediterráneo podría tener consecuencias importantes en el estado de sus poblaciones.",
+    "familia": {
+      "name": "Moronidae"
+    },
+    "species_morphology": {
+      "name": "Dicentrarchus punctatus",
+      "size_average": 30,
+      "size_max": 70
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Baila.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Baila.jpg"
+  },
+  {
+    "name": "Diplodus annularis",
+    "nom_commun": "raspallón",
+    "description_summary": "Se distingue de otras especies de sargos por su tamaño más pequeño y sus reflejos dorados. Es una especie hermafrodita protándrica: los machos se transforman en hembras a lo largo de su vida. Su carne es menos apreciada que la de otros esparidos (doradas, sargos...).",
+    "familia": {
+      "name": "Sparidae"
+    },
+    "species_morphology": {
+      "name": "Diplodus annularis",
+      "size_average": 13,
+      "size_max": 28
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Raspallón.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Raspallón.jpg"
+  },
+  {
+    "name": "Diplodus cervinus",
+    "nom_commun": "sargo breado",
+    "description_summary": "Apreciado por su carne, este pez parece estar bajo una fuerte presión presquera. Su rápido crecimiento lo hace interesante para la acuicultura. Sin embargo, es una especie bastante sensible al estrés, lo que dificulta su cría a gran escala.",
+    "familia": {
+      "name": "Sparidae"
+    },
+    "species_morphology": {
+      "name": "Diplodus cervinus",
+      "size_average": 35,
+      "size_max": 55
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Sargo breado.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Sargo breado.jpg"
+  },
+  {
+    "name": "Diplodus puntazzo",
+    "nom_commun": "sargo picudo",
+    "description_summary": "A diferencia de otras especies de sargos que viven en el Mediterráneo, esta especie posee una característica mandíbula de forma alargada. A menudo se encuentra en grupos formados por otras especies de peces (sargos, salpas). Es muy apreciado por los pescadores debido a que su carne tiene un sabor muy delicado.",
+    "familia": {
+      "name": "Sparidae"
+    },
+    "species_morphology": {
+      "name": "Diplodus puntazzo",
+      "size_average": 30,
+      "size_max": 60
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Sargo picudo.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Sargo picudo.jpg"
+  },
+  {
+    "name": "Diplodus sargus",
+    "nom_commun": "sargo común",
+    "description_summary": "Vive a menudo en pequeños grupos. Su dentadura le permite triturar las cáscaras y conchas de sus presas (erizos de mar, crustáceos, bivalvos...). Es muy apreciado por su carne de sabor muy fino.",
+    "familia": {
+      "name": "Sparidae"
+    },
+    "species_morphology": {
+      "name": "Diplodus sargus",
+      "size_average": 15,
+      "size_max": 30
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Sargo.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Sargo común.jpg"
+  },
+  {
+    "name": "Diplodus vulgaris",
+    "nom_commun": "mojarra",
+    "description_summary": "A veces se le llama \"San Antonio\" debido a la banda negra en la parte posterior de su cabeza que se asemeja a la capucha de un monje. A menudo se encuentra en grupos con otras especies de sargos. Es muy buscado por los pescadores.",
+    "familia": {
+      "name": "Sparidae"
+    },
+    "species_morphology": {
+      "name": "Diplodus vulgaris",
+      "size_average": 22,
+      "size_max": 45
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Mojarra.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Mojarra.jpg"
+  },
+  {
+    "name": "Echiichthys vipera",
+    "nom_commun": "salvariego",
+    "description_summary": "Dotado con unas espinas venenosas, esta especie experta en camuflaje es temida por pescadores y bañistas. En la mayoría de casos, la víctima posa accidentalmente su pie sobre el animal enterrado en la arena. Discreto, este pequeño pez frecuenta las aguas cercanas a la costa durante los meses más cálidos, de ahí su habitual presencia en las zonas de baño durante el período estival.",
+    "familia": {
+      "name": "Trachinidae"
+    },
+    "species_morphology": {
+      "name": "Echiichthys vipera",
+      "size_average": 10,
+      "size_max": 16
+    },
+    "species_ecology": {
+      "index_statut": 1,
+      "description": "No evaluado"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Salvariego.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Salvariego.jpg"
+  },
+  {
+    "name": "Enchelycore anatina",
+    "nom_commun": "morena picopato",
+    "description_summary": null,
+    "familia": {
+      "name": "Muraenidae"
+    },
+    "species_morphology": {
+      "name": "Enchelycore anatina",
+      "size_average": 100,
+      "size_max": 120
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Morena picopato.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Morena picopato.jpg"
+  },
+  {
+    "name": "Epinephelus costae",
+    "nom_commun": "falso abadejo",
+    "description_summary": "Estos depredadores de carácter territorial poseen un cuerpo alargado y robusto. Con una cabeza imponente y una boca protráctil, posee una mandíbula que contiene en su parte delantera unos poderosos caninos. Todas las especies poseen 10 o 11 espinas dorsales.",
+    "familia": {
+      "name": "Serranidae"
+    },
+    "species_morphology": {
+      "name": "Epinephelus costae",
+      "size_average": 80,
+      "size_max": 140
+    },
+    "species_ecology": {
+      "index_statut": 2,
+      "description": "Datos insuficientes"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Falso abadejo.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Falso abadejo.jpg"
+  },
+  {
+    "name": "Epinephelus itajara",
+    "nom_commun": "mero guasa",
+    "description_summary": "El mero guasa resulta una especie de particular interés para los aficionados a la pesca deportiva. Estos peces normalmente se liberan después de ser capturados y a día de hoy, aún son considerados como vulnerables según la IUCN. Al ser unos animales sedentarios que no huyen en presencia de los seres humanos, resultan un blanco fácil para los pescadores con arpón. Además de las frecuentes capturas de animales adultos, los juveniles encuentran diversas dificultades en sus ecosistemas favoritos: los manglares, debido a que estos se ven globalmente afectados por diversas contaminaciones, cuando no son simplemente destruidos por la urbanización de las costas.",
+    "familia": {
+      "name": "Serranidae"
+    },
+    "species_morphology": {
+      "name": "Epinephelus itajara",
+      "size_average": 150,
+      "size_max": 250
+    },
+    "species_ecology": {
+      "index_statut": 5,
+      "description": "Vulnerable"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Mero guasa.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Mero guasa.jpg"
+  },
+  {
+    "name": "Epinephelus marginatus",
+    "nom_commun": "mero",
+    "description_summary": "A menudo presa de pescadores submarinos, es capturado principalmente por su apreciada carne. Esta especie está considerada como amenazada, incluso encontrándose protegido en algunos países. Desde principios de los noventa, se han observado cada vez más juveniles en el norte del Mediterráneo.",
+    "familia": {
+      "name": "Serranidae"
+    },
+    "species_morphology": {
+      "name": "Epinephelus marginatus",
+      "size_average": 80,
+      "size_max": 140
+    },
+    "species_ecology": {
+      "index_statut": 5,
+      "description": "Vulnerable"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Mero.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Mero.jpg"
+  },
+  {
+    "name": "euthynnus alletteratus",
+    "nom_commun": "bacoreta",
+    "description_summary": "Son peces pelágicos que viven en bancos cerca de la superficie. Se trata de depredadores activos que se alimentan de peces, crustáceos y moluscos. Son oportunistas y a veces se les observa cazando en compañía de delfines. Tienen un tamaño promedio de 80 centímetros.",
+    "familia": {
+      "name": "Scombridae"
+    },
+    "species_morphology": {
+      "name": "Euthynnus alletteratus",
+      "size_average": 80,
+      "size_max": 122
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Bacoreta.webp",
+    "mapImage": "../images/MapFishImages/Mapa Bacoreta.jpg"
+  },
+  {
+    "name": "Exocoetus volitans",
+    "nom_commun": "pez volador común",
+    "description_summary": "Esta especie es conocida por su capacidad para sobrevolar las aguas durante cientos de metros. Se cree que estos peces han evolucionado hasta adquirir esta característica con el fin de escapar de sus depredadores, como los verdeles, los atunes y otros grandes peces pelágicos.",
+    "familia": {
+      "name": "Exocoetidae"
+    },
+    "species_morphology": {
+      "name": "Exocoetus volitans",
+      "size_average": 20,
+      "size_max": 30
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Pez volador.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Pez volador común.jpg"
+  },
+  {
+    "name": "Ginglymostoma cirratum",
+    "nom_commun": "tiburón nodriza",
+    "description_summary": "El tiburón nodriza se encuentra en el océano Atlántico, desde el golfo de México hasta el sur de Brasil. Descansa la mayor parte del día bajo refugios rocosos o en cuevas. Este depredador nocturno se alimenta principalmente de crustáceos, erizos de mar, moluscos y peces. Es ovíparo y alcanza la madurez sexual alrededor de los 220 cm.",
+    "familia": {
+      "name": "Ginglymostomatidae"
+    },
+    "species_morphology": {
+      "name": "Ginglymostoma cirratum",
+      "size_average": 240,
+      "size_max": 430
+    },
+    "species_ecology": {
+      "index_statut": 5,
+      "description": "Vulnerable"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Tiburón nodriza.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Tiburón nodriza.jpg"
+  },
+  {
+    "name": "Gobius niger",
+    "nom_commun": "gobio negro",
+    "description_summary": null,
+    "familia": {
+      "name": "Gobiidae"
+    },
+    "species_morphology": {
+      "name": "Gobius niger",
+      "size_average": 16,
+      "size_max": 18
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Gobio negro.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Gobio negro.jpg"
+  },
+  {
+    "name": "Gobius paganellus",
+    "nom_commun": "gobio de roca",
+    "description_summary": null,
+    "familia": {
+      "name": "Gobiidae"
+    },
+    "species_morphology": {
+      "name": "Gobius paganellus",
+      "size_average": 7,
+      "size_max": 13
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Gobio de roca.jfif",
+    "mapImage": "../images/MapFishImages/Mapa Gobio de roca.jpg"
+  },
+  {
+    "name": "Gymnothorax unicolor",
+    "nom_commun": "murión",
+    "description_summary": "Son comúnmente conocidas como morenas. Con 127 especies descritas en 2021, es el género más diversificado dentro de la familia Muraenidae. Se describen especialmente las representantes más grandes de la familia, que pueden alcanzar los tres metros de longitud. La biología y morfología de muchas morenas aún están poco documentadas debido al gran número de especies y sus hábitos secretos. Parte de las especies fueron anteriormente clasificadas en los géneros ",
+    "familia": {
+      "name": "Muraenidae"
+    },
+    "species_morphology": {
+      "name": "Gymnothorax unicolor",
+      "size_average": 80,
+      "size_max": 100
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Murión.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Murión.jpg"
+  },
+  {
+    "name": "Gymnura altavela",
+    "nom_commun": "raya mariposa",
+    "description_summary": "Es comúnmente conocida como \"raya mariposa\" o \"raya alada\", en Canarias se le denomina también con el sobrenombre de \"raya mantelina\". Se trata de un elasmobranquio bentónico que se encuentra en aguas subtropicales marinas y salobres a lo largo de las costas del Atlántico oriental y occidental, en el mar Mediterráneo y en el mar Negro.",
+    "familia": {
+      "name": "Gymnuridae"
+    },
+    "species_morphology": {
+      "name": "Gymnura altavela",
+      "size_average": 200,
+      "size_max": 400
+    },
+    "species_ecology": {
+      "index_statut": 6,
+      "description": "En peligro"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Raya mariposa.webp",
+    "mapImage": "../images/MapFishImages/Mapa Raya mariposa.jpg"
+  },
+  {
+    "name": "Hippocampus guttulatus",
+    "nom_commun": "caballito de mar mediterráneo",
+    "description_summary": "Durante el apareamiento, la hembra deposita los huevos en la bolsa ventral del macho. Cuando el desarrollo de las crías está completo, ¡el macho \"da a luz\"!",
+    "familia": {
+      "name": "Syngnathidae"
+    },
+    "species_morphology": {
+      "name": "Hippocampus guttulatus",
+      "size_average": 18,
+      "size_max": 21
+    },
+    "species_ecology": {
+      "index_statut": 2,
+      "description": "Datos insuficientes"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "pareja o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Caballito de mar mediterráneo.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Caballito de mar mediterráneo.jpg"
+  },
+  {
+    "name": "Hippocampus hippocampus",
+    "nom_commun": "caballito de mar común",
+    "description_summary": "No hace mucho tiempo que los ejemplares de esta especie eran capturados para ser secados y vendidos como souvenir, e incluso para utilizarlos en la medicina tradicional en algunos países asiáticos, por fortuna estas prácticas han disminuido aunque aún es común capturarlos para venderlos en el mercado acuariófilo.",
+    "familia": {
+      "name": "Syngnathidae"
+    },
+    "species_morphology": {
+      "name": "Hippocampus hippocampus",
+      "size_average": 7,
+      "size_max": 13
+    },
+    "species_ecology": {
+      "index_statut": 2,
+      "description": "Datos insuficientes"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "pareja o en solitario"
+      },
+      "regime": {
+        "translated_name": "planctófago"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Caballito de mar.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Caballito de mar común.jpg"
+  },
+  {
+    "name": "Isurus oxyrinchus",
+    "nom_commun": "tiburón mako",
+    "description_summary": "El tiburón mako, o Isurus oxyrinchus, es un depredador pelágico que se desplaza por los mares tropicales y templados, y que en ocasiones puede acercarse a las costas. Debido a su pesca intensiva, esta especie se encuentra en peligro de extinción desde 2018, excepto en la zona del Pacífico Sur. A pesar de su reputación como temible depredador, los ataques contra los humanos son poco frecuentes. El tiburón mako es un depredador solitario capaz de alcanzar velocidades superiores a 110 km/h y que se alimenta principalmente de peces, de otros tiburones y cefalópodos.",
+    "familia": {
+      "name": "Lamnidae"
+    },
+    "species_morphology": {
+      "name": "Isurus oxyrinchus",
+      "size_average": 270,
+      "size_max": 500
+    },
+    "species_ecology": {
+      "index_statut": 6,
+      "description": "En peligro"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Tiburón mako.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Tiburón mako.jpg"
+  },
+  {
+    "name": "Kyphosus sectatrix",
+    "nom_commun": "chopa",
+    "description_summary": "Es una especie muy apreciada por las pesquerías occidentales. Vive en solitario o en grandes grupos cerca de las praderas marinas y los fondos rocosos, buscando pequeños invertebrados como crustáceos o moluscos.",
+    "familia": {
+      "name": "Kyphosidae"
+    },
+    "species_morphology": {
+      "name": "Kyphosus sectatrix",
+      "size_average": 50,
+      "size_max": 76
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "omnívoro con tendencia alguívora"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Chopa.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Chopa.jpg"
+  },
+  {
+    "name": "Labrus merula",
+    "nom_commun": "merlo",
+    "description_summary": "Se distingue del conocido como tordo verde (Labrus viridis) gracias al característico margen azul que bordea sus aletas. Durante el período de reproducción, las hembras visitan los territorios de los machos y se aparean con los más \"atractivos\". Hacia los 4 años de edad, cambian de sexo (hermafroditismo protógeno), pero no de coloración.",
+    "familia": {
+      "name": "Labridae"
+    },
+    "species_morphology": {
+      "name": "Labrus merula",
+      "size_average": 40,
+      "size_max": 45
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Merlo.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Merlo.jpg"
+  },
+  {
+    "name": "Labrus mixtus",
+    "nom_commun": "gorrión",
+    "description_summary": "Se trata de uno de los peces más coloridos de la zona este de las costas atlánticas. Se encuentra cerca de arrecifes cubiertos de algas o praderas submarinas. Generalmente solitarios, especialmente los machos adultos, estos peces carnívoros son ávidos cazadores de moluscos, crustáceos y peces pequeños.",
+    "familia": {
+      "name": "Labridae"
+    },
+    "species_morphology": {
+      "name": "Labrus mixtus",
+      "size_average": 30,
+      "size_max": 40
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Gorrión.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Gorrión.jpg"
+  },
+  {
+    "name": "Lithognathus mormyrus",
+    "nom_commun": "pez herrera",
+    "description_summary": "Es un pez marino que se encuentra en el este del océano Atlántico tropical y templado. También está registrado y es común en el mar Mediterráneo. En España es bastante abundante en el mar Menor, en los meses estivales. Fácilmente identificable por sus rayas verticales de tonos marrones, esta especie frecuenta las zonas poco profundas de arena y lodo en busca de pequeños organismos acuáticos. A veces, es objeto de la pesca recreativa y la pesca profesional.",
+    "familia": {
+      "name": "Sparidae"
+    },
+    "species_morphology": {
+      "name": "Lithognathus mormyrus",
+      "size_average": 30,
+      "size_max": 55
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Pez herrera.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Pez herrera.jpg"
+  },
+  {
+    "name": "Lophius budegassa",
+    "nom_commun": "rape negro",
+    "description_summary": "Son comúnmente denominados \"rapes\", bien que este término resulta algo ambiguo. Pertenecen al orden de los Lophiiformes, apodados « peces pescadores », a causa del señuelo ubicado en la primera espina de su aleta dorsal. Especialistas en el arte del camuflaje, utilizan este señuelo para engañar y capturar a sus presas.",
+    "familia": {
+      "name": "Lophiidae"
+    },
+    "species_morphology": {
+      "name": "Lophius budegassa",
+      "size_average": 50,
+      "size_max": 100
+    },
+    "species_ecology": {
+      "index_statut": 2,
+      "description": "Datos insuficientes"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Rape negro.jpeg",
+    "mapImage": "../images/MapFishImages/Mapa Rape negro.jpg"
+  },
+  {
+    "name": "Lophius piscatorius",
+    "nom_commun": "rape común",
+    "description_summary": "El rape común, también conocido como rape blanco, se encuentra en una gran parte del océano Atlántico norte. Estando también presente en el mar Mediterráneo y en el mar Negro.Este depredador tiene la particularidad de utilizar un señuelo para cazar a sus presas. En Europa, es uno de los pescados más consumidos.",
+    "familia": {
+      "name": "Lophiidae"
+    },
+    "species_morphology": {
+      "name": "Lophius piscatorius",
+      "size_average": 100,
+      "size_max": 200
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Rape.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Rape común.jpg"
+  },
+  {
+    "name": "Macroramphosus scolopax",
+    "nom_commun": "trompetero",
+    "description_summary": "Esta especie debe su nombre a su larga boca en forma de pico. De carácter gregario frecuenta las aguas relativamente profundas de todas las zonas templadas del planeta. Se alimenta principalmente de invertebrados cazados en el fondo.",
+    "familia": {
+      "name": "Centriscidae"
+    },
+    "species_morphology": {
+      "name": "Macroramphosus scolopax",
+      "size_average": 12,
+      "size_max": 20
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Trompetero.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Trompetero.jpg"
+  },
+  {
+    "name": "Mobula mobular",
+    "nom_commun": "manta",
+    "description_summary": "Con una población que habría disminuido en más del 50% en 60 años, es hasta el día de hoy una de las rayas más vulnerable a nivel mundial, siendo sus principales amenazas la contaminación (residuos, vertidos químicos), la sobreactividad marítima y la pesca comercial. Esta especie no es un objetivo específico de la pesca, sin embargo, al igual que sucede con los delfines y las tortugas, a menudo es capturada de forma accidental.",
+    "familia": {
+      "name": "Mobulidae"
+    },
+    "species_morphology": {
+      "name": "Mobula mobular",
+      "size_average": 500,
+      "size_max": 520
+    },
+    "species_ecology": {
+      "index_statut": 6,
+      "description": "En peligro"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "pequeños grupos"
+      },
+      "regime": {
+        "translated_name": "planctófago"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Manta.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Manta.jpg"
+  },
+  {
+    "name": "Mola mola",
+    "nom_commun": "pez luna",
+    "description_summary": "Todas ellas tienen una forma redondeada con una aleta dorsal y anal muy desarrollada que les sirve como medio de locomoción. La aleta caudal se reduce a una simple banda, denominada clavus, que le da su característica forma con una especie de cola en forma de abanico.",
+    "familia": {
+      "name": "Molidae"
+    },
+    "species_morphology": {
+      "name": "Mola mola",
+      "size_average": 200,
+      "size_max": 330
+    },
+    "species_ecology": {
+      "index_statut": 5,
+      "description": "Vulnerable"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "omnívoro con tendencia carnívora"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Pez luna.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Pez luna.jpg"
+  },
+  {
+    "name": "Mullus barbatus",
+    "nom_commun": "salmonete de fango",
+    "description_summary": null,
+    "familia": {
+      "name": "Mullidae"
+    },
+    "species_morphology": {
+      "name": "Mullus barbatus",
+      "size_average": 20,
+      "size_max": 38
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Salmonete de fango.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Salmonete de fango.jpg"
+  },
+  {
+    "name": "Mullus surmuletus",
+    "nom_commun": "salmonete de roca",
+    "description_summary": "El salmonete de roca es un pez marino originario del este del océano Atlántico. Su área de distribución se extiende desde Noruega hasta Senegal, incluyendo también el mar Mediterráneo, las Islas Canarias y Madeira.",
+    "familia": {
+      "name": "Mullidae"
+    },
+    "species_morphology": {
+      "name": "Mullus surmuletus",
+      "size_average": 25,
+      "size_max": 40
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Salmonete de roca.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Salmonete de roca.jpg"
+  },
+  {
+    "name": "Muraena helena",
+    "nom_commun": "morena común",
+    "description_summary": "Este animal nocturno complementa su dieta, en ocasiones, con animales muertos. Su mordedura no es venenosa, pero sí muy dolorosa. Su cuerpo, desprovisto de asperezas (escamas, aletas pectorales, etc.), le permite introducirse, marcha atrás, fácilmente en un agujero. Es uno de los ingredientes del famoso plato \"bouillabaisse\".",
+    "familia": {
+      "name": "Muraenidae"
+    },
+    "species_morphology": {
+      "name": "Muraena helena",
+      "size_average": 100,
+      "size_max": 150
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Morena.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Morena común.jpg"
+  },
+  {
+    "name": "Mustelus mustelus",
+    "nom_commun": "cazón",
+    "description_summary": "El cazón se registra principalmente en el este del océano Atlántico. Desde el Reino Unido hasta Sudáfrica, en el mar Mediterráneo y en el mar Negro. En agosto de 2020, esta especie, especialista en la caza de crustáceos, fue clasificada como 'en peligro de extinción' por la IUCN. Especialmente amenazada por la sobrepesca.",
+    "familia": {
+      "name": "Triakidae"
+    },
+    "species_morphology": {
+      "name": "Mustelus mustelus",
+      "size_average": 100,
+      "size_max": 200
+    },
+    "species_ecology": {
+      "index_statut": 6,
+      "description": "En peligro"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Cazón.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Cazón.jpg"
+  },
+  {
+    "name": "Mycteroperca fusca",
+    "nom_commun": "abade",
+    "description_summary": "Está clasificado como una especie 'vulnerable' por la IUCN, principalmente debido a la pesca dirigida en los arrecifes en alta mar, específicamente en las Islas Canarias y en las Azores. Su territorialidad y el hecho de que los desoves estén concentrados en un solo lugar son razones de su vulnerabilidad. La calidad de la carne de los meros es codiciada, y alcanza precios muy altos en el mercado.",
+    "familia": {
+      "name": "Serranidae"
+    },
+    "species_morphology": {
+      "name": "Mycteroperca fusca",
+      "size_average": 70,
+      "size_max": 80
+    },
+    "species_ecology": {
+      "index_statut": 5,
+      "description": "Vulnerable"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Abade.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Abade.jpg"
+  },
+  {
+    "name": "Myliobatis aquila",
+    "nom_commun": "águila de mar",
+    "description_summary": "Denominada comúnmente raya águila, o águila de mar, debido a dos razones principales: la forma de su boca que recuerda al pico de un pájaro, y sus largas alas con las cuales parece planear sobre el agua. En algunas zonas de Canarias es también conocida como ratón.",
+    "familia": {
+      "name": "Myliobatidae"
+    },
+    "species_morphology": {
+      "name": "Myliobatis aquila",
+      "size_average": 100,
+      "size_max": 183
+    },
+    "species_ecology": {
+      "index_statut": 7,
+      "description": "En peligro crítico de extinción"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Águila de mar.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Águila de mar.jpg"
+  },
+  {
+    "name": "Naucrates ductor",
+    "nom_commun": "pez piloto",
+    "description_summary": "Es una especie oceánica conocida por su relación de dependencia con animales más grandes, como los tiburones o las rayas. A lo largo de la evolución, este pez ha desarrollado una dieta basada en los restos dejados por sus anfitriones, así como en parásitos y excrementos.",
+    "familia": {
+      "name": "Carangidae"
+    },
+    "species_morphology": {
+      "name": "Naucrates ductor",
+      "size_average": 40,
+      "size_max": 70
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "omnívoro con tendencia carnívora"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Pez piloto.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Pez piloto.jpg"
+  },
+  {
+    "name": "Oblada melanura",
+    "nom_commun": "oblada",
+    "description_summary": "A diferencia de muchos otros sparidaes (doradas, sargos...), esta especie vive cerca de la superficie. En ocasiones, se encuentra en los puertos donde se alimenta de desechos. En algunos países, es muy apreciada por los pescadores a pesar de que su carne sea bastante blanda.",
+    "familia": {
+      "name": "Sparidae"
+    },
+    "species_morphology": {
+      "name": "Oblada melanura",
+      "size_average": 20,
+      "size_max": 37
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "omnívoro con tendencia carnívora"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Oblada.webp",
+    "mapImage": "../images/MapFishImages/Mapa Oblada.jpg"
+  },
+  {
+    "name": "Ophioblennius atlanticus",
+    "nom_commun": "blenio del Atlántico",
+    "description_summary": "Son peces hervívoros / alguívoros, que frecuentan los arrecifes de aguas en superficie. El cuerpo es largo y se encuentra comprimido. Las aletas dorsal y anal están compuestas por pequeñas espinas flexibles de tamaño decreciente hacia su parte trasera. Los crecimientos similares a pestañas llamados \"cirros\" están presentes al nivel de las fosas nasales y por encima de cada ojo. Posee numerosos dientes, y unas amplias aberturas como branquias que se encuentran bajo el cuerpo.",
+    "familia": {
+      "name": "Blenniidae"
+    },
+    "species_morphology": {
+      "name": "Ophioblennius atlanticus",
+      "size_average": 15,
+      "size_max": 19
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "omnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Blenio Atlántico.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Blenio del Atlántico.jpg"
+  },
+  {
+    "name": "Pagellus erythrinus",
+    "nom_commun": "breca",
+    "description_summary": null,
+    "familia": {
+      "name": "Sparidae"
+    },
+    "species_morphology": {
+      "name": "Pagellus erythrinus",
+      "size_average": 30,
+      "size_max": 60
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "omnívoro con tendencia carnívora"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Breca.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Breca.jpg"
+  },
+  {
+    "name": "Pagrus pagrus",
+    "nom_commun": "pargo común",
+    "description_summary": "El pargo es una conocida especie costera pelágica. Se trata de un carnívoro oportunista que caza crustáceos, moluscos y peces pequeños. Posee una mandíbula que es lo suficientemente fuerte como para triturar conchas o caparazones de cangrejo. Los adultos frecuentan los fondos rocosos y otras zonas con restos de rocas, escombros o material acumulado en el fondo marino, mientras que los juveniles suelen encontrarse alrededor de praderas de hierbas marinas.",
+    "familia": {
+      "name": "Sparidae"
+    },
+    "species_morphology": {
+      "name": "Pagrus pagrus",
+      "size_average": 35,
+      "size_max": 91
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Pargo.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Pargo común.jpg"
+  },
+  {
+    "name": "Parablennius incognitus",
+    "nom_commun": "barriguda cornuda",
+    "description_summary": "La barriguda cornuda una pequeña especie de blenio que puede ser observada desde las costas del este del océano Atlántico hasta el Mar Negro. Se trata de una de las especies más comunes en la orilla del mar en su área de repartición.",
+    "familia": {
+      "name": "Blenniidae"
+    },
+    "species_morphology": {
+      "name": "Parablennius incognitus",
+      "size_average": 6,
+      "size_max": 8
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "omnívoro con tendencia carnívora"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Barriguda cornuda.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Barriguda cornuda.jpg"
+  },
+  {
+    "name": "Parablennius pilicornis",
+    "nom_commun": "moma",
+    "description_summary": "A pesar de la similitud con los gobios estos peces se diferencian de estos últimos gracias a su aleta dorsal continua en toda la espalda y no bipartita.",
+    "familia": {
+      "name": "Blenniidae"
+    },
+    "species_morphology": {
+      "name": "Parablennius pilicornis",
+      "size_average": 8,
+      "size_max": 13
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "herbívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Moma.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Moma.jpg"
+  },
+  {
+    "name": "Parapristipoma octolineatum",
+    "nom_commun": "pez boca de oro",
+    "description_summary": "Parapristipoma octolineatum, comúnmente conocido como pez boca de oro o burrito listado, entre otros, es una especie de pez marino originario del este del océano Atlántico. Se puede observar a muy poca profundidad cerca de las costas atlánticas. Es menos común en el oeste del mar Mediterráneo.",
+    "familia": {
+      "name": "Haemulidae"
+    },
+    "species_morphology": {
+      "name": "Parapristipoma octolineatum",
+      "size_average": 25,
+      "size_max": 50
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Pez boca de oro.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Pez boca de oro.jpg"
+  },
+  {
+    "name": "Polyprion americanus",
+    "nom_commun": "cherna",
+    "description_summary": "Este depredador de tamaño considerable, conocido como cherna, cherne o romerete, entre muchos otros, es especialmente apreciado por la calidad de su carne, lo que ha llevado a una intensa sobrepesca en algunas regiones. Habita en zonas rocosas y arrecifes de coral, generalmente a profundidades de hasta 100 metros. Los adultos pueden alcanzar una longitud máxima de 2 metros y un peso de más de 80 kg.",
+    "familia": {
+      "name": "Polyprionidae"
+    },
+    "species_morphology": {
+      "name": "Polyprion americanus",
+      "size_average": 80,
+      "size_max": 210
+    },
+    "species_ecology": {
+      "index_statut": 2,
+      "description": "Datos insuficientes"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Cherna.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Cherna.jpg"
+  },
+  {
+    "name": "Prionace glauca",
+    "nom_commun": "tintorera",
+    "description_summary": "La tintorera o tiburón azul, es un depredador pelágico presente en las aguas marinas templadas y tropicales, con observaciones ocasionales cerca de las costas. Sin embargo, su amplia distribución está amenazada por la sobrepesca. Reconocible por su dorso azul y su vientre blanco, este tiburón de cuerpo esbelto se alimenta principalmente de peces pequeños, moluscos, cefalópodos y en algunas ocasiones de aves.",
+    "familia": {
+      "name": "Carcharhinidae"
+    },
+    "species_morphology": {
+      "name": "Prionace glauca",
+      "size_average": 335,
+      "size_max": 400
+    },
+    "species_ecology": {
+      "index_statut": 4,
+      "description": "Casi amenazado"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Tintorera.jfif",
+    "mapImage": "../images/MapFishImages/Mapa Tintorera.jpg"
+  },
+  {
+    "name": "Pseudocaranx dentex",
+    "nom_commun": "jurel limón",
+    "description_summary": "El conocido como jurel limón, jurel tropical o jurel dentón, se encuentra en bancos en diversos hábitats de las aguas costeras tropicales y subtropicales. Está presente especialmente en el mar Mediterráneo, alrededor de las Islas Canarias y en el Mar Caribe.",
+    "familia": {
+      "name": "Carangidae"
+    },
+    "species_morphology": {
+      "name": "Pseudocaranx dentex",
+      "size_average": 40,
+      "size_max": 122
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Jurel limón.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Jurel limón.jpg"
+  },
+  {
+    "name": "Pteroplatytrygon violacea",
+    "nom_commun": "raya pelágica",
+    "description_summary": "Al igual que sucede con otras especies de rayas, este pez posee una espina venenosa, sin embargo, se caracteriza por ser exclusivamente pelágica. Esto la hace más vulnerable siendo regularmente víctima de capturas accidentales, especialmente durante la pesca del atún con palangre y red de malla, así como durante la pesca con arrastre.",
+    "familia": {
+      "name": "Dasyatidae"
+    },
+    "species_morphology": {
+      "name": "Pteroplatytrygon violacea",
+      "size_average": 80,
+      "size_max": 100
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Raya pelágica.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Raya pelágica.jpg"
+  },
+  {
+    "name": "Raja brachyura",
+    "nom_commun": "raya boca de rosa",
+    "description_summary": "La raya boca de rosa puede ser observada desde las islas Shetland hasta Marruecos. Su presencia está confirmada en la zona oeste del mar Mediterráneo, aunque es poco frecuente observarla en esa región. Este pez puede llegar a superar el metro de longitud y puede encontrarse en los fondos arenosos.",
+    "familia": {
+      "name": "Rajidae"
+    },
+    "species_morphology": {
+      "name": "Raja brachyura",
+      "size_average": 120,
+      "size_max": 125
+    },
+    "species_ecology": {
+      "index_statut": 4,
+      "description": "Casi amenazado"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Raya boca de rosa.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Raya boca de rosa.jpg"
+  },
+  {
+    "name": "Raja clavata",
+    "nom_commun": "raya de clavos",
+    "description_summary": "La raya de clavos, es una especie de pez perteneciente a la familia Rajidae. Esta especie se encuentra en las aguas costeras del noreste del Atlántico, desde Noruega hasta Marruecos, así como en el mar Mediterráneo. Se alimenta principalmente de crustáceos y pequeños peces, que captura utilizando sus dientes planos.",
+    "familia": {
+      "name": "Rajidae"
+    },
+    "species_morphology": {
+      "name": "Raja clavata",
+      "size_average": 85,
+      "size_max": 140
+    },
+    "species_ecology": {
+      "index_statut": 4,
+      "description": "Casi amenazado"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Raya de clavos.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Raya de clavos.jpg"
+  },
+  {
+    "name": "Raja montagui",
+    "nom_commun": "raya pintada",
+    "description_summary": "Esta especie de tamaño medio pasa la mayor parte de su tiempo enterrada en fondos arenosos o fangosos. Siendo más frecuente en las aguas costeras.",
+    "familia": {
+      "name": "Rajidae"
+    },
+    "species_morphology": {
+      "name": "Raja montagui",
+      "size_average": 50,
+      "size_max": 85
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Raya pintada.webp",
+    "mapImage": "../images/MapFishImages/Mapa Raya pintada.jpg"
+  },
+  {
+    "name": "Raja undulata",
+    "nom_commun": "raya mosaico",
+    "description_summary": "La raya mosaico es fácilmente reconocible gracias a sus motivos y puntos en tonos claros dispersos por todo su cuerpo. Pasa la mayor parte de su existencia ligeramente enterrada en fondos fangosos o arenosos, esperando a sus presas. Antiguamente común, está hoy amenazada debido a la sobrepesca en toda su área de distribución.",
+    "familia": {
+      "name": "Rajidae"
+    },
+    "species_morphology": {
+      "name": "Raja undulata",
+      "size_average": 80,
+      "size_max": 100
+    },
+    "species_ecology": {
+      "index_statut": 4,
+      "description": "Casi amenazado"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Raya mosaico.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Raya mosaico.jpg"
+  },
+  {
+    "name": "Sarda sarda",
+    "nom_commun": "bonito del Atlántico",
+    "description_summary": "Esta especie, cercana al atún, está clasificada como de preocupación menor por la UICN. Sin embargo, debido a su alto interés comercial, es objeto de una importante pesca industrial. Solo la amplia distribución de esta especie permite su sostenimiento en la actualidad.",
+    "familia": {
+      "name": "Scombridae"
+    },
+    "species_morphology": {
+      "name": "Sarda sarda",
+      "size_average": 50,
+      "size_max": 91.4
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Bonito Atlántico.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Bonito del Atlántico.jpg"
+  },
+  {
+    "name": "Sardina pilchardus",
+    "nom_commun": "sardina común",
+    "description_summary": "Esta especie toma su nombre de las costas de Cerdeña, donde su presencia era muy abundante. La sardina es un pez emblemático del mar Mediterráneo, aunque también está presente en el mar Negro y en el océano Atlántico nororiental, desde Islandia hasta Senegal.",
+    "familia": {
+      "name": "Clupeidae"
+    },
+    "species_morphology": {
+      "name": "Sardina pilchardus",
+      "size_average": 20,
+      "size_max": 28
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "planctófago"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Sardina.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Sardina común.jpg"
+  },
+  {
+    "name": "Sarpa salpa",
+    "nom_commun": "salpa",
+    "description_summary": "Durante el día vive en bancos y a menudo se le encuentra \"pastando\" las hojas de posidonia (una planta con flores submarinas). También consume pequeños animales que viven adheridos a las hojas. Los juveniles viven a muy poca profundidad. Su carne, blanda y blanda, es poco apreciada.",
+    "familia": {
+      "name": "Sparidae"
+    },
+    "species_morphology": {
+      "name": "Sarpa salpa",
+      "size_average": 30,
+      "size_max": 51
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "herbívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Salpa.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Salpa.jpg"
+  },
+  {
+    "name": "Sciaena umbra",
+    "nom_commun": "corvina negra",
+    "description_summary": "Sciaena umbra",
+    "familia": {
+      "name": "Sciaenidae"
+    },
+    "species_morphology": {
+      "name": "Sciaena umbra",
+      "size_average": 28,
+      "size_max": 70
+    },
+    "species_ecology": {
+      "index_statut": 4,
+      "description": "Casi amenazado"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Corvina negra.jpeg",
+    "mapImage": "../images/MapFishImages/Mapa Corvina negra.jpg"
+  },
+  {
+    "name": "Scomber colias",
+    "nom_commun": "caballa del Atlántico",
+    "description_summary": "Es objeto de una pesca intensiva en la mayor parte de su área de distribución. Su captura se realiza principalmente de noche, con redes de cerco que rodean el banco de peces, atraídos a la superficie por la luz. La pesca está sujeta a estrictas regulaciones por parte de la Unión Europea, y está prohibida la captura de individuos menores de 18 cm.",
+    "familia": {
+      "name": "Scombridae"
+    },
+    "species_morphology": {
+      "name": "Scomber colias",
+      "size_average": 30,
+      "size_max": 60
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Caballa del Atlántico.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Caballa del Atlántico.jpg"
+  },
+  {
+    "name": "Scomber scombrus",
+    "nom_commun": "caballa",
+    "description_summary": "Durante el invierno, esta especie habita en aguas profundas, alrededor de los 200 metros, pero con la llegada de los meses más cálidos, forma grandes bancos de ejemplares de talla similar que remontan a la superficie cerca de las costas.",
+    "familia": {
+      "name": "Scombridae"
+    },
+    "species_morphology": {
+      "name": "Scomber scombrus",
+      "size_average": 30,
+      "size_max": 60
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Caballa.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Caballa.jpg"
+  },
+  {
+    "name": "Scorpaena maderensis",
+    "nom_commun": "pez roca de Madeira",
+    "description_summary": "El rascacio de Madeira, también conocido como pez roca de Madeira, se encuentra cerca de las costas del noroeste de África, en varias islas del este del Atlántico, incluida Madeira, de la cual toma su nombre, y en una gran parte del mar Mediterráneo. Durante mucho tiempo, este pez ha sido confundido con otras especies cercanas.",
+    "familia": {
+      "name": "Scorpaenidae"
+    },
+    "species_morphology": {
+      "name": "Scorpaena maderensis",
+      "size_average": 10,
+      "size_max": 18
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Pez roca de Madeira.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Pez roca de Madeira.jpg"
+  },
+  {
+    "name": "Scorpaena notata",
+    "nom_commun": "escórpora",
+    "description_summary": "Este pez es fácilmente reconocible por la mancha negra que adorna su aleta dorsal. Posee unas espinas venenosas y se camufla fácilmente en su entorno. Su carne se suele utilizar para la preparación de sopa de pescado.",
+    "familia": {
+      "name": "Scorpaenidae"
+    },
+    "species_morphology": {
+      "name": "Scorpaena notata",
+      "size_average": 12,
+      "size_max": 23
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Escórpora.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Escórpora.jpg"
+  },
+  {
+    "name": "Scorpaena porcus",
+    "nom_commun": "rascacio negro",
+    "description_summary": "Poco hábil en el arte de la natación, esta especie vive en el fondo donde se camufla entre la vegetación. Caza al acecho y, al igual que algunos de sus congéneres, es venenoso. Muy buscado por su carne, se captura fácilmente con arpón o red.",
+    "familia": {
+      "name": "Scorpaenidae"
+    },
+    "species_morphology": {
+      "name": "Scorpaena porcus",
+      "size_average": 15,
+      "size_max": 41
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Rascacio negro.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Rascacio negro.jpg"
+  },
+  {
+    "name": "Scorpaena scrofa",
+    "nom_commun": "cabracho",
+    "description_summary": "Suele vivir por debajo de los 30 metros de profundidad. En la primavera, asciende cerca de la superficie para poner sus huevos en los lechos de los pastos marinos. Sus espinas dorsales son venenosas. La picadura es muy dolorosa, aunque rara vez resulta fatal. Su carne es muy apreciada en el mundo de la gastronomía.",
+    "familia": {
+      "name": "Scorpaenidae"
+    },
+    "species_morphology": {
+      "name": "Scorpaena scrofa",
+      "size_average": 30,
+      "size_max": 58
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Cabracho.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Cabracho.jpg"
+  },
+  {
+    "name": "Scyliorhinus canicula",
+    "nom_commun": "pintarroja",
+    "description_summary": "Se reproduce fácilmente en cautiverio. Durante el apareamiento, que puede durar entre 30 y 45 minutos, el macho forma un lazo sobre el cuerpo de la hembra. Su carne es comestible, aunque su hígado es venenoso. Su comportamiento reproductivo ha sido estudiado en la Universidad de Lieja.",
+    "familia": {
+      "name": "Scyliorhinidae"
+    },
+    "species_morphology": {
+      "name": "Scyliorhinus canicula",
+      "size_average": 60,
+      "size_max": 100
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Pintarroja.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Pintarroja.jpg"
+  },
+  {
+    "name": "Scyliorhinus stellaris",
+    "nom_commun": "alitán",
+    "description_summary": "Esta especie se muestra más activa al anochecer, permaneciendo oculta en el fondo durante el día. Puede cerrar los ojos gracias a una especie de párpados. ¡Su carne es comestible, pero su hígado es venenoso! Sus huevos se pueden incubar y eclosionar en el acuario.",
+    "familia": {
+      "name": "Scyliorhinidae"
+    },
+    "species_morphology": {
+      "name": "Scyliorhinus stellaris",
+      "size_average": 100,
+      "size_max": 200
+    },
+    "species_ecology": {
+      "index_statut": 5,
+      "description": "Vulnerable"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Alitán.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Alitán.jpg"
+  },
+  {
+    "name": "Seriola dumerili",
+    "nom_commun": "pez limón",
+    "description_summary": "El pez limón es un pez pelágico de la familia de los Carangidae que se encuentra en todas las aguas cálidas y templadas de los océanos. Aunque, por el momento, no está protegida, esta especie se enfrenta a una fuerte presión de la pesca industrial, artesanal y deportiva.",
+    "familia": {
+      "name": "Carangidae"
+    },
+    "species_morphology": {
+      "name": "Seriola dumerili",
+      "size_average": 130,
+      "size_max": 190
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "pequeños grupos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Pez limón.jpeg",
+    "mapImage": "../images/MapFishImages/Mapa Pez limón.jpg"
+  },
+  {
+    "name": "Serranus atricauda",
+    "nom_commun": "serrano imperial",
+    "description_summary": "Su presencia ha sido confirmada en las islas Azores, a lo largo de las costas de Marruecos y Argelia, y en el golfo de Vizcaya. En las Islas Canarias, es una especie de remarcada importancia en la pesca tradicional. Sin embargo, parece ser poco habitual en las costas francesas e italianas.",
+    "familia": {
+      "name": "Serranidae"
+    },
+    "species_morphology": {
+      "name": "Serranus atricauda",
+      "size_average": 25,
+      "size_max": 43
+    },
+    "species_ecology": {
+      "index_statut": 2,
+      "description": "Datos insuficientes"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Serrano imperial.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Serrano imperial.jpg"
+  },
+  {
+    "name": "Serranus cabrilla",
+    "nom_commun": "cabrilla reina",
+    "description_summary": "Es muy agresivo hacia los peces de su misma especie, excepto durante el período de reproducción: en primavera, al caer la noche, una pareja se forma y realiza una exhibición compleja. Es un hermafrodita sincrónico: macho y hembra al mismo tiempo. Se trata de un pez muy curioso, que a menudo se acerca a los buceadores.",
+    "familia": {
+      "name": "Serranidae"
+    },
+    "species_morphology": {
+      "name": "Serranus cabrilla",
+      "size_average": 25,
+      "size_max": 40
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Cabrilla reina.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Cabrilla reina.jpg"
+  },
+  {
+    "name": "Serranus scriba",
+    "nom_commun": "serrano",
+    "description_summary": "Más conocido como serrano, gorrión en las islas Canarias, vaquita o cabrilla en el sur de España, es un pez emblemático del mar Mediterráneo. Se encuentra también presente en la costa atlántica, no lejos del Estrecho de Gibraltar. Este depredador, pariente pequeño de los meros, reside frecuentemente en los fondos rocosos y las praderas marinas.",
+    "familia": {
+      "name": "Serranidae"
+    },
+    "species_morphology": {
+      "name": "Serranus scriba",
+      "size_average": 25,
+      "size_max": 26
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Serrano.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Serrano.jpg"
+  },
+  {
+    "name": "Solea solea",
+    "nom_commun": "lenguado",
+    "description_summary": null,
+    "familia": {
+      "name": "Soleidae"
+    },
+    "species_morphology": {
+      "name": "Solea solea",
+      "size_average": 30,
+      "size_max": 70
+    },
+    "species_ecology": {
+      "index_statut": 2,
+      "description": "Datos insuficientes"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Lenguado.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Lenguado.jpg"
+  },
+  {
+    "name": "Sparisoma cretense",
+    "nom_commun": "vieja colorada",
+    "description_summary": "La vieja colorada es un representante poco habitual de los Scaridae en la zona templada, originario de las aguas cálidas del sur y este del Mediterráneo. Se alimenta principalmente de algas y frecuenta las zonas rocosas hasta una profundidad de 30 metros.",
+    "familia": {
+      "name": "Scaridae"
+    },
+    "species_morphology": {
+      "name": "Sparisoma cretense",
+      "size_average": 30,
+      "size_max": 50
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "omnívoro con tendencia herbívora"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Vieja colorada.webp",
+    "mapImage": "../images/MapFishImages/Mapa Vieja colorada.jpg"
+  },
+  {
+    "name": "Sparus aurata",
+    "nom_commun": "dorada",
+    "description_summary": "Durante la época de cría, numerosos grupos de doradas entran en lagunas y estuarios con el fin de aparearse. Codiciado desde la Antigüedad por la calidad de su carne: los romanos ya cultivaban a este tipo de peces en tanques. Su piscicultura intensiva se ha desarrollado desde la década de 1980.",
+    "familia": {
+      "name": "Sparidae"
+    },
+    "species_morphology": {
+      "name": "Sparus aurata",
+      "size_average": 50,
+      "size_max": 70
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Dorada.webp",
+    "mapImage": "../images/MapFishImages/Mapa Dorada.jpg"
+  },
+  {
+    "name": "Sphyraena viridensis",
+    "nom_commun": "bicuda",
+    "description_summary": "Originaria del Mediterráneo y del Atlántico, la bicuda es un cazador ágil que se alimenta de peces, cefalópodos y, a veces, crustáceos. En ocasiones puede acercarse lentamente a los buceadores por curiosidad.",
+    "familia": {
+      "name": "Sphyraenidae"
+    },
+    "species_morphology": {
+      "name": "Sphyraena viridensis",
+      "size_average": 40,
+      "size_max": 128
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Bicuda.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Bicuda.jpg"
+  },
+  {
+    "name": "Sphyrna lewini",
+    "nom_commun": "tiburón martillo común",
+    "description_summary": "El tiburón martillo común, semi-oceánico, se encuentra en aguas tropicales y templadas de todo el mundo. Esta especie es fácilmente reconocible por su cabeza plana curvada y las puntas negras de sus aletas pectorales. Estos tiburones se alimentan de peces, cefalópodos y crustáceos, a los que caza valiéndose de su cabeza aplanada para realizar giros cerrados. Aunque son potencialmente peligrosos y agresivos con los intrusos, los ataques a humanos son poco habituales. Por otro lado, a pesar de su amplia distribución, esta especie se encuentra actualmente amenazada de extinción.",
+    "familia": {
+      "name": "Carcharhinidae"
+    },
+    "species_morphology": {
+      "name": "Sphyrna lewini",
+      "size_average": 300,
+      "size_max": 450
+    },
+    "species_ecology": {
+      "index_statut": 7,
+      "description": "En peligro crítico de extinción"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Tiburón martillo común.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Tiburón martillo común.jpg"
+  },
+  {
+    "name": "Sphyrna mokarran",
+    "nom_commun": "tiburón martillo gigante",
+    "description_summary": "Sphyrna mokarran, el \"gran tiburón martillo\", destaca por ser tener el mayor tamaño en este tipo de tiburones, encontrándose entre los veinte peces más grandes del planeta. Desafortunadamente, a pesar de su amplia distribución mundial, en zonas tropicales y templadas, esta especie se encuentra gravemente amenazada. Este ágil cazador persigue especialmente a las rayas, a las que detecta gracias a sus ampollas de Lorenzini. Se recomienda mostrarse especialmente precavido en su presencia, especialmente durante las sesiones de buceo.",
+    "familia": {
+      "name": "Carcharhinidae"
+    },
+    "species_morphology": {
+      "name": "Sphyrna mokarran",
+      "size_average": 300,
+      "size_max": 610
+    },
+    "species_ecology": {
+      "index_statut": 7,
+      "description": "En peligro crítico de extinción"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Tiburón martillo.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Tiburón martillo gigante.jpg"
+  },
+  {
+    "name": "Spicara maena",
+    "nom_commun": "chucla",
+    "description_summary": "Durante el día, esta especie se alimenta de plancton cerca de la superficie. Descendiendo al fondo antes del anochecer con el fin de capturar pequeños invertebrados. El macho es más colorido que la hembra. Es una especie hermafrodita protógina: las hembras se convierten en machos. Su carne es poco apreciada.",
+    "familia": {
+      "name": "Sparidae"
+    },
+    "species_morphology": {
+      "name": "Spicara maena",
+      "size_average": 20,
+      "size_max": 25
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "omnívoro con tendencia carnívora"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Chucla.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Chucla.jpg"
+  },
+  {
+    "name": "Spondyliosoma cantharus",
+    "nom_commun": "chopa",
+    "description_summary": "Es una especie muy apreciada por las pesquerías occidentales. Vive en solitario o en grandes grupos cerca de las praderas marinas y los fondos rocosos, buscando pequeños invertebrados como crustáceos o moluscos.",
+    "familia": {
+      "name": "Sparidae"
+    },
+    "species_morphology": {
+      "name": "Spondyliosoma cantharus",
+      "size_average": 30,
+      "size_max": 40
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Chopa.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Chopa.jpg"
+  },
+  {
+    "name": "Squatina squatina",
+    "nom_commun": "pez ángel",
+    "description_summary": "Antiguamente abundante a lo largo de las costas europeas, el tiburón ángel es hoy una de las especies más amenazadas del mundo. Esta especie, que puede alcanzar los 2,50 metros, fue en otro tiempo un símbolo del Mar Mediterráneo, pero su población ha disminuido con el paso de los años. A pesar de las medidas de protección y regulación, sigue siendo vulnerable a las capturas accidentales relacionadas con la pesca de peces planos. Los tiburones ángel se esconden en el lecho marino durante el día y cazan cerca del fondo por la noche, alimentándose principalmente de peces planos y otras criaturas bénticas. Realizan migraciones estacionales para reproducirse de norte a sur en áreas oceánicas.",
+    "familia": {
+      "name": "Squatinidae"
+    },
+    "species_morphology": {
+      "name": "Squatina squatina",
+      "size_average": 150,
+      "size_max": 245
+    },
+    "species_ecology": {
+      "index_statut": 7,
+      "description": "En peligro crítico de extinción"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Pez ángel.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Pez ángel.jpg"
+  },
+  {
+    "name": "Symphodus mediterraneus",
+    "nom_commun": "tordo rojo",
+    "description_summary": "Esta especie de lábrido de pequeño tamaño, conocido como tordo rojo o vaqueta, reside en las zonas rocosas y en las praderas de las costas mediterráneas. Se encuentra también presente desde la costa templada del Atlántico oriental hasta las islas Azores.",
+    "familia": {
+      "name": "Labridae"
+    },
+    "species_morphology": {
+      "name": "Symphodus mediterraneus",
+      "size_average": 12,
+      "size_max": 18
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "pareja o en solitario"
+      },
+      "regime": {
+        "translated_name": "omnívoro con tendencia carnívora"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Tordo rojo.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Tordo rojo.jpg"
+  },
+  {
+    "name": "Symphodus tinca",
+    "nom_commun": "tordo",
+    "description_summary": "Durante el período de reproducción, su coloración se vuelve más llamativa y construye un gran nido con desechos vegetales. Atrae la atención de las hembras realizando un nado característico. Se apareará con varias de ellas y luego protegerá y ventilara los huevos hasta que eclosionen.",
+    "familia": {
+      "name": "Labridae"
+    },
+    "species_morphology": {
+      "name": "Symphodus tinca",
+      "size_average": 25,
+      "size_max": 40
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "pareja o en grupos"
+      },
+      "regime": {
+        "translated_name": "omnívoro con tendencia carnívora"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Tordo.webp",
+    "mapImage": "../images/MapFishImages/Mapa Tordo.jpg"
+  },
+  {
+    "name": "Syngnathus acus",
+    "nom_commun": "aguja de mar",
+    "description_summary": "Su forma y color le sirven para ocultarse perfectamente entre las plantas acuáticas. Existen numerosas similitudes entre su tipo de reproducción y la de los caballitos de mar. El macho no tiene bolsa, pero lleva hileras de huevos adheridos a un surco ventral.",
+    "familia": {
+      "name": "Syngnathidae"
+    },
+    "species_morphology": {
+      "name": "Syngnathus acus",
+      "size_average": 40,
+      "size_max": 50
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Aguja de mar.jfif",
+    "mapImage": "../images/MapFishImages/Mapa Aguja de mar.jpg"
+  },
+  {
+    "name": "Syngnathus typhle",
+    "nom_commun": "aguja mula",
+    "description_summary": null,
+    "familia": {
+      "name": "Syngnathidae"
+    },
+    "species_morphology": {
+      "name": "Syngnathus typhle",
+      "size_average": 30,
+      "size_max": 35
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Aguja mula.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Aguja mula.jpg"
+  },
+  {
+    "name": "Taeniura grabata",
+    "nom_commun": "raya redonda",
+    "description_summary": "Al igual que los tiburones, las rayas pertenecen a la clase de los Elasmobranquios, son peces cartilaginosos. Se diferencian por tener un cuerpo plano y la presencia de espiráculos en la parte dorsal. Este es un sistema de respiración que les permite aspirar y expulsar agua a través de las hendiduras branquiales en la parte ventral sin el riesgo de succionar arena.",
+    "familia": {
+      "name": "Dasyatidae"
+    },
+    "species_morphology": {
+      "name": "Taeniura grabata",
+      "size_average": 200,
+      "size_max": 250
+    },
+    "species_ecology": {
+      "index_statut": 2,
+      "description": "Datos insuficientes"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Raya redonda.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Raya redonda.jpg"
+  },
+  {
+    "name": "Thalassoma pavo",
+    "nom_commun": "pez verde",
+    "description_summary": "Se trata de uno de los peces más coloridos del Mediterráneo. La hembra posee una mancha negra en su aleta dorsal. Esta mancha desaparecerá y su color se volverá más vivo cuando cambie de sexo (hermafroditismo protógino). Es cada vez más abundante en el norte del Mediterráneo.",
+    "familia": {
+      "name": "Labridae"
+    },
+    "species_morphology": {
+      "name": "Thalassoma pavo",
+      "size_average": 20,
+      "size_max": 25
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "omnívoro con tendencia carnívora"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Pez verde.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Pez verde.jpg"
+  },
+  {
+    "name": "Thunnus thynnus",
+    "nom_commun": "atún rojo del Atlántico",
+    "description_summary": "Estos atunes tienen una gran importancia tanto económica como cultural en el mundo entero, formando parte de la gastronomía tradicional de numerosos países. La mayor parte de sus poblaciones se encuentran en gran parte sobreexplotadas y amenazadas por la pesca industrial, aunque también existen algunas pesquerías artesanales más sostenibles. Estas especies son, además, muy cotizadas por los aficionados a la pesca deportiva.",
+    "familia": {
+      "name": "Scombridae"
+    },
+    "species_morphology": {
+      "name": "Thunnus thynnus",
+      "size_average": 115,
+      "size_max": 400
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Atún rojo Atlántico.jpg",
+    "mapImage": "../images/MapFishImages/Mapa atún rojo del Atlántico.jpg"
+  },
+  {
+    "name": "Torpedo marmorata",
+    "nom_commun": "raya torpedo",
+    "description_summary": "Comúnmente conocida como raya torpedo o tembladera pertenece al grupo de las conocidas como rayas eléctricas. Repartida desde el mar del Norte hasta la costa suroeste africana, ha sido también registrada en el mar Mediterráneo y el mar Negro.",
+    "familia": {
+      "name": "Torpedinidae"
+    },
+    "species_morphology": {
+      "name": "Torpedo marmorata",
+      "size_average": 60,
+      "size_max": 100
+    },
+    "species_ecology": {
+      "index_statut": 5,
+      "description": "Vulnerable"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Raya torpedo.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Raya torpedo.jpg"
+  },
+  {
+    "name": "Torpedo torpedo",
+    "nom_commun": "tremielga",
+    "description_summary": null,
+    "familia": {
+      "name": "Torpedinidae"
+    },
+    "species_morphology": {
+      "name": "Torpedo torpedo",
+      "size_average": 40,
+      "size_max": 60
+    },
+    "species_ecology": {
+      "index_statut": 5,
+      "description": "Vulnerable"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Tremielga.png",
+    "mapImage": "../images/MapFishImages/Mapa Tremielga.jpg"
+  },
+  {
+    "name": "Trachinotus ovatus",
+    "nom_commun": "palometa",
+    "description_summary": null,
+    "familia": {
+      "name": "Carangidae"
+    },
+    "species_morphology": {
+      "name": "Trachinotus ovatus",
+      "size_average": 35,
+      "size_max": 70
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "bancos"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Palometa.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Palometa.jpg"
+  },
+  {
+    "name": "Trachinus araneus",
+    "nom_commun": "pez araña",
+    "description_summary": "A diferencia de algunos de sus congéneres que tienden a alejarse o a reaccionar únicamente cuando se sienten amenazados, esta especie es conocida por atacar a los intrusos que se acercan a su territorio. Numerosos buceadores reportan ataques en aguas abiertas de individuos de gran tamaño (40 cm) e incluso algún caso de persecución. En caso de encuentro, es recomendable alejarse rápidamente del territorio de esta especie, y estar alerta si el pez endereza su aleta dorsal. El ataque es casi instantáneo, ya que este pez es capaz de realizar rápidos saltos con el fin de alcanzar sus objetivos.",
+    "familia": {
+      "name": "Trachinidae"
+    },
+    "species_morphology": {
+      "name": "Trachinus araneus",
+      "size_average": 30,
+      "size_max": 45
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Pez araña.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Pez araña.jpg"
+  },
+  {
+    "name": "Trachinus draco",
+    "nom_commun": "pez escorpión",
+    "description_summary": "Esta especie de pez marino venenoso se encuentra próximo a los litorales del océano Atlántico Oriental, del mar Mediterráneo y del mar Negro.",
+    "familia": {
+      "name": "Trachinidae"
+    },
+    "species_morphology": {
+      "name": "Trachinus draco",
+      "size_average": 25,
+      "size_max": 40
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Pez escorpión.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Pez escorpión.jpg"
+  },
+  {
+    "name": "Trachinus radiatus",
+    "nom_commun": "pez víbora",
+    "description_summary": "El pez víbora es un pez venenoso que se encuentra presente en la costa este del Océano Atlántico, en el Mar Mediterráneo y en el Mar Negro. Aunque estos peces son considerados como potencialmente peligrosos, los accidentes son poco frecuentes, ya que parece que esta especie solo infringe su picadura en caso de peligro extremo. Además, se encuentra de manera más frecuente entre los 30 y 60 metros de profundidad, lo que limita las posibles interacciones con bañistas y pescadores a lo largo de la costa.",
+    "familia": {
+      "name": "Trachinidae"
+    },
+    "species_morphology": {
+      "name": "Trachinus radiatus",
+      "size_average": 30,
+      "size_max": 50
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Pez víbora.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Pez víbora.jpg"
+  },
+  {
+    "name": "Tripterygion delaisi",
+    "nom_commun": "cabecinegro",
+    "description_summary": null,
+    "familia": {
+      "name": "Tripterygiidae"
+    },
+    "species_morphology": {
+      "name": "Tripterygion delaisi",
+      "size_average": 6,
+      "size_max": 9
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Cabecinegro.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Cabecinegro.jpg"
+  },
+  {
+    "name": "Uranoscopus scaber",
+    "nom_commun": "miracielo",
+    "description_summary": null,
+    "familia": {
+      "name": "Uranoscopidae"
+    },
+    "species_morphology": {
+      "name": "Uranoscopus scaber",
+      "size_average": 22,
+      "size_max": 35
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Miracielo.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Miracielo.jpg"
+  },
+  {
+    "name": "Xyrichtys novacula",
+    "nom_commun": "galán",
+    "description_summary": "Se tratan de animales hermafroditas protóginos, es decir que primero nacen hembras y algunos de los individuos se convierten en machos. Los machos dominantes manejan vastos territorios en la arena mientras que las hembras se caracterizan por tener un carácter más nómada.",
+    "familia": {
+      "name": "Labridae"
+    },
+    "species_morphology": {
+      "name": "Xyrichtys novacula",
+      "size_average": 18,
+      "size_max": 25
+    },
+    "species_ecology": {
+      "index_statut": 3,
+      "description": "Preocupación menor"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Galán.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Galán.jpg"
+  },
+  {
+    "name": "Zeus faber",
+    "nom_commun": "pez de san Pedro",
+    "description_summary": "Pertenecen al orden Zeiformes, que agrupa principalmente a peces abisales.\n\nEstos peces, famosos por su carne, son objeto de numerosas pesquerías y son el objetivo de las redes de arrastre de fondo. Se conoce que son abundantes en algunas costas (Senegal, Marruecos, Madeira, etc.) aunque más raras en otras regiones. Se comercializan frescos, congelados, secos, salados y ahumados. También se utilizan como harina de pescado. ",
+    "familia": {
+      "name": "Zeidae"
+    },
+    "species_morphology": {
+      "name": "Zeus faber",
+      "size_average": 30,
+      "size_max": 65
+    },
+    "species_ecology": {
+      "index_statut": 2,
+      "description": "Datos insuficientes"
+    },
+    "species_behavior": {
+      "sociability": {
+        "label": "grupos o en solitario"
+      },
+      "regime": {
+        "translated_name": "carnívoro"
+      }
+    },
+    "species_data": {
+      "is_poissons": true
+    },
+    "image": "../images/FishImages/Pez de san Pedro.jpg",
+    "mapImage": "../images/MapFishImages/Mapa Pez de san Pedro.jpg"
   }
 ]

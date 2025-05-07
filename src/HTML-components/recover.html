@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Recuperar contraseña</title>
+  <link rel="stylesheet" href="../CSS/recover.css">
+  <script src="../JS/auth.js" defer></script>
+</head>
+<body>
+<main class="form-container">
+  <form id="recover-form" class="form-container__form">
+    <div class="form-container__title">
+      Recuperar contraseña
+    </div>
+    <label for="recover-email" class="form-container__label">Dirección de email</label>
+    <input type="email" id="recover-email" class="form-container__write-box" name="recover-email" required placeholder="Ingrese su correo electrónico">
+    <input type="submit" value="Enviar correo de recuperación" class="form-container__button">
+  </form>
+</main>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const recoverForm = document.getElementById('recover-form');
+    if (recoverForm) {
+      recoverForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('recover-email').value;
+        // Ahora debería estar disponible window.recuperarContrasena
+        window.recuperarContrasena(email);
+      });
+    }
+  });
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+</body>
+</html>

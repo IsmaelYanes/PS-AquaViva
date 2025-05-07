@@ -15,50 +15,95 @@ function toggleToolbar() {
 window.userLat = null;
 window.userLng = null;
 
-// Variable global para almacenar la caché de playas
-let cachedBeaches = null;
+/**
+ * Descarga todas las playas desde Firestore y las cachea en memoria.
+ * Usa la REST API de Firestore y maneja paginación automáticamente.
+ * @returns {Promise<Array>} Lista de documentos de playas
+ */
+// Claves y TTL
+const CACHE_KEY = "playasCache";
+const CACHE_TS_KEY = "playasCacheTimestamp";
 
-//Función para pasar de página ya que con cada llamada solo te puedes traer una pila de 100 playas.
+async function getRemoteLastUpdated() {
+    const url = "https://firestore.googleapis.com/v1/projects/playascanarias-f83a8/databases/(default)/documents/config/meta";
+
+    try {
+        const res = await fetch(url);
+
+        if (!res.ok) {
+            const errorText = await res.text();
+            throw new Error(`HTTP error ${res.status} - ${errorText}`);
+        }
+
+        const data = await res.json();
+        const timestampStr = data.fields?.lastUpdated?.timestampValue;
+
+        if (timestampStr) {
+            return new Date(timestampStr).getTime();
+        } else {
+            throw new Error("Campo lastUpdated no encontrado");
+        }
+
+    } catch (err) {
+        console.error("❌ Error al obtener lastUpdated:", err.message);
+        return null;
+    }
+}
+
 async function fetchAllBeaches() {
-    // Si ya hay datos en caché, los devolvemos directamente
-    if (cachedBeaches !== null) {
-        console.log("⚡ Usando playas desde caché.");
-        return cachedBeaches;
+    // Consultamos si hay datos en caché
+    const cachedData = localStorage.getItem(CACHE_KEY);
+    const cachedTimestamp = localStorage.getItem(CACHE_TS_KEY);
+
+    // Obtenemos la fecha de última actualización en Firestore
+    const remoteTimestamp = await getRemoteLastUpdated();
+
+    // Comprobamos si debemos usar la caché
+    if (cachedData && cachedTimestamp && remoteTimestamp) {
+        if (remoteTimestamp <= parseInt(cachedTimestamp, 10)) {
+            console.log("⚡ Usando playas desde localStorage (sin cambios remotos).");
+            return JSON.parse(cachedData);
+        } else {
+            console.log("🔄 Cambios detectados en Firestore. Recargando datos.");
+        }
     }
 
-    let url = "https://firestore.googleapis.com/v1/projects/playascanarias-f83a8/databases/(default)/documents/playas";
+    // Si no hay caché válida o hay cambios → descargamos los datos
+    const baseUrl = "https://firestore.googleapis.com/v1/projects/playascanarias-f83a8/databases/(default)/documents/playas";
     let allBeaches = [];
     let nextPageToken = null;
 
     try {
         do {
-            let fullUrl = nextPageToken ? `${url}?pageToken=${nextPageToken}` : url;
-            const response = await fetch(fullUrl);
-            const data = await response.json();
+            const url = new URL(baseUrl);
+            if (nextPageToken) url.searchParams.set("pageToken", nextPageToken);
 
-            if (!data.documents) {
-                console.error("❌ No se encontraron datos de playas en Firebase.");
-                break;
-            }
+            const res = await fetch(url.toString());
+            if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+
+            const data = await res.json();
+            if (!data.documents || !Array.isArray(data.documents)) break;
 
             allBeaches.push(...data.documents);
             nextPageToken = data.nextPageToken || null;
 
-            console.log(`📥 Descargadas ${data.documents.length} playas, total acumulado: ${allBeaches.length}`);
-
         } while (nextPageToken);
 
-        // Guardamos los datos en la caché
-        cachedBeaches = allBeaches;
+        // Guardamos en caché
+        localStorage.setItem(CACHE_KEY, JSON.stringify(allBeaches));
+        localStorage.setItem(CACHE_TS_KEY, remoteTimestamp?.toString() || Date.now().toString());
+
+        console.log(`✅ Guardadas ${allBeaches.length} playas en caché local.`);
         return allBeaches;
-    } catch (error) {
-        console.error("❌ Error al descargar playas:", error);
+
+    } catch (err) {
+        console.error("❌ Error al obtener playas:", err);
         return [];
     }
 }
 
 //Funcion de abrir popup de marcador de playa.
-function showCustomPopup(fields, showRouteButton = false, routeData = null) {
+async function showCustomPopup(fields, showRouteButton = false, routeData = null) {
     // Eliminar popup existente
     const existing = document.getElementById("custom-popup");
     if (existing) existing.remove();
@@ -86,40 +131,124 @@ function showCustomPopup(fields, showRouteButton = false, routeData = null) {
             const minutes = Math.floor((durationInSec % 3600) / 60); // Obtener minutos
             const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
 
-            routeInfoHTML = `
-                <p><strong>Distancia:</strong> ${km} km <strong>Duración:</strong> ${formattedTime}</p>
+            routeInfoHTML = ` 
+                <p><strong>Distancia:</strong> ${km} km <strong>Duración:</strong> ${formattedTime} h</p>
             `;
         }
     }
 
+    // Verificar si el usuario está logueado
+    const userLoggedIn = await comprobarUsuario();
+
+    // Comprobar si esta playa ya está en los favoritos
+    const uid = localStorage.getItem("uid");
+    let isFavorite = false;
+
+    if (uid) {
+        // Obtener favoritos del usuario desde localStorage
+        const favoritosRaw = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+        // Normalizar a string los IDs de favoritos
+        const favoritos = favoritosRaw.map(fav => typeof fav === "object" && fav.stringValue ? fav.stringValue : String(fav));
+
+        const beachId = String(fields["ID DGE"]?.integerValue);
+        isFavorite = favoritos.includes(beachId);
+    }
+
     // Construcción del popup
     const html = `
-    <div id="custom-popup" class="popup">
-      <div class="popup-content">
-        <button class="close-btn" onclick="document.getElementById('custom-popup').remove()">X</button>
-        <div class="popup-header">
-          <h2>${fields.beachName?.stringValue || "Playa Desconocida"}</h2>
+        <div id="custom-popup" class="popup">
+            <div class="popup-content">
+                <button class="close-btn" onclick="document.getElementById('custom-popup').remove()">X</button>
+                <div class="popup-header">
+                    <h2>
+                        ${fields.beachName?.stringValue || "Playa Desconocida"}
+                        ${userLoggedIn ?
+        `<span 
+        class="favorite-icon" 
+        id="fav-${fields["ID DGE"]?.integerValue}" 
+        onclick="toggleFavorite(this)" 
+        title="${isFavorite ? "Eliminar de favoritos" : "Añadir a favoritos"}"
+        style="cursor: pointer; font-size: 1.2em; margin-left: 10px; color: ${isFavorite ? "gold" : "grey"}"
+    >${isFavorite ? "★" : "☆"}</span>`
+        : ""
+    }
+                    </h2>
+                </div>
+                <div class="popup-body">
+                    <img src="${fields.imageURL?.stringValue || 'https://via.placeholder.com/300'}"
+                        alt="Imagen de la playa" class="popup-image">
+                    <p><strong>Composición:</strong> ${fields["Composición"]?.stringValue || "Desconocida"}</p>
+                    <p><strong>Tipo:</strong> ${fields.type?.stringValue || "N/A"}</p>
+                    <p><strong>Clasificación:</strong> ${fields.classification?.stringValue || "N/A"}</p>
+                    <p><strong>Acceso:</strong> ${fields["Condiciones de acceso"]?.stringValue || "N/A"}</p>
+                    ${routeInfoHTML}
+                </div>
+                <div class="popup-footer">
+                    <a href="../HTML/MoreInfoPage.html?id=${fields["ID DGE"]?.integerValue}
+                        &lat=${fields.LAT.stringValue.replace(",", ".")}
+                        &lon=-${fields.LOG.stringValue.replace(",", ".")}"
+                        class="more-info">Ver más</a>
+                    ${routeButtonHTML}
+                </div>
+            </div>
         </div>
-        <div class="popup-body">
-          <img src="${fields.imageURL?.stringValue || 'https://via.placeholder.com/300'}"
-               alt="Imagen de la playa" class="popup-image">
-          <p><strong>Composición:</strong> ${fields["Composición"]?.stringValue || "Desconocida"}</p>
-          <p><strong>Tipo:</strong> ${fields.type?.stringValue || "N/A"}</p>
-          <p><strong>Clasificación:</strong> ${fields.classification?.stringValue || "N/A"}</p>
-          <p><strong>Acceso:</strong> ${fields["Condiciones de acceso"]?.stringValue || "N/A"}</p>
-          ${routeInfoHTML}
-        </div>
-        <div class="popup-footer">
-          <a href="../HTML/moreinfoPageTool.html?id=${fields["ID DGE"]?.integerValue}
-                 &lat=${fields.LAT.stringValue.replace(",", ".")}
-                 &lon=-${fields.LOG.stringValue.replace(",", ".")}"
-             class="more-info">Ver más</a>
-          ${routeButtonHTML}
-        </div>
-      </div>
-    </div>`;
+    `;
 
     document.body.insertAdjacentHTML("beforeend", html);
+}
+
+//Añadir-quitar de favorito
+async function toggleFavorite(starElement) {
+    const beachId = starElement.id.replace("fav-", "");
+
+    // Determinar el estado actual del favorito a través del color o contenido del icono
+    const isCurrentlyFavorited = starElement.textContent === "★" || starElement.style.color === "gold";
+
+    // 🔒 Obtener el UID desde localStorage
+    const uid = localStorage.getItem("uid");
+
+    // Verificar si el usuario está autenticado
+    const usuarioAutenticado = await comprobarUsuario();
+    if (!usuarioAutenticado) {
+        console.warn("⚠️ Usuario no autenticado");
+        localStorage.removeItem("uid");
+        localStorage.removeItem("idToken");
+        return;
+    }
+
+    try {
+        if (isCurrentlyFavorited) {
+            // Eliminar favorito
+            await eliminarFavorito(uid, beachId);
+            starElement.textContent = "☆";
+            starElement.style.color = "grey";
+            console.log(`📌 Playa ${beachId} eliminada de favoritos`);
+        } else {
+            // Añadir favorito
+            await añadirFavorito(uid, beachId);
+            starElement.textContent = "★";
+            starElement.style.color = "gold";
+            console.log(`📌 Playa ${beachId} añadida a favoritos`);
+        }
+
+        // Actualizar valores en localStorage
+        localStorage.setItem("lastUpdatedFav", Date.now().toString());
+
+        // Actualizar array local de favoritos
+        let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+        if (isCurrentlyFavorited) {
+            favoritos = favoritos.filter(item => (item.stringValue || item) !== beachId);
+        } else {
+            favoritos.push({ stringValue: beachId });
+        }
+
+        localStorage.setItem("favoritos", JSON.stringify(favoritos));
+
+    } catch (error) {
+        console.error("❌ Error al actualizar favoritos:", error.message);
+    }
 }
 
 function startRoute() {
@@ -164,6 +293,12 @@ function getIslandFromCoords(lat, lng) {
 
 //Cargar las playas de una isla.
 async function loadIslandBeaches(userLat, userLng, currentIsland) {
+    // ✅ Eliminar cluster anterior si existe
+    if (window.markersCluster) {
+        window.map.removeLayer(window.markersCluster);
+        window.markersCluster = null;
+    }
+
     const allBeaches = await fetchAllBeaches();
     const islandBeaches = allBeaches.filter(beach =>
         beach.fields?.island?.stringValue === currentIsland
@@ -174,7 +309,7 @@ async function loadIslandBeaches(userLat, userLng, currentIsland) {
         return;
     }
 
-    // Crear el cluster de marcadores
+    // ✅ Crear y guardar un nuevo cluster limpio
     window.markersCluster = L.markerClusterGroup();
 
     islandBeaches.forEach((doc) => {
@@ -299,20 +434,26 @@ async function loadIslandBeaches(userLat, userLng, currentIsland) {
                 showCustomPopup(fields);
 
                 // Crear el contenedor del mensaje
+                // Crear el contenedor del mensaje
                 const message = document.createElement("div");
 
-                // Establecer el contenido y el estilo
-                message.textContent = "Esta ubicación no es posible el acceso";
-                message.style.backgroundColor = "#f44336";
-                message.style.color = "white";
-                message.style.padding = "10px";
-                message.style.borderRadius = "5px";
-                message.style.position = "fixed";
-                message.style.top = "20px";
-                message.style.left = "50%";
-                message.style.transform = "translateX(-50%)";
-                message.style.zIndex = "1000";
-                message.style.display = "none";  // Inicialmente oculto
+// Establecer el contenido y el estilo
+                message.textContent = "Esta ubicación no permite el acceso";
+                Object.assign(message.style, {
+                    position: "fixed",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    backgroundColor: "#f44336",
+                    color: "white",
+                    padding: "16px 24px",
+                    borderRadius: "8px",
+                    fontSize: "16px",
+                    zIndex: "10000",
+                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
+                    textAlign: "center",
+                    display: "none",
+                });
 
                 // Añadir el mensaje al body
                 document.body.appendChild(message);
@@ -321,9 +462,11 @@ async function loadIslandBeaches(userLat, userLng, currentIsland) {
                 message.style.display = "block";
 
                 // Ocultar el mensaje después de 2 segundos
-                setTimeout(function () {
+                setTimeout(() => {
                     message.style.display = "none";
-                }, 2000);
+                    document.body.removeChild(message);
+                }, 3000);
+
 
                 // Mantener el cluster visible
                 window.map.addLayer(window.markersCluster);
@@ -385,6 +528,29 @@ let satelliteLayer;
 let isSatelliteView = false;
 let isBeachViewActive = false;
 
+function clearMapLayers() {
+    if (window.zonasLitoralLayer) {
+        window.map.removeLayer(window.zonasLitoralLayer);
+        window.zonasLitoralLayer = null;
+    }
+    if (window.markersCluster) {
+        window.map.removeLayer(window.markersCluster);
+        window.markersCluster = null;
+    }
+    if (window.routeLayer) {
+        window.map.removeLayer(window.routeLayer);
+        window.routeLayer = null;
+    }
+    if (window.selectedBeachMarker) {
+        window.map.removeLayer(window.selectedBeachMarker);
+        window.selectedBeachMarker = null;
+    }
+    if (window.backButtonControl) {
+        window.map.removeControl(window.backButtonControl);
+        window.backButtonControl = null;
+    }
+}
+
 //Funcion para mostrar las playas filtradas (Se le pasa las playas)
 function showFilteredBeaches(filteredBeaches) {
     if (!window.map) {
@@ -393,17 +559,11 @@ function showFilteredBeaches(filteredBeaches) {
     }
 
     try {
-        // Ocultamos capa de zonas litoral si está activa
-        if (window.zonasLitoralLayer) {
-            window.map.removeLayer(window.zonasLitoralLayer);
-        }
+        // 🧼 Limpiar todas las capas previas del mapa
+        clearMapLayers();
 
-        // Limpiamos clústeres anteriores
-        if (window.markersCluster) {
-            window.map.removeLayer(window.markersCluster);
-        }
+        // Inicializar nuevo clúster
         window.markersCluster = L.markerClusterGroup();
-
         let boundsCoords = [];
 
         filteredBeaches.forEach((doc) => {
@@ -438,7 +598,7 @@ function showFilteredBeaches(filteredBeaches) {
         // Agregar clúster al mapa
         window.map.addLayer(window.markersCluster);
 
-        // Centrar el mapa automáticamente si hay coordenadas válidas
+        // Centrar el mapa si hay coordenadas válidas
         if (boundsCoords.length > 0) {
             let bounds = L.latLngBounds(boundsCoords);
             window.map.fitBounds(bounds, { padding: [50, 50] });
@@ -460,33 +620,97 @@ function showLocation() {
     });
 }
 
-function addToFavorites() {
-    alert("Agregado a favoritos");
+async function showFavorites() {
+    if (!window.map) {
+        console.error("❌ El mapa aún no está disponible.");
+        return;
+    }
+
+    const uid = localStorage.getItem("uid");
+    const autenticado = await comprobarUsuario();
+
+    if (!autenticado || !uid) {
+        alert("⚠️ Debes iniciar sesión para ver tus playas favoritas.");
+        return;
+    }
+
+    // Obtener favoritos desde localStorage
+    let favoritosRaw = localStorage.getItem("favoritos");
+    let favoritos = favoritosRaw ? JSON.parse(favoritosRaw).map(f => f.stringValue) : [];
+
+    if (favoritos.length === 0) {
+        alert("ℹ️ No tienes playas favoritas guardadas.");
+        return;
+    }
+
+    try {
+        // 🧼 Limpieza general del mapa usando función reutilizable
+        clearMapLayers();
+
+        let allBeaches = await fetchAllBeaches();
+        let favoriteBeaches = allBeaches.filter(beach =>
+            favoritos.includes(beach.fields["ID DGE"]?.integerValue?.toString())
+        );
+
+        if (favoriteBeaches.length === 0) {
+            alert("⚠️ No se encontraron coincidencias en los datos de playas.");
+            return;
+        }
+
+        console.log(`🌟 Mostrando ${favoriteBeaches.length} playas favoritas.`);
+
+        window.markersCluster = L.markerClusterGroup();
+
+        favoriteBeaches.forEach(doc => {
+            let fields = doc.fields;
+
+            let lat = fields.LAT ? parseFloat(fields.LAT.stringValue.replace(",", ".")) : null;
+            let lng = fields.LOG ? parseFloat(fields.LOG.stringValue.replace(",", ".")) : null;
+
+            if (lat === null || lng === null || isNaN(lat) || isNaN(lng)) {
+                console.warn(`⚠️ Coordenadas inválidas para la playa ${fields.beachName?.stringValue}`);
+                return;
+            }
+
+            let coords = [lat, -lng];
+
+            let marker = L.marker(coords);
+            marker.beachData = fields;
+
+            marker.on("click", function (event) {
+                let currentZoom = window.map.getZoom();
+                if (currentZoom >= 14 || !marker._icon.classList.contains("leaflet-cluster-icon")) {
+                    showCustomPopup(fields);
+                } else {
+                    window.map.setView(event.latlng, currentZoom + 2);
+                }
+            });
+
+            window.markersCluster.addLayer(marker);
+        });
+
+        window.markersCluster.on("clusterclick", function (event) {
+            window.map.setView(event.latlng, window.map.getZoom() + 2);
+        });
+
+        window.map.addLayer(window.markersCluster);
+        window.map.invalidateSize();
+        isBeachViewActive = true;
+    } catch (error) {
+        console.error("❌ Error al mostrar las playas favoritas:", error);
+    }
 }
 
 async function measureDistance() {
     getUserLocation(async function (userLat, userLng) {
         // 🧼 LIMPIEZA DEL MAPA
-        if (window.zonasLitoralLayer) window.map.removeLayer(window.zonasLitoralLayer);
-        if (window.markersCluster) window.map.removeLayer(window.markersCluster);
-        if (window.routeLayer) {
-            window.map.removeLayer(window.routeLayer);
-            window.routeLayer = null;
-        }
-        if (window.selectedBeachMarker) {
-            window.map.removeLayer(window.selectedBeachMarker);
-            window.selectedBeachMarker = null;
-        }
-        if (window.backButtonControl) {
-            window.map.removeControl(window.backButtonControl);
-            window.backButtonControl = null;
-        }
+        clearMapLayers();
 
         // 📍 Mostrar nueva ubicación del usuario
         const currentIsland = getIslandFromCoords(userLat, userLng);
         if (!currentIsland) {
             alert("⚠️ No se pudo determinar en qué isla te encuentras.");
-            return;
+            return; // Ya se limpió antes
         }
 
         const islandInfo = [
@@ -505,6 +729,7 @@ async function measureDistance() {
             window.map.setView(islandInfo.center, islandInfo.zoom);
         }
 
+        // 🚩 Cargar playas y medir ruta
         await loadIslandBeaches(userLat, userLng, currentIsland);
     });
 }
@@ -512,67 +737,40 @@ async function measureDistance() {
 function defineZone() {
     console.log("🔄 Restaurando zonas litoral y limpiando elementos del mapa...");
 
-    // Eliminar clústeres si existen
-    if (window.markersCluster) {
-        window.map.removeLayer(window.markersCluster);
-        window.markersCluster = null;
-    }
+    // 🧼 Limpieza general del mapa
+    clearMapLayers();
 
-    // Eliminar ruta si existe
-    if (window.routeLayer) {
-        window.map.removeLayer(window.routeLayer);
-        window.routeLayer = null;
-    }
-
-    // Eliminar marcador de ubicación del usuario
-    if (window.userLocationMarker) {
-        window.map.removeLayer(window.userLocationMarker);
-        window.userLocationMarker = null;
-    }
-
-    // Eliminar marcador de playa seleccionada
-    if (window.selectedBeachMarker) {
-        window.map.removeLayer(window.selectedBeachMarker);
-        window.selectedBeachMarker = null;
-    }
-
-    // Eliminar botón de volver si existe
-    if (window.backButtonControl) {
-        window.map.removeControl(window.backButtonControl);
-        window.backButtonControl = null;
-    }
-
-    // Restaurar o cargar la capa de zonas litoral
+    // ❌ Eliminar la capa anterior si existe
     if (window.zonasLitoralLayer) {
-        window.zonasLitoralLayer.addTo(window.map);
-        console.log("✅ Capa de zonas litoral restaurada.");
-    } else {
-        // Si no existe, la cargamos desde el archivo JSON
-        fetch('../Data/zonas_litoral.json')
-            .then(response => response.json())
-            .then(geojsonData => {
-                window.zonasLitoralLayer = L.geoJSON(geojsonData, {
-                    style: feature => ({
-                        color: feature.properties.color || "blue",
-                        weight: 2,
-                        opacity: 0.8,
-                        fillOpacity: 0.4
-                    }),
-                    onEachFeature: (feature, layer) => {
-                        if (feature.properties) {
-                            layer.on('click', (e) => {
-                                abrirPopup(feature.properties, e);
-                            });
-                        }
-                    }
-                }).addTo(window.map);
-                console.log("✅ Capa de zonas litoral cargada por primera vez.");
-            })
-            .catch(error => {
-                console.error("❌ Error al cargar zonas_litoral.json:", error);
-                alert("No se pudo cargar la capa de zonas litoral.");
-            });
+        window.map.removeLayer(window.zonasLitoralLayer);
+        window.zonasLitoralLayer = null;
     }
+
+    // ✅ Siempre cargar desde cero y reasignar eventos
+    fetch('../Data/zonas_litoral.json')
+        .then(response => response.json())
+        .then(geojsonData => {
+            window.zonasLitoralLayer = L.geoJSON(geojsonData, {
+                style: feature => ({
+                    color: feature.properties.color || "blue",
+                    weight: 2,
+                    opacity: 0.8,
+                    fillOpacity: 0.4
+                }),
+                onEachFeature: (feature, layer) => {
+                    if (feature.properties) {
+                        layer.on('click', (e) => {
+                            abrirPopup(feature.properties, e);
+                        });
+                    }
+                }
+            }).addTo(window.map);
+            console.log("✅ Capa de zonas litoral cargada y activada.");
+        })
+        .catch(error => {
+            console.error("❌ Error al cargar zonas_litoral.json:", error);
+            alert("No se pudo cargar la capa de zonas litoral.");
+        });
 
     isBeachViewActive = false;
 }
@@ -585,30 +783,7 @@ async function showBeaches() {
 
     try {
         // 🧼 LIMPIEZA GENERAL DEL MAPA
-        if (window.zonasLitoralLayer) {
-            window.map.removeLayer(window.zonasLitoralLayer);
-            window.zonasLitoralLayer = null;
-        }
-        if (window.markersCluster) {
-            window.map.removeLayer(window.markersCluster);
-            window.markersCluster = null;
-        }
-        if (window.routeLayer) {
-            window.map.removeLayer(window.routeLayer);
-            window.routeLayer = null;
-        }
-        if (window.userLocationMarker) {
-            window.map.removeLayer(window.userLocationMarker);
-            window.userLocationMarker = null;
-        }
-        if (window.selectedBeachMarker) {
-            window.map.removeLayer(window.selectedBeachMarker);
-            window.selectedBeachMarker = null;
-        }
-        if (window.backButtonControl) {
-            window.map.removeControl(window.backButtonControl);
-            window.backButtonControl = null;
-        }
+        clearMapLayers();
 
         // 🔄 CARGAR PLAYAS
         let beaches = await fetchAllBeaches();
@@ -628,8 +803,6 @@ async function showBeaches() {
             }
 
             let coords = [lat, -lng];
-
-            console.log(`📍 Intentando agregar marcador en coordenadas: ${coords}`);
 
             let marker = L.marker(coords);
             marker.beachData = fields;
