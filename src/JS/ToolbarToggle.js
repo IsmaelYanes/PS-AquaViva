@@ -732,37 +732,37 @@ function defineZone() {
     // 🧼 Limpieza general del mapa
     clearMapLayers();
 
-    // Restaurar o cargar la capa de zonas litoral
+    // ❌ Eliminar la capa anterior si existe
     if (window.zonasLitoralLayer) {
-        window.zonasLitoralLayer.addTo(window.map);
-        console.log("✅ Capa de zonas litoral restaurada.");
-    } else {
-        // Si no existe, la cargamos desde el archivo JSON
-        fetch('../Data/zonas_litoral.json')
-            .then(response => response.json())
-            .then(geojsonData => {
-                window.zonasLitoralLayer = L.geoJSON(geojsonData, {
-                    style: feature => ({
-                        color: feature.properties.color || "blue",
-                        weight: 2,
-                        opacity: 0.8,
-                        fillOpacity: 0.4
-                    }),
-                    onEachFeature: (feature, layer) => {
-                        if (feature.properties) {
-                            layer.on('click', (e) => {
-                                abrirPopup(feature.properties, e);
-                            });
-                        }
-                    }
-                }).addTo(window.map);
-                console.log("✅ Capa de zonas litoral cargada por primera vez.");
-            })
-            .catch(error => {
-                console.error("❌ Error al cargar zonas_litoral.json:", error);
-                alert("No se pudo cargar la capa de zonas litoral.");
-            });
+        window.map.removeLayer(window.zonasLitoralLayer);
+        window.zonasLitoralLayer = null;
     }
+
+    // ✅ Siempre cargar desde cero y reasignar eventos
+    fetch('../Data/zonas_litoral.json')
+        .then(response => response.json())
+        .then(geojsonData => {
+            window.zonasLitoralLayer = L.geoJSON(geojsonData, {
+                style: feature => ({
+                    color: feature.properties.color || "blue",
+                    weight: 2,
+                    opacity: 0.8,
+                    fillOpacity: 0.4
+                }),
+                onEachFeature: (feature, layer) => {
+                    if (feature.properties) {
+                        layer.on('click', (e) => {
+                            abrirPopup(feature.properties, e);
+                        });
+                    }
+                }
+            }).addTo(window.map);
+            console.log("✅ Capa de zonas litoral cargada y activada.");
+        })
+        .catch(error => {
+            console.error("❌ Error al cargar zonas_litoral.json:", error);
+            alert("No se pudo cargar la capa de zonas litoral.");
+        });
 
     isBeachViewActive = false;
 }
