@@ -1,73 +1,184 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Verificando correo...</title>
-
+    <meta charset="UTF-8">
+    <title>Verificación de correo / Restablecer contraseña</title>
     <style>
-        body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-        #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px 16px; border-radius: 3px; text-align: center; }
-        #message h2 { color: #039be5; font-weight: bold; font-size: 18px; margin-bottom: 12px; }
-        #message p { line-height: 140%; font-size: 14px; margin: 0 0 16px; }
-        #message .success { color: green; }
-        #message .error { color: red; }
-        #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-        @media (max-width: 600px) {
-            body, #message { margin-top: 0; background: white; box-shadow: none; }
-            body { border-top: 16px solid #039be5; }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        #message {
+            font-weight: bold;
+            color: green;
+            margin-bottom: 20px;
+        }
+        #error-message {
+            font-weight: bold;
+            color: red;
+            margin-bottom: 20px;
+        }
+        #password-reset-form {
+            display: none;
+            margin-top: 20px;
+        }
+        #password-reset-form label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        #password-reset-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        #password-reset-form button {
+            background-color: #0099CC;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #password-reset-form button:hover {
+            background-color: #007799;
+        }
+        .link-button {
+            background: none;
+            border: none;
+            color: #0099CC;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: inherit;
+            padding: 0;
+            margin: 10px 0;
+            display: block;
+        }
+        .link-button:hover {
+            color: #007799;
         }
     </style>
-
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyCU3fXaXPHYdlb8q4ZKY4iHTmXyvjjpeuQ",
-            authDomain: "playascanarias-f83a8.firebaseapp.com",
-            projectId: "playascanarias-f83a8",
-            storageBucket: "playascanarias-f83a8.appspot.com",
-            messagingSenderId: "524034321433",
-            appId: "1:524034321433:web:b81e26afdf44f82aa34e88",
-            measurementId: "G-W53XJWVN58"
-        };
-
-        firebase.initializeApp(firebaseConfig);
-
-        window.addEventListener('DOMContentLoaded', async () => {
-            const params = new URLSearchParams(location.search);
-            const mode = params.get('mode');
-            const code = params.get('oobCode');
-            const messageBox = document.getElementById('message-content');
-
-            if (mode === 'verifyEmail' && code) {
-                try {
-                    await firebase.auth().applyActionCode(code);
-                    messageBox.innerHTML = `
-            <h2>¡Correo verificado!</h2>
-            <p class="success">Tu dirección de correo ha sido verificada correctamente. Ahora puedes iniciar sesión.</p>
-          `;
-                } catch (error) {
-                    messageBox.innerHTML = `
-            <h2>Error al verificar</h2>
-            <p class="error">El enlace ha expirado, ya fue usado o no es válido.</p>
-          `;
-                }
-            } else {
-                messageBox.innerHTML = `
-          <h2>Enlace inválido</h2>
-          <p class="error">No se pudo verificar tu correo. Asegúrate de usar un enlace válido de confirmación.</p>
-        `;
-            }
-        });
-    </script>
 </head>
 <body>
-<div id="message">
-    <div id="message-content">
-        <h2>Verificando tu correo...</h2>
-        <p>Un momento, por favor.</p>
+<div class="container">
+    <h1>Autenticación</h1>
+    <div id="message"></div>
+    <div id="error-message"></div>
+    <div id="password-reset-form">
+        <h2>Ingresa tu nueva contraseña</h2>
+        <form id="reset-form">
+            <label for="new-password">Nueva contraseña:</label>
+            <input type="password" id="new-password" required>
+            <br>
+            <label for="confirm-new-password">Confirmar nueva contraseña:</label>
+            <input type="password" id="confirm-new-password" required>
+            <br>
+            <button type="submit">Guardar nueva contraseña</button>
+        </form>
     </div>
+    <button class="link-button" id="go-to-login">Volver a la página de inicio de sesión</button>
 </div>
+
+<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyCU3fXaXPHYdlb8q4ZKY4iHTmXyvjjpeuQ",
+        authDomain: "playascanarias-f83a8.firebaseapp.com",
+        projectId: "playascanarias-f83a8",
+        storageBucket: "playascanarias-f83a8.appspot.com",
+        messagingSenderId: "524034321433",
+        appId: "1:524034321433:web:b81e26afdf44f82aa34e88",
+        measurementId: "G-W53XJWVN58"
+    };
+
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }
+
+    const auth = firebase.auth();
+    const messageDiv = document.getElementById('message');
+    const errorDiv = document.getElementById('error-message');
+    const passwordResetFormDiv = document.getElementById('password-reset-form');
+    const resetFormElement = document.getElementById('reset-form');
+    const goToLoginButton = document.getElementById('go-to-login');
+    const urlParams = new URLSearchParams(window.location.search);
+    const oAuthCode = urlParams.get('oobCode');
+    const mode = urlParams.get('mode');
+
+    async function handleVerifyEmail(code) {
+        try {
+            await auth.applyActionCode(code);
+            messageDiv.innerText = 'Correo electrónico verificado correctamente.';
+        } catch (error) {
+            errorDiv.innerText = 'Error al verificar el correo electrónico: ' + error.message;
+        }
+    }
+
+    async function handleResetPassword(code) {
+        passwordResetFormDiv.style.display = 'block';
+        if (resetFormElement) {
+            resetFormElement.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const newPassword = document.getElementById('new-password').value;
+                const confirmNewPassword = document.getElementById('confirm-new-password').value;
+
+                if (newPassword === confirmNewPassword) {
+                    try {
+                        await auth.confirmPasswordReset(code, newPassword);
+                        messageDiv.innerText = 'Contraseña restablecida correctamente. Ahora puedes iniciar sesión con tu nueva contraseña.';
+                        passwordResetFormDiv.style.display = 'none';
+                    } catch (error) {
+                        errorDiv.innerText = 'Error al restablecer la contraseña: ' + error.message;
+                    }
+                } else {
+                    errorDiv.innerText = 'Las contraseñas no coinciden.';
+                }
+            });
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        if (oAuthCode && mode) {
+            if (mode === 'verifyEmail') {
+                handleVerifyEmail(oAuthCode);
+            } else if (mode === 'resetPassword') {
+                handleResetPassword(oAuthCode);
+            } else {
+                errorDiv.innerText = 'Código de acción no válido o modo desconocido.';
+            }
+        } else {
+            errorDiv.innerText = 'Enlace de autenticación no válido.';
+        }
+    });
+
+    goToLoginButton.addEventListener('click', () => {
+        window.location.href = '../HTML/login.html'; // Ajusta la ruta a tu página de inicio de sesión
+    });
+</script>
 </body>
 </html>

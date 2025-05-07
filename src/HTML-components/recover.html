@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Recuperar contraseña</title>
-  <link rel="stylesheet" href="../CSS/form.css">
+  <link rel="stylesheet" href="../CSS/recover.css">
+  <script src="../JS/auth.js" defer></script>
 </head>
 <body>
 <main class="form-container">
@@ -17,8 +18,21 @@
   </form>
 </main>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const recoverForm = document.getElementById('recover-form');
+    if (recoverForm) {
+      recoverForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('recover-email').value;
+        // Ahora debería estar disponible window.recuperarContrasena
+        window.recuperarContrasena(email);
+      });
+    }
+  });
+</script>
+
 <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
-<script src="../JS/auth.js"></script>
 </body>
 </html>

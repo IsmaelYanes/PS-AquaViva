@@ -13,7 +13,7 @@ class BeachSearcher {
     }
 
     async init() {
-        this.beaches = await fetchAllBeaches();
+        //this.beaches = await fetchAllBeaches();
         this.setupEventListeners();
     }
 
