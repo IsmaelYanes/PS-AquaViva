@@ -77,7 +77,7 @@
                     <div class="toolbar-hamburguer-buttons" onclick="showLocation()" title="Ver mi ubicación">
                         <img src="../Videos/toolbar/icon-whereIam.png" class="toolbar-icon" id="btn-location" >
                     </div>
-                    <div class="toolbar-hamburguer-buttons" onclick="addToFavorites()" title="Guardar en favoritos">
+                    <div id="favorites-button" class="toolbar-hamburguer-buttons" onclick="showFavorites()" style="display: none;">
                         <img src="../Videos/toolbar/icon-favourites.png" class="toolbar-icon" id="btn-fav" >
                     </div>
                     <div class="toolbar-hamburguer-buttons" onclick="measureDistance()" title="Calcular distancia">
@@ -89,12 +89,6 @@
                     <div class="toolbar-hamburguer-buttons" onclick="showBeaches()" title="Ver playas">
                         <img src="../Videos/toolbar/icon-beach.png" class="toolbar-icon" id="btn-beach" >
                     </div>
-
-                    <!--
-                    <img src="../Images/sateliteview.png" class="toolbar-icon" id="btn-satellite" onclick="toggleSatelliteView()">
-                    <img src="../Images/streetview.png" class="toolbar-icon" id="btn-streetview" onclick="toggleStreetView()">
-                    -->
-
                 </div>
             </div>
 
@@ -209,11 +203,29 @@
 </script>
 
 <script src="../JS/ToolbarToggle.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="../JS/auth.js"></script>
 <script>
+    //Botones de altenar tipo de vista del mapa
     document.addEventListener("DOMContentLoaded", () => {
         const streetThumb = document.getElementById("street-thumb");
         const satelliteThumb = document.getElementById("satellite-thumb");
 
+        //Control del botón de fav
+        const favButton = document.getElementById("favorites-button");
+        if (!favButton) return;
+
+        // Espera a que Firebase esté listo antes de comprobar
+        setTimeout(async () => {
+            const isLoggedIn = await comprobarUsuario();
+            console.log(isLoggedIn);
+            favButton.style.display = isLoggedIn ? "flex" : "none";
+        }, 500);
+
+
+        //Configuracion del boton de las capas de vistas
         if (!streetThumb || !satelliteThumb) return;
 
         streetThumb.addEventListener("click", () => {

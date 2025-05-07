@@ -32,8 +32,9 @@ async function registrarUsuario(nombre, email, password, confirmPassword) {
 
         // Crear documento vacío en Firestore solo con el UID como ID
         await db.collection("users").doc(user.uid).set({
-            favoritos: [], // puedes iniciarlo vacío
-            creadoEn: firebase.firestore.FieldValue.serverTimestamp()
+            favoritos: [],
+            creadoEn: firebase.firestore.FieldValue.serverTimestamp(),
+            lastUpdatedFav: firebase.firestore.FieldValue.serverTimestamp()
         });
 
         alert('Te hemos enviado un correo de verificación. Verifica tu correo antes de cerrar esta pestaña.');
@@ -60,6 +61,7 @@ async function iniciarSesion(email, password) {
         const userCredential = await auth.signInWithEmailAndPassword(email, password);
         if (userCredential.user.emailVerified) {
             alert('Inicio de sesión exitoso');
+            guardarUsuarioActual();
             window.location.href = "../HTML/index.html";
         } else {
             alert('Por favor verifica tu correo electrónico antes de iniciar sesión.');
@@ -99,6 +101,7 @@ async function registrarConGoogle() {
         const result = await auth.signInWithPopup(provider);
         if (result.additionalUserInfo.isNewUser) {
             alert("Registro con Google exitoso.");
+            guardarUsuarioActual();
             window.location.href = "../HTML/index.html";
         } else {
             await auth.signOut();
@@ -158,3 +161,86 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+function guardarUsuarioActual() {
+    const user = auth.currentUser;
+
+    if (user) {
+        // Guardar el uid, email y token en localStorage
+        localStorage.setItem("uid", user.uid);
+        localStorage.setItem("email", user.email);
+
+        // Obtener el idToken y guardarlo en localStorage
+        user.getIdToken().then((idToken) => {
+            localStorage.setItem("idToken", idToken);
+        });
+
+        return user;
+    } else {
+        return null;
+    }
+}
+
+async function comprobarUsuario() {
+    // Comprobar si hay un usuario logueado usando Firebase
+    const currentUser = auth.currentUser;
+
+    if (currentUser) {
+        // Imprimir el email del usuario en la consola si está autenticado
+        console.log("Usuario autenticado: ", currentUser.email);
+        return true; // Usuario autenticado
+    } else {
+        console.log("No hay usuario autenticado.");
+        return false; // No hay usuario autenticado
+    }
+}
+
+async function cerrarSesion() {
+    try {
+        // Cerrar sesión en Firebase
+        await auth.signOut();
+
+        // Eliminar el UID, email y idToken del localStorage
+        localStorage.removeItem("uid");
+        localStorage.removeItem("email");
+        localStorage.removeItem("idToken");
+
+        console.log("✅ Sesión cerrada y datos eliminados de localStorage.");
+
+        // Redirigir a la página de inicio o login después de cerrar sesión
+        window.location.href = "index.html";
+    } catch (error) {
+        console.error("⚠️ Error al cerrar sesión:", error.message);
+    }
+}
+
+// Añadir una playa a favoritos
+async function añadirFavorito(uid, beachId) {
+    try {
+        await db.collection("users").doc(uid).update({
+            favoritos: firebase.firestore.FieldValue.arrayUnion(beachId),
+            lastUpdatedFav: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        console.log(`✅ Playa ${beachId} añadida a favoritos del usuario ${uid}`);
+    } catch (error) {
+        console.error(`❌ Error al añadir favorito: ${error.message}`);
+    }
+}
+
+// Eliminar una playa de favoritos
+async function eliminarFavorito(uid, beachId) {
+    try {
+        await db.collection("users").doc(uid).update({
+            favoritos: firebase.firestore.FieldValue.arrayRemove(beachId),
+            lastUpdatedFav: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        console.log(`🗑️ Playa ${beachId} eliminada de favoritos del usuario ${uid}`);
+    } catch (error) {
+        console.error(`❌ Error al eliminar favorito: ${error.message}`);
+    }
+}
+
+
+
+
+
