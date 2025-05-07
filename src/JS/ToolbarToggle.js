@@ -434,20 +434,26 @@ async function loadIslandBeaches(userLat, userLng, currentIsland) {
                 showCustomPopup(fields);
 
                 // Crear el contenedor del mensaje
+                // Crear el contenedor del mensaje
                 const message = document.createElement("div");
 
-                // Establecer el contenido y el estilo
-                message.textContent = "Esta ubicación no es posible el acceso";
-                message.style.backgroundColor = "#f44336";
-                message.style.color = "white";
-                message.style.padding = "10px";
-                message.style.borderRadius = "5px";
-                message.style.position = "fixed";
-                message.style.top = "20px";
-                message.style.left = "50%";
-                message.style.transform = "translateX(-50%)";
-                message.style.zIndex = "1000";
-                message.style.display = "none";  // Inicialmente oculto
+// Establecer el contenido y el estilo
+                message.textContent = "Esta ubicación no permite el acceso";
+                Object.assign(message.style, {
+                    position: "fixed",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    backgroundColor: "#f44336",
+                    color: "white",
+                    padding: "16px 24px",
+                    borderRadius: "8px",
+                    fontSize: "16px",
+                    zIndex: "10000",
+                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
+                    textAlign: "center",
+                    display: "none",
+                });
 
                 // Añadir el mensaje al body
                 document.body.appendChild(message);
@@ -456,9 +462,11 @@ async function loadIslandBeaches(userLat, userLng, currentIsland) {
                 message.style.display = "block";
 
                 // Ocultar el mensaje después de 2 segundos
-                setTimeout(function () {
+                setTimeout(() => {
                     message.style.display = "none";
-                }, 2000);
+                    document.body.removeChild(message);
+                }, 3000);
+
 
                 // Mantener el cluster visible
                 window.map.addLayer(window.markersCluster);
