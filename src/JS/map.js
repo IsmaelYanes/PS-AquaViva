@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const lon = coord.lng;
         properties.description = getPrincipalData(lat, lon);
 
-        document.getElementById("popup-link").href = `../HTML/MoreInfoPage.html?lat=${lat}&lon=${lon}`;
+        document.getElementById("popup-link").href = `../HTML/moreinfoPageTool.html?lat=${lat}&lon=${lon}`;
 
         // Manejo de la imagen
         const imgElement = document.getElementById('popup-image');

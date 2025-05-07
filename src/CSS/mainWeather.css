@@ -40,7 +40,7 @@
 
 #main-container {
     position: relative;
-    padding: 1.8rem;
+    padding: 1.8em;
     height: auto;
     /*background: linear-gradient(180deg, lightskyblue, powderblue);*/
     font-family: Arial, sans-serif;
@@ -139,13 +139,13 @@
 .grid-container-7 {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-gap: 0.688rem;
+    grid-gap: 0.688em;
 }
 
 .grid-item {
     box-sizing: border-box;
     border-radius: 16px;
-    padding: 1rem 0.5rem;
+    padding: 1em 0.5em;
 
     /*hacer el fondo glassmorphism*/
     background: rgba(255, 255, 255, 0.60);
@@ -159,7 +159,7 @@
     align-items: center; /* Alinea verticalmente todos los elementos */
     gap: 10px;
     width: 100%;
-    margin: 1rem 0;
+    margin: 1em 0;
     overflow-x: auto;
     scrollbar-width: none;
 }
@@ -171,12 +171,12 @@
 }
 
 .section3 {
-    margin-top: 2rem;
+    margin-top: 2em;
 }
 
 .forecast-table-hour {
     background-color: #fff;
-    padding: 1.25rem;
+    padding: 1.25em;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
@@ -236,7 +236,7 @@ tr:nth-child(3) td {
 }
 
 #container-last-updated {
-    margin-top: 1rem;
+    margin-top: 1em;
     margin-bottom: 0;
     text-align: center;
 }
@@ -288,7 +288,7 @@ tr:nth-child(3) td {
         display: grid;
         grid-auto-flow: column;
         grid-auto-columns: minmax(120px, 1fr);
-        grid-gap: 0.688rem;
+        grid-gap: 0.688em;
     }
     .scroll-btn {
         display: block; /* mostramos las flechas */
@@ -312,7 +312,7 @@ tr:nth-child(3) td {
     .forecast-table-hour {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.5em;
     }
 
 }

@@ -110,7 +110,7 @@ function showCustomPopup(fields, showRouteButton = false, routeData = null) {
           ${routeInfoHTML}
         </div>
         <div class="popup-footer">
-          <a href="../HTML/MoreInfoPage.html?id=${fields["ID DGE"]?.integerValue}
+          <a href="../HTML/moreinfoPageTool.html?id=${fields["ID DGE"]?.integerValue}
                  &lat=${fields.LAT.stringValue.replace(",", ".")}
                  &lon=-${fields.LOG.stringValue.replace(",", ".")}"
              class="more-info">Ver más</a>

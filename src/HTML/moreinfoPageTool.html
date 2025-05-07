@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información</title>
+    <link rel="stylesheet" href="../CSS/MoreInfoPageStyle.css">
+    <link rel="stylesheet" href="../CSS/MenuStyle.css">
+    <link rel="stylesheet" href="../CSS/homeHeader.css">
+    <link rel="stylesheet" href="../CSS/services.css">
+    <script
+            src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+            type="module"
+    ></script>
+    <link rel="stylesheet" href="./MoreInfoPageTool.css">
+
+</head>
+<body>
+<div id="header"></div>
+
+<div id="layout">
+    <aside id="sidebar">
+        <nav id="sidebar-nav">
+            <a href="#weather" class="nav-a">Tiempo atmosférico</a><br>
+            <a href="#swell" class="nav-a">Oleaje</a><br>
+            <a href="#tide" class="nav-a">Marea</a><br>
+            <a href="#services" class="nav-a">Servicios</a><br>
+            <a href="#fish" class="nav-a">Peces por zona</a><br>
+            <a href="#gallery" class="nav-a">Galería de peces</a><br>
+            <!--
+            <a href="#">Descargar tabla pdf</a>
+            -->
+        </nav>
+    </aside>
+
+    <main id="content">
+        <section id="weather" class="section-info">
+            <div id="weather-template"></div>
+        </section>
+        <section id="swell" class="section-info">
+            <div id="swell-template"></div>
+        </section>
+        <section id="tide" class="section-info">
+            <div id="tide-template"></div>
+        </section>
+        <section id="services" class="section-info">
+            <div id="services-template"></div>
+        </section>
+        <section id="fish" class="section-info">
+            <div id="fish-template"></div>
+        </section>
+        <section id="gallery" class="section-info">
+            <div id="gallery-template"></div>
+        </section>
+    </main>
+</div>
+
+
+
+<script src="moreinfoPageTool.js"></script>
+
+<script src="../JS/weatherAPI.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../JS/swell.js"></script>
+<script src="../JS/services.js"></script>
+<script src="../JS/FishInfo.js"></script>
+<script src="../JS/FishDetail.js"></script>
+<script src="../JS/mainWeather.js"></script>
+<script src="../JS/ToolbarToggle.js"></script>
+<script src="../JS/searcher.js"></script>
+<script src="../JS/dynamicSwell.js"></script>
+<script src="../JS/FishByZone.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        init();
+        detectSourceAndLoad();
+    });
+
+    let defaultPage;
+    let coordLAT;
+    let coordLON;
+
+    function loadDefaultPage() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const lat = urlParams.get("lat");
+        const lon = urlParams.get("lon");
+        const id = urlParams.get("id");
+        loadTemplate(`../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`, document.getElementById('weather-template'), initWeather);
+    }
+
+    function detectSourceAndLoad() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get("id");
+        const lat = urlParams.get("lat");
+        const lon = urlParams.get("lon");
+
+        console.log("coordLAT:", lat, "coordLON:", lon);
+
+        if (id) {
+            defaultPage = '../HTML-components/services.html';
+            document.getElementById("facilities-item").style.display = "block";
+            loadTemplate(defaultPage, document.getElementById('services-template'), initBeach);
+            return;
+        } else if (lat && lon) {
+            coordLAT = lat;
+            coordLON = lon;
+            defaultPage = `../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`;
+            document.getElementById("facilities-item").style.display = "none";
+        } else {
+            defaultPage = '../HTML-components/mainWeather.html';
+            document.getElementById("facilities-item").style.display = "none";
+        }
+
+        console.log("Cargando página por defecto: " + defaultPage);
+        loadTemplate(defaultPage, document.getElementById('weather-template'), initWeather);
+    }
+
+    function loadTemplate(fileName, element, callback) {
+        if (!element) {
+            console.error("Elemento no encontrado para", fileName);
+            return;
+        }
+
+        fetch(fileName)
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`Error cargando ${fileName}: ${res.status}`);
+                }
+                return res.text();
+            })
+            .then((text) => {
+                element.innerHTML = text;
+                // Execute inline scripts
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(text, 'text/html');
+                const scripts = doc.getElementsByTagName('script');
+                for (let script of scripts) {
+                    if (script.src) {
+                        // Load external scripts
+                        const newScript = document.createElement('script');
+                        newScript.src = script.src;
+                        newScript.async = false;
+                        document.body.appendChild(newScript);
+                    } else {
+                        // Execute inline scripts
+                        const newScript = document.createElement('script');
+                        newScript.text = script.textContent;
+                        document.body.appendChild(newScript);
+                    }
+                }
+                if (callback) {
+                    // Delay callback to ensure scripts are loaded
+                    setTimeout(callback, 0);
+                }
+            })
+            .catch((error) => {
+                console.error("Error al cargar componente:", error);
+                element.innerHTML = '<p>Error al cargar el contenido.</p>';
+            });
+    }
+
+    function init() {
+        loadTemplate('../HTML-components/header.html', document.getElementById('header'), initSearcher);
+        loadDefaultPage()
+        loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('swell-template'), initializeSwellPage);
+        loadTemplate('../HTML-components/wave.html', document.getElementById('tide-template'), initWavePage)
+        loadTemplate('../HTML-components/services.html', document.getElementById('services-template'), function () {initBeach();})
+        /*
+        loadTemplate('../HTML-components/FishInfo.html', document.getElementById('fish-template'), initFishGallery)
+        loadTemplate('../HTML-components/FishByZone.html?lat=' + coordLAT + '&lon=' + coordLON, document.getElementById('gallery-template'), initFishByZone)
+         */
+    }
+
+    function initFishByZone() {
+        if (typeof window.initFishByZoneGallery === 'function') {
+            window.initFishByZoneGallery();
+        } else {
+            console.error("initFishByZoneGallery no está definido");
+            // Fallback: Try loading FishByZone.js manually
+            const script = document.createElement('script');
+            script.src = '../JS/FishByZone.js';
+            script.onload = () => {
+                if (typeof window.initFishByZoneGallery === 'function') {
+                    window.initFishByZoneGallery();
+                } else {
+                    console.error("Failed to load initFishByZoneGallery after manual load");
+                }
+            };
+            script.onerror = () => console.error("Error loading FishByZone.js manually");
+            document.body.appendChild(script);
+        }
+    }
+
+</script>
+</body>
+</html>
