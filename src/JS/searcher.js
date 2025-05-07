@@ -13,7 +13,7 @@ class BeachSearcher {
     }
 
     async init() {
-        //this.beaches = await fetchAllBeaches();
+        this.beaches = await this.fetchBeaches();
         this.setupEventListeners();
     }
 
@@ -54,10 +54,10 @@ class BeachSearcher {
     filterBeaches(searchText) {
         this.beachesInfo = this.beaches
             .filter(beach =>
-                beach.fields.beachName.stringValue.toLowerCase().includes(searchText)
+                this.getBeachName(beach).toLowerCase().includes(searchText)
             )
             .slice(0, 6)
-            .map(beach => beach.fields);
+            .map(beach => beach);
     }
 
     displayResults() {
