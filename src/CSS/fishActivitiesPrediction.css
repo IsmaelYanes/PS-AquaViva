@@ -1,0 +1,15 @@
+.fishIconStyle{
+    width: 70px;
+}
+.fish-dashboard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 900px;
+    width: 100%;
+}
+.timeStyle{
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: #0077b6;
+}

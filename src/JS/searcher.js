@@ -13,23 +13,9 @@ class BeachSearcher {
     }
 
     async init() {
-        this.beaches = await this.fetchBeaches();
+        this.beaches = await fetchAllBeaches();
         this.setupEventListeners();
     }
-
-    async fetchBeaches() {
-        try {
-            const response = await fetch('../Data/beaches.json');
-            if (!response.ok) {
-                throw new Error('No se pudo cargar las playas');
-            }
-            return await response.json();
-        } catch (error) {
-            console.error('Error al obtener las playas:', error);
-            return [];
-        }
-    }
-
 
     setupEventListeners() {
         this.searcher.addEventListener("input", () => this.handleSearchInput());
@@ -53,10 +39,10 @@ class BeachSearcher {
     filterBeaches(searchText) {
         this.beachesInfo = this.beaches
             .filter(beach =>
-                this.getBeachName(beach).toLowerCase().includes(searchText)
+                beach.fields.beachName.stringValue.toLowerCase().includes(searchText)
             )
             .slice(0, 6)
-            .map(beach => beach);
+            .map(beach => beach.fields);
     }
 
     displayResults() {
@@ -70,11 +56,11 @@ class BeachSearcher {
 
     createBeachListItem(beach) {
         const li = document.createElement("li");
-        li.textContent = this.getBeachName(beach);
+        li.textContent = beach.beachName.stringValue;
         li.classList.add("beach-item");
-        li.setAttribute("lat", this.getBeachLog(beach));
-        li.setAttribute("lon", this.getBeachLat(beach));
-        li.setAttribute("id", this.getBeachId(beach));
+        li.setAttribute("lat", beach.LAT.stringValue);
+        li.setAttribute("lon", beach.LOG.stringValue);
+        li.setAttribute("id", beach["ID DGE"]?.integerValue);
 
         li.addEventListener("click", () => this.selectBeach(li));
         return li;
@@ -106,6 +92,8 @@ class BeachSearcher {
         if (lat && lon && id) {
             const url = `../HTML/MoreInfoPage.html?id=${id}&lat=${lat}&lon=-${lon}`;
             window.location.href = url;
+        }else {
+            alert("No encuentra la playa que busca")
         }
     }
 
@@ -152,18 +140,6 @@ class BeachSearcher {
 
     getBeachesList() {
         return this.beaches;
-    }
-    getBeachName(beach){
-        return beach.beachName;
-    }
-    getBeachLog(beach){
-        return beach.LOG;
-    }
-    getBeachLat(beach){
-        return beach.LAT;
-    }
-    getBeachId(beach){
-        return beach["ID DGE"];
     }
 }
 

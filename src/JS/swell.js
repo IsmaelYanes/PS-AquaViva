@@ -10,18 +10,17 @@ function initWavePage(){
         loadAllWavesInfoToComponents(wave, chart, wave.index)
         document.getElementById('addDay').addEventListener('click',function(){
             const resultIndex = wave.index + 1;
-            if (resultIndex > wave.datesList.length ) { return;}
+            if (resultIndex > wave.datesList.length - 1 ) { document.getElementById('addDay').disabled = true;}
             wave.setIndex(resultIndex);
             loadAllWavesInfoToComponents(wave, chart);
         });
         document.getElementById('restDay').addEventListener('click', function (){
             const resultIndex = wave.index - 1;
-            if (resultIndex < 0 ) { return;}
+            if (resultIndex <= 1 ) { document.getElementById('restDay').disabled = true;}
             wave.setIndex(resultIndex);
             loadAllWavesInfoToComponents(wave, chart);
         });
     })
-
 }
 
 

@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../CSS/MenuStyle.css">
     <link rel="stylesheet" href="../CSS/homeHeader.css">
     <link rel="stylesheet" href="../CSS/services.css">
+    <link rel="stylesheet" href="../CSS/fishActivitiesPrediction.css">
+    <script src="https://unpkg.com/suncalc@1.8.0/suncalc.js"></script>
     <script
             src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
             type="module"
@@ -24,6 +26,7 @@
                 <li><a onclick="loadDefaultPage()">Tiempo atmosférico</a></li>
                 <li><a onclick="loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('body-container'), initializeSwellPage)">Oleaje</a></li>
                 <li><a onclick="loadTemplate('../HTML-components/wave.html', document.getElementById('body-container'), initWavePage)">Marea</a></li>
+                <li><a onclick="loadTemplate('../HTML-components/fishPrediction.html', document.getElementById('body-container'), loadPrediction)">Actividad de Peces</a></li>
                 <li id="facilities-item"><a onclick="loadTemplate('../HTML-components/services.html', document.getElementById('body-container'), function () {initBeach();})">Instalaciones y prestaciones</a></li>
                 <li><a onclick="loadTemplate('../HTML-components/FishInfo.html', document.getElementById('body-container'), initFishGallery)">Galería de peces</a></li>
                 <li><a>Descargar tabla pdf</a></li>
@@ -41,6 +44,7 @@
 <script src="../JS/ToolbarToggle.js"></script>
 <script src="../JS/searcher.js"></script>
 <script src="../JS/dynamicSwell.js"></script>
+<script src="../JS/fishActivityPrediction.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         init();
