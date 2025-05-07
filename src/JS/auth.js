@@ -1,3 +1,5 @@
+import firebase from "firebase/compat";
+
 const firebaseConfig = {
     apiKey: "AIzaSyCU3fXaXPHYdlb8q4ZKY4iHTmXyvjjpeuQ",
     authDomain: "playascanarias-f83a8.firebaseapp.com",
@@ -33,7 +35,8 @@ async function registrarUsuario(nombre, email, password, confirmPassword) {
         // Crear documento vacío en Firestore solo con el UID como ID
         await db.collection("users").doc(user.uid).set({
             favoritos: [], // puedes iniciarlo vacío
-            creadoEn: firebase.firestore.FieldValue.serverTimestamp()
+            creadoEn: firebase.firestore.FieldValue.serverTimestamp(),
+            lastUpdatedFav: firebase.firestore.FieldValue.serverTimestamp()
         });
 
         alert('Te hemos enviado un correo de verificación. Verifica tu correo antes de cerrar esta pestaña.');
@@ -60,6 +63,7 @@ async function iniciarSesion(email, password) {
         const userCredential = await auth.signInWithEmailAndPassword(email, password);
         if (userCredential.user.emailVerified) {
             alert('Inicio de sesión exitoso');
+            guardarUsuarioActual();
             window.location.href = "../HTML/index.html";
         } else {
             alert('Por favor verifica tu correo electrónico antes de iniciar sesión.');
@@ -83,6 +87,7 @@ async function iniciarSesionConGoogle() {
             window.location.href = "register.html";
         } else {
             alert("Inicio de sesión con Google exitoso.");
+            guardarUsuarioActual();
             window.location.href = "../HTML/index.html";
         }
     } catch (error) {
@@ -158,3 +163,59 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+function guardarUsuarioActual() {
+    const user = firebase.auth().currentUser;
+
+    if (user) {
+        // Guardar el uid, email y token en localStorage
+        localStorage.setItem("uid", user.uid);
+        localStorage.setItem("email", user.email);
+
+        // Obtener el idToken y guardarlo en localStorage
+        user.getIdToken().then((idToken) => {
+            localStorage.setItem("idToken", idToken);
+        });
+
+        return user;
+    } else {
+        return null;
+    }
+}
+
+async function comprobarUsuario() {
+    // Comprobar si hay un usuario logueado usando Firebase
+    const user = firebase.auth().currentUser;
+
+    if (user) {
+        // Imprimir el email del usuario en la consola si está autenticado
+        console.log("Usuario autenticado: ", user.email);
+        return true; // Usuario autenticado
+    } else {
+        console.log("No hay usuario autenticado.");
+        return false; // No hay usuario autenticado
+    }
+}
+
+async function cerrarSesion() {
+    try {
+        // Cerrar sesión en Firebase
+        await firebase.auth().signOut();
+
+        // Eliminar el UID, email y idToken del localStorage
+        localStorage.removeItem("uid");
+        localStorage.removeItem("email");
+        localStorage.removeItem("idToken");
+
+        console.log("✅ Sesión cerrada y datos eliminados de localStorage.");
+
+        // Redirigir a la página de inicio o login después de cerrar sesión
+        window.location.href = "login.html";
+    } catch (error) {
+        console.error("⚠️ Error al cerrar sesión:", error.message);
+    }
+}
+
+
+
+

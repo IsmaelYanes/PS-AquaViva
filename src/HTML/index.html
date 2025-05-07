@@ -77,7 +77,7 @@
                     <div class="toolbar-hamburguer-buttons" onclick="showLocation()">
                         <img src="../Videos/toolbar/icon-whereIam.png" class="toolbar-icon" id="btn-location" >
                     </div>
-                    <div class="toolbar-hamburguer-buttons" onclick="addToFavorites()">
+                    <div id="favorites-button" class="toolbar-hamburguer-buttons" onclick="addToFavorites()" style="display: none;">
                         <img src="../Videos/toolbar/icon-favourites.png" class="toolbar-icon" id="btn-fav" >
                     </div>
                     <div class="toolbar-hamburguer-buttons" onclick="measureDistance()">
@@ -89,12 +89,6 @@
                     <div class="toolbar-hamburguer-buttons" onclick="showBeaches()">
                         <img src="../Videos/toolbar/icon-beach.png" class="toolbar-icon" id="btn-beach" >
                     </div>
-
-                    <!--
-                    <img src="../Images/sateliteview.png" class="toolbar-icon" id="btn-satellite" onclick="toggleSatelliteView()">
-                    <img src="../Images/streetview.png" class="toolbar-icon" id="btn-streetview" onclick="toggleStreetView()">
-                    -->
-
                 </div>
             </div>
 
@@ -210,6 +204,7 @@
 
 <script src="../JS/ToolbarToggle.js"></script>
 <script>
+    //Botones de altenar tipo de vista del mapa
     document.addEventListener("DOMContentLoaded", () => {
         const streetThumb = document.getElementById("street-thumb");
         const satelliteThumb = document.getElementById("satellite-thumb");
