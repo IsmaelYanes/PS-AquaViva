@@ -132,7 +132,7 @@ async function showCustomPopup(fields, showRouteButton = false, routeData = null
             const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
 
             routeInfoHTML = ` 
-                <p><strong>Distancia:</strong> ${km} km <strong>Duración:</strong> ${formattedTime}</p>
+                <p><strong>Distancia:</strong> ${km} km <strong>Duración:</strong> ${formattedTime} h</p>
             `;
         }
     }
@@ -293,6 +293,12 @@ function getIslandFromCoords(lat, lng) {
 
 //Cargar las playas de una isla.
 async function loadIslandBeaches(userLat, userLng, currentIsland) {
+    // ✅ Eliminar cluster anterior si existe
+    if (window.markersCluster) {
+        window.map.removeLayer(window.markersCluster);
+        window.markersCluster = null;
+    }
+
     const allBeaches = await fetchAllBeaches();
     const islandBeaches = allBeaches.filter(beach =>
         beach.fields?.island?.stringValue === currentIsland
@@ -303,7 +309,7 @@ async function loadIslandBeaches(userLat, userLng, currentIsland) {
         return;
     }
 
-    // Crear el cluster de marcadores
+    // ✅ Crear y guardar un nuevo cluster limpio
     window.markersCluster = L.markerClusterGroup();
 
     islandBeaches.forEach((doc) => {
@@ -514,6 +520,29 @@ let satelliteLayer;
 let isSatelliteView = false;
 let isBeachViewActive = false;
 
+function clearMapLayers() {
+    if (window.zonasLitoralLayer) {
+        window.map.removeLayer(window.zonasLitoralLayer);
+        window.zonasLitoralLayer = null;
+    }
+    if (window.markersCluster) {
+        window.map.removeLayer(window.markersCluster);
+        window.markersCluster = null;
+    }
+    if (window.routeLayer) {
+        window.map.removeLayer(window.routeLayer);
+        window.routeLayer = null;
+    }
+    if (window.selectedBeachMarker) {
+        window.map.removeLayer(window.selectedBeachMarker);
+        window.selectedBeachMarker = null;
+    }
+    if (window.backButtonControl) {
+        window.map.removeControl(window.backButtonControl);
+        window.backButtonControl = null;
+    }
+}
+
 //Funcion para mostrar las playas filtradas (Se le pasa las playas)
 function showFilteredBeaches(filteredBeaches) {
     if (!window.map) {
@@ -522,17 +551,11 @@ function showFilteredBeaches(filteredBeaches) {
     }
 
     try {
-        // Ocultamos capa de zonas litoral si está activa
-        if (window.zonasLitoralLayer) {
-            window.map.removeLayer(window.zonasLitoralLayer);
-        }
+        // 🧼 Limpiar todas las capas previas del mapa
+        clearMapLayers();
 
-        // Limpiamos clústeres anteriores
-        if (window.markersCluster) {
-            window.map.removeLayer(window.markersCluster);
-        }
+        // Inicializar nuevo clúster
         window.markersCluster = L.markerClusterGroup();
-
         let boundsCoords = [];
 
         filteredBeaches.forEach((doc) => {
@@ -567,7 +590,7 @@ function showFilteredBeaches(filteredBeaches) {
         // Agregar clúster al mapa
         window.map.addLayer(window.markersCluster);
 
-        // Centrar el mapa automáticamente si hay coordenadas válidas
+        // Centrar el mapa si hay coordenadas válidas
         if (boundsCoords.length > 0) {
             let bounds = L.latLngBounds(boundsCoords);
             window.map.fitBounds(bounds, { padding: [50, 50] });
@@ -613,31 +636,8 @@ async function showFavorites() {
     }
 
     try {
-        // 🧼 LIMPIEZA GENERAL DEL MAPA
-        if (window.zonasLitoralLayer) {
-            window.map.removeLayer(window.zonasLitoralLayer);
-            window.zonasLitoralLayer = null;
-        }
-        if (window.markersCluster) {
-            window.map.removeLayer(window.markersCluster);
-            window.markersCluster = null;
-        }
-        if (window.routeLayer) {
-            window.map.removeLayer(window.routeLayer);
-            window.routeLayer = null;
-        }
-        if (window.userLocationMarker) {
-            window.map.removeLayer(window.userLocationMarker);
-            window.userLocationMarker = null;
-        }
-        if (window.selectedBeachMarker) {
-            window.map.removeLayer(window.selectedBeachMarker);
-            window.selectedBeachMarker = null;
-        }
-        if (window.backButtonControl) {
-            window.map.removeControl(window.backButtonControl);
-            window.backButtonControl = null;
-        }
+        // 🧼 Limpieza general del mapa usando función reutilizable
+        clearMapLayers();
 
         let allBeaches = await fetchAllBeaches();
         let favoriteBeaches = allBeaches.filter(beach =>
@@ -696,26 +696,13 @@ async function showFavorites() {
 async function measureDistance() {
     getUserLocation(async function (userLat, userLng) {
         // 🧼 LIMPIEZA DEL MAPA
-        if (window.zonasLitoralLayer) window.map.removeLayer(window.zonasLitoralLayer);
-        if (window.markersCluster) window.map.removeLayer(window.markersCluster);
-        if (window.routeLayer) {
-            window.map.removeLayer(window.routeLayer);
-            window.routeLayer = null;
-        }
-        if (window.selectedBeachMarker) {
-            window.map.removeLayer(window.selectedBeachMarker);
-            window.selectedBeachMarker = null;
-        }
-        if (window.backButtonControl) {
-            window.map.removeControl(window.backButtonControl);
-            window.backButtonControl = null;
-        }
+        clearMapLayers();
 
         // 📍 Mostrar nueva ubicación del usuario
         const currentIsland = getIslandFromCoords(userLat, userLng);
         if (!currentIsland) {
             alert("⚠️ No se pudo determinar en qué isla te encuentras.");
-            return;
+            return; // Ya se limpió antes
         }
 
         const islandInfo = [
@@ -734,6 +721,7 @@ async function measureDistance() {
             window.map.setView(islandInfo.center, islandInfo.zoom);
         }
 
+        // 🚩 Cargar playas y medir ruta
         await loadIslandBeaches(userLat, userLng, currentIsland);
     });
 }
@@ -741,35 +729,8 @@ async function measureDistance() {
 function defineZone() {
     console.log("🔄 Restaurando zonas litoral y limpiando elementos del mapa...");
 
-    // Eliminar clústeres si existen
-    if (window.markersCluster) {
-        window.map.removeLayer(window.markersCluster);
-        window.markersCluster = null;
-    }
-
-    // Eliminar ruta si existe
-    if (window.routeLayer) {
-        window.map.removeLayer(window.routeLayer);
-        window.routeLayer = null;
-    }
-
-    // Eliminar marcador de ubicación del usuario
-    if (window.userLocationMarker) {
-        window.map.removeLayer(window.userLocationMarker);
-        window.userLocationMarker = null;
-    }
-
-    // Eliminar marcador de playa seleccionada
-    if (window.selectedBeachMarker) {
-        window.map.removeLayer(window.selectedBeachMarker);
-        window.selectedBeachMarker = null;
-    }
-
-    // Eliminar botón de volver si existe
-    if (window.backButtonControl) {
-        window.map.removeControl(window.backButtonControl);
-        window.backButtonControl = null;
-    }
+    // 🧼 Limpieza general del mapa
+    clearMapLayers();
 
     // Restaurar o cargar la capa de zonas litoral
     if (window.zonasLitoralLayer) {
@@ -814,30 +775,7 @@ async function showBeaches() {
 
     try {
         // 🧼 LIMPIEZA GENERAL DEL MAPA
-        if (window.zonasLitoralLayer) {
-            window.map.removeLayer(window.zonasLitoralLayer);
-            window.zonasLitoralLayer = null;
-        }
-        if (window.markersCluster) {
-            window.map.removeLayer(window.markersCluster);
-            window.markersCluster = null;
-        }
-        if (window.routeLayer) {
-            window.map.removeLayer(window.routeLayer);
-            window.routeLayer = null;
-        }
-        if (window.userLocationMarker) {
-            window.map.removeLayer(window.userLocationMarker);
-            window.userLocationMarker = null;
-        }
-        if (window.selectedBeachMarker) {
-            window.map.removeLayer(window.selectedBeachMarker);
-            window.selectedBeachMarker = null;
-        }
-        if (window.backButtonControl) {
-            window.map.removeControl(window.backButtonControl);
-            window.backButtonControl = null;
-        }
+        clearMapLayers();
 
         // 🔄 CARGAR PLAYAS
         let beaches = await fetchAllBeaches();

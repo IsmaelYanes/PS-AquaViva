@@ -27,18 +27,17 @@ async function registrarUsuario(nombre, email, password, confirmPassword) {
         const userCredential = await auth.createUserWithEmailAndPassword(email, password);
         const user = userCredential.user;
 
-        // Enviar correo de verificación
         await user.sendEmailVerification();
 
-        // Crear documento vacío en Firestore solo con el UID como ID
         await db.collection("users").doc(user.uid).set({
+            nombre,
             favoritos: [],
             creadoEn: firebase.firestore.FieldValue.serverTimestamp(),
             lastUpdatedFav: firebase.firestore.FieldValue.serverTimestamp()
         });
 
         alert('Te hemos enviado un correo de verificación. Verifica tu correo antes de cerrar esta pestaña.');
-        window.location.href = "login.html";
+        auth.signOut();
     } catch (error) {
         alert('Error al crear cuenta: ' + error.message);
     }
@@ -82,9 +81,9 @@ async function iniciarSesionConGoogle() {
         if (result.additionalUserInfo.isNewUser) {
             await auth.signOut();
             alert("Este correo no está registrado. Regístrate primero.");
-            window.location.href = "register.html";
         } else {
             alert("Inicio de sesión con Google exitoso.");
+            guardarUsuarioActual();
             window.location.href = "../HTML/index.html";
         }
     } catch (error) {
@@ -99,14 +98,21 @@ async function registrarConGoogle() {
 
     try {
         const result = await auth.signInWithPopup(provider);
+        const user = result.user;
+
         if (result.additionalUserInfo.isNewUser) {
+            await db.collection("users").doc(user.uid).set({
+                nombre: user.displayName || "",
+                favoritos: [],
+                creadoEn: firebase.firestore.FieldValue.serverTimestamp(),
+                lastUpdatedFav: firebase.firestore.FieldValue.serverTimestamp()
+            });
+
             alert("Registro con Google exitoso.");
-            guardarUsuarioActual();
             window.location.href = "../HTML/index.html";
         } else {
             await auth.signOut();
             alert("Este correo ya está registrado. Inicia sesión en su lugar.");
-            window.location.href = "login.html";
         }
     } catch (error) {
         alert("Error al registrar con Google: " + error.message);
@@ -123,44 +129,34 @@ async function recuperarContrasena(email) {
     }
 }
 
-// Detectar en qué página estamos y manejar formularios
+// Asignar manejadores de eventos
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('form');
-    if (!form) return;
+    const signUpForm = document.querySelector('.sign-up-container form');
+    const signInForm = document.querySelector('.sign-in-container form');
 
-    const currentPage = window.location.pathname;
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        if (currentPage.includes('register.html')) {
-            const nombre = form['nombre'].value;
-            const email = form['email'].value;
-            const password = form['contrasena'].value;
-            const confirmPassword = form['re-contrasena'].value;
+    if (signUpForm) {
+        signUpForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nombre = signUpForm['nombre'].value;
+            const email = signUpForm['email'].value;
+            const password = signUpForm['contrasena'].value;
+            const confirmPassword = signUpForm['re-contrasena'].value;
             registrarUsuario(nombre, email, password, confirmPassword);
+        });
+    }
 
-        } else if (currentPage.includes('login.html')) {
-            const email = form['email'].value;
-            const password = form['password'].value;
+    if (signInForm) {
+        signInForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = signInForm['email'].value;
+            const password = signInForm['password'].value;
             iniciarSesion(email, password);
-
-        } else if (currentPage.includes('recover.html')) {
-            const email = form['recover-email'].value;
-            recuperarContrasena(email);
-        }
-    });
-
-    // Botón de Google para login o registro
-    const googleLoginButton = document.getElementById('google-login');
-    if (googleLoginButton) {
-        if (currentPage.includes('register.html')) {
-            googleLoginButton.addEventListener('click', registrarConGoogle);
-        } else if (currentPage.includes('login.html')) {
-            googleLoginButton.addEventListener('click', iniciarSesionConGoogle);
-        }
+        });
     }
 });
+
+window.socialSignIn = iniciarSesionConGoogle;
+window.socialSignUp = registrarConGoogle;
 
 function guardarUsuarioActual() {
     const user = auth.currentUser;
