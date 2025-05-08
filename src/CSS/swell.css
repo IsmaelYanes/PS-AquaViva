@@ -146,6 +146,7 @@ ul#hoursList li button:hover {
     background-color: whitesmoke;
     border-radius: 10px;
     box-shadow: 0 0 6px 0 #666666;
+    color: black;
 }
 
 .hour {

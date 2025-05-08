@@ -47,11 +47,10 @@
     text-align: start;
     background: transparent;
     z-index: 1;
-
 }
 
 #place-text {
-    padding: 0.5em;
+    padding: 0.5em 0 1.2em 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 2em;
     text-align: center;
@@ -195,17 +194,17 @@
     cursor: pointer;
 }
 
-h2 {
+.buttonDays h2 {
     display: inline-block;
     padding: 0.313em 0.625em;
     border-radius: 5px;
 }
 
-h3 {
+/*h3 {
     display: inline-block;
     padding: 0.313em 0.625em;
     border-radius: 5px;
-}
+}*/
 
 #weather-table {
     width: 100%;
@@ -242,7 +241,7 @@ tr:nth-child(3) td {
 }
 
 #last-updated {
-    font-size: 0.8em;
+    font-size: 1em;
 }
 
 .buttonDays {

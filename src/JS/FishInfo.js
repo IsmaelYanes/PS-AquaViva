@@ -19,11 +19,14 @@ function initFishGallery() {
                 fishImage.src = fish.image;
                 fishImage.alt = fish.nom_commun || fish.name;
 
+                const fishNameContainer = document.createElement('div');
+                fishNameContainer.classList.add('fish-name-container');
                 const fishName = document.createElement('h2');
                 fishName.textContent = fish.nom_commun || fish.name;
+                fishNameContainer.appendChild(fishName);
 
                 fishLink.appendChild(fishImage);
-                fishLink.appendChild(fishName);
+                fishLink.appendChild(fishNameContainer);
                 fishItem.appendChild(fishLink);
                 fishGrid.appendChild(fishItem);
             });

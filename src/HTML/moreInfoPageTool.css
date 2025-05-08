@@ -125,3 +125,10 @@
     flex-direction: column;
     background: #f3f6fb;
 }
+
+#gallery {
+    display: flex;
+    flex-direction: column;
+    background: #f3f6fb;
+}
+

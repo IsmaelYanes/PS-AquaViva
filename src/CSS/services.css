@@ -16,7 +16,7 @@ body {
     border-radius: 10px;
 }
 
-h1 {
+#beachName {
     font-size: 2rem;
     color: #0077b6;
     margin-bottom: 20px;
@@ -58,7 +58,7 @@ h1 {
     margin: 20px 0;
     text-align: center;
     border-top: 2px solid #0077b6;
-    padding-top: 2em;
+    padding-top: 1em;
 }
 
 .info-grid {

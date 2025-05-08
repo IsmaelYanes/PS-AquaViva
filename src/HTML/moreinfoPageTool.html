@@ -36,8 +36,9 @@
         <section id="swell" class="section-info"></section>
         <section id="tide" class="section-info"></section>
         <section id="services" class="section-info"></section>
-        <section id="fish" class="section-info"></section>
+        <section id="fish" class="section-info">Peces por zona prueba</section>
         <section id="gallery" class="section-info"></section>
+
     </main>
 </div>
 
@@ -162,7 +163,11 @@
         loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('swell'), initializeSwellPage);
         loadTemplate('../HTML-components/wave.html', document.getElementById('tide'), initWavePage)
         loadTemplate('../HTML-components/services.html', document.getElementById('services'), function () {initBeach();})
-        loadTemplate('../HTML-components/FishInfo.html', document.getElementById('fish'), initFishGallery)
+
+        loadTemplate('../HTML-components/FishByZone.html?lat=' + coordLAT + '&lon=' + coordLON, document.getElementById('fish'), initFishByZone)
+
+        loadTemplate('../HTML-components/FishInfo.html', document.getElementById('gallery'), initFishGallery)
+
 
         /*loadDefaultPage()
         loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('swell-template'), initializeSwellPage);

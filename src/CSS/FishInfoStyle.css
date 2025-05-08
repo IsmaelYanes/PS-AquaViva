@@ -1,24 +1,7 @@
-/* Estilos generales */
-body {
-    background-color: #0a0f1e;
-    color: white;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
-
-html {
-    overflow: auto; /* Permite el desplazamiento */
-    scrollbar-width: none; /* Oculta la barra en Firefox */
-}
-
 /* Título */
-h1 {
+#fish-title {
     font-size: 2rem;
-    color: #0077ff;
+    color: steelblue;
     text-align: center;
     margin: 20px 0;
 }
@@ -30,26 +13,7 @@ h1 {
     width: 100%;
 }
 
-/* Menú lateral */
-#menu-container {
-    width: 18%;
-    min-width: 180px;
-    display: flex;
-    justify-content: flex-end;
-    position: sticky;
-    top: 0;
-    background: none; /* Elimina cualquier fondo que pueda ser visible */
-}
 
-/* Contenido principal */
-#body-container {
-    width: 82%;
-    overflow-y: auto; /* Permite desplazamiento vertical si hay muchos peces */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-}
 
 /* Grid para los peces */
 .fish-grid {
@@ -62,18 +26,15 @@ h1 {
 
 /* Tarjetas de peces */
 .fish-item {
-    background-color: #12192b;
+    background-color: #cfdae3;
     border-radius: 10px;
     overflow: hidden;
     transition: transform 0.3s;
     text-align: center;
-    width: 200px; /* Tamaño fijo para consistencia */
-    padding-bottom: 10px;
+    width: 14em; /* Tamaño fijo para consistencia */
+    padding-bottom: 1em;
 }
 
-a {
-    text-decoration: none;
-}
 
 .fish-item:hover {
     transform: scale(1.05);
@@ -82,19 +43,27 @@ a {
 /* Imágenes */
 .fish-item img {
     width: 100%;
-    height: auto; /* Muestra la imagen completa */
-    object-fit: contain; /* Asegura que la imagen no se recorte */
-    border-bottom: 3px solid #0077ff;
+    height: 80%; /* Muestra la imagen completa */
+    object-fit: cover; /* Asegura que la imagen no se recorte */
+    border-bottom: 3px solid steelblue;
+}
+
+.fish-name-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 21%;
 }
 
 /* Nombres de peces */
 .fish-item h2 {
     font-size: 1rem;
-    color: white;
-    margin: 10px 0 0 0; /* Espacio arriba del nombre */
+    color: steelblue;
 }
 
 /* Media queries para responsividad */
+/*
 @media (max-width: 1024px) {
     .fish-item {
         width: 180px;
@@ -115,3 +84,4 @@ a {
         font-size: 1.5rem;
     }
 }
+*/
