@@ -177,17 +177,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 auth.onAuthStateChanged((user) => {
     const cuentaContainer = document.getElementById("cuenta-container");
-    const registroBtn = document.querySelector("a[href*='register']");
-    const loginBtn = document.querySelector("a[href*='login']");
+    const cuenta = document.getElementById("cuenta");
+    const cerrarSesionBtn = document.getElementById("cerrarSesion");
+    const asideButtons = document.getElementById("aside-buttons");
 
     if (user && user.emailVerified) {
+        // Ocultar botones de login/registro
+        asideButtons.querySelectorAll("a").forEach(a => a.style.display = "none");
+
+        // Mostrar la cuenta y el botón de cerrar sesión
         cuentaContainer.style.display = "flex";
-        if (registroBtn) registroBtn.style.display = "none";
-        if (loginBtn) loginBtn.style.display = "none";
-    } else {
-        cuentaContainer.style.display = "none";
-        if (registroBtn) registroBtn.style.display = "inline-block";
-        if (loginBtn) loginBtn.style.display = "inline-block";
+        cuenta.title = user.email;
+
+        cerrarSesionBtn.addEventListener("click", async () => {
+            await cerrarSesion();
+        });
     }
 });
 
@@ -240,6 +244,20 @@ function guardarUsuarioActual() {
         user.getIdToken().then((idToken) => {
             localStorage.setItem("idToken", idToken);
         });
+    }
+}
+
+async function comprobarUsuario() {
+    // Comprobar si hay un usuario logueado usando Firebase
+    const currentUser = auth.currentUser;
+
+    if (currentUser) {
+        // Imprimir el email del usuario en la consola si está autenticado
+        console.log("Usuario autenticado: ", currentUser.email);
+        return true; // Usuario autenticado
+    } else {
+        console.log("No hay usuario autenticado.");
+        return false; // No hay usuario autenticado
     }
 }
 
