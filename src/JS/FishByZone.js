@@ -3,11 +3,11 @@ console.log("FishByZone.js loaded");
 function initFishByZoneGallery() {
     console.log("initFishByZoneGallery called");
 
-    const fishGrid = document.getElementById('fish-grid');
+    const fishGrid = document.getElementById('fish-info-grid'); // <- ID corregido
     const zoneNameElement = document.getElementById('zone-name');
 
     if (!fishGrid || !zoneNameElement) {
-        console.error("No se encontró el elemento #fish-grid o #zone-name");
+        console.error("No se encontró el elemento #fish-info-grid o #zone-name");
         if (fishGrid) {
             fishGrid.innerHTML = '<p>Error: Elementos necesarios no encontrados.</p>';
         }
