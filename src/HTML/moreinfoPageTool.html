@@ -23,7 +23,7 @@
             <a href="#swell" class="nav-a">Oleaje</a><br>
             <a href="#tide" class="nav-a">Marea</a><br>
             <a href="#services" class="nav-a" id="services-link">Servicios</a><br id="services-br">
-            <a href="#fish" class="nav-a">Peces por zona</a><br>
+            <a href="#fish" class="nav-a" id="fishes-by-x">Peces por zona</a><br>
             <a href="#gallery" class="nav-a">Galería de peces</a><br>
             <!--
             <a href="#">Descargar tabla pdf</a>
@@ -82,6 +82,7 @@
 
         if (id) {
             defaultPage = '../HTML-components/services.html';
+            document.getElementById('fishes-by-x').innerText = 'Peces por playas';
             loadTemplate(defaultPage, document.getElementById('services'), initBeach);
             loadTemplate(`../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`, document.getElementById('weather'), initWeather);
             loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('swell'), initializeSwellPage);
