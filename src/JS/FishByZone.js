@@ -20,32 +20,41 @@ function initFishByZoneGallery() {
         return;
     }
 
-    // Fetch zones data to find zone with fish
+    // Función para verificar si un punto está dentro de un polígono
+    function pointInPolygon(point, polygon) {
+        const [x, y] = point;
+        let inside = false;
+        for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+            const xi = polygon[i][0], yi = polygon[i][1];
+            const xj = polygon[j][0], yj = polygon[j][1];
+
+            const intersect = ((yi > y) !== (yj > y)) &&
+                (x < (xj - xi) * (y - yi) / (yj - yi + 0.0000001) + xi);
+            if (intersect) inside = !inside;
+        }
+        return inside;
+    }
+
     fetch('../Data/zonas_litoral_reconstruido.json')
         .then(response => {
             if (!response.ok) throw new Error(`Error al cargar zonas_litoral.json: ${response.status}`);
             return response.json();
         })
         .then(zonesData => {
-            let zone = zonesData.features.find(feature => {
-                const [featureLon, featureLat] = feature.properties.coord.split(',').map(coord => parseFloat(coord.trim()));
-                // Normalize to 4 decimal places
-                const normalizedLat = Math.round(lat * 10000) / 10000;
-                const normalizedLon = Math.round(lon * 10000) / 10000;
-                const normalizedFeatureLat = Math.round(featureLat * 10000) / 10000;
-                const normalizedFeatureLon = Math.round(featureLon * 10000) / 10000;
-                console.log(`Comparing - URL: (${normalizedLat}, ${normalizedLon}), Feature: (${normalizedFeatureLat}, ${normalizedFeatureLon}), Zone: ${feature.properties.name}`);
-                return Math.abs(normalizedFeatureLat - normalizedLat) < 0.0001 && Math.abs(normalizedFeatureLon - normalizedLon) < 0.0001;
+            const point = [lon, lat];
+
+            const zone = zonesData.features.find(feature => {
+                if (!feature.geometry || feature.geometry.type !== "Polygon") return false;
+                const polygon = feature.geometry.coordinates[0]; // Primer anillo del polígono
+                return pointInPolygon(point, polygon);
             });
 
             if (!zone) {
                 fishGrid.innerHTML = '<p>Error: Zona no encontrada para las coordenadas proporcionadas.</p>';
                 console.error("No zone found for coordinates:", lat, lon);
                 console.log("Available zones:", zonesData.features.map(f => ({
-                    coord: f.properties.coord,
-                    id: f.id,
                     name: f.properties.name,
-                    fish: f.properties.fish || []
+                    id: f.id
                 })));
                 return;
             }
@@ -60,17 +69,15 @@ function initFishByZoneGallery() {
                 return;
             }
 
-            // Fetch fish details
             fetch('../Data/fullfish.json')
                 .then(response => {
                     if (!response.ok) throw new Error(`Error al cargar fullfish.json: ${response.status}`);
                     return response.json();
                 })
                 .then(fishData => {
-                    fishGrid.innerHTML = ''; // Clear grid
+                    fishGrid.innerHTML = ''; // Limpiar grid
                     fishData.forEach(fish => {
-                        if (fishInZone.some(fishName => fishName.toLowerCase() === fish.nom_commun.toLowerCase()))
-                        {
+                        if (fishInZone.some(fishName => fishName.toLowerCase() === fish.nom_commun.toLowerCase())) {
                             const fishItem = document.createElement('div');
                             fishItem.classList.add('fish-item');
 
@@ -84,7 +91,6 @@ function initFishByZoneGallery() {
                             const fishName = document.createElement('h2');
                             fishName.textContent = fish.nom_commun || fish.name;
 
-                            // Wrap image and name into a link for navigation to the detail page
                             fishLink.appendChild(fishImage);
                             fishLink.appendChild(fishName);
                             fishItem.appendChild(fishLink);
@@ -104,5 +110,4 @@ function initFishByZoneGallery() {
         });
 }
 
-// Expose the function globally
 window.initFishByZoneGallery = initFishByZoneGallery;

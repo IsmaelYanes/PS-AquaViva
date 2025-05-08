@@ -57,7 +57,6 @@
 <script src="../JS/FishDetail.js"></script>
 <script src="../JS/mainWeather.js"></script>
 <script src="../JS/ToolbarToggle.js"></script>
-<script src="../JS/searcher.js"></script>
 <script src="../JS/dynamicSwell.js"></script>
 <script src="../JS/FishByZone.js"></script>
 
@@ -167,7 +166,7 @@
     }
 
     function init() {
-        loadTemplate('../HTML-components/header.html', document.getElementById('header'), initSearcher);
+        loadTemplate('../HTML-components/header.html', document.getElementById('header'));
         loadDefaultPage()
         loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('swell'), initializeSwellPage);
         loadTemplate('../HTML-components/wave.html', document.getElementById('tide'), initWavePage)
