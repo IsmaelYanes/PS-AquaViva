@@ -56,20 +56,13 @@
     document.addEventListener("DOMContentLoaded", function () {
         init();
         detectSourceAndLoad();
-        setupScrollNavigation(); // Agregamos la función para la navegación por scroll
+        setupScrollNavigation();
     });
 
     let defaultPage;
     let coordLAT;
     let coordLON;
-
-    function loadDefaultPage() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const lat = urlParams.get("lat");
-        const lon = urlParams.get("lon");
-        const id = urlParams.get("id");
-        loadTemplate('../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}', document.getElementById('tiempo-atmosferico-container'), initWeather);
-    }
+    const loadedSections = new Set(); // Previene cargas duplicadas
 
     function detectSourceAndLoad() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -81,39 +74,35 @@
             defaultPage = '../HTML-components/services.html';
             document.getElementById("facilities-item").style.display = "block";
             loadTemplate(defaultPage, document.getElementById('instalaciones-container'), initBeach);
-            loadTemplate('../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}', document.getElementById('tiempo-atmosferico-container'), initWeather);
-            loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('oleaje-container'), initializeSwellPage);
-            loadTemplate('../HTML-components/wave.html', document.getElementById('marea-container'), initWavePage);
-            loadTemplate('../HTML-components/fishPrediction.html', document.getElementById('fish-activities-container'), loadPrediction);
-            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('peces-container'), initFishGallery);
-            return;
+            loadTemplate(`../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`, document.getElementById('tiempo-atmosferico-container'), initWeather);
         } else if (lat && lon) {
             coordLAT = lat;
             coordLON = lon;
-            defaultPage = '../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}';
+            defaultPage = `../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`;
             document.getElementById("facilities-item").style.display = "none";
             loadTemplate(defaultPage, document.getElementById('tiempo-atmosferico-container'), initWeather);
-            loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('oleaje-container'), initializeSwellPage);
-            loadTemplate('../HTML-components/wave.html', document.getElementById('marea-container'), initWavePage);
-            loadTemplate('../HTML-components/fishPrediction.html', document.getElementById('fish-activities-container'), loadPrediction);
-            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('peces-container'), initFishGallery);
         } else {
             defaultPage = '../HTML-components/mainWeather.html';
             document.getElementById("facilities-item").style.display = "none";
             loadTemplate(defaultPage, document.getElementById('tiempo-atmosferico-container'), initWeather);
-            loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('oleaje-container'), initializeSwellPage);
-            loadTemplate('../HTML-components/wave.html', document.getElementById('marea-container'), initWavePage);
-            loadTemplate('../HTML-components/fishPrediction.html', document.getElementById('fish-activities-container'), loadPrediction);
-            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('peces-container'), initFishGallery);
         }
 
+        loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('oleaje-container'), initializeSwellPage);
+        loadTemplate('../HTML-components/wave.html', document.getElementById('marea-container'), initWavePage);
+        loadTemplate('../HTML-components/fishPrediction.html', document.getElementById('fish-activities-container'), loadPrediction);
+        loadTemplate('../HTML-components/FishInfo.html', document.getElementById('peces-container'), initFishGallery);
+
         console.log("Cargando página por defecto: " + defaultPage);
-        // No necesitamos cargar la página por defecto aquí, ya lo hacemos directamente
     }
 
     function loadTemplate(fileName, element, callback) {
         if (!element) {
             console.error("Elemento no encontrado para", fileName);
+            return;
+        }
+
+        if (loadedSections.has(element.id)) {
+            console.log(`Sección '${element.id}' ya cargada, se omite.`);
             return;
         }
 
@@ -126,6 +115,7 @@
             })
             .then((text) => {
                 element.innerHTML = text;
+                loadedSections.add(element.id);
                 if (callback) {
                     callback();
                 }
@@ -164,9 +154,8 @@
 
         window.addEventListener('scroll', checkVisibleSection);
 
-        // Opcional: Desplazamiento suave al hacer clic en el menú
         menuLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
                 const targetElement = document.getElementById(targetId);
@@ -176,7 +165,6 @@
             });
         });
 
-        // Inicialmente, marcar la primera sección como activa
         if (sections.length > 0) {
             highlightMenuItem(sections[0].id);
         }
