@@ -2,9 +2,9 @@ console.log("FishByZone.js loaded");
 
 function initFishByZoneGallery() {
     console.log("initFishByZoneGallery called");
-    const fishGrid = document.getElementById('fish-grid');
+    const fishGrid = document.getElementById('fish-info-grid'); // Cambié el ID aquí
     if (!fishGrid) {
-        console.error("No se encontró el elemento #fish-grid");
+        console.error("No se encontró el elemento #fish-info-grid");
         return;
     }
 
