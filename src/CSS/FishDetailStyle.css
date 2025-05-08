@@ -1,21 +1,21 @@
 /* Base Styles */
 body {
     margin: 0;
-    padding: 20px;
-    background: #0a0f1e;
+    padding: 1.25em;
+    background: #f3f6fb;
     color: #fff;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     min-height: 100vh;
     display: flex;
     justify-content: center;
 }
 
 /* Container */
-.container {
+.container-fishDetail {
     width: 90%;
-    max-width: 900px;
-    background: #12192b;
-    padding: 25px;
+    max-width: 56.25em;
+    background: white;
+    padding: 1.563em;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
@@ -27,51 +27,52 @@ body {
 
 .fish-details h1 {
     font-size: 2.5rem;
-    color: #0077ff;
-    margin-bottom: 20px;
+    color: steelblue;
+    margin-bottom: 1.25em;
     text-align: center;
 }
 
 .fish-details img#fish-image {
     width: 100%;
-    max-height: 450px;
+    max-height: 28.125em;
     object-fit: contain;
     border-radius: 8px;
-    margin-bottom: 25px;
 }
 
 .fish-details img#map-image {
     width: 100%;
-    max-height: 350px;
+    max-height: 21.875em;
     object-fit: contain;
-    margin-top: 25px;
-    border: 2px solid #0077ff;
+    margin-top: 1.563em;
+    border: 2px solid steelblue;
     border-radius: 8px;
 }
 
 /* Info Groups */
 .info-group {
-    margin-bottom: 20px;
-    padding: 15px;
-    background: #1a2336;
+    margin-bottom: 1.25em;
+    padding: 0.938em;
+    background: #f3f6fb;
     border-radius: 8px;
 }
 
 .info-group h2 {
     font-size: 1.5rem;
-    color: #00aaff;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #0077ff;
+    color: steelblue;
+    margin-bottom: 0.938em;
+    border-bottom: 2px solid steelblue;
     padding-bottom: 5px;
 }
 
 .info-group p {
-    margin: 10px 0;
+    margin: 0.625em 0;
     line-height: 1.5;
+    color: black;
+    font-size: 1.1rem;
 }
 
 .info-group strong {
-    color: #66ccff;
+    color: steelblue;
 }
 
 /* Responsive Design */

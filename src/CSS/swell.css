@@ -53,7 +53,7 @@ ul#hoursList li button:hover {
 
 
 .swellBody {
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background: #f3f6fb;
     display: flex;
     justify-content: center;
@@ -100,12 +100,12 @@ ul#hoursList li button:hover {
 
 .fontStyle{
     font-size: 30px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: #0077b6;
 }
 .titleStyle{
     font-size: 20px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: #0077b6;
     font-weight: 600;
 }
@@ -137,7 +137,7 @@ ul#hoursList li button:hover {
     padding: 0 0.8rem;
     margin: 0 0.8rem;
     font-size: 1.2rem;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .hours-container {

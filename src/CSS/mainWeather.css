@@ -43,7 +43,7 @@
     padding: 1.8em;
     height: auto;
     /*background: linear-gradient(180deg, lightskyblue, powderblue);*/
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     text-align: start;
     background: transparent;
     z-index: 1;
@@ -51,7 +51,7 @@
 
 #place-text {
     padding: 0.5em 0 1.2em 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 2em;
     text-align: center;
     font-weight: bold;
@@ -72,7 +72,6 @@
     /*hacer el fondo glassmorphism*/
     background: rgba(255, 255, 255, 0.60);
     backdrop-filter: blur(9.1px);
-    -webkit-backdrop-filter: blur(9.1px);
 
     /*background-color: whitesmoke;*/
 }
@@ -92,14 +91,14 @@
 
 .info-text {
     color: #333;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .information {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: bold;
 }
 
@@ -132,7 +131,7 @@
 
 .temp-day {
     font-size: 0.9em;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .grid-container-7 {
@@ -149,7 +148,6 @@
     /*hacer el fondo glassmorphism*/
     background: rgba(255, 255, 255, 0.60);
     backdrop-filter: blur(9.1px);
-    -webkit-backdrop-filter: blur(9.1px);
 }
 
 /*movimiento en horizontal*/
@@ -178,14 +176,13 @@
     padding: 1.25em;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     overflow-x: auto;
     scrollbar-width: none;
 
     /*hacer el fondo glassmorphism*/
     background: rgba(255, 255, 255, 0.60);
     backdrop-filter: blur(9.1px);
-    -webkit-backdrop-filter: blur(9.1px);
 }
 
 .buttonDay {
