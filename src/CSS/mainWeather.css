@@ -275,10 +275,18 @@ tr:nth-child(3) td {
     align-self: center;
 }
 
+.scroll-btn-hour {
+    display: none;
+}
+
 .scroll-btn:hover {
     color: #333;
     background: rgba(255, 255, 255, 0.3);
     border-radius: 50%;
+}
+
+.forecast-table-hour.has-scroll .scroll-btn-hour {
+    display: block;
 }
 
 /*temperatura por dia*/
@@ -304,7 +312,8 @@ tr:nth-child(3) td {
 /*temperatura por hora*/
 #table-scroll {
     overflow-x: auto;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
+    width: 100%;
 }
 
 
@@ -316,4 +325,3 @@ tr:nth-child(3) td {
     }
 
 }
-

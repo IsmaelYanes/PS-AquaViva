@@ -1,10 +1,4 @@
-.hours-container {
-    margin: 20px auto;
-    border: 2px solid #007bff;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-}
+
 
 ul#hoursList {
     display: grid;
@@ -58,9 +52,6 @@ ul#hoursList li button:hover {
 }
 
 
-
-
-
 .swellBody {
     font-family: 'Segoe UI', sans-serif;
     background: #f3f6fb;
@@ -73,19 +64,22 @@ ul#hoursList li button:hover {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    max-width: 900px;
     width: 100%;
 }
 
 .card {
     place-items: center;
     display: grid;
-    background: #eaf0fb;
     padding: 1.5rem;
     border-radius: 20px;
     text-align: center;
     font-size: 1rem;
+    /*
+    background: #eaf0fb;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    */
+    background: #eef7ff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .mainBody {
@@ -104,49 +98,6 @@ ul#hoursList li button:hover {
 }
 
 
-
-
-
-.hour-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    margin: 40px auto;
-    padding: 15px 30px;
-    max-width: 400px;
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(6px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    font-size: 20px;
-    font-family: 'Segoe UI', sans-serif;
-    color: #333;
-}
-
-.hour-nav button {
-    background-color: steelblue;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 10px;
-    font-size: 22px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.hour-nav button:hover {
-    background: #023e8a;
-    transform: scale(1.1);
-}
-
-.hour-nav #horaActual {
-    font-weight: bold;
-    font-size: 24px;
-    min-width: 80px;
-    text-align: center;
-}
-
 .fontStyle{
     font-size: 30px;
     font-family: 'Inter', sans-serif;
@@ -157,4 +108,59 @@ ul#hoursList li button:hover {
     font-family: 'Inter', sans-serif;
     color: #0077b6;
     font-weight: 600;
+}
+
+
+#hoursCarrusel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hoursCarrusel-button {
+    background-color: steelblue;
+    color: whitesmoke;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 1.6rem;
+    padding: 0.3rem 0.6rem;
+}
+
+.hoursCarrusel-button:hover {
+    background-color:  #35648c;
+}
+
+.hour-nav {
+    background-color: #cfdae3;
+    border-radius: 10px;
+    padding: 0 0.8rem;
+    margin: 0 0.8rem;
+    font-size: 1.2rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.hours-container {
+    margin: 1rem 0;
+    padding: 1.2rem;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    box-shadow: 0 0 6px 0 #666666;
+}
+
+.hour {
+    padding: 0.5em 0.5em;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hour.active {
+    background-color: #408fd3;
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+.hour:hover {
+    background-color: #e0e0e0;
 }

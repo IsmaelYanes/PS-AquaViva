@@ -116,7 +116,6 @@ function showWeatherData(json) {
         }
 
         const dayCeroInfo = json.forecast.forecastday[day];
-        console.log(dayCeroInfo);
         for (let i = hour; i <= 23; i++) {
             let hourInfo = dayCeroInfo.hour[i];
 
@@ -170,7 +169,21 @@ function showWeatherData(json) {
                 }
             }
         }
+        checkTableScroll();
     }
+
+    function checkTableScroll() {
+        const tableScroll = document.getElementById('table-scroll');
+        const forecastHour = document.querySelector('.forecast-table-hour');
+
+        // Verificar si el contenido es más ancho que el contenedor
+        if (tableScroll.scrollWidth > tableScroll.clientWidth) {
+            forecastHour.classList.add('has-scroll');
+        } else {
+            forecastHour.classList.remove('has-scroll');
+        }
+    }
+    window.addEventListener('resize', checkTableScroll);
 
     function clearTable() {
         hoursRow.textContent = "";

@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 * {
     margin: 0;
@@ -6,6 +7,7 @@
     scroll-behavior: smooth;
     font-family: 'Poppins', sans-serif;
 }
+
 
 #header {
     position: fixed;
@@ -21,6 +23,7 @@
 #content {
     flex: 1;
     padding: 1em;
+    margin-top: 5.5rem;
 }
 
 
@@ -59,10 +62,66 @@
     justify-content: center;
     align-items: center;
     background: #1f242d;
-    font-size: 100px;
-    color: #fff;
-    font-weight: 700;
+    /*font-weight: 700;
+    width: 100%;
+    max-width: 100%;*/
+    overflow-x: hidden;
+    padding: 1rem;
+    box-sizing: border-box;
 }
 .section-info:nth-child(odd) {
     background: #323946;
+}
+
+
+/*Ajuste de main weather*/
+#wrapper-mainWeather {
+    container-type: inline-size; /* o size, si también quieres altura */
+    container-name: mainWeather;
+}
+
+@container mainWeather (max-width: 1216px) {
+    /* Hacemos la grid scrollable cuando el tamaño del contenedor es menor a 1025px */
+    .grid-container-7 {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(120px, 1fr);
+        grid-gap: 0.688em;
+    }
+
+}
+
+/*temperatura por hora*/
+@container mainWeather (max-width: 1216px) {
+    .forecast-table-hour {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+    }
+}
+
+#weather {
+    background: #f3f6fb;
+}
+
+#swell {
+    display: flex;
+    flex-direction: column;
+    background: #f3f6fb;
+}
+
+#tide {
+    display: flex;
+    flex-direction: column;
+    background: #f3f6fb;
+}
+
+#services {
+    background: #f3f6fb;
+}
+
+#fish {
+    display: flex;
+    flex-direction: column;
+    background: #f3f6fb;
 }

@@ -25,7 +25,9 @@ button:hover {
     font-family: 'Segoe UI', sans-serif;
     display: flex;
     justify-content: center;
-    padding: 2rem;
+    align-items: center;
+    padding-top: 2rem;
+    width: 100%;
 }
 .icons{
     width: 100px;
@@ -35,12 +37,16 @@ button:hover {
     grid-auto-flow: column;
     place-items: center;
     display: grid;
+    /*
     background: #eaf0fb;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    */
     padding: 1.5rem;
     border-radius: 20px;
     text-align: center;
     font-size: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    background: #eef7ff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .gap{
     padding: 2rem;

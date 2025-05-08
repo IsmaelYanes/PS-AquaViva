@@ -9,14 +9,38 @@
     <link rel="stylesheet" href="../CSS/swell.css">
 
 </head>
-<div class="hour-nav">
-    <button id="restDay">&#60;</button>
-    <span id="currentDay">01/05</span>
-    <button id="addDay">&#62;</button>
+
+
+<div id="hoursCarrusel">
+    <button class="hoursCarrusel-button" id="restDay">&#60;</button>
+    <div class="hour-nav">
+        <div class="hours-container">
+            <span id="currentDay">01/05</span>
+
+        </div>
+    </div>
+    <button class="hoursCarrusel-button" id="addDay">&#62;</button>
 </div>
+
+<!--
+<div id="hoursCarrusel">
+    <button class="hoursCarrusel-button" id="restDay">&#60;</button>
+    <div class="hour-nav">
+        <div class="hours-container">
+            <span class="currentDay" >01/05</span>
+            <span class="currentDay" >02/05</span>
+            <span class="currentDay" >03/05</span>
+            <span class="currentDay" >04/05</span>
+            <span class="currentDay" >05/05</span>
+        </div>
+    </div>
+    <button class="hoursCarrusel-button" id="addDay">&#62;</button>
+</div>
+-->
+
 <div id="waveBody">
 <div class="weather-dashboard">
-    <div class="card mainBody" style="grid-column: span 2; width: 700px">
+    <div class="card mainBody" style="grid-column: span 2;">
         <canvas id="tideChart"></canvas>
     </div>
     <div class="waveCard">

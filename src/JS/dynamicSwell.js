@@ -1,30 +1,86 @@
-
 function initializeSwellPage() {
     const currentDate = new Date();
     const swell = new Swell();
     swell.loadSwell().then(() => {
         const currentHour = currentDate.getHours();
-        document.getElementById('currentHour').innerText = `${currentHour}:00`;
+        updateHourCarousel(currentHour);
         document.getElementById('dateAndMonth').innerHTML = currentDate.toLocaleDateString();
         loadSwellInfoWithHourSelect(swell, currentHour);
+
         document.getElementById('addButton').addEventListener('click', (e) => {
-            switchHour(swell, 1);
-        })
+            const currentActive = document.querySelector('.hour.active');
+            const nextHour = parseInt(currentActive.dataset.hour) + 1;
+            if (nextHour <= 24) {
+                updateHourCarousel(nextHour);
+                loadSwellInfoWithHourSelect(swell, nextHour);
+            }
+        });
+
         document.getElementById('restButton').addEventListener('click', (e) => {
-            switchHour(swell, -1);
-        })
-    })
+            const currentActive = document.querySelector('.hour.active');
+            const prevHour = parseInt(currentActive.dataset.hour) - 1;
+            if (prevHour >= 0) {
+                updateHourCarousel(prevHour);
+                loadSwellInfoWithHourSelect(swell, prevHour);
+            }
+        });
+
+        document.querySelectorAll('.hour').forEach(hourElement => {
+            hourElement.addEventListener('click', (e) => {
+                const selectedHour = parseInt(e.target.dataset.hour);
+                updateHourCarousel(selectedHour);
+                loadSwellInfoWithHourSelect(swell, selectedHour);
+            });
+        });
+    });
 }
 
+function updateHourCarousel(selectedHour) {
+    document.querySelectorAll('.hour').forEach(hour => {
+        hour.classList.remove('active');
+    });
 
-function switchHour(swell, index) {
+    const hoursContainer = document.querySelector('.hours-container');
+    hoursContainer.innerHTML = '';
+
+    let startHour = Math.max(0, selectedHour - 2);
+    let endHour = Math.min(24, selectedHour + 2);
+
+    if (selectedHour <= 2) {
+        endHour = Math.min(4, 24);
+    } else if (selectedHour >= 22) {
+        startHour = Math.max(20, 0);
+    }
+
+    for (let i = startHour; i <= endHour; i++) {
+        const hourElement = document.createElement('span');
+        hourElement.className = 'hour';
+        hourElement.dataset.hour = i;
+        hourElement.textContent = `${i}:00`;
+
+        if (i === selectedHour) {
+            hourElement.classList.add('active');
+        }
+        hoursContainer.appendChild(hourElement);
+    }
+
+    document.querySelectorAll('.hour').forEach(hourElement => {
+        hourElement.addEventListener('click', (e) => {
+            const clickedHour = parseInt(e.target.dataset.hour);
+            updateHourCarousel(clickedHour);
+            loadSwellInfoWithHourSelect(swell, clickedHour);
+        });
+    });
+}
+
+/*function switchHour(swell, index) {
     const currentText = document.getElementById('currentHour').innerText;
     const currentHour = parseInt(currentText.split(':')[0], 10);
     const hour = currentHour + index;
     if (hour < 0 || hour > 24) { return; }
     document.getElementById('currentHour').innerText = `${hour}:00`;
     loadSwellInfoWithHourSelect(swell, hour);
-}
+}*/
 
 
 function loadSwellInfoWithHourSelect(swell, hour){
@@ -36,8 +92,6 @@ function loadSwellInfoWithHourSelect(swell, hour){
     document.getElementById("zoneName").innerHTML = swell.zoneName;
 
 }
-
-
 
 
 class Swell {

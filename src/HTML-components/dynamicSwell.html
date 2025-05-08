@@ -6,14 +6,23 @@
   <title>Weather Dashboard</title>
   <link rel="stylesheet" href="../CSS/swell.css">
 
-
-
 </head>
-<div class="hour-nav">
-  <button id="restButton">&#60;</button>
-  <span id="currentHour">00:00</span>
-  <button id="addButton">&#62;</button>
+
+
+<div id="hoursCarrusel">
+  <button class="hoursCarrusel-button" id="restButton">&#60;</button>
+  <div class="hour-nav">
+    <div class="hours-container">
+      <span class="hour" data-hour="0">0:00</span>
+      <span class="hour" data-hour="1">1:00</span>
+      <span class="hour" data-hour="2">2:00</span>
+      <span class="hour" data-hour="3">3:00</span>
+      <span class="hour" data-hour="4">4:00</span>
+    </div>
+  </div>
+  <button class="hoursCarrusel-button" id="addButton">&#62;</button>
 </div>
+
 
 
 <div class="swellBody">

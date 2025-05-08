@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Información</title>
-    <link rel="stylesheet" href="../CSS/MoreInfoPageStyle.css">
-    <link rel="stylesheet" href="../CSS/MenuStyle.css">
     <link rel="stylesheet" href="../CSS/homeHeader.css">
     <link rel="stylesheet" href="../CSS/services.css">
     <script
@@ -34,24 +32,12 @@
     </aside>
 
     <main id="content">
-        <section id="weather" class="section-info">
-            <div id="weather-template"></div>
-        </section>
-        <section id="swell" class="section-info">
-            <div id="swell-template"></div>
-        </section>
-        <section id="tide" class="section-info">
-            <div id="tide-template"></div>
-        </section>
-        <section id="services" class="section-info">
-            <div id="services-template"></div>
-        </section>
-        <section id="fish" class="section-info">
-            <div id="fish-template"></div>
-        </section>
-        <section id="gallery" class="section-info">
-            <div id="gallery-template"></div>
-        </section>
+        <section id="weather" class="section-info"></section>
+        <section id="swell" class="section-info"></section>
+        <section id="tide" class="section-info"></section>
+        <section id="services" class="section-info"></section>
+        <section id="fish" class="section-info"></section>
+        <section id="gallery" class="section-info"></section>
     </main>
 </div>
 
@@ -86,7 +72,7 @@
         const lat = urlParams.get("lat");
         const lon = urlParams.get("lon");
         const id = urlParams.get("id");
-        loadTemplate(`../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`, document.getElementById('weather-template'), initWeather);
+        loadTemplate(`../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`, document.getElementById('weather'), initWeather);
     }
 
     function detectSourceAndLoad() {
@@ -95,25 +81,35 @@
         const lat = urlParams.get("lat");
         const lon = urlParams.get("lon");
 
-        console.log("coordLAT:", lat, "coordLON:", lon);
-
         if (id) {
             defaultPage = '../HTML-components/services.html';
             document.getElementById("facilities-item").style.display = "block";
-            loadTemplate(defaultPage, document.getElementById('services-template'), initBeach);
+            loadTemplate(defaultPage, document.getElementById('instalaciones-container'), initBeach);
+            loadTemplate('../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}', document.getElementById('tiempo-atmosferico-container'), initWeather);
+            loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('swell'), initializeSwellPage);
+            loadTemplate('../HTML-components/wave.html', document.getElementById('marea-container'), initWavePage);
+            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('peces-container'), initFishGallery);
             return;
         } else if (lat && lon) {
             coordLAT = lat;
             coordLON = lon;
-            defaultPage = `../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`;
+            defaultPage = '../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}';
             document.getElementById("facilities-item").style.display = "none";
+            loadTemplate(defaultPage, document.getElementById('tiempo-atmosferico-container'), initWeather);
+            loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('swell'), initializeSwellPage);
+            loadTemplate('../HTML-components/wave.html', document.getElementById('marea-container'), initWavePage);
+            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('peces-container'), initFishGallery);
         } else {
             defaultPage = '../HTML-components/mainWeather.html';
             document.getElementById("facilities-item").style.display = "none";
+            loadTemplate(defaultPage, document.getElementById('tiempo-atmosferico-container'), initWeather);
+            loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('swell'), initializeSwellPage);
+            loadTemplate('../HTML-components/wave.html', document.getElementById('marea-container'), initWavePage);
+            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('peces-container'), initFishGallery);
         }
 
         console.log("Cargando página por defecto: " + defaultPage);
-        loadTemplate(defaultPage, document.getElementById('weather-template'), initWeather);
+        // No necesitamos cargar la página por defecto aquí, ya lo hacemos directamente
     }
 
     function loadTemplate(fileName, element, callback) {
@@ -163,10 +159,16 @@
     function init() {
         loadTemplate('../HTML-components/header.html', document.getElementById('header'), initSearcher);
         loadDefaultPage()
+        loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('swell'), initializeSwellPage);
+        loadTemplate('../HTML-components/wave.html', document.getElementById('tide'), initWavePage)
+        loadTemplate('../HTML-components/services.html', document.getElementById('services'), function () {initBeach();})
+        loadTemplate('../HTML-components/FishInfo.html', document.getElementById('fish'), initFishGallery)
+
+        /*loadDefaultPage()
         loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('swell-template'), initializeSwellPage);
         loadTemplate('../HTML-components/wave.html', document.getElementById('tide-template'), initWavePage)
         loadTemplate('../HTML-components/services.html', document.getElementById('services-template'), function () {initBeach();})
-        /*
+
         loadTemplate('../HTML-components/FishInfo.html', document.getElementById('fish-template'), initFishGallery)
         loadTemplate('../HTML-components/FishByZone.html?lat=' + coordLAT + '&lon=' + coordLON, document.getElementById('gallery-template'), initFishByZone)
          */
