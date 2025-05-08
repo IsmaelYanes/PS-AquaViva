@@ -12,6 +12,25 @@ body {
     margin: 0;
 }
 
+.form-error {
+    color: red;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.mensaje-error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.mensaje-exito {
+    color: green;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+
 main.form-container {
     background-color: #ffffff;
     border-radius: 10px;
