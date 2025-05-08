@@ -3,14 +3,11 @@ console.log("FishByZone.js loaded");
 function initFishByZoneGallery() {
     console.log("initFishByZoneGallery called");
 
-    const fishGrid = document.getElementById('fish-info-grid'); // <- ID corregido
+    const fishGrid = document.getElementById('fish-info-grid');
     const zoneNameElement = document.getElementById('zone-name');
 
     if (!fishGrid || !zoneNameElement) {
-        console.error("No se encontró el elemento #fish-info-grid o #zone-name");
-        if (fishGrid) {
-            fishGrid.innerHTML = '<p>Error: Elementos necesarios no encontrados.</p>';
-        }
+        console.error("No se encontró el elemento #fish-grid o #zone-name");
         return;
     }
 
@@ -19,11 +16,12 @@ function initFishByZoneGallery() {
     const lat = parseFloat(urlParams.get("lat"));
     const lon = parseFloat(urlParams.get("lon"));
 
-    console.log(`FishByZone.js - URL parameters - id: ${beachId}, lat: ${lat}, lon: ${lon}`);
+    console.log(`URL parameters - id: ${beachId}, lat: ${lat}, lon: ${lon}`);
 
-    // Función para renderizar peces
+    // Función auxiliar para renderizar peces
     function renderFish(fishList, name) {
         zoneNameElement.textContent = name;
+
         if (!fishList || fishList.length === 0) {
             fishGrid.innerHTML = '<p>No se encontraron peces en esta área.</p>';
             console.warn(`No fish assigned to ${name}`);
@@ -38,7 +36,7 @@ function initFishByZoneGallery() {
             .then(fishData => {
                 fishGrid.innerHTML = ''; // Limpiar grid
                 fishData.forEach(fish => {
-                    if (fishList.some(fishName => fishName.toLowerCase() === fish.nom_commun.toLowerCase())) {
+                    if (fishList.some(f => f.toLowerCase() === fish.nom_commun.toLowerCase())) {
                         const fishItem = document.createElement('div');
                         fishItem.classList.add('fish-item');
 
@@ -66,7 +64,7 @@ function initFishByZoneGallery() {
             });
     }
 
-    // 🟡 Caso 1: Buscar por ID de playa
+    // 🟡 CASO 1: Si hay ID de playa
     if (beachId) {
         fetch('../Data/beach_fish_mapping.json')
             .then(response => {
@@ -90,23 +88,34 @@ function initFishByZoneGallery() {
         return;
     }
 
-    // 🟢 Caso 2: Buscar por coordenadas
+    // 🟢 CASO 2: Coordenadas => Zona por polígono (ray-casting)
     if (!isNaN(lat) && !isNaN(lon)) {
-        fetch('../Data/zonas_litoral.json')
+        function pointInPolygon(point, polygon) {
+            const [x, y] = point;
+            let inside = false;
+            for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+                const xi = polygon[i][0], yi = polygon[i][1];
+                const xj = polygon[j][0], yj = polygon[j][1];
+
+                const intersect = ((yi > y) !== (yj > y)) &&
+                    (x < (xj - xi) * (y - yi) / ((yj - yi) + 1e-10) + xi);
+                if (intersect) inside = !inside;
+            }
+            return inside;
+        }
+
+        fetch('../Data/zonas_litoral_reconstruido.json')
             .then(response => {
-                if (!response.ok) throw new Error(`Error al cargar zonas_litoral.json: ${response.status}`);
+                if (!response.ok) throw new Error(`Error al cargar zonas_litoral_reconstruido.json: ${response.status}`);
                 return response.json();
             })
             .then(zonesData => {
-                const normalizedLat = Math.round(lat * 10000) / 10000;
-                const normalizedLon = Math.round(lon * 10000) / 10000;
+                const point = [lon, lat];
 
                 const zone = zonesData.features.find(feature => {
-                    const [featureLon, featureLat] = feature.properties.coord.split(',').map(coord => parseFloat(coord.trim()));
-                    const nFeatureLat = Math.round(featureLat * 10000) / 10000;
-                    const nFeatureLon = Math.round(featureLon * 10000) / 10000;
-                    console.log(`Comparando coordenadas: URL(${normalizedLat}, ${normalizedLon}) vs Zone(${nFeatureLat}, ${nFeatureLon}) - ${feature.properties.name}`);
-                    return Math.abs(nFeatureLat - normalizedLat) < 0.0001 && Math.abs(nFeatureLon - normalizedLon) < 0.0001;
+                    if (!feature.geometry || feature.geometry.type !== "Polygon") return false;
+                    const polygon = feature.geometry.coordinates[0];
+                    return pointInPolygon(point, polygon);
                 });
 
                 if (!zone) {
@@ -116,17 +125,18 @@ function initFishByZoneGallery() {
                 }
 
                 console.log("Zone found:", zone.properties.name, "Fish:", zone.properties.fish);
-                renderFish(zone.properties.fish, zone.properties.name);
+                renderFish(zone.properties.fish || [], zone.properties.name);
             })
             .catch(error => {
-                console.error('Error al cargar zonas_litoral.json:', error);
+                console.error('Error al cargar zonas_litoral_reconstruido.json:', error);
                 fishGrid.innerHTML = '<p>Error al cargar los datos de la zona.</p>';
             });
-    } else {
-        fishGrid.innerHTML = '<p>Error: Coordenadas no proporcionadas o inválidas.</p>';
-        console.error("Invalid lat or lon:", urlParams.get("lat"), urlParams.get("lon"));
+        return;
     }
+
+    // ❌ CASO 3: No se proporcionó nada válido
+    fishGrid.innerHTML = '<p>Error: No se proporcionaron parámetros válidos en la URL.</p>';
+    console.error("Faltan parámetros id, lat o lon");
 }
 
-// Exponer la función globalmente
 window.initFishByZoneGallery = initFishByZoneGallery;
