@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 /* Título */
-#fish-title {
+#fish-title, #fish-info-title{
     font-size: 2rem;
     color: steelblue;
     text-align: center;

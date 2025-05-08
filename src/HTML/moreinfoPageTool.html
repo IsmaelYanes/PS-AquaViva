@@ -86,8 +86,8 @@
             loadTemplate(`../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`, document.getElementById('weather'), initWeather);
             loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('swell'), initializeSwellPage);
             loadTemplate('../HTML-components/wave.html', document.getElementById('tide'), initWavePage);
-            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('fish'), initFishGallery);
-            loadTemplate(`../HTML-components/FishByZone.html?lat=${lat}&lon=${lon}`, document.getElementById('gallery'), initFishByZone);
+            loadTemplate(`../HTML-components/FishByZone.html?lat=${lat}&lon=${lon}`, document.getElementById('fish'), initFishByZone);
+            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('gallery'), initFishGallery);
         } else if (lat && lon) {
             coordLAT = lat;
             coordLON = lon;
@@ -98,8 +98,8 @@
             loadTemplate(defaultPage, document.getElementById('weather'), initWeather);
             loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('swell'), initializeSwellPage);
             loadTemplate('../HTML-components/wave.html', document.getElementById('tide'), initWavePage);
-            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('fish'), initFishGallery);
-            loadTemplate(`../HTML-components/FishByZone.html?lat=${lat}&lon=${lon}`, document.getElementById('gallery'), initFishByZone);
+            loadTemplate(`../HTML-components/FishByZone.html?lat=${lat}&lon=${lon}`, document.getElementById('fish'), initFishByZone);
+            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('gallery'), initFishGallery);
         } else {
             defaultPage = '../HTML-components/mainWeather.html';
             document.getElementById('services').style.display = 'none';
@@ -108,8 +108,8 @@
             loadTemplate(defaultPage, document.getElementById('weather'), initWeather);
             loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('swell'), initializeSwellPage);
             loadTemplate('../HTML-components/wave.html', document.getElementById('tide'), initWavePage);
-            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('fish'), initFishGallery);
-            loadTemplate(`../HTML-components/FishByZone.html?lat=${coordLAT}&lon=${coordLON}`, document.getElementById('gallery'), initFishByZone);
+            loadTemplate(`../HTML-components/FishByZone.html?lat=${coordLAT}&lon=${coordLON}`, document.getElementById('fish'), initFishByZone);
+            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('gallery'), initFishGallery);
         }
 
         console.log("Cargando página por defecto: " + defaultPage);
@@ -167,9 +167,7 @@
         loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('swell'), initializeSwellPage);
         loadTemplate('../HTML-components/wave.html', document.getElementById('tide'), initWavePage)
         loadTemplate('../HTML-components/services.html', document.getElementById('services'), function () {initBeach();})
-
         loadTemplate('../HTML-components/FishByZone.html?lat=' + coordLAT + '&lon=' + coordLON, document.getElementById('fish'), initFishByZone)
-
         loadTemplate('../HTML-components/FishInfo.html', document.getElementById('gallery'), initFishGallery)
 
 
