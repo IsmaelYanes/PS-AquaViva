@@ -3,51 +3,21 @@
     padding: 0;
 }
 
-#wrapper-mainWeather {
-    position: relative;
-    /*width: 70%;*/
-    /*min-width: 26rem;*/
-    width: 90%;
-    height: 100%;
-    /*border-radius: 10px;*/
-    overflow: hidden;
-}
-
-.weatherVideo {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    border-radius: 20px;
-}
-
-#background-video {
-    /*position: absolute;
-    object-fit: cover;
-    opacity: 0.9;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;*/
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 0;
-    object-fit: cover;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
+    text-align: start;
 }
 
 #main-container {
-    position: relative;
-    padding: 1.8rem;
+    padding: 1em;
+    width: 70%;
+    min-width: 25rem;
     height: auto;
-    /*background: linear-gradient(180deg, lightskyblue, powderblue);*/
-    font-family: Arial, sans-serif;
-    text-align: start;
-    background: transparent;
-    z-index: 1;
-
+    border-radius: 10px;
+    background: linear-gradient(180deg, lightskyblue, powderblue);
 }
 
 #place-text {
@@ -55,12 +25,9 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 2em;
     text-align: center;
-    font-weight: bold;
-    color: whitesmoke;
 }
 
 #temp-container {
-    height: 8em;
     margin: 0 0 2em 0;
     display: flex;
     justify-content: space-around;
@@ -69,13 +36,6 @@
     gap: 1.5em;
     text-align: center;
 
-    border-radius: 8px;
-    /*hacer el fondo glassmorphism*/
-    background: rgba(255, 255, 255, 0.60);
-    backdrop-filter: blur(9.1px);
-    -webkit-backdrop-filter: blur(9.1px);
-
-    /*background-color: whitesmoke;*/
 }
 
 #temperature {
@@ -92,24 +52,8 @@
 }
 
 .info-text {
-    color: #333;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
-.information {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-}
-
-.section-information {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 
 .box-text {
     font-size: 0.85em;
@@ -143,31 +87,16 @@
 }
 
 .grid-item {
+    background-color: #fff;
     box-sizing: border-box;
-    border-radius: 16px;
+    border-radius: 0.25rem;
     padding: 1rem 0.5rem;
-
-    /*hacer el fondo glassmorphism*/
-    background: rgba(255, 255, 255, 0.60);
-    backdrop-filter: blur(9.1px);
-    -webkit-backdrop-filter: blur(9.1px);
 }
 
 /*movimiento en horizontal*/
 .weather-forecast {
-    display: flex;
-    align-items: center; /* Alinea verticalmente todos los elementos */
-    gap: 10px;
-    width: 100%;
-    margin: 1rem 0;
     overflow-x: auto;
     scrollbar-width: none;
-}
-
-.weather-forecast:hover, .forecast-table-hour:hover {
-    overflow-x: auto;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0, 0, 0, 0.4) transparent; /* thumb color, track color */
 }
 
 .section3 {
@@ -182,14 +111,9 @@
     font-family: Arial, sans-serif;
     overflow-x: auto;
     scrollbar-width: none;
-
-    /*hacer el fondo glassmorphism*/
-    background: rgba(255, 255, 255, 0.60);
-    backdrop-filter: blur(9.1px);
-    -webkit-backdrop-filter: blur(9.1px);
 }
 
-.buttonDay {
+h2, h3 {
     font-size: 1.2em;
     color: #333;
     cursor: pointer;
@@ -209,7 +133,7 @@ h3 {
 
 #weather-table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
     margin-top: 1.25em;
 }
 
@@ -227,7 +151,6 @@ th {
 
 td {
     border-top: 1px solid #eee;
-    /*border-top: none;*/
 }
 
 tr:nth-child(3) td {
@@ -239,81 +162,9 @@ tr:nth-child(3) td {
     margin-top: 1rem;
     margin-bottom: 0;
     text-align: center;
+
 }
 
 #last-updated {
     font-size: 0.8em;
 }
-
-.buttonDays {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    justify-content: space-between;
-}
-
-#last-updated {
-    color: whitesmoke;
-}
-
-/* Flechas css */
-#weather-scroll {
-    flex-grow: 1;
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding: 10px 0;
-}
-
-.scroll-btn {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 10px;
-    color: whitesmoke;
-    z-index: 2;
-    flex-shrink: 0;
-    align-self: center;
-}
-
-.scroll-btn:hover {
-    color: #333;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-}
-
-/*temperatura por dia*/
-@media screen and (max-width: 1052px) {
-    /* Hacemos la grid scrollable */
-    .grid-container-7 {
-        display: grid;
-        grid-auto-flow: column;
-        grid-auto-columns: minmax(120px, 1fr);
-        grid-gap: 0.688rem;
-    }
-    .scroll-btn {
-        display: block; /* mostramos las flechas */
-    }
-}
-
-@media screen and (min-width: 1052px) {
-    .scroll-btn {
-        display: none; /* ocultamos flechas en pantallas grandes */
-    }
-}
-
-/*temperatura por hora*/
-#table-scroll {
-    overflow-x: auto;
-    scrollbar-width: none; /* Firefox */
-}
-
-
-@media screen and (max-width: 1052px) {
-    .forecast-table-hour {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-}
-

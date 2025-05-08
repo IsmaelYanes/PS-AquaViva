@@ -4,15 +4,18 @@
 </head>
 <body>
 <header class="nav-bar" id="header-nav">
-    <div class="logo-container">
-        <a href="index.html"  class="nav-bar_logo">
-            <img src="/src/Images/logo.png" class="nav-bar_logo" alt="">
-        </a>
+    <a href="index.html"  class="nav-bar_logo">
+        <img src="/src/Images/logo.png" class="nav-bar_logo" alt="">
+    </a>
+    <div class="search-container">
+        <input type="text" id="search" class="search-box" placeholder="Buscar...">
+        <button id="search-button">
+            <img src="../Images/lupa.png" class="search-button" id="search-icon" alt="buscar">
+        </button>
     </div>
-
     <div id="aside-buttons">
-        <a href="../HTML/form.html?view=register"> <button class="homeHeader-button">Registrarse</button></a>
-        <a href="../HTML/form.html?view=login"> <button class="homeHeader-button" id="iniciarSesion">Iniciar sesión</button></a>
+        <a href="../HTML-components/register.html"> <button>Registrarse</button></a>
+        <a href="../HTML-components/login.html"> <button id="iniciarSesion">Iniciar sesión</button></a>
     </div>
 </header>
 </body>

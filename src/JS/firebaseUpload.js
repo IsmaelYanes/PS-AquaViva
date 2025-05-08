@@ -16,13 +16,18 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+
+
 const playasPath = path.join(process.cwd(), "../Data/beaches.json");
 const imagenesPath = path.join(process.cwd(), "../Data/imagenesPlayas.json");
+
+
 
 const cargarJSON = async (filePath) => {
     const data = await fs.readFile(filePath, "utf-8");
     return JSON.parse(data);
 };
+
 
 const subirDatos = async () => {
     try {
@@ -32,11 +37,12 @@ const subirDatos = async () => {
         for (let playa of playas) {
             const id = playa["ID DGE"].toString();
 
+            // Buscar imagen correspondiente
             const imagenData = imagenes.find(img => img["ID DGE"] === playa["ID DGE"]);
             if (imagenData) {
                 playa.imageURL = imagenData.imageURL;
             } else {
-                console.error("❌ Error al escribir");
+                playa.imageURL = "https://example.com/images/default.jpg";
             }
 
             await setDoc(doc(db, "playas", id), playa);

@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let apiKey = "8b85f367751d4882aab231335250305";
-
     // Hacer el mapa global
     window.map = L.map('map', {
         center: [28.299, -16.413],
@@ -18,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
         attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(window.map);
 
-    // Cargar capa de zonas litoral
     fetch('../Data/zonas_litoral.json')
         .then(response => response.json())
         .then(geojsonData => {
@@ -32,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 onEachFeature: (feature, layer) => {
                     if (feature.properties) {
                         layer.on('click', (e) => {
-                            window.abrirPopup(feature.properties, e);
+                            abrirPopup(feature.properties, e);
                         });
                     }
                 }
@@ -40,22 +37,18 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error('Error al cargar el archivo zonas_litoral.json:', error));
 
-    // Hacer global la función abrirPopup
-    window.abrirPopup = function (properties, event) {
+    function abrirPopup(properties, event) {
         const popup = document.querySelector('.popup');
-
-        // Ocultar el popup temporalmente para evitar que se desplace de forma incorrecta
-        popup.style.display = 'none';
 
         // Actualizar contenido del popup con los datos de la zona
         document.getElementById('popup-title').innerText = `Información de la zona seleccionada`;
         document.getElementById('popup-island').innerText = properties.isla || "Desconocida";
         document.getElementById('popup-zone').innerText = properties.zona || "Desconocida";
-
-        const coord = event.latlng;
-        const lat = coord.lat;
-        const lon = coord.lng;
-        properties.description = window.getPrincipalData(lat, lon);
+        const coord = properties.coord.split(",");
+        const lat = coord[1].trim();
+        const lon = coord[0].trim();
+        console.log(`Map.js - Zone: ${properties.name}, Coord: ${properties.coord}, Parsed: lat=${lat}, lon=${lon}`);
+        properties.description = getPrincipalData(lat, lon);
 
         document.getElementById("popup-link").href = `../HTML/MoreInfoPage.html?lat=${lat}&lon=${lon}`;
 
@@ -68,24 +61,20 @@ document.addEventListener("DOMContentLoaded", function () {
             imgElement.style.display = "none";
         }
 
-        // Pequeño retraso para recalcular el tamaño correcto antes de posicionar
-        setTimeout(() => {
-            popup.style.left = `${(window.innerWidth - popup.offsetWidth) / 2}px`;
-            popup.style.top = `${(window.innerHeight - popup.offsetHeight) / 2}px`;
 
-            // Mostrar el popup correctamente centrado
-            popup.style.display = 'block';
-        }, 10);
-    };
+        // Convertir coordenadas del mapa a posición en la pantalla
+        let point = window.map.latLngToContainerPoint(event.latlng);
+        popup.style.left = `${point.x + 280}px`;
+        popup.style.top = `${point.y + 280}px`;
+        popup.style.display = 'block';
+    }
 
-    // Hacer global la función getPrincipalData
-    window.getPrincipalData = function (lat, lon) {
-        const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lon}&days=7&aqi=no&alerts=no`;
+    function getPrincipalData(lat, lon) {
+        const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=8eff48f079e44211b52124000251703&q=${lat},${lon}&days=7&aqi=no&alerts=no`;
         console.log(jsonURL);
-
-        fetch(jsonURL, {
+        fetch (jsonURL, {
             method: "GET",
-            headers: { 'Content-Type': 'application/json' }
+            headers: {'Content-Type': 'application/json'}
         })
             .then(response => response.json())
             .then(json => {
@@ -97,6 +86,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById("wind").innerHTML = `${wind}km/h`;
                 document.getElementById("humidity").innerHTML = `${humidity}%`;
                 document.getElementById("iconImg").src = icon;
-            });
-    };
+            })
+    }
 });

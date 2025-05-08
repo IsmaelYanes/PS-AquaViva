@@ -1,8 +1,6 @@
 // Elimina el listener de DOMContentLoaded y encapsula la lógica en initWeather()
 let lat;
 let lon;
-const apiKey = "8b85f367751d4882aab231335250305";
-
 function initWeather() {
     const urlParams = new URLSearchParams(window.location.search);
     lat = urlParams.get("lat");
@@ -12,29 +10,9 @@ function initWeather() {
     // Si no existen lat y lon, no se ejecuta nada
     if (!lat || !lon) return;
 
-    const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lon}&days=7&aqi=no&alerts=no`;
-    //const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=5aee2dd3671346f6b1c144401252104&q=28.017741567446105,-15.349360695425524&days=7&aqi=no&alerts=no`;
+    const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=8eff48f079e44211b52124000251703&q=${lat},${lon}&days=7&aqi=no&alerts=no`;
     console.log("Cargando clima desde:", jsonURL);
     getDataJson(jsonURL);
-
-    //Eventos de flecha hora/dia
-    const weatherScroll = document.getElementById('weather-scroll');
-    document.querySelector('.left-btn').addEventListener('click', () => {
-        weatherScroll.scrollBy({ left: -150, behavior: 'smooth' });
-    });
-
-    document.querySelector('.right-btn').addEventListener('click', () => {
-        weatherScroll.scrollBy({ left: 150, behavior: 'smooth' });
-    });
-
-    //Eventos de flecha tabla
-    const tableScroll = document.getElementById('table-scroll');
-    document.querySelector('.left-btn-hour').addEventListener('click', () => {
-        tableScroll.scrollBy({ left: -150, behavior: 'smooth' });
-    });
-    document.querySelector('.right-btn-hour').addEventListener('click', () => {
-        tableScroll.scrollBy({ left:  150, behavior: 'smooth' });
-    });
 }
 
 function getDataJson(url, retries = 3, delay = 1000) {
@@ -76,8 +54,6 @@ function getDataJson(url, retries = 3, delay = 1000) {
 
             // Última actualización
             document.getElementById("last-updated").textContent = "Última actualización: " + json.current.last_updated;
-
-
         })
         .catch(error => {
             console.error("Error al cargar datos del tiempo:", error);
@@ -98,25 +74,17 @@ function showWeatherData(json) {
     const weatherIconsRow = document.getElementById("weather-icons-hour");
     const temperatureRow = document.getElementById("temperature-hour");
     const windRow = document.getElementById("wind-hour");
-    const prepRow = document.getElementById("prep-hour");
-    const humidityRow = document.getElementById("humi-hour");
 
-    const firstInfo = document.getElementById("firstInfo");
-    const secondInfo = document.getElementById("secondInfo");
-    const thirdInfo = document.getElementById("thirdInfo");
-    const fourthInfo = document.getElementById("fourthInfo");
-    const fifthInfo = document.getElementById("fifthInfo");
-    const sixthInfo = document.getElementById("sixthInfo");
-    const seventhInfo = document.getElementById("seventhInfo");
+    const todayInfo = document.getElementById("todayInfo");
+    const tomorrowInfo = document.getElementById("tomorrowInfo");
 
     function fillTable(day) {
-        let hour = 0;
-        if (day === 0) {
-            hour = currentHour;
+        let hour = currentHour;
+        if (day === 1) {
+            hour = 0;
         }
-
         const dayCeroInfo = json.forecast.forecastday[day];
-        console.log(dayCeroInfo);
+
         for (let i = hour; i <= 23; i++) {
             let hourInfo = dayCeroInfo.hour[i];
 
@@ -140,33 +108,32 @@ function showWeatherData(json) {
             // Viento
             const windCell = document.createElement("td");
             let flecha = classifyWindDirection(hourInfo.wind_dir);
-            const arrow = document.createElement("div");
+            const arrow = document.createElement("span");
             arrow.textContent = flecha;
             arrow.style.display = "inline-flex";
+            arrow.style.marginLeft = "0.313em";
             arrow.style.color = "dodgerblue";
-            windCell.innerHTML = parseFloat(hourInfo.wind_kph).toFixed(1) + " km/h<br>";
+            windCell.innerHTML = parseFloat(hourInfo.wind_kph).toFixed(1) + " km/h";
             windCell.appendChild(arrow);
             windRow.appendChild(windCell);
 
-            // Precipitacion
-            const prepCell = document.createElement("td");
-            prepCell.textContent = (hourInfo.precip_mm) + 'mm';
-            prepRow.appendChild(prepCell);
-
-            // Humedad
-            const humidityCell = document.createElement("td");
-            humidityCell.textContent = (hourInfo.humidity) + '%';
-            humidityRow.appendChild(humidityCell);
-
-
             if (day === 0) {
-                if (hour >= 21 || hour <= 8) {
+                if (hour >= 20 || hour <= 8) {
                     // Noche
-                    document.getElementById("background-video").src = "../Videos/nightSkyClearRecortado.mp4";
-                    document.getElementById("place-text").style.color = "whitesmoke";
+                    document.getElementById("main-container").style.background = "linear-gradient(180deg, midnightblue, steelblue)";
+                    const textElements = document.getElementsByClassName("info-text");
+                    for (let j = 0; j < textElements.length; j++) {
+                        textElements[j].style.color = "ghostwhite";
+                    }
+                    document.getElementById("last-updated").style.color = "white";
                 } else {
                     // Día
-                    document.getElementById("background-video").src = "../Videos/sky3.mp4";
+                    document.getElementById("main-container").style.background = "linear-gradient(180deg, lightskyblue, powderblue)";
+                    const textElements = document.getElementsByClassName("info-text");
+                    for (let j = 0; j < textElements.length; j++) {
+                        textElements[j].style.color = "black";
+                    }
+                    document.getElementById("last-updated").style.color = "black";
                 }
             }
         }
@@ -177,39 +144,29 @@ function showWeatherData(json) {
         weatherIconsRow.textContent = "";
         temperatureRow.textContent = "";
         windRow.textContent = "";
-        prepRow.textContent = "";
-        humidityRow.textContent = "";
     }
 
     fillTable(0);
-    firstInfo.style.backgroundColor = "#007bff";
-    firstInfo.style.color = "#fff";
+    todayInfo.style.backgroundColor = "#007bff";
+    todayInfo.style.color = "#fff";
 
-    firstInfo.addEventListener("click", () => { styleButtons(0, firstInfo); });
-    secondInfo.addEventListener("click", () => { styleButtons(1, secondInfo); });
-    thirdInfo.addEventListener("click", () => { styleButtons(2, thirdInfo); });
-    fourthInfo.addEventListener("click", () => { styleButtons(3, fourthInfo); });
-    fifthInfo.addEventListener("click", () => { styleButtons(4, fifthInfo); });
-    sixthInfo.addEventListener("click", () => { styleButtons(5, sixthInfo); });
-    seventhInfo.addEventListener("click", () => { styleButtons(6, seventhInfo); });
-
-    function styleButtons(day, actual) {
+    todayInfo.addEventListener("click", () => {
         clearTable();
-        fillTable(day);
-        actual.style.backgroundColor = "#007bff";
-        actual.style.color = "#fff";
-        deleteStyle(day);
-    }
+        fillTable(0);
+        todayInfo.style.backgroundColor = "#007bff";
+        todayInfo.style.color = "#fff";
+        tomorrowInfo.style.backgroundColor = "";
+        tomorrowInfo.style.color = "";
+    });
 
-    function deleteStyle(day) {
-        const days = document.getElementsByClassName("buttonDay");
-        for (let i = 0; i < days.length; i++) {
-            if (day !== i) {
-                days[i].style.backgroundColor = "";
-                days[i].style.color = "";
-            }
-        }
-    }
+    tomorrowInfo.addEventListener("click", () => {
+        clearTable();
+        fillTable(1);
+        tomorrowInfo.style.backgroundColor = "#007bff";
+        tomorrowInfo.style.color = "#fff";
+        todayInfo.style.backgroundColor = "";
+        todayInfo.style.color = "";
+    });
 }
 
 function classifyWindDirection(direction) {

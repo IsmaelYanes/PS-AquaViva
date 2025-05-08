@@ -1,6 +1,6 @@
 canvas {
-    width: 80%; !important;
-    height: 400px; !important;
+    width: 80%;
+    height: 400px;
     margin: 20px auto;
     display: block;
 }
@@ -20,28 +20,13 @@ button {
 button:hover {
     background-color: #205781;
 }
-
-#waveBody{
-    font-family: 'Segoe UI', sans-serif;
-    display: flex;
+#sunriseContainer {
     justify-content: center;
-    padding: 2rem;
+    display: flex;
 }
-.icons{
-    width: 100px;
-    padding: 10px;
+.sunIcon{
+    width: 20px;
 }
-.waveCard{
-    grid-auto-flow: column;
-    place-items: center;
-    display: grid;
-    background: #eaf0fb;
-    padding: 1.5rem;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-}
-.gap{
-    padding: 2rem;
+.iconMargin{
+    margin-right: 10px;
 }
