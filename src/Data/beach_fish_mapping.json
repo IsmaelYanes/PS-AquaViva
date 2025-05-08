@@ -1,0 +1,8346 @@
+{
+  "beach_fish_mapping": [
+    {
+      "beach_id": 101000100,
+      "beach_name": "Caleta de Fuste",
+      "fish": [
+        "Scorpaena scrofa",
+        "Chromis limbata",
+        "euthynnus alletteratus",
+        "Pteroplatytrygon violacea",
+        "Mullus surmuletus",
+        "Carcharhinus falciformis"
+      ]
+    },
+    {
+      "beach_id": 101000200,
+      "beach_name": "El Muellito",
+      "fish": [
+        "Carcharodon carcharias",
+        "Scorpaena maderensis",
+        "Dicentrarchus labrax",
+        "Lithognathus mormyrus",
+        "Trachinus araneus",
+        "Diplodus annularis",
+        "Atherina boyeri"
+      ]
+    },
+    {
+      "beach_id": 101000300,
+      "beach_name": "Pozo Negro",
+      "fish": [
+        "Cetorhinus maximus",
+        "Pteroplatytrygon violacea",
+        "Lophius piscatorius"
+      ]
+    },
+    {
+      "beach_id": 101000400,
+      "beach_name": "Playa de Las Marismas-La Guirra",
+      "fish": [
+        "Hippocampus guttulatus",
+        "Atherina boyeri",
+        "Chromis limbata",
+        "Sphyrna mokarran",
+        "Syngnathus acus",
+        "Scomber scombrus",
+        "Mycteroperca fusca"
+      ]
+    },
+    {
+      "beach_id": 102004100,
+      "beach_name": "Playa del Valle/Aguas Verdes",
+      "fish": [
+        "Gymnothorax unicolor",
+        "Mycteroperca fusca",
+        "Carcharhinus falciformis",
+        "Exocoetus volitans",
+        "Squatina squatina",
+        "Serranus cabrilla",
+        "Pagrus pagrus"
+      ]
+    },
+    {
+      "beach_id": 103006100,
+      "beach_name": "Corralejo",
+      "fish": [
+        "euthynnus alletteratus",
+        "Raja clavata",
+        "Serranus scriba",
+        "Hippocampus guttulatus",
+        "Anthias anthias"
+      ]
+    },
+    {
+      "beach_id": 103006200,
+      "beach_name": "La Barra",
+      "fish": [
+        "Lithognathus mormyrus",
+        "Thunnus thynnus",
+        "Sparisoma cretense",
+        "Epinephelus itajara",
+        "Aulostomus strigosus",
+        "Trachinotus ovatus"
+      ]
+    },
+    {
+      "beach_id": 103006300,
+      "beach_name": "El Islote",
+      "fish": [
+        "Mullus surmuletus",
+        "Mobula mobular",
+        "Raja clavata",
+        "Carcharodon carcharias",
+        "Thunnus thynnus",
+        "Carcharhinus falciformis"
+      ]
+    },
+    {
+      "beach_id": 103006400,
+      "beach_name": "El Río",
+      "fish": [
+        "Carcharodon carcharias",
+        "Mustelus mustelus",
+        "Epinephelus itajara",
+        "Pagrus pagrus",
+        "Scorpaena porcus"
+      ]
+    },
+    {
+      "beach_id": 103006500,
+      "beach_name": "Los Charcos III",
+      "fish": [
+        "Chromis limbata",
+        "Scyliorhinus canicula",
+        "Naucrates ductor",
+        "Pagrus pagrus"
+      ]
+    },
+    {
+      "beach_id": 103006600,
+      "beach_name": "Los Charcos II",
+      "fish": [
+        "Ginglymostoma cirratum",
+        "Labrus merula",
+        "Scorpaena notata",
+        "Apogon imberbis",
+        "Isurus oxyrinchus",
+        "Syngnathus typhle"
+      ]
+    },
+    {
+      "beach_id": 103006700,
+      "beach_name": "Los Charcos I",
+      "fish": [
+        "Mullus barbatus",
+        "Hippocampus guttulatus",
+        "Exocoetus volitans",
+        "Xyrichtys novacula"
+      ]
+    },
+    {
+      "beach_id": 103006800,
+      "beach_name": "El Charcón",
+      "fish": [
+        "Sarpa salpa",
+        "Atherina boyeri",
+        "Gymnothorax unicolor",
+        "Sphyraena viridensis",
+        "Balistes capriscus",
+        "Uranoscopus scaber"
+      ]
+    },
+    {
+      "beach_id": 103006900,
+      "beach_name": "Caleta de Beatriz",
+      "fish": [
+        "Diplodus annularis",
+        "Raja clavata",
+        "Mustelus mustelus",
+        "Mullus barbatus",
+        "Sardina pilchardus"
+      ]
+    },
+    {
+      "beach_id": 103007000,
+      "beach_name": "Punta Blanca",
+      "fish": [
+        "Pagrus pagrus",
+        "Echiichthys vipera",
+        "Aetomylaeus bovinus",
+        "Scyliorhinus canicula",
+        "Parapristipoma octolineatum"
+      ]
+    },
+    {
+      "beach_id": 103007100,
+      "beach_name": "Playa de Majanicho",
+      "fish": [
+        "Trachinus araneus",
+        "euthynnus alletteratus",
+        "Naucrates ductor",
+        "Capros aper",
+        "Kyphosus sectatrix"
+      ]
+    },
+    {
+      "beach_id": 103007200,
+      "beach_name": "La Goleta",
+      "fish": [
+        "Hippocampus hippocampus",
+        "Dasyatis pastinaca",
+        "Aulostomus strigosus",
+        "Serranus scriba",
+        "Diplodus cervinus",
+        "Scyliorhinus stellaris"
+      ]
+    },
+    {
+      "beach_id": 103007300,
+      "beach_name": "Punta Prieta",
+      "fish": [
+        "Carcharhinus falciformis",
+        "Trachinus radiatus",
+        "Raja undulata",
+        "Bothus podas",
+        "Seriola dumerili",
+        "Scorpaena scrofa"
+      ]
+    },
+    {
+      "beach_id": 103007400,
+      "beach_name": "Puerto Remedios",
+      "fish": [
+        "Exocoetus volitans",
+        "Apogon imberbis",
+        "Aetomylaeus bovinus",
+        "Carcharhinus falciformis",
+        "Raja undulata",
+        "Diplodus sargus"
+      ]
+    },
+    {
+      "beach_id": 103007500,
+      "beach_name": "Medano",
+      "fish": [
+        "Sarpa salpa",
+        "Trachinus araneus",
+        "Sardina pilchardus",
+        "Diplodus annularis",
+        "Sparisoma cretense",
+        "Dicentrarchus labrax"
+      ]
+    },
+    {
+      "beach_id": 103007600,
+      "beach_name": "El Pozo",
+      "fish": [
+        "Trachinus araneus",
+        "Scomber colias",
+        "Uranoscopus scaber",
+        "Raja montagui"
+      ]
+    },
+    {
+      "beach_id": 103007700,
+      "beach_name": "El Viejo",
+      "fish": [
+        "Sardina pilchardus",
+        "Mullus barbatus",
+        "Spicara maena",
+        "Symphodus tinca"
+      ]
+    },
+    {
+      "beach_id": 103007800,
+      "beach_name": "Playa El Caserón",
+      "fish": [
+        "Scorpaena notata",
+        "Dicentrarchus punctatus",
+        "Carcharhinus falciformis"
+      ]
+    },
+    {
+      "beach_id": 103007900,
+      "beach_name": "El Bajo Negro",
+      "fish": [
+        "Tripterygion delaisi",
+        "Atherina boyeri",
+        "Hippocampus hippocampus",
+        "Enchelycore anatina",
+        "Scyliorhinus canicula",
+        "Muraena helena",
+        "Ophioblennius atlanticus"
+      ]
+    },
+    {
+      "beach_id": 103008000,
+      "beach_name": "Larga",
+      "fish": [
+        "Conger conger",
+        "Raja clavata",
+        "Enchelycore anatina"
+      ]
+    },
+    {
+      "beach_id": 103008100,
+      "beach_name": "Los Martos",
+      "fish": [
+        "Prionace glauca",
+        "Dicentrarchus punctatus",
+        "Sardina pilchardus",
+        "Sciaena umbra",
+        "Trachinus radiatus",
+        "Boops boops",
+        "Anthias anthias"
+      ]
+    },
+    {
+      "beach_id": 103008200,
+      "beach_name": "Playa El Dormidero",
+      "fish": [
+        "Tripterygion delaisi",
+        "Torpedo marmorata",
+        "Spicara maena",
+        "Lophius piscatorius",
+        "Solea solea"
+      ]
+    },
+    {
+      "beach_id": 103008300,
+      "beach_name": "Playa El Moro",
+      "fish": [
+        "Lophius budegassa",
+        "Gobius paganellus",
+        "Sparus aurata",
+        "Scorpaena maderensis"
+      ]
+    },
+    {
+      "beach_id": 103008400,
+      "beach_name": "El Rosadero",
+      "fish": [
+        "Coris julis",
+        "Scyliorhinus stellaris",
+        "Bodianus scrofa"
+      ]
+    },
+    {
+      "beach_id": 103008500,
+      "beach_name": "Alzada",
+      "fish": [
+        "Sparisoma cretense",
+        "Coris julis",
+        "Hippocampus hippocampus",
+        "Thalassoma pavo",
+        "euthynnus alletteratus"
+      ]
+    },
+    {
+      "beach_id": 103008600,
+      "beach_name": "Playa del Puertito",
+      "fish": [
+        "Scorpaena maderensis",
+        "Ginglymostoma cirratum",
+        "Naucrates ductor",
+        "Anthias anthias",
+        "Sarpa salpa"
+      ]
+    },
+    {
+      "beach_id": 103008700,
+      "beach_name": "El Aljibe",
+      "fish": [
+        "Scyliorhinus stellaris",
+        "Aulostomus strigosus",
+        "Epinephelus costae",
+        "Pseudocaranx dentex",
+        "Scorpaena maderensis"
+      ]
+    },
+    {
+      "beach_id": 103008800,
+      "beach_name": "El Castillo",
+      "fish": [
+        "Pagrus pagrus",
+        "Carcharodon carcharias",
+        "Epinephelus marginatus"
+      ]
+    },
+    {
+      "beach_id": 103008900,
+      "beach_name": "Marfolín o Los Laguitos",
+      "fish": [
+        "Polyprion americanus",
+        "Scyliorhinus stellaris",
+        "Dactylopterus volitans",
+        "Gobius niger",
+        "Raja undulata"
+      ]
+    },
+    {
+      "beach_id": 103009000,
+      "beach_name": "Chica",
+      "fish": [
+        "Diplodus vulgaris",
+        "Xyrichtys novacula",
+        "Mullus barbatus",
+        "Serranus scriba"
+      ]
+    },
+    {
+      "beach_id": 103009100,
+      "beach_name": "El Jablito",
+      "fish": [
+        "Kyphosus sectatrix",
+        "Oblada melanura",
+        "Serranus cabrilla",
+        "Carcharhinus falciformis",
+        "Serranus scriba",
+        "Boops boops",
+        "Mycteroperca fusca"
+      ]
+    },
+    {
+      "beach_id": 103009200,
+      "beach_name": "Los Verilitos",
+      "fish": [
+        "Gobius paganellus",
+        "Gymnura altavela",
+        "Myliobatis aquila",
+        "Atherina boyeri"
+      ]
+    },
+    {
+      "beach_id": 103009300,
+      "beach_name": "De Corralejo viejo",
+      "fish": [
+        "Scorpaena notata",
+        "Naucrates ductor",
+        "Bothus podas",
+        "Exocoetus volitans",
+        "Trachinus radiatus"
+      ]
+    },
+    {
+      "beach_id": 103009400,
+      "beach_name": "Playa del Hierro",
+      "fish": [
+        "Torpedo torpedo",
+        "Coryphaena hippurus",
+        "Serranus atricauda",
+        "Pagellus erythrinus",
+        "Mullus surmuletus",
+        "Gymnothorax unicolor",
+        "Lophius budegassa"
+      ]
+    },
+    {
+      "beach_id": 103009500,
+      "beach_name": "Playa de los mallorquines",
+      "fish": [
+        "Scyliorhinus canicula",
+        "Canthigaster capistrata",
+        "Hippocampus guttulatus",
+        "Bothus podas"
+      ]
+    },
+    {
+      "beach_id": 103009600,
+      "beach_name": "Playa del Aguila",
+      "fish": [
+        "Symphodus tinca",
+        "Diplodus cervinus",
+        "Sphyraena viridensis",
+        "Serranus cabrilla",
+        "Spicara maena"
+      ]
+    },
+    {
+      "beach_id": 103009700,
+      "beach_name": "Playa de Esquinzo",
+      "fish": [
+        "euthynnus alletteratus",
+        "Taeniura grabata",
+        "Diplodus puntazzo"
+      ]
+    },
+    {
+      "beach_id": 103009800,
+      "beach_name": "Playa del Tebeto",
+      "fish": [
+        "Seriola dumerili",
+        "Muraena helena",
+        "Thalassoma pavo",
+        "Aulostomus strigosus",
+        "Trachinus radiatus"
+      ]
+    },
+    {
+      "beach_id": 103009900,
+      "beach_name": "Playa de La Concha",
+      "fish": [
+        "Apogon imberbis",
+        "Pseudocaranx dentex",
+        "Boops boops"
+      ]
+    },
+    {
+      "beach_id": 104015100,
+      "beach_name": "La Lajita",
+      "fish": [
+        "Epinephelus costae",
+        "Diplodus vulgaris",
+        "Parablennius incognitus",
+        "Scomber colias",
+        "Boops boops"
+      ]
+    },
+    {
+      "beach_id": 104015200,
+      "beach_name": "Matas Blancas",
+      "fish": [
+        "Sparus aurata",
+        "Trachinus araneus",
+        "Symphodus tinca",
+        "Raja clavata",
+        "Mullus barbatus",
+        "Serranus scriba"
+      ]
+    },
+    {
+      "beach_id": 104015300,
+      "beach_name": "Playa La Barca",
+      "fish": [
+        "Labrus merula",
+        "Scorpaena porcus",
+        "Exocoetus volitans",
+        "Pagellus erythrinus"
+      ]
+    },
+    {
+      "beach_id": 104015400,
+      "beach_name": "Esquinzo-Butihondo",
+      "fish": [
+        "Gymnura altavela",
+        "euthynnus alletteratus",
+        "Muraena helena",
+        "Coris julis",
+        "Uranoscopus scaber",
+        "Kyphosus sectatrix"
+      ]
+    },
+    {
+      "beach_id": 104015500,
+      "beach_name": "Morro Jable",
+      "fish": [
+        "Parablennius pilicornis",
+        "Tripterygion delaisi",
+        "Mullus barbatus",
+        "Trachinus radiatus",
+        "Sphyrna lewini",
+        "Mola mola"
+      ]
+    },
+    {
+      "beach_id": 104015600,
+      "beach_name": "Las Coloradas",
+      "fish": [
+        "Gobius paganellus",
+        "Diplodus annularis",
+        "Pagrus pagrus"
+      ]
+    },
+    {
+      "beach_id": 104015700,
+      "beach_name": "Playa Morro de Potala",
+      "fish": [
+        "Sparus aurata",
+        "Sphyrna lewini",
+        "Mullus surmuletus",
+        "Lithognathus mormyrus",
+        "Pagellus erythrinus"
+      ]
+    },
+    {
+      "beach_id": 104015800,
+      "beach_name": "Puertito de La Cruz",
+      "fish": [
+        "Coryphaena hippurus",
+        "Bothus podas",
+        "Squatina squatina",
+        "Epinephelus marginatus",
+        "Raja clavata",
+        "Chromis limbata",
+        "Aetomylaeus bovinus"
+      ]
+    },
+    {
+      "beach_id": 104015900,
+      "beach_name": "Cofete",
+      "fish": [
+        "Spicara maena",
+        "Squatina squatina",
+        "Enchelycore anatina",
+        "Symphodus tinca",
+        "Scorpaena notata",
+        "Gobius niger"
+      ]
+    },
+    {
+      "beach_id": 104016000,
+      "beach_name": "El Viejo Rey",
+      "fish": [
+        "Gymnothorax unicolor",
+        "Sparus aurata",
+        "Naucrates ductor",
+        "Oblada melanura",
+        "Sarda sarda",
+        "Torpedo marmorata"
+      ]
+    },
+    {
+      "beach_id": 104016100,
+      "beach_name": "La Pared",
+      "fish": [
+        "Gymnura altavela",
+        "Sphyrna mokarran",
+        "Sarda sarda",
+        "Sarpa salpa"
+      ]
+    },
+    {
+      "beach_id": 104016200,
+      "beach_name": "Ugan",
+      "fish": [
+        "Spicara maena",
+        "Bodianus scrofa",
+        "Atherina boyeri",
+        "Chromis limbata",
+        "euthynnus alletteratus",
+        "Zeus faber"
+      ]
+    },
+    {
+      "beach_id": 104016300,
+      "beach_name": "La Solapa",
+      "fish": [
+        "Aulostomus strigosus",
+        "Mobula mobular",
+        "Parablennius pilicornis",
+        "Syngnathus acus",
+        "Parapristipoma octolineatum",
+        "Pteroplatytrygon violacea",
+        "Dicentrarchus punctatus"
+      ]
+    },
+    {
+      "beach_id": 104016400,
+      "beach_name": "Ajuy",
+      "fish": [
+        "Bothus podas",
+        "Diplodus vulgaris",
+        "Canthigaster capistrata",
+        "Serranus cabrilla",
+        "Carcharhinus falciformis",
+        "Thalassoma pavo"
+      ]
+    },
+    {
+      "beach_id": 104016500,
+      "beach_name": "Tarajalejo  (Punta del Roquito)",
+      "fish": [
+        "Gymnura altavela",
+        "Thunnus thynnus",
+        "Macroramphosus scolopax"
+      ]
+    },
+    {
+      "beach_id": 104016600,
+      "beach_name": "Costa Calma",
+      "fish": [
+        "Parablennius incognitus",
+        "Scomber scombrus",
+        "Dactylopterus volitans",
+        "Symphodus mediterraneus"
+      ]
+    },
+    {
+      "beach_id": 104016700,
+      "beach_name": "Playa del Matorral",
+      "fish": [
+        "Pseudocaranx dentex",
+        "Hippocampus guttulatus",
+        "Scomber colias"
+      ]
+    },
+    {
+      "beach_id": 104016800,
+      "beach_name": "Playa de Barlovento",
+      "fish": [
+        "Scorpaena maderensis",
+        "Thalassoma pavo",
+        "Serranus cabrilla",
+        "Mullus barbatus"
+      ]
+    },
+    {
+      "beach_id": 104016900,
+      "beach_name": "Playa Roque del Moro",
+      "fish": [
+        "Anthias anthias",
+        "Carcharhinus falciformis",
+        "Seriola dumerili",
+        "Apogon imberbis"
+      ]
+    },
+    {
+      "beach_id": 104017000,
+      "beach_name": "Risco del Paso",
+      "fish": [
+        "Sphyrna lewini",
+        "Aetomylaeus bovinus",
+        "Ginglymostoma cirratum",
+        "Anthias anthias",
+        "Boops boops"
+      ]
+    },
+    {
+      "beach_id": 105024101,
+      "beach_name": "Playa Blanca Sector 1 - BIkini",
+      "fish": [
+        "Symphodus tinca",
+        "Labrus mixtus",
+        "Carcharodon carcharias"
+      ]
+    },
+    {
+      "beach_id": 105024102,
+      "beach_name": "Playa Blanca Sector 2 - Casa Rita",
+      "fish": [
+        "Trachinotus ovatus",
+        "Hippocampus hippocampus",
+        "Ophioblennius atlanticus",
+        "Canthigaster capistrata",
+        "Apogon imberbis"
+      ]
+    },
+    {
+      "beach_id": 105024103,
+      "beach_name": "Playa Blanca Sector 3 - Parador",
+      "fish": [
+        "Spondyliosoma cantharus",
+        "Zeus faber",
+        "Echiichthys vipera",
+        "Epinephelus costae",
+        "Parapristipoma octolineatum",
+        "Isurus oxyrinchus",
+        "Boops boops"
+      ]
+    },
+    {
+      "beach_id": 105024200,
+      "beach_name": "Playa del Matorral",
+      "fish": [
+        "Aulostomus strigosus",
+        "Syngnathus acus",
+        "Dactylopterus volitans",
+        "Gobius niger"
+      ]
+    },
+    {
+      "beach_id": 105024300,
+      "beach_name": "Playa de Las Caletillas",
+      "fish": [
+        "Sphyrna mokarran",
+        "Pteroplatytrygon violacea",
+        "Naucrates ductor",
+        "Kyphosus sectatrix",
+        "Balistes capriscus"
+      ]
+    },
+    {
+      "beach_id": 105024400,
+      "beach_name": "Playa de los Molinos",
+      "fish": [
+        "Scyliorhinus canicula",
+        "Epinephelus marginatus",
+        "Macroramphosus scolopax"
+      ]
+    },
+    {
+      "beach_id": 105024500,
+      "beach_name": "Playa de Jarugo",
+      "fish": [
+        "Isurus oxyrinchus",
+        "Aulostomus strigosus",
+        "Scorpaena scrofa"
+      ]
+    },
+    {
+      "beach_id": 105024600,
+      "beach_name": "Playa de Los Pozos",
+      "fish": [
+        "Oblada melanura",
+        "Serranus cabrilla",
+        "Isurus oxyrinchus",
+        "euthynnus alletteratus"
+      ]
+    },
+    {
+      "beach_id": 105024700,
+      "beach_name": "Playa de Puerto Lajas",
+      "fish": [
+        "Scorpaena scrofa",
+        "Pagellus erythrinus",
+        "Diplodus vulgaris",
+        "Trachinotus ovatus",
+        "Oblada melanura",
+        "Kyphosus sectatrix"
+      ]
+    },
+    {
+      "beach_id": 106027100,
+      "beach_name": "Las Playitas",
+      "fish": [
+        "Anthias anthias",
+        "Exocoetus volitans",
+        "Trachinotus ovatus",
+        "Mycteroperca fusca"
+      ]
+    },
+    {
+      "beach_id": 106027200,
+      "beach_name": "Gran Tarajal",
+      "fish": [
+        "Torpedo marmorata",
+        "Cetorhinus maximus",
+        "Naucrates ductor",
+        "Coris julis"
+      ]
+    },
+    {
+      "beach_id": 106027300,
+      "beach_name": "Giniginamar",
+      "fish": [
+        "Serranus atricauda",
+        "Coris julis",
+        "Sphyrna mokarran",
+        "Epinephelus costae",
+        "Gymnothorax unicolor"
+      ]
+    },
+    {
+      "beach_id": 106027400,
+      "beach_name": "Tarajalejo",
+      "fish": [
+        "Mobula mobular",
+        "Sphyrna lewini",
+        "Conger conger",
+        "Zeus faber",
+        "Serranus cabrilla"
+      ]
+    },
+    {
+      "beach_id": 207031100,
+      "beach_name": "Barlovento",
+      "fish": [
+        "Apogon imberbis",
+        "euthynnus alletteratus",
+        "Carcharhinus falciformis",
+        "Labrus mixtus"
+      ]
+    },
+    {
+      "beach_id": 207031200,
+      "beach_name": "La Arena",
+      "fish": [
+        "Diplodus puntazzo",
+        "Boops boops",
+        "Sparisoma cretense",
+        "Epinephelus marginatus",
+        "Diplodus vulgaris",
+        "Aulostomus strigosus",
+        "Mobula mobular"
+      ]
+    },
+    {
+      "beach_id": 207031300,
+      "beach_name": "El Castillo",
+      "fish": [
+        "Raja undulata",
+        "Labrus merula",
+        "Gymnura altavela",
+        "Ginglymostoma cirratum",
+        "Cetorhinus maximus",
+        "Mullus barbatus"
+      ]
+    },
+    {
+      "beach_id": 207031400,
+      "beach_name": "El Reducto",
+      "fish": [
+        "Thalassoma pavo",
+        "Boops boops",
+        "Symphodus mediterraneus",
+        "Capros aper"
+      ]
+    },
+    {
+      "beach_id": 207031500,
+      "beach_name": "El Cable",
+      "fish": [
+        "Uranoscopus scaber",
+        "Scorpaena maderensis",
+        "Torpedo torpedo",
+        "Sparisoma cretense"
+      ]
+    },
+    {
+      "beach_id": 207031600,
+      "beach_name": "La Concha",
+      "fish": [
+        "Ginglymostoma cirratum",
+        "Pseudocaranx dentex",
+        "Sparus aurata"
+      ]
+    },
+    {
+      "beach_id": 207031700,
+      "beach_name": "Las Caletas",
+      "fish": [
+        "Coryphaena hippurus",
+        "Spondyliosoma cantharus",
+        "Labrus merula",
+        "Isurus oxyrinchus"
+      ]
+    },
+    {
+      "beach_id": 208033100,
+      "beach_name": "El Embarcadero",
+      "fish": [
+        "Epinephelus itajara",
+        "Gobius paganellus",
+        "Parablennius pilicornis",
+        "Scomber colias",
+        "Dasyatis pastinaca"
+      ]
+    },
+    {
+      "beach_id": 208033200,
+      "beach_name": "Bajo Risco",
+      "fish": [
+        "Parablennius pilicornis",
+        "Diplodus vulgaris",
+        "Epinephelus costae"
+      ]
+    },
+    {
+      "beach_id": 208033300,
+      "beach_name": "Playa de Atrás",
+      "fish": [
+        "Mobula mobular",
+        "Symphodus mediterraneus",
+        "Aetomylaeus bovinus"
+      ]
+    },
+    {
+      "beach_id": 208033400,
+      "beach_name": "Caletón Blanco",
+      "fish": [
+        "Dicentrarchus punctatus",
+        "Solea solea",
+        "Anthias anthias",
+        "Muraena helena",
+        "Symphodus tinca",
+        "Aulostomus strigosus"
+      ]
+    },
+    {
+      "beach_id": 208033600,
+      "beach_name": "El Banquito",
+      "fish": [
+        "Sparus aurata",
+        "Sarda sarda",
+        "Scorpaena maderensis",
+        "Diplodus vulgaris",
+        "Sphyrna mokarran",
+        "Scorpaena porcus"
+      ]
+    },
+    {
+      "beach_id": 208033700,
+      "beach_name": "Caleta del Mojón",
+      "fish": [
+        "Macroramphosus scolopax",
+        "Scorpaena scrofa",
+        "Isurus oxyrinchus"
+      ]
+    },
+    {
+      "beach_id": 208033800,
+      "beach_name": "Playa de Punta del Palo",
+      "fish": [
+        "Symphodus mediterraneus",
+        "Scomber colias",
+        "Raja clavata",
+        "Naucrates ductor",
+        "Diplodus sargus",
+        "Ginglymostoma cirratum"
+      ]
+    },
+    {
+      "beach_id": 208033900,
+      "beach_name": "Playa de Punta Prieta",
+      "fish": [
+        "Epinephelus marginatus",
+        "Diplodus sargus",
+        "Scomber scombrus",
+        "Raja clavata",
+        "Syngnathus typhle",
+        "Kyphosus sectatrix"
+      ]
+    },
+    {
+      "beach_id": 208034000,
+      "beach_name": "Punta Prieta",
+      "fish": [
+        "Symphodus mediterraneus",
+        "Dicentrarchus punctatus",
+        "Kyphosus sectatrix",
+        "Scomber colias",
+        "Atherina boyeri",
+        "Labrus merula",
+        "Dasyatis pastinaca"
+      ]
+    },
+    {
+      "beach_id": 208034100,
+      "beach_name": "La Caleta",
+      "fish": [
+        "Torpedo marmorata",
+        "Serranus scriba",
+        "Sphyrna lewini"
+      ]
+    },
+    {
+      "beach_id": 208034200,
+      "beach_name": "La Escama",
+      "fish": [
+        "Bodianus scrofa",
+        "Raja montagui",
+        "Dasyatis pastinaca",
+        "euthynnus alletteratus"
+      ]
+    },
+    {
+      "beach_id": 208034300,
+      "beach_name": "Caleta del Guincho",
+      "fish": [
+        "Mola mola",
+        "Scorpaena porcus",
+        "Sardina pilchardus"
+      ]
+    },
+    {
+      "beach_id": 208034400,
+      "beach_name": "Punta Escamas",
+      "fish": [
+        "Trachinus araneus",
+        "Scyliorhinus canicula",
+        "Dasyatis pastinaca",
+        "Zeus faber",
+        "Serranus cabrilla",
+        "Bodianus scrofa"
+      ]
+    },
+    {
+      "beach_id": 208034500,
+      "beach_name": "Los Bonacibles",
+      "fish": [
+        "Balistes capriscus",
+        "Myliobatis aquila",
+        "Torpedo marmorata",
+        "Bodianus scrofa",
+        "Taeniura grabata",
+        "Serranus cabrilla"
+      ]
+    },
+    {
+      "beach_id": 208034600,
+      "beach_name": "Bajo jameos",
+      "fish": [
+        "Lithognathus mormyrus",
+        "Isurus oxyrinchus",
+        "Cetorhinus maximus"
+      ]
+    },
+    {
+      "beach_id": 208034700,
+      "beach_name": "Baja Piquiento",
+      "fish": [
+        "Pagellus erythrinus",
+        "Spicara maena",
+        "Mycteroperca fusca",
+        "Muraena helena",
+        "Conger conger",
+        "Syngnathus typhle"
+      ]
+    },
+    {
+      "beach_id": 208034800,
+      "beach_name": "Caleta de José María",
+      "fish": [
+        "Hippocampus hippocampus",
+        "Carcharhinus falciformis",
+        "Diplodus vulgaris",
+        "Thalassoma pavo"
+      ]
+    },
+    {
+      "beach_id": 208034900,
+      "beach_name": "Punta Burro",
+      "fish": [
+        "Mullus barbatus",
+        "Diplodus annularis",
+        "Canthigaster capistrata",
+        "Boops boops",
+        "Symphodus tinca",
+        "Sphyrna lewini",
+        "Mobula mobular"
+      ]
+    },
+    {
+      "beach_id": 208035000,
+      "beach_name": "Las Sebas",
+      "fish": [
+        "Dicentrarchus punctatus",
+        "Coris julis",
+        "Diplodus cervinus",
+        "Labrus mixtus",
+        "Xyrichtys novacula",
+        "Scyliorhinus stellaris",
+        "Conger conger"
+      ]
+    },
+    {
+      "beach_id": 208035100,
+      "beach_name": "Playa Grande",
+      "fish": [
+        "Coryphaena hippurus",
+        "Sardina pilchardus",
+        "Enchelycore anatina",
+        "Uranoscopus scaber",
+        "Symphodus mediterraneus"
+      ]
+    },
+    {
+      "beach_id": 208035200,
+      "beach_name": "Piscina del Cura",
+      "fish": [
+        "Echiichthys vipera",
+        "Bodianus scrofa",
+        "Diplodus vulgaris",
+        "Conger conger",
+        "Sarda sarda"
+      ]
+    },
+    {
+      "beach_id": 208035300,
+      "beach_name": "Piscina El Pichón",
+      "fish": [
+        "Pseudocaranx dentex",
+        "Scyliorhinus stellaris",
+        "Gymnura altavela",
+        "Hippocampus guttulatus",
+        "Labrus mixtus",
+        "Chromis limbata",
+        "Sparus aurata"
+      ]
+    },
+    {
+      "beach_id": 208035400,
+      "beach_name": "Caleta del Campo",
+      "fish": [
+        "Sphyrna lewini",
+        "Torpedo torpedo",
+        "Scorpaena notata"
+      ]
+    },
+    {
+      "beach_id": 208035500,
+      "beach_name": "El Charcón",
+      "fish": [
+        "Diplodus cervinus",
+        "Symphodus tinca",
+        "Pagellus erythrinus",
+        "Raja clavata",
+        "Sarpa salpa",
+        "Taeniura grabata",
+        "Pteroplatytrygon violacea"
+      ]
+    },
+    {
+      "beach_id": 208035600,
+      "beach_name": "La Garita",
+      "fish": [
+        "Gobius niger",
+        "Coris julis",
+        "Torpedo torpedo"
+      ]
+    },
+    {
+      "beach_id": 208035700,
+      "beach_name": "Playa Marina",
+      "fish": [
+        "Scorpaena notata",
+        "Epinephelus marginatus",
+        "Mustelus mustelus",
+        "Zeus faber",
+        "Atherina boyeri",
+        "Carcharhinus falciformis"
+      ]
+    },
+    {
+      "beach_id": 208035800,
+      "beach_name": "Vaya Querida",
+      "fish": [
+        "Pteroplatytrygon violacea",
+        "Symphodus tinca",
+        "Seriola dumerili",
+        "Sphyrna lewini",
+        "Pagellus erythrinus",
+        "Echiichthys vipera"
+      ]
+    },
+    {
+      "beach_id": 208035900,
+      "beach_name": "Charco del Palo (Piscina)",
+      "fish": [
+        "Syngnathus typhle",
+        "Cetorhinus maximus",
+        "Atherina boyeri",
+        "Muraena helena",
+        "Raja montagui"
+      ]
+    },
+    {
+      "beach_id": 208036000,
+      "beach_name": "De Seifio",
+      "fish": [
+        "Torpedo torpedo",
+        "Kyphosus sectatrix",
+        "Trachinus araneus",
+        "Scorpaena notata",
+        "Thalassoma pavo",
+        "Pagellus erythrinus",
+        "Sardina pilchardus"
+      ]
+    },
+    {
+      "beach_id": 208036100,
+      "beach_name": "La Condesa",
+      "fish": [
+        "Mycteroperca fusca",
+        "Thalassoma pavo",
+        "Syngnathus typhle",
+        "Canthigaster capistrata",
+        "Muraena helena"
+      ]
+    },
+    {
+      "beach_id": 208036200,
+      "beach_name": "Punta Fariones",
+      "fish": [
+        "Labrus mixtus",
+        "Scorpaena notata",
+        "Prionace glauca",
+        "Dactylopterus volitans"
+      ]
+    },
+    {
+      "beach_id": 208036300,
+      "beach_name": "La Cala de Punta Fariones",
+      "fish": [
+        "Echiichthys vipera",
+        "Balistes capriscus",
+        "Gymnura altavela"
+      ]
+    },
+    {
+      "beach_id": 209040100,
+      "beach_name": "Honda",
+      "fish": [
+        "Symphodus tinca",
+        "Sparisoma cretense",
+        "Spondyliosoma cantharus",
+        "Diplodus puntazzo",
+        "Squatina squatina"
+      ]
+    },
+    {
+      "beach_id": 209040200,
+      "beach_name": "Guacimeta",
+      "fish": [
+        "Scomber scombrus",
+        "Balistes capriscus",
+        "Chromis limbata",
+        "Spicara maena",
+        "Raja montagui"
+      ]
+    },
+    {
+      "beach_id": 210041100,
+      "beach_name": "Playa Caleta del Caballo",
+      "fish": [
+        "Scorpaena porcus",
+        "Torpedo torpedo",
+        "Boops boops",
+        "Pteroplatytrygon violacea"
+      ]
+    },
+    {
+      "beach_id": 210041200,
+      "beach_name": "Playa de San Juan",
+      "fish": [
+        "Scorpaena notata",
+        "Dicentrarchus punctatus",
+        "Sarpa salpa",
+        "Diplodus vulgaris",
+        "Serranus scriba"
+      ]
+    },
+    {
+      "beach_id": 210041300,
+      "beach_name": "Las Palomas",
+      "fish": [
+        "Dicentrarchus punctatus",
+        "Sardina pilchardus",
+        "Sarpa salpa"
+      ]
+    },
+    {
+      "beach_id": 210041400,
+      "beach_name": "Playa del Perejil",
+      "fish": [
+        "Zeus faber",
+        "Dactylopterus volitans",
+        "Bothus podas",
+        "Uranoscopus scaber"
+      ]
+    },
+    {
+      "beach_id": 210041500,
+      "beach_name": "Bajo Raso",
+      "fish": [
+        "Coris julis",
+        "Mustelus mustelus",
+        "Mullus surmuletus"
+      ]
+    },
+    {
+      "beach_id": 210041600,
+      "beach_name": "Playa Caleta de Famara",
+      "fish": [
+        "Coryphaena hippurus",
+        "Carcharhinus falciformis",
+        "Echiichthys vipera"
+      ]
+    },
+    {
+      "beach_id": 210041700,
+      "beach_name": "Playa de Famara",
+      "fish": [
+        "Pteroplatytrygon violacea",
+        "Ophioblennius atlanticus",
+        "Mullus barbatus"
+      ]
+    },
+    {
+      "beach_id": 210041800,
+      "beach_name": "Charco del Palo",
+      "fish": [
+        "Exocoetus volitans",
+        "Solea solea",
+        "Scorpaena notata",
+        "Torpedo marmorata",
+        "Pagrus pagrus",
+        "Labrus mixtus",
+        "Sardina pilchardus"
+      ]
+    },
+    {
+      "beach_id": 210041900,
+      "beach_name": "El Riadero",
+      "fish": [
+        "Raja undulata",
+        "Serranus atricauda",
+        "Diplodus annularis"
+      ]
+    },
+    {
+      "beach_id": 210042000,
+      "beach_name": "Playa Tío Joaquín",
+      "fish": [
+        "Scomber scombrus",
+        "Diplodus annularis",
+        "Dasyatis pastinaca",
+        "Uranoscopus scaber",
+        "Trachinus draco",
+        "Spondyliosoma cantharus"
+      ]
+    },
+    {
+      "beach_id": 210042100,
+      "beach_name": "Playa Tía Vicenta",
+      "fish": [
+        "Mobula mobular",
+        "Sphyraena viridensis",
+        "Squatina squatina"
+      ]
+    },
+    {
+      "beach_id": 210042200,
+      "beach_name": "Los Charcos (artificial)",
+      "fish": [
+        "Symphodus mediterraneus",
+        "Lithognathus mormyrus",
+        "Sparisoma cretense",
+        "Myliobatis aquila",
+        "Zeus faber",
+        "Mustelus mustelus"
+      ]
+    },
+    {
+      "beach_id": 210042300,
+      "beach_name": "Playa de Los Charcos",
+      "fish": [
+        "Muraena helena",
+        "Hippocampus guttulatus",
+        "Carcharhinus falciformis",
+        "Ginglymostoma cirratum",
+        "Cetorhinus maximus"
+      ]
+    },
+    {
+      "beach_id": 210042400,
+      "beach_name": "Playa de Las Cucharas",
+      "fish": [
+        "Syngnathus typhle",
+        "Pagellus erythrinus",
+        "Trachinotus ovatus",
+        "Balistes capriscus",
+        "Syngnathus acus",
+        "Carcharhinus falciformis"
+      ]
+    },
+    {
+      "beach_id": 210042500,
+      "beach_name": "Playa El Jablillo",
+      "fish": [
+        "Syngnathus typhle",
+        "Seriola dumerili",
+        "Canthigaster capistrata",
+        "Isurus oxyrinchus",
+        "Diplodus annularis",
+        "Symphodus tinca",
+        "Cetorhinus maximus"
+      ]
+    },
+    {
+      "beach_id": 210042600,
+      "beach_name": "Playa Bastián",
+      "fish": [
+        "Dasyatis pastinaca",
+        "Conger conger",
+        "Enchelycore anatina"
+      ]
+    },
+    {
+      "beach_id": 210042700,
+      "beach_name": "Playa del Ancla",
+      "fish": [
+        "Symphodus tinca",
+        "Scorpaena scrofa",
+        "Carcharhinus falciformis",
+        "Mustelus mustelus"
+      ]
+    },
+    {
+      "beach_id": 210042800,
+      "beach_name": "Las Caletas",
+      "fish": [
+        "Sarda sarda",
+        "Trachinus radiatus",
+        "Trachinus draco",
+        "Conger conger"
+      ]
+    },
+    {
+      "beach_id": 210042900,
+      "beach_name": "La Laja",
+      "fish": [
+        "Scyliorhinus stellaris",
+        "Trachinus radiatus",
+        "Syngnathus typhle",
+        "Gymnura altavela",
+        "Macroramphosus scolopax",
+        "Sarpa salpa",
+        "euthynnus alletteratus"
+      ]
+    },
+    {
+      "beach_id": 210043000,
+      "beach_name": "Bahía del Salado",
+      "fish": [
+        "Labrus mixtus",
+        "Scomber colias",
+        "Trachinus araneus",
+        "Cetorhinus maximus",
+        "Exocoetus volitans",
+        "Syngnathus typhle",
+        "Oblada melanura"
+      ]
+    },
+    {
+      "beach_id": 210043100,
+      "beach_name": "La Lajita",
+      "fish": [
+        "Kyphosus sectatrix",
+        "Capros aper",
+        "Polyprion americanus",
+        "Apogon imberbis",
+        "Mycteroperca fusca"
+      ]
+    },
+    {
+      "beach_id": 210043200,
+      "beach_name": "Playa de La Cocina",
+      "fish": [
+        "Carcharodon carcharias",
+        "Gobius niger",
+        "Mycteroperca fusca",
+        "Prionace glauca",
+        "Sciaena umbra"
+      ]
+    },
+    {
+      "beach_id": 210043300,
+      "beach_name": "Baja del Ganado",
+      "fish": [
+        "Diplodus puntazzo",
+        "Sparus aurata",
+        "Diplodus vulgaris",
+        "Bothus podas",
+        "Parablennius pilicornis"
+      ]
+    },
+    {
+      "beach_id": 210043400,
+      "beach_name": "Playa de Las Conchas",
+      "fish": [
+        "Diplodus cervinus",
+        "Spicara maena",
+        "Scomber colias",
+        "Symphodus mediterraneus"
+      ]
+    },
+    {
+      "beach_id": 210043500,
+      "beach_name": "Playa Lambra",
+      "fish": [
+        "Scyliorhinus stellaris",
+        "Isurus oxyrinchus",
+        "Trachinus araneus",
+        "Trachinotus ovatus",
+        "Mustelus mustelus"
+      ]
+    },
+    {
+      "beach_id": 210043600,
+      "beach_name": "Pedro Barba",
+      "fish": [
+        "Kyphosus sectatrix",
+        "Scorpaena porcus",
+        "Torpedo torpedo",
+        "Seriola dumerili",
+        "Pteroplatytrygon violacea"
+      ]
+    },
+    {
+      "beach_id": 210043700,
+      "beach_name": "Morros Colorados",
+      "fish": [
+        "Squatina squatina",
+        "Solea solea",
+        "Polyprion americanus"
+      ]
+    },
+    {
+      "beach_id": 210043800,
+      "beach_name": "Conejos",
+      "fish": [
+        "Trachinus radiatus",
+        "Sparisoma cretense",
+        "Polyprion americanus",
+        "Parapristipoma octolineatum",
+        "Dicentrarchus punctatus",
+        "Uranoscopus scaber",
+        "Gobius niger"
+      ]
+    },
+    {
+      "beach_id": 210043900,
+      "beach_name": "Playa de Los Conejos",
+      "fish": [
+        "Dactylopterus volitans",
+        "Xyrichtys novacula",
+        "Spicara maena",
+        "Tripterygion delaisi",
+        "Scorpaena notata"
+      ]
+    },
+    {
+      "beach_id": 210044000,
+      "beach_name": "Caleta de Arriba",
+      "fish": [
+        "Lophius piscatorius",
+        "Gymnura altavela",
+        "Balistes capriscus",
+        "Scorpaena notata",
+        "Anthias anthias",
+        "Scomber scombrus"
+      ]
+    },
+    {
+      "beach_id": 210044100,
+      "beach_name": "La Sociedad",
+      "fish": [
+        "Ophioblennius atlanticus",
+        "Muraena helena",
+        "Trachinus draco",
+        "Sardina pilchardus",
+        "Diplodus cervinus",
+        "Zeus faber",
+        "Mola mola"
+      ]
+    },
+    {
+      "beach_id": 210044200,
+      "beach_name": "Isla de La Alegranza",
+      "fish": [
+        "Anthias anthias",
+        "Lophius budegassa",
+        "Aulostomus strigosus",
+        "Raja clavata"
+      ]
+    },
+    {
+      "beach_id": 210044300,
+      "beach_name": "Playa Caleta del Sebo",
+      "fish": [
+        "Bodianus scrofa",
+        "Exocoetus volitans",
+        "Raja brachyura"
+      ]
+    },
+    {
+      "beach_id": 211040200,
+      "beach_name": "Playa de Guacimeta",
+      "fish": [
+        "Tripterygion delaisi",
+        "Diplodus sargus",
+        "Squatina squatina"
+      ]
+    },
+    {
+      "beach_id": 211048100,
+      "beach_name": "Playa Lima",
+      "fish": [
+        "Balistes capriscus",
+        "Pseudocaranx dentex",
+        "Trachinus radiatus",
+        "Epinephelus marginatus",
+        "Raja clavata"
+      ]
+    },
+    {
+      "beach_id": 211048200,
+      "beach_name": "Playa Matagorda",
+      "fish": [
+        "Gymnura altavela",
+        "Scorpaena scrofa",
+        "Sphyraena viridensis",
+        "Naucrates ductor",
+        "Aulostomus strigosus",
+        "Sciaena umbra"
+      ]
+    },
+    {
+      "beach_id": 211048300,
+      "beach_name": "Playa los Pocillos",
+      "fish": [
+        "Epinephelus marginatus",
+        "Mobula mobular",
+        "Torpedo marmorata",
+        "Gobius paganellus"
+      ]
+    },
+    {
+      "beach_id": 211048400,
+      "beach_name": "Playa La Peñita",
+      "fish": [
+        "Prionace glauca",
+        "Ophioblennius atlanticus",
+        "Pteroplatytrygon violacea"
+      ]
+    },
+    {
+      "beach_id": 211048500,
+      "beach_name": "Playa El Barranquillo",
+      "fish": [
+        "Dicentrarchus punctatus",
+        "Conger conger",
+        "Diplodus puntazzo",
+        "Diplodus annularis",
+        "Serranus cabrilla"
+      ]
+    },
+    {
+      "beach_id": 211048600,
+      "beach_name": "Playa La Peña del Dice",
+      "fish": [
+        "Xyrichtys novacula",
+        "Pagrus pagrus",
+        "Torpedo torpedo",
+        "Mustelus mustelus",
+        "Sphyraena viridensis",
+        "Enchelycore anatina",
+        "Scyliorhinus canicula"
+      ]
+    },
+    {
+      "beach_id": 211048700,
+      "beach_name": "Playa El Caletón de Enmedio",
+      "fish": [
+        "Anthias anthias",
+        "Serranus cabrilla",
+        "Syngnathus typhle",
+        "Dasyatis pastinaca",
+        "Parablennius pilicornis",
+        "Sarpa salpa",
+        "Exocoetus volitans"
+      ]
+    },
+    {
+      "beach_id": 211048800,
+      "beach_name": "Playa Grande",
+      "fish": [
+        "Raja undulata",
+        "Parapristipoma octolineatum",
+        "Uranoscopus scaber",
+        "Epinephelus costae",
+        "Epinephelus itajara",
+        "Pagellus erythrinus",
+        "Syngnathus typhle"
+      ]
+    },
+    {
+      "beach_id": 211048900,
+      "beach_name": "Playa de En medio/De La Barrilla",
+      "fish": [
+        "Scorpaena porcus",
+        "Dasyatis pastinaca",
+        "Tripterygion delaisi",
+        "Scorpaena scrofa",
+        "Raja brachyura",
+        "Echiichthys vipera"
+      ]
+    },
+    {
+      "beach_id": 211049000,
+      "beach_name": "Playa Chica",
+      "fish": [
+        "Balistes capriscus",
+        "Trachinus araneus",
+        "Lithognathus mormyrus",
+        "Epinephelus marginatus"
+      ]
+    },
+    {
+      "beach_id": 212051100,
+      "beach_name": "La Madera",
+      "fish": [
+        "Sphyraena viridensis",
+        "Mustelus mustelus",
+        "Raja brachyura"
+      ]
+    },
+    {
+      "beach_id": 212051200,
+      "beach_name": "Las Malvas",
+      "fish": [
+        "Sparus aurata",
+        "Echiichthys vipera",
+        "Scyliorhinus canicula",
+        "Mullus barbatus"
+      ]
+    },
+    {
+      "beach_id": 212051300,
+      "beach_name": "Caleta del Mariscadero",
+      "fish": [
+        "Raja montagui",
+        "Gymnothorax unicolor",
+        "Oblada melanura",
+        "Symphodus mediterraneus"
+      ]
+    },
+    {
+      "beach_id": 212051400,
+      "beach_name": "Piedra Mansa",
+      "fish": [
+        "Torpedo torpedo",
+        "Sarpa salpa",
+        "Sparus aurata",
+        "Mola mola"
+      ]
+    },
+    {
+      "beach_id": 212051500,
+      "beach_name": "Pico Alto",
+      "fish": [
+        "Mustelus mustelus",
+        "Torpedo torpedo",
+        "Myliobatis aquila",
+        "Sardina pilchardus",
+        "Mobula mobular"
+      ]
+    },
+    {
+      "beach_id": 212051600,
+      "beach_name": "Teneza",
+      "fish": [
+        "Aulostomus strigosus",
+        "Raja undulata",
+        "Scyliorhinus stellaris",
+        "euthynnus alletteratus",
+        "Scyliorhinus canicula"
+      ]
+    },
+    {
+      "beach_id": 212051700,
+      "beach_name": "Barranco del Burro",
+      "fish": [
+        "Mobula mobular",
+        "Echiichthys vipera",
+        "Sparisoma cretense",
+        "Coryphaena hippurus",
+        "Mycteroperca fusca",
+        "Gymnura altavela"
+      ]
+    },
+    {
+      "beach_id": 212051800,
+      "beach_name": "La Santa (Pueblo)",
+      "fish": [
+        "Diplodus cervinus",
+        "Mycteroperca fusca",
+        "Trachinus draco",
+        "Kyphosus sectatrix",
+        "Gobius niger",
+        "Atherina boyeri",
+        "Syngnathus typhle"
+      ]
+    },
+    {
+      "beach_id": 212051900,
+      "beach_name": "Los Risquetes",
+      "fish": [
+        "euthynnus alletteratus",
+        "Raja clavata",
+        "Canthigaster capistrata",
+        "Parapristipoma octolineatum"
+      ]
+    },
+    {
+      "beach_id": 212052000,
+      "beach_name": "La Ría de la Santa",
+      "fish": [
+        "Oblada melanura",
+        "Taeniura grabata",
+        "Scomber colias"
+      ]
+    },
+    {
+      "beach_id": 212052100,
+      "beach_name": "La Boca de Abajo",
+      "fish": [
+        "Sphyrna lewini",
+        "Parapristipoma octolineatum",
+        "Dicentrarchus punctatus"
+      ]
+    },
+    {
+      "beach_id": 213055100,
+      "beach_name": "Quemada",
+      "fish": [
+        "Dicentrarchus labrax",
+        "Sphyrna lewini",
+        "Symphodus mediterraneus",
+        "Muraena helena",
+        "Squatina squatina",
+        "Cetorhinus maximus"
+      ]
+    },
+    {
+      "beach_id": 213055200,
+      "beach_name": "La Arena",
+      "fish": [
+        "Carcharodon carcharias",
+        "Hippocampus hippocampus",
+        "Oblada melanura",
+        "Scorpaena maderensis",
+        "Prionace glauca",
+        "Enchelycore anatina",
+        "Dicentrarchus punctatus"
+      ]
+    },
+    {
+      "beach_id": 213055300,
+      "beach_name": "El Pozo",
+      "fish": [
+        "Symphodus tinca",
+        "Sarpa salpa",
+        "Hippocampus guttulatus",
+        "Exocoetus volitans"
+      ]
+    },
+    {
+      "beach_id": 213055400,
+      "beach_name": "El Valle de la Casa",
+      "fish": [
+        "Lophius piscatorius",
+        "Syngnathus typhle",
+        "Gobius niger"
+      ]
+    },
+    {
+      "beach_id": 213055500,
+      "beach_name": "El Parrado",
+      "fish": [
+        "Solea solea",
+        "Parablennius incognitus",
+        "Gobius paganellus",
+        "Ginglymostoma cirratum",
+        "Scomber colias"
+      ]
+    },
+    {
+      "beach_id": 213055600,
+      "beach_name": "Caleta del Fuego",
+      "fish": [
+        "Exocoetus volitans",
+        "Zeus faber",
+        "Syngnathus typhle",
+        "Hippocampus guttulatus",
+        "Muraena helena",
+        "Diplodus sargus"
+      ]
+    },
+    {
+      "beach_id": 213055700,
+      "beach_name": "La Fuentecita",
+      "fish": [
+        "Raja brachyura",
+        "Myliobatis aquila",
+        "Tripterygion delaisi"
+      ]
+    },
+    {
+      "beach_id": 213055800,
+      "beach_name": "Barranco de las Pilas",
+      "fish": [
+        "Hippocampus hippocampus",
+        "Trachinotus ovatus",
+        "Sarpa salpa",
+        "Sciaena umbra",
+        "Epinephelus itajara"
+      ]
+    },
+    {
+      "beach_id": 213055900,
+      "beach_name": "La Colorada",
+      "fish": [
+        "Hippocampus hippocampus",
+        "Scomber colias",
+        "Epinephelus itajara",
+        "Dicentrarchus labrax",
+        "Lophius piscatorius",
+        "Pteroplatytrygon violacea",
+        "Scomber scombrus"
+      ]
+    },
+    {
+      "beach_id": 213056000,
+      "beach_name": "El Cohon",
+      "fish": [
+        "Uranoscopus scaber",
+        "Thunnus thynnus",
+        "Sparisoma cretense",
+        "Capros aper",
+        "Labrus merula",
+        "Ophioblennius atlanticus",
+        "Lithognathus mormyrus"
+      ]
+    },
+    {
+      "beach_id": 213056100,
+      "beach_name": "Caleta Larga",
+      "fish": [
+        "Bodianus scrofa",
+        "Chromis limbata",
+        "Mustelus mustelus",
+        "Epinephelus costae",
+        "Naucrates ductor",
+        "Conger conger"
+      ]
+    },
+    {
+      "beach_id": 213056200,
+      "beach_name": "El Pasito",
+      "fish": [
+        "Taeniura grabata",
+        "Bodianus scrofa",
+        "Diplodus puntazzo",
+        "Mullus surmuletus",
+        "Diplodus annularis",
+        "Raja brachyura"
+      ]
+    },
+    {
+      "beach_id": 213056300,
+      "beach_name": "Puerto Muelas",
+      "fish": [
+        "Hippocampus hippocampus",
+        "Coris julis",
+        "Mycteroperca fusca",
+        "Diplodus vulgaris",
+        "Myliobatis aquila",
+        "Torpedo torpedo",
+        "Bothus podas"
+      ]
+    },
+    {
+      "beach_id": 213056400,
+      "beach_name": "Caleta del Congrio",
+      "fish": [
+        "Sphyrna lewini",
+        "Scorpaena scrofa",
+        "Parablennius incognitus",
+        "Scomber colias"
+      ]
+    },
+    {
+      "beach_id": 213056500,
+      "beach_name": "El Papagayo",
+      "fish": [
+        "Scorpaena notata",
+        "Boops boops",
+        "Labrus mixtus",
+        "Dicentrarchus punctatus",
+        "Raja clavata",
+        "Dactylopterus volitans"
+      ]
+    },
+    {
+      "beach_id": 213056600,
+      "beach_name": "La Cera",
+      "fish": [
+        "Diplodus puntazzo",
+        "Diplodus annularis",
+        "Sarpa salpa"
+      ]
+    },
+    {
+      "beach_id": 213056700,
+      "beach_name": "La Cruz",
+      "fish": [
+        "Diplodus annularis",
+        "Sphyrna lewini",
+        "Serranus scriba",
+        "Labrus mixtus",
+        "Exocoetus volitans"
+      ]
+    },
+    {
+      "beach_id": 213056800,
+      "beach_name": "Caletón de San Marcial",
+      "fish": [
+        "Labrus mixtus",
+        "Epinephelus marginatus",
+        "Torpedo marmorata",
+        "Serranus scriba"
+      ]
+    },
+    {
+      "beach_id": 213056900,
+      "beach_name": "Caletón del Cobre",
+      "fish": [
+        "Torpedo marmorata",
+        "Scorpaena maderensis",
+        "Prionace glauca",
+        "Kyphosus sectatrix",
+        "Dicentrarchus labrax",
+        "Parablennius pilicornis",
+        "Raja clavata"
+      ]
+    },
+    {
+      "beach_id": 213057000,
+      "beach_name": "Mujeres",
+      "fish": [
+        "Seriola dumerili",
+        "Solea solea",
+        "Sparisoma cretense",
+        "Epinephelus itajara",
+        "Syngnathus typhle"
+      ]
+    },
+    {
+      "beach_id": 213057100,
+      "beach_name": "Las Coloradas",
+      "fish": [
+        "Dactylopterus volitans",
+        "Xyrichtys novacula",
+        "Chromis limbata",
+        "Serranus atricauda",
+        "Thalassoma pavo"
+      ]
+    },
+    {
+      "beach_id": 213057200,
+      "beach_name": "Dorada",
+      "fish": [
+        "Trachinus radiatus",
+        "Gobius niger",
+        "Carcharhinus falciformis",
+        "Sarda sarda",
+        "Raja brachyura",
+        "Gobius paganellus"
+      ]
+    },
+    {
+      "beach_id": 213057300,
+      "beach_name": "Blanca",
+      "fish": [
+        "Coryphaena hippurus",
+        "Sparisoma cretense",
+        "Labrus mixtus",
+        "Sparus aurata"
+      ]
+    },
+    {
+      "beach_id": 213057400,
+      "beach_name": "Flamingo",
+      "fish": [
+        "Scomber colias",
+        "Scyliorhinus stellaris",
+        "Diplodus cervinus",
+        "Coryphaena hippurus"
+      ]
+    },
+    {
+      "beach_id": 213057500,
+      "beach_name": "La Mulata",
+      "fish": [
+        "Kyphosus sectatrix",
+        "Solea solea",
+        "Xyrichtys novacula",
+        "Coris julis",
+        "Sarpa salpa",
+        "Pseudocaranx dentex"
+      ]
+    },
+    {
+      "beach_id": 213057600,
+      "beach_name": "La Campana",
+      "fish": [
+        "Epinephelus itajara",
+        "Parablennius pilicornis",
+        "Dicentrarchus labrax",
+        "Dasyatis pastinaca",
+        "Labrus mixtus",
+        "Conger conger",
+        "Parablennius incognitus"
+      ]
+    },
+    {
+      "beach_id": 213057700,
+      "beach_name": "Montaña Roja",
+      "fish": [
+        "Dasyatis pastinaca",
+        "Spicara maena",
+        "Parablennius pilicornis",
+        "Ophioblennius atlanticus",
+        "Scorpaena porcus",
+        "Exocoetus volitans",
+        "Coryphaena hippurus"
+      ]
+    },
+    {
+      "beach_id": 213057800,
+      "beach_name": "Janubio",
+      "fish": [
+        "Raja clavata",
+        "Sardina pilchardus",
+        "Solea solea",
+        "Hippocampus hippocampus",
+        "Raja montagui"
+      ]
+    },
+    {
+      "beach_id": 213057900,
+      "beach_name": "Montaña Bermeja",
+      "fish": [
+        "Myliobatis aquila",
+        "Gymnura altavela",
+        "Hippocampus hippocampus",
+        "Pteroplatytrygon violacea",
+        "Epinephelus itajara",
+        "Carcharodon carcharias"
+      ]
+    },
+    {
+      "beach_id": 213058000,
+      "beach_name": "Charco de los Clicos",
+      "fish": [
+        "Carcharhinus falciformis",
+        "Atherina boyeri",
+        "Seriola dumerili",
+        "Sphyraena viridensis",
+        "Kyphosus sectatrix",
+        "Scorpaena scrofa",
+        "Gymnothorax unicolor"
+      ]
+    },
+    {
+      "beach_id": 213058100,
+      "beach_name": "El Golfo",
+      "fish": [
+        "Trachinus radiatus",
+        "Bothus podas",
+        "Taeniura grabata",
+        "Mobula mobular",
+        "Epinephelus itajara",
+        "Zeus faber"
+      ]
+    },
+    {
+      "beach_id": 213058200,
+      "beach_name": "Paso",
+      "fish": [
+        "Trachinus araneus",
+        "Dicentrarchus labrax",
+        "Trachinotus ovatus",
+        "Thunnus thynnus"
+      ]
+    },
+    {
+      "beach_id": 213058300,
+      "beach_name": "Playa del Cochino",
+      "fish": [
+        "Polyprion americanus",
+        "Pseudocaranx dentex",
+        "Lophius piscatorius",
+        "Atherina boyeri",
+        "Cetorhinus maximus",
+        "Pteroplatytrygon violacea",
+        "Thalassoma pavo"
+      ]
+    },
+    {
+      "beach_id": 314061100,
+      "beach_name": "Playa del Risco",
+      "fish": [
+        "Mustelus mustelus",
+        "Coryphaena hippurus",
+        "Oblada melanura",
+        "Pseudocaranx dentex",
+        "Labrus mixtus",
+        "Apogon imberbis",
+        "Atherina boyeri"
+      ]
+    },
+    {
+      "beach_id": 314061200,
+      "beach_name": "Playa de Faneroque",
+      "fish": [
+        "Dicentrarchus punctatus",
+        "Pteroplatytrygon violacea",
+        "Seriola dumerili",
+        "Thalassoma pavo",
+        "Diplodus vulgaris"
+      ]
+    },
+    {
+      "beach_id": 314061300,
+      "beach_name": "Playa de Sotavento",
+      "fish": [
+        "Cetorhinus maximus",
+        "Echiichthys vipera",
+        "Carcharodon carcharias",
+        "Serranus scriba"
+      ]
+    },
+    {
+      "beach_id": 314061400,
+      "beach_name": "Playa de Arena en Guayedra",
+      "fish": [
+        "Kyphosus sectatrix",
+        "Isurus oxyrinchus",
+        "Chromis limbata",
+        "Syngnathus typhle",
+        "Sparus aurata",
+        "Raja montagui"
+      ]
+    },
+    {
+      "beach_id": 314061500,
+      "beach_name": "Playa de Piedra de Guayedra",
+      "fish": [
+        "Trachinus araneus",
+        "Dicentrarchus labrax",
+        "Sardina pilchardus"
+      ]
+    },
+    {
+      "beach_id": 314061600,
+      "beach_name": "Playa del Dedo de Dios",
+      "fish": [
+        "Epinephelus itajara",
+        "Carcharodon carcharias",
+        "Pagrus pagrus",
+        "Labrus mixtus",
+        "Spondyliosoma cantharus",
+        "Gobius niger",
+        "Dicentrarchus punctatus"
+      ]
+    },
+    {
+      "beach_id": 314061700,
+      "beach_name": "Playa de Delante del Muelle Viejo",
+      "fish": [
+        "Scomber colias",
+        "Diplodus annularis",
+        "Lithognathus mormyrus"
+      ]
+    },
+    {
+      "beach_id": 314061800,
+      "beach_name": "Playa de Atrás del Muelle Viejo",
+      "fish": [
+        "Raja brachyura",
+        "Kyphosus sectatrix",
+        "Conger conger"
+      ]
+    },
+    {
+      "beach_id": 314061900,
+      "beach_name": "Playa de Las Salinas-Piscinas Naturales",
+      "fish": [
+        "Serranus atricauda",
+        "Pagrus pagrus",
+        "Apogon imberbis",
+        "Zeus faber"
+      ]
+    },
+    {
+      "beach_id": 314062000,
+      "beach_name": "Playa de La Caleta",
+      "fish": [
+        "Sardina pilchardus",
+        "Raja montagui",
+        "Sphyrna mokarran",
+        "Squatina squatina",
+        "Trachinus draco",
+        "Coris julis",
+        "Labrus merula"
+      ]
+    },
+    {
+      "beach_id": 315065100,
+      "beach_name": "Playa de Vargas",
+      "fish": [
+        "Raja montagui",
+        "Thalassoma pavo",
+        "Mustelus mustelus",
+        "Labrus mixtus"
+      ]
+    },
+    {
+      "beach_id": 315065200,
+      "beach_name": "Playa de Los Tres Peos",
+      "fish": [
+        "Isurus oxyrinchus",
+        "Spondyliosoma cantharus",
+        "Raja brachyura"
+      ]
+    },
+    {
+      "beach_id": 315065300,
+      "beach_name": "Playa de Los Cuervitos",
+      "fish": [
+        "Diplodus cervinus",
+        "Mustelus mustelus",
+        "Trachinotus ovatus"
+      ]
+    },
+    {
+      "beach_id": 315065400,
+      "beach_name": "Playa de Cabrón",
+      "fish": [
+        "Raja undulata",
+        "Canthigaster capistrata",
+        "Spondyliosoma cantharus",
+        "Mullus surmuletus",
+        "Diplodus sargus",
+        "Gymnothorax unicolor",
+        "Parapristipoma octolineatum"
+      ]
+    },
+    {
+      "beach_id": 315065500,
+      "beach_name": "Playa El Muelle Viejo",
+      "fish": [
+        "Gobius niger",
+        "Hippocampus guttulatus",
+        "Trachinus araneus",
+        "Tripterygion delaisi",
+        "Dactylopterus volitans",
+        "Hippocampus hippocampus"
+      ]
+    },
+    {
+      "beach_id": 315065600,
+      "beach_name": "Risco Verde",
+      "fish": [
+        "Boops boops",
+        "Pteroplatytrygon violacea",
+        "Scyliorhinus stellaris"
+      ]
+    },
+    {
+      "beach_id": 315065700,
+      "beach_name": "Cañada de Los Conejos",
+      "fish": [
+        "Epinephelus costae",
+        "Diplodus sargus",
+        "Spondyliosoma cantharus"
+      ]
+    },
+    {
+      "beach_id": 315065800,
+      "beach_name": "Playa El Soco Negro",
+      "fish": [
+        "Myliobatis aquila",
+        "Hippocampus guttulatus",
+        "Scyliorhinus stellaris"
+      ]
+    },
+    {
+      "beach_id": 315065900,
+      "beach_name": "Playa de Arinaga",
+      "fish": [
+        "Sciaena umbra",
+        "Scomber scombrus",
+        "Dasyatis pastinaca",
+        "Uranoscopus scaber",
+        "Zeus faber"
+      ]
+    },
+    {
+      "beach_id": 317070100,
+      "beach_name": "Playa de San Andrés",
+      "fish": [
+        "Sarda sarda",
+        "Mola mola",
+        "Sphyrna mokarran",
+        "Scomber scombrus",
+        "Sphyraena viridensis",
+        "Sardina pilchardus"
+      ]
+    },
+    {
+      "beach_id": 317070200,
+      "beach_name": "Playa Los Enanos",
+      "fish": [
+        "Carcharhinus falciformis",
+        "Raja clavata",
+        "Zeus faber",
+        "Sardina pilchardus",
+        "Lophius budegassa",
+        "Taeniura grabata"
+      ]
+    },
+    {
+      "beach_id": 317070300,
+      "beach_name": "Playa El Peñon",
+      "fish": [
+        "Macroramphosus scolopax",
+        "Bothus podas",
+        "Epinephelus costae",
+        "Chromis limbata",
+        "Sardina pilchardus"
+      ]
+    },
+    {
+      "beach_id": 317070400,
+      "beach_name": "Playa de Quintanilla",
+      "fish": [
+        "Mycteroperca fusca",
+        "Gymnothorax unicolor",
+        "Symphodus mediterraneus",
+        "Solea solea"
+      ]
+    },
+    {
+      "beach_id": 317070500,
+      "beach_name": "Playa Los Marrajos",
+      "fish": [
+        "Tripterygion delaisi",
+        "Sardina pilchardus",
+        "Solea solea",
+        "Boops boops",
+        "Conger conger",
+        "Mullus surmuletus",
+        "Dicentrarchus labrax"
+      ]
+    },
+    {
+      "beach_id": 317070600,
+      "beach_name": "Playa La Fuente",
+      "fish": [
+        "Enchelycore anatina",
+        "Mullus surmuletus",
+        "Raja montagui",
+        "Kyphosus sectatrix"
+      ]
+    },
+    {
+      "beach_id": 317070700,
+      "beach_name": "Playa Las Coloradas",
+      "fish": [
+        "Atherina boyeri",
+        "Sphyrna mokarran",
+        "Mola mola",
+        "Naucrates ductor",
+        "Oblada melanura",
+        "Epinephelus itajara",
+        "Kyphosus sectatrix"
+      ]
+    },
+    {
+      "beach_id": 317070800,
+      "beach_name": "Los Charcones",
+      "fish": [
+        "Scorpaena maderensis",
+        "Parapristipoma octolineatum",
+        "Aulostomus strigosus",
+        "Diplodus vulgaris"
+      ]
+    },
+    {
+      "beach_id": 317070900,
+      "beach_name": "El Puertillo (Bocabarranco)",
+      "fish": [
+        "Tripterygion delaisi",
+        "Raja montagui",
+        "Balistes capriscus",
+        "Parablennius pilicornis"
+      ]
+    },
+    {
+      "beach_id": 317071000,
+      "beach_name": "Charco de Las Palomas",
+      "fish": [
+        "Raja montagui",
+        "Spondyliosoma cantharus",
+        "Coryphaena hippurus"
+      ]
+    },
+    {
+      "beach_id": 317071100,
+      "beach_name": "Charco Lajial (Las Salinas)",
+      "fish": [
+        "Gobius paganellus",
+        "Diplodus puntazzo",
+        "Sphyraena viridensis",
+        "Solea solea",
+        "Prionace glauca",
+        "Zeus faber"
+      ]
+    },
+    {
+      "beach_id": 319073100,
+      "beach_name": "Juncal",
+      "fish": [
+        "Scorpaena maderensis",
+        "Mustelus mustelus",
+        "Polyprion americanus",
+        "Raja brachyura",
+        "Mullus surmuletus",
+        "Scomber scombrus",
+        "Labrus merula"
+      ]
+    },
+    {
+      "beach_id": 319073200,
+      "beach_name": "Lagarto",
+      "fish": [
+        "Pseudocaranx dentex",
+        "Xyrichtys novacula",
+        "Gymnura altavela",
+        "Aulostomus strigosus"
+      ]
+    },
+    {
+      "beach_id": 319073300,
+      "beach_name": "Arrastradero",
+      "fish": [
+        "Dicentrarchus punctatus",
+        "Gobius paganellus",
+        "euthynnus alletteratus"
+      ]
+    },
+    {
+      "beach_id": 319073400,
+      "beach_name": "Risco Partido",
+      "fish": [
+        "Isurus oxyrinchus",
+        "Dasyatis pastinaca",
+        "Pagellus erythrinus"
+      ]
+    },
+    {
+      "beach_id": 319073500,
+      "beach_name": "Martorell",
+      "fish": [
+        "Coris julis",
+        "Conger conger",
+        "Sparisoma cretense",
+        "Tripterygion delaisi",
+        "Boops boops",
+        "Naucrates ductor",
+        "Uranoscopus scaber"
+      ]
+    },
+    {
+      "beach_id": 319073600,
+      "beach_name": "Sardina",
+      "fish": [
+        "Dicentrarchus punctatus",
+        "Mycteroperca fusca",
+        "Pagrus pagrus",
+        "Thunnus thynnus",
+        "Pteroplatytrygon violacea"
+      ]
+    },
+    {
+      "beach_id": 319073700,
+      "beach_name": "El Muelle",
+      "fish": [
+        "Hippocampus guttulatus",
+        "Hippocampus hippocampus",
+        "Symphodus mediterraneus",
+        "Zeus faber",
+        "Parablennius incognitus",
+        "Syngnathus acus",
+        "Boops boops"
+      ]
+    },
+    {
+      "beach_id": 319073800,
+      "beach_name": "El Roquete",
+      "fish": [
+        "Raja clavata",
+        "Pagrus pagrus",
+        "Cetorhinus maximus"
+      ]
+    },
+    {
+      "beach_id": 319073900,
+      "beach_name": "Paso del Salgo",
+      "fish": [
+        "Pteroplatytrygon violacea",
+        "Aulostomus strigosus",
+        "Dicentrarchus labrax",
+        "Labrus mixtus"
+      ]
+    },
+    {
+      "beach_id": 319074000,
+      "beach_name": "Punta del Faro",
+      "fish": [
+        "Scorpaena scrofa",
+        "Scomber scombrus",
+        "Symphodus tinca",
+        "Coris julis",
+        "Sparus aurata",
+        "Exocoetus volitans"
+      ]
+    },
+    {
+      "beach_id": 319074100,
+      "beach_name": "Caletón de los Cangrejos",
+      "fish": [
+        "Sarda sarda",
+        "Lophius piscatorius",
+        "Bothus podas"
+      ]
+    },
+    {
+      "beach_id": 319074200,
+      "beach_name": "Punta Galdar",
+      "fish": [
+        "Symphodus mediterraneus",
+        "Oblada melanura",
+        "Mobula mobular",
+        "Seriola dumerili",
+        "Apogon imberbis"
+      ]
+    },
+    {
+      "beach_id": 319074300,
+      "beach_name": "Caleta de Abajo",
+      "fish": [
+        "Squatina squatina",
+        "Muraena helena",
+        "Diplodus sargus",
+        "Parapristipoma octolineatum",
+        "Canthigaster capistrata",
+        "Diplodus vulgaris"
+      ]
+    },
+    {
+      "beach_id": 319074400,
+      "beach_name": "Punta del Clavo",
+      "fish": [
+        "Spondyliosoma cantharus",
+        "Dicentrarchus punctatus",
+        "Anthias anthias",
+        "Prionace glauca"
+      ]
+    },
+    {
+      "beach_id": 319074500,
+      "beach_name": "Furnia",
+      "fish": [
+        "Mustelus mustelus",
+        "Oblada melanura",
+        "Labrus merula",
+        "Parablennius incognitus",
+        "Kyphosus sectatrix",
+        "Scyliorhinus canicula"
+      ]
+    },
+    {
+      "beach_id": 319074600,
+      "beach_name": "Dos Roques",
+      "fish": [
+        "Sparisoma cretense",
+        "Muraena helena",
+        "Raja undulata",
+        "Zeus faber",
+        "Thunnus thynnus",
+        "Gymnura altavela"
+      ]
+    },
+    {
+      "beach_id": 319074700,
+      "beach_name": "Boca Barranco",
+      "fish": [
+        "Mullus barbatus",
+        "Thunnus thynnus",
+        "euthynnus alletteratus",
+        "Bothus podas",
+        "Parablennius incognitus",
+        "Cetorhinus maximus",
+        "Coris julis"
+      ]
+    },
+    {
+      "beach_id": 319074800,
+      "beach_name": "La Redonda",
+      "fish": [
+        "Macroramphosus scolopax",
+        "Bothus podas",
+        "Parablennius pilicornis",
+        "Scorpaena scrofa"
+      ]
+    },
+    {
+      "beach_id": 319074900,
+      "beach_name": "El Agujero",
+      "fish": [
+        "Mola mola",
+        "Sarda sarda",
+        "Lophius piscatorius",
+        "Dicentrarchus punctatus",
+        "Trachinus radiatus",
+        "Mullus surmuletus"
+      ]
+    },
+    {
+      "beach_id": 319075000,
+      "beach_name": "La Guancha",
+      "fish": [
+        "Ginglymostoma cirratum",
+        "Carcharodon carcharias",
+        "Uranoscopus scaber",
+        "Diplodus sargus",
+        "Scorpaena maderensis",
+        "Scomber scombrus"
+      ]
+    },
+    {
+      "beach_id": 319075100,
+      "beach_name": "La Caleta de Arriba",
+      "fish": [
+        "Dasyatis pastinaca",
+        "Atherina boyeri",
+        "Lophius piscatorius",
+        "Kyphosus sectatrix",
+        "Exocoetus volitans",
+        "Tripterygion delaisi"
+      ]
+    },
+    {
+      "beach_id": 320078100,
+      "beach_name": "Playa de Las Torrecillas",
+      "fish": [
+        "Gymnura altavela",
+        "Lophius budegassa",
+        "Diplodus puntazzo",
+        "Mullus surmuletus",
+        "Thalassoma pavo",
+        "Serranus cabrilla",
+        "Exocoetus volitans"
+      ]
+    },
+    {
+      "beach_id": 320078200,
+      "beach_name": "Playa del Salmón",
+      "fish": [
+        "Mullus surmuletus",
+        "Sphyrna lewini",
+        "Carcharodon carcharias",
+        "Gymnura altavela",
+        "Atherina boyeri"
+      ]
+    },
+    {
+      "beach_id": 320078300,
+      "beach_name": "Playa de San Agustín",
+      "fish": [
+        "Gobius niger",
+        "Sphyraena viridensis",
+        "Raja clavata",
+        "Epinephelus itajara"
+      ]
+    },
+    {
+      "beach_id": 320078400,
+      "beach_name": "Playa del Burrero",
+      "fish": [
+        "Mobula mobular",
+        "Scorpaena maderensis",
+        "Taeniura grabata",
+        "Spondyliosoma cantharus",
+        "Anthias anthias",
+        "Sparus aurata"
+      ]
+    },
+    {
+      "beach_id": 321080100,
+      "beach_name": "Arguineguín",
+      "fish": [
+        "Aulostomus strigosus",
+        "Thalassoma pavo",
+        "euthynnus alletteratus",
+        "Ophioblennius atlanticus",
+        "Carcharhinus falciformis",
+        "Dactylopterus volitans",
+        "Exocoetus volitans"
+      ]
+    },
+    {
+      "beach_id": 321080200,
+      "beach_name": "Marañuela",
+      "fish": [
+        "Diplodus annularis",
+        "Pteroplatytrygon violacea",
+        "Raja clavata",
+        "Squatina squatina",
+        "Trachinus radiatus"
+      ]
+    },
+    {
+      "beach_id": 321080300,
+      "beach_name": "Costa Alegre",
+      "fish": [
+        "Scyliorhinus canicula",
+        "Ginglymostoma cirratum",
+        "Thalassoma pavo",
+        "Scorpaena porcus",
+        "Gobius paganellus",
+        "Mullus barbatus",
+        "Hippocampus hippocampus"
+      ]
+    },
+    {
+      "beach_id": 321080400,
+      "beach_name": "Playa Carrera Sunwing",
+      "fish": [
+        "Polyprion americanus",
+        "Scyliorhinus canicula",
+        "Trachinus draco",
+        "Mola mola",
+        "Trachinotus ovatus",
+        "Muraena helena"
+      ]
+    },
+    {
+      "beach_id": 321080500,
+      "beach_name": "Sunwing 2",
+      "fish": [
+        "Serranus scriba",
+        "Balistes capriscus",
+        "Gobius niger",
+        "Macroramphosus scolopax",
+        "Oblada melanura",
+        "Scorpaena maderensis"
+      ]
+    },
+    {
+      "beach_id": 321080600,
+      "beach_name": "Patalavaca",
+      "fish": [
+        "Scomber scombrus",
+        "Spicara maena",
+        "Parablennius pilicornis",
+        "Labrus merula",
+        "Balistes capriscus"
+      ]
+    },
+    {
+      "beach_id": 321080700,
+      "beach_name": "Aquamarina",
+      "fish": [
+        "Scomber colias",
+        "Gymnothorax unicolor",
+        "Apogon imberbis",
+        "Seriola dumerili",
+        "Uranoscopus scaber"
+      ]
+    },
+    {
+      "beach_id": 321080800,
+      "beach_name": "La Verga",
+      "fish": [
+        "Macroramphosus scolopax",
+        "Raja montagui",
+        "Sphyraena viridensis",
+        "Symphodus mediterraneus"
+      ]
+    },
+    {
+      "beach_id": 321080900,
+      "beach_name": "Balito",
+      "fish": [
+        "Scomber scombrus",
+        "Solea solea",
+        "Raja montagui",
+        "Scomber colias"
+      ]
+    },
+    {
+      "beach_id": 321081000,
+      "beach_name": "Cala Cañada del Canario",
+      "fish": [
+        "Tripterygion delaisi",
+        "Syngnathus typhle",
+        "Prionace glauca"
+      ]
+    },
+    {
+      "beach_id": 321081100,
+      "beach_name": "Playa de Puerto Rico",
+      "fish": [
+        "Dicentrarchus labrax",
+        "Balistes capriscus",
+        "Trachinus araneus",
+        "Scomber scombrus",
+        "Mullus barbatus",
+        "Serranus scriba",
+        "Trachinus radiatus"
+      ]
+    },
+    {
+      "beach_id": 321081200,
+      "beach_name": "Barranco La Hondura",
+      "fish": [
+        "Pteroplatytrygon violacea",
+        "Scomber scombrus",
+        "Lophius budegassa",
+        "Squatina squatina"
+      ]
+    },
+    {
+      "beach_id": 321081300,
+      "beach_name": "Amadores",
+      "fish": [
+        "Enchelycore anatina",
+        "Serranus scriba",
+        "Pagrus pagrus",
+        "Naucrates ductor"
+      ]
+    },
+    {
+      "beach_id": 321081400,
+      "beach_name": "Tauro",
+      "fish": [
+        "Carcharodon carcharias",
+        "Epinephelus marginatus",
+        "Parapristipoma octolineatum",
+        "Kyphosus sectatrix",
+        "Isurus oxyrinchus",
+        "Atherina boyeri",
+        "Aetomylaeus bovinus"
+      ]
+    },
+    {
+      "beach_id": 321081500,
+      "beach_name": "El Cura",
+      "fish": [
+        "Bodianus scrofa",
+        "Parablennius pilicornis",
+        "Thunnus thynnus",
+        "Oblada melanura",
+        "Spondyliosoma cantharus"
+      ]
+    },
+    {
+      "beach_id": 321081600,
+      "beach_name": "Los Frailes",
+      "fish": [
+        "Taeniura grabata",
+        "Coris julis",
+        "Gobius niger",
+        "Prionace glauca"
+      ]
+    },
+    {
+      "beach_id": 321081700,
+      "beach_name": "Medio Almud",
+      "fish": [
+        "Apogon imberbis",
+        "Scorpaena notata",
+        "Diplodus annularis",
+        "Parablennius pilicornis"
+      ]
+    },
+    {
+      "beach_id": 321081800,
+      "beach_name": "Tiritaña",
+      "fish": [
+        "Chromis limbata",
+        "Diplodus cervinus",
+        "Symphodus mediterraneus",
+        "Coris julis",
+        "Diplodus puntazzo"
+      ]
+    },
+    {
+      "beach_id": 321081900,
+      "beach_name": "Taurito",
+      "fish": [
+        "Coris julis",
+        "Diplodus sargus",
+        "Scorpaena notata"
+      ]
+    },
+    {
+      "beach_id": 321082000,
+      "beach_name": "Playa de La Puntilla",
+      "fish": [
+        "Serranus scriba",
+        "Mustelus mustelus",
+        "Balistes capriscus",
+        "Sarpa salpa",
+        "Thunnus thynnus",
+        "Sparus aurata"
+      ]
+    },
+    {
+      "beach_id": 321082100,
+      "beach_name": "Mogán",
+      "fish": [
+        "Carcharhinus falciformis",
+        "Pagellus erythrinus",
+        "Uranoscopus scaber"
+      ]
+    },
+    {
+      "beach_id": 321082200,
+      "beach_name": "Perchel",
+      "fish": [
+        "Sardina pilchardus",
+        "Isurus oxyrinchus",
+        "Gobius paganellus",
+        "Trachinus draco",
+        "Raja clavata"
+      ]
+    },
+    {
+      "beach_id": 321082300,
+      "beach_name": "Veneguera",
+      "fish": [
+        "Aetomylaeus bovinus",
+        "Diplodus annularis",
+        "Epinephelus costae",
+        "Taeniura grabata"
+      ]
+    },
+    {
+      "beach_id": 321082400,
+      "beach_name": "Playa de la Cantera",
+      "fish": [
+        "Pagellus erythrinus",
+        "Dasyatis pastinaca",
+        "Thalassoma pavo",
+        "Scorpaena scrofa"
+      ]
+    },
+    {
+      "beach_id": 321082500,
+      "beach_name": "Playa de La Camellita",
+      "fish": [
+        "Parapristipoma octolineatum",
+        "Balistes capriscus",
+        "Torpedo torpedo",
+        "Gobius niger"
+      ]
+    },
+    {
+      "beach_id": 321096100,
+      "beach_name": "Los Secos",
+      "fish": [
+        "Prionace glauca",
+        "Balistes capriscus",
+        "Cetorhinus maximus"
+      ]
+    },
+    {
+      "beach_id": 322084100,
+      "beach_name": "La Bajilla",
+      "fish": [
+        "Bodianus scrofa",
+        "Trachinus radiatus",
+        "Squatina squatina"
+      ]
+    },
+    {
+      "beach_id": 322084200,
+      "beach_name": "Piscina Natural Charco de San Lorenzo",
+      "fish": [
+        "Carcharhinus falciformis",
+        "Atherina boyeri",
+        "Sparus aurata",
+        "Chromis limbata",
+        "Scyliorhinus stellaris",
+        "Mobula mobular",
+        "Myliobatis aquila"
+      ]
+    },
+    {
+      "beach_id": 322084300,
+      "beach_name": "El Roque",
+      "fish": [
+        "Syngnathus acus",
+        "Anthias anthias",
+        "Xyrichtys novacula",
+        "Serranus scriba",
+        "Labrus merula",
+        "Mullus barbatus",
+        "Sphyrna lewini"
+      ]
+    },
+    {
+      "beach_id": 322084400,
+      "beach_name": "Varadero",
+      "fish": [
+        "Carcharodon carcharias",
+        "Prionace glauca",
+        "Exocoetus volitans",
+        "Tripterygion delaisi",
+        "Ophioblennius atlanticus",
+        "Epinephelus itajara"
+      ]
+    },
+    {
+      "beach_id": 322084500,
+      "beach_name": "Piscina Natural El Altillo",
+      "fish": [
+        "Mola mola",
+        "Mullus surmuletus",
+        "Muraena helena",
+        "Symphodus mediterraneus",
+        "Gobius niger",
+        "Scomber colias"
+      ]
+    },
+    {
+      "beach_id": 322084600,
+      "beach_name": "La Caleta",
+      "fish": [
+        "Ginglymostoma cirratum",
+        "Epinephelus marginatus",
+        "Sardina pilchardus",
+        "Sarpa salpa",
+        "Diplodus vulgaris",
+        "Scorpaena notata"
+      ]
+    },
+    {
+      "beach_id": 322084700,
+      "beach_name": "Costa Lairaga",
+      "fish": [
+        "Epinephelus itajara",
+        "Bothus podas",
+        "Symphodus tinca",
+        "Dasyatis pastinaca",
+        "Hippocampus guttulatus"
+      ]
+    },
+    {
+      "beach_id": 322084800,
+      "beach_name": "Zona Playa El Altillo Este-Oeste  de la piscina del Altillo",
+      "fish": [
+        "Pseudocaranx dentex",
+        "Apogon imberbis",
+        "Trachinus araneus"
+      ]
+    },
+    {
+      "beach_id": 323086100,
+      "beach_name": "Playa de Los Muellitos",
+      "fish": [
+        "Sphyraena viridensis",
+        "Polyprion americanus",
+        "Ophioblennius atlanticus",
+        "Coryphaena hippurus",
+        "Scomber scombrus",
+        "Kyphosus sectatrix"
+      ]
+    },
+    {
+      "beach_id": 323086201,
+      "beach_name": "Las Canteras Sector 1 - La Puntilla",
+      "fish": [
+        "Apogon imberbis",
+        "Atherina boyeri",
+        "Exocoetus volitans",
+        "Scomber colias",
+        "Sphyraena viridensis",
+        "Bothus podas"
+      ]
+    },
+    {
+      "beach_id": 323086202,
+      "beach_name": "Las Canteras Sector 2 - San José",
+      "fish": [
+        "Mullus barbatus",
+        "Mola mola",
+        "Enchelycore anatina"
+      ]
+    },
+    {
+      "beach_id": 323086203,
+      "beach_name": "Las Canteras Sector 3 - Muro Marrero",
+      "fish": [
+        "Parapristipoma octolineatum",
+        "Torpedo torpedo",
+        "Serranus cabrilla",
+        "Diplodus sargus",
+        "Mola mola",
+        "Ginglymostoma cirratum",
+        "Oblada melanura"
+      ]
+    },
+    {
+      "beach_id": 323086204,
+      "beach_name": "Las Canteras Sector 4 - Peña la Vieja",
+      "fish": [
+        "Carcharhinus falciformis",
+        "Enchelycore anatina",
+        "Chromis limbata",
+        "Hippocampus guttulatus"
+      ]
+    },
+    {
+      "beach_id": 323086205,
+      "beach_name": "Las Canteras Sector 5 - Churruca",
+      "fish": [
+        "Exocoetus volitans",
+        "Serranus cabrilla",
+        "Raja clavata",
+        "Ginglymostoma cirratum",
+        "Scorpaena maderensis",
+        "Squatina squatina",
+        "Gobius niger"
+      ]
+    },
+    {
+      "beach_id": 323086206,
+      "beach_name": "Las Canteras Sector 6 - La Cicer",
+      "fish": [
+        "Apogon imberbis",
+        "Aetomylaeus bovinus",
+        "Dicentrarchus labrax",
+        "Symphodus tinca",
+        "Xyrichtys novacula"
+      ]
+    },
+    {
+      "beach_id": 323086207,
+      "beach_name": "Las Canteras Sector 7 - Auditorio",
+      "fish": [
+        "Epinephelus marginatus",
+        "Spicara maena",
+        "Cetorhinus maximus",
+        "Sciaena umbra",
+        "Macroramphosus scolopax"
+      ]
+    },
+    {
+      "beach_id": 323086300,
+      "beach_name": "Playa de El Confital",
+      "fish": [
+        "Torpedo torpedo",
+        "Sarpa salpa",
+        "Isurus oxyrinchus"
+      ]
+    },
+    {
+      "beach_id": 323086400,
+      "beach_name": "Playa de las Alcaravaneras",
+      "fish": [
+        "Gobius paganellus",
+        "Gymnura altavela",
+        "Bothus podas",
+        "Kyphosus sectatrix",
+        "Torpedo marmorata",
+        "Dicentrarchus labrax",
+        "Pseudocaranx dentex"
+      ]
+    },
+    {
+      "beach_id": 323086500,
+      "beach_name": "Playa de San Cristóbal",
+      "fish": [
+        "Raja brachyura",
+        "Aetomylaeus bovinus",
+        "Sparisoma cretense",
+        "Diplodus annularis",
+        "Cetorhinus maximus",
+        "Labrus merula",
+        "Raja clavata"
+      ]
+    },
+    {
+      "beach_id": 323086600,
+      "beach_name": "Playa de La Puntilla",
+      "fish": [
+        "Aulostomus strigosus",
+        "Sphyrna lewini",
+        "Sarpa salpa",
+        "Seriola dumerili",
+        "Sciaena umbra"
+      ]
+    },
+    {
+      "beach_id": 323086700,
+      "beach_name": "Piscinas Naturales de La Laja",
+      "fish": [
+        "Labrus merula",
+        "Sparisoma cretense",
+        "Diplodus sargus",
+        "Scorpaena notata",
+        "euthynnus alletteratus",
+        "Sarpa salpa"
+      ]
+    },
+    {
+      "beach_id": 323086800,
+      "beach_name": "Playa de La Laja",
+      "fish": [
+        "Pagellus erythrinus",
+        "Labrus merula",
+        "Symphodus tinca"
+      ]
+    },
+    {
+      "beach_id": 323086900,
+      "beach_name": "Playa De Jinámar - Bocabarranco",
+      "fish": [
+        "Dicentrarchus punctatus",
+        "Gobius niger",
+        "Thunnus thynnus",
+        "Parapristipoma octolineatum",
+        "Trachinus radiatus"
+      ]
+    },
+    {
+      "beach_id": 324090100,
+      "beach_name": "Playa de Los Tártagos",
+      "fish": [
+        "Scomber scombrus",
+        "Sparus aurata",
+        "Hippocampus guttulatus"
+      ]
+    },
+    {
+      "beach_id": 324090200,
+      "beach_name": "Playa de Las Casillas",
+      "fish": [
+        "euthynnus alletteratus",
+        "Sardina pilchardus",
+        "Xyrichtys novacula",
+        "Thalassoma pavo",
+        "Parablennius incognitus",
+        "Pagrus pagrus"
+      ]
+    },
+    {
+      "beach_id": 324090300,
+      "beach_name": "Piscinas naturales del Castillo del Romeral",
+      "fish": [
+        "Exocoetus volitans",
+        "Capros aper",
+        "Diplodus annularis"
+      ]
+    },
+    {
+      "beach_id": 324090400,
+      "beach_name": "Playa Corral de Espìno",
+      "fish": [
+        "Epinephelus itajara",
+        "Epinephelus marginatus",
+        "Scyliorhinus canicula",
+        "Thalassoma pavo",
+        "Epinephelus costae",
+        "Muraena helena"
+      ]
+    },
+    {
+      "beach_id": 324090500,
+      "beach_name": "Playa de La Tabaibita",
+      "fish": [
+        "Chromis limbata",
+        "Sarpa salpa",
+        "Scorpaena maderensis",
+        "Carcharhinus falciformis",
+        "Mobula mobular"
+      ]
+    },
+    {
+      "beach_id": 324090600,
+      "beach_name": "Playa El Cardón",
+      "fish": [
+        "Gymnura altavela",
+        "Mobula mobular",
+        "Symphodus mediterraneus",
+        "Dasyatis pastinaca",
+        "Scorpaena porcus",
+        "Boops boops"
+      ]
+    },
+    {
+      "beach_id": 324090700,
+      "beach_name": "Playa del Morrete",
+      "fish": [
+        "Apogon imberbis",
+        "Enchelycore anatina",
+        "Pteroplatytrygon violacea",
+        "Sphyrna mokarran",
+        "Dasyatis pastinaca",
+        "Scomber colias"
+      ]
+    },
+    {
+      "beach_id": 324090800,
+      "beach_name": "Playa de Tarajalillo",
+      "fish": [
+        "Canthigaster capistrata",
+        "Parablennius pilicornis",
+        "Symphodus tinca",
+        "Gobius niger",
+        "Aulostomus strigosus",
+        "Mobula mobular",
+        "Diplodus sargus"
+      ]
+    },
+    {
+      "beach_id": 324090900,
+      "beach_name": "Playa de Bahía Felíz",
+      "fish": [
+        "Raja brachyura",
+        "Mullus surmuletus",
+        "Symphodus tinca",
+        "Sparisoma cretense",
+        "Uranoscopus scaber"
+      ]
+    },
+    {
+      "beach_id": 324091000,
+      "beach_name": "Playa El Águila",
+      "fish": [
+        "Sphyrna mokarran",
+        "Mobula mobular",
+        "Muraena helena",
+        "Raja brachyura",
+        "Naucrates ductor"
+      ]
+    },
+    {
+      "beach_id": 324091100,
+      "beach_name": "Playa El Pirata",
+      "fish": [
+        "Pseudocaranx dentex",
+        "Scorpaena notata",
+        "Dicentrarchus labrax",
+        "Epinephelus itajara",
+        "Gobius paganellus"
+      ]
+    },
+    {
+      "beach_id": 324091200,
+      "beach_name": "Playa de San Agustín",
+      "fish": [
+        "Aetomylaeus bovinus",
+        "Labrus mixtus",
+        "Muraena helena",
+        "Tripterygion delaisi",
+        "Diplodus puntazzo"
+      ]
+    },
+    {
+      "beach_id": 324091300,
+      "beach_name": "Playa de Las Burras",
+      "fish": [
+        "Uranoscopus scaber",
+        "Pagrus pagrus",
+        "Sardina pilchardus"
+      ]
+    },
+    {
+      "beach_id": 324091400,
+      "beach_name": "Playa de las Burras Chicas",
+      "fish": [
+        "Pagrus pagrus",
+        "Pteroplatytrygon violacea",
+        "Apogon imberbis",
+        "Muraena helena",
+        "Labrus merula",
+        "Epinephelus marginatus"
+      ]
+    },
+    {
+      "beach_id": 324091500,
+      "beach_name": "Playa del Cochino",
+      "fish": [
+        "Tripterygion delaisi",
+        "Coris julis",
+        "Kyphosus sectatrix",
+        "Ophioblennius atlanticus",
+        "Diplodus cervinus",
+        "Scomber scombrus",
+        "Capros aper"
+      ]
+    },
+    {
+      "beach_id": 324091600,
+      "beach_name": "Playa del Inglés",
+      "fish": [
+        "Scomber scombrus",
+        "Pteroplatytrygon violacea",
+        "Polyprion americanus",
+        "Pagellus erythrinus",
+        "Sparus aurata"
+      ]
+    },
+    {
+      "beach_id": 324091700,
+      "beach_name": "Playa de Maspalomas",
+      "fish": [
+        "Syngnathus acus",
+        "Sardina pilchardus",
+        "Lophius budegassa",
+        "Seriola dumerili"
+      ]
+    },
+    {
+      "beach_id": 324091800,
+      "beach_name": "Playa El Faro",
+      "fish": [
+        "Parablennius incognitus",
+        "Oblada melanura",
+        "Mola mola",
+        "Torpedo marmorata",
+        "Trachinotus ovatus",
+        "Echiichthys vipera",
+        "Sphyrna lewini"
+      ]
+    },
+    {
+      "beach_id": 324091900,
+      "beach_name": "Playa de Pedrazo",
+      "fish": [
+        "Naucrates ductor",
+        "Ophioblennius atlanticus",
+        "Raja undulata",
+        "Labrus merula",
+        "Bothus podas",
+        "Diplodus vulgaris",
+        "Aulostomus strigosus"
+      ]
+    },
+    {
+      "beach_id": 324092000,
+      "beach_name": "Playa de Las Mujeres",
+      "fish": [
+        "Solea solea",
+        "Mullus surmuletus",
+        "Parablennius incognitus",
+        "Anthias anthias",
+        "Oblada melanura",
+        "Coryphaena hippurus"
+      ]
+    },
+    {
+      "beach_id": 324092100,
+      "beach_name": "Playa de Las Meloneras",
+      "fish": [
+        "Syngnathus acus",
+        "Sphyrna mokarran",
+        "Serranus cabrilla",
+        "Trachinotus ovatus",
+        "Gobius paganellus"
+      ]
+    },
+    {
+      "beach_id": 324092200,
+      "beach_name": "Playa Pasito Blanco",
+      "fish": [
+        "Sphyrna lewini",
+        "Symphodus mediterraneus",
+        "Parablennius incognitus",
+        "Epinephelus marginatus",
+        "Scomber scombrus"
+      ]
+    },
+    {
+      "beach_id": 324092300,
+      "beach_name": "Playa de Pasito Bea",
+      "fish": [
+        "Xyrichtys novacula",
+        "Serranus cabrilla",
+        "Gobius niger",
+        "Canthigaster capistrata"
+      ]
+    },
+    {
+      "beach_id": 324092400,
+      "beach_name": "Playa de Montaña Arena",
+      "fish": [
+        "Raja undulata",
+        "Carcharodon carcharias",
+        "Gobius paganellus",
+        "Trachinus draco"
+      ]
+    },
+    {
+      "beach_id": 324092500,
+      "beach_name": "Playa de Las Carpinteras",
+      "fish": [
+        "Sarda sarda",
+        "Boops boops",
+        "Spicara maena",
+        "Ginglymostoma cirratum"
+      ]
+    },
+    {
+      "beach_id": 324092600,
+      "beach_name": "Playa Cueva del Caldero",
+      "fish": [
+        "Squatina squatina",
+        "Sarpa salpa",
+        "Ophioblennius atlanticus",
+        "Epinephelus marginatus"
+      ]
+    },
+    {
+      "beach_id": 324092700,
+      "beach_name": "Playa Triana",
+      "fish": [
+        "Macroramphosus scolopax",
+        "Prionace glauca",
+        "Pagrus pagrus",
+        "Symphodus mediterraneus"
+      ]
+    },
+    {
+      "beach_id": 324092800,
+      "beach_name": "Playa Los Bigotes",
+      "fish": [
+        "Pseudocaranx dentex",
+        "Mullus barbatus",
+        "Capros aper",
+        "Ginglymostoma cirratum",
+        "Uranoscopus scaber",
+        "Myliobatis aquila"
+      ]
+    },
+    {
+      "beach_id": 324092900,
+      "beach_name": "Playa del Llanillo",
+      "fish": [
+        "Parablennius pilicornis",
+        "Scyliorhinus stellaris",
+        "Epinephelus itajara",
+        "Raja montagui",
+        "Parapristipoma octolineatum"
+      ]
+    },
+    {
+      "beach_id": 324093000,
+      "beach_name": "Playa Lomo Galeón",
+      "fish": [
+        "Ophioblennius atlanticus",
+        "Xyrichtys novacula",
+        "Squatina squatina",
+        "Zeus faber"
+      ]
+    },
+    {
+      "beach_id": 324093100,
+      "beach_name": "Playa de Molina",
+      "fish": [
+        "Sphyrna mokarran",
+        "Thalassoma pavo",
+        "Scyliorhinus canicula",
+        "Kyphosus sectatrix",
+        "Sphyrna lewini"
+      ]
+    },
+    {
+      "beach_id": 324093200,
+      "beach_name": "Playa Santa Agueda",
+      "fish": [
+        "Pagrus pagrus",
+        "Pseudocaranx dentex",
+        "Sparisoma cretense",
+        "Carcharodon carcharias",
+        "Gymnura altavela",
+        "Raja clavata"
+      ]
+    },
+    {
+      "beach_id": 324093300,
+      "beach_name": "Playa de El Parchel",
+      "fish": [
+        "Enchelycore anatina",
+        "Balistes capriscus",
+        "Diplodus puntazzo",
+        "Pseudocaranx dentex",
+        "euthynnus alletteratus",
+        "Canthigaster capistrata"
+      ]
+    },
+    {
+      "beach_id": 325096100,
+      "beach_name": "Playa de Los Secos",
+      "fish": [
+        "Mobula mobular",
+        "Sphyraena viridensis",
+        "Scyliorhinus canicula",
+        "Diplodus annularis",
+        "Hippocampus hippocampus",
+        "Xyrichtys novacula",
+        "Torpedo torpedo"
+      ]
+    },
+    {
+      "beach_id": 325096200,
+      "beach_name": "Playa del Ámbar",
+      "fish": [
+        "Syngnathus typhle",
+        "Diplodus puntazzo",
+        "Diplodus cervinus",
+        "Gymnura altavela",
+        "Bodianus scrofa",
+        "Torpedo marmorata"
+      ]
+    },
+    {
+      "beach_id": 325096300,
+      "beach_name": "Playa de Tasarte",
+      "fish": [
+        "Symphodus tinca",
+        "Sarpa salpa",
+        "Trachinus araneus"
+      ]
+    },
+    {
+      "beach_id": 325096400,
+      "beach_name": "Playa de Las Aneas",
+      "fish": [
+        "Scomber scombrus",
+        "Parablennius pilicornis",
+        "Aetomylaeus bovinus",
+        "Ginglymostoma cirratum",
+        "Serranus scriba",
+        "Dicentrarchus punctatus"
+      ]
+    },
+    {
+      "beach_id": 325096500,
+      "beach_name": "Playa del Asno",
+      "fish": [
+        "Oblada melanura",
+        "Hippocampus guttulatus",
+        "Parablennius pilicornis",
+        "Scorpaena maderensis",
+        "Polyprion americanus",
+        "Canthigaster capistrata"
+      ]
+    },
+    {
+      "beach_id": 325096600,
+      "beach_name": "Playa de Guguy Grande",
+      "fish": [
+        "Gobius niger",
+        "Canthigaster capistrata",
+        "Prionace glauca",
+        "Hippocampus hippocampus",
+        "Symphodus mediterraneus"
+      ]
+    },
+    {
+      "beach_id": 325096700,
+      "beach_name": "Playa de Guguy Chico",
+      "fish": [
+        "Scyliorhinus stellaris",
+        "Diplodus sargus",
+        "Macroramphosus scolopax",
+        "Sphyrna lewini",
+        "Pseudocaranx dentex"
+      ]
+    },
+    {
+      "beach_id": 325096800,
+      "beach_name": "Playa Peñon Bermejo",
+      "fish": [
+        "Myliobatis aquila",
+        "Torpedo marmorata",
+        "Spicara maena",
+        "Scorpaena porcus",
+        "Bothus podas",
+        "Epinephelus itajara",
+        "Taeniura grabata"
+      ]
+    },
+    {
+      "beach_id": 325096900,
+      "beach_name": "Playa de Las Barquillas",
+      "fish": [
+        "Epinephelus marginatus",
+        "Diplodus sargus",
+        "Ophioblennius atlanticus",
+        "Raja brachyura",
+        "Trachinus araneus",
+        "Scomber colias"
+      ]
+    },
+    {
+      "beach_id": 325097000,
+      "beach_name": "Playa de La Caletilla",
+      "fish": [
+        "Syngnathus typhle",
+        "Scyliorhinus stellaris",
+        "Scyliorhinus canicula"
+      ]
+    },
+    {
+      "beach_id": 325097100,
+      "beach_name": "Playa del Perchel",
+      "fish": [
+        "Scyliorhinus stellaris",
+        "Sarda sarda",
+        "Mullus barbatus",
+        "Boops boops",
+        "Gobius niger",
+        "Diplodus cervinus",
+        "Sardina pilchardus"
+      ]
+    },
+    {
+      "beach_id": 327100100,
+      "beach_name": "Pozo Izquierdo",
+      "fish": [
+        "Gobius paganellus",
+        "Lithognathus mormyrus",
+        "Sardina pilchardus",
+        "Trachinotus ovatus",
+        "Zeus faber",
+        "Labrus merula"
+      ]
+    },
+    {
+      "beach_id": 328102100,
+      "beach_name": "Roque Prieto",
+      "fish": [
+        "Uranoscopus scaber",
+        "Atherina boyeri",
+        "Raja montagui",
+        "Thunnus thynnus"
+      ]
+    },
+    {
+      "beach_id": 328102200,
+      "beach_name": "Punta del Angosto",
+      "fish": [
+        "Polyprion americanus",
+        "Conger conger",
+        "Spicara maena",
+        "Raja montagui"
+      ]
+    },
+    {
+      "beach_id": 328102300,
+      "beach_name": "San Felipe",
+      "fish": [
+        "Seriola dumerili",
+        "Sciaena umbra",
+        "Taeniura grabata",
+        "Aulostomus strigosus",
+        "Echiichthys vipera"
+      ]
+    },
+    {
+      "beach_id": 330105100,
+      "beach_name": "Playa de Jinamar",
+      "fish": [
+        "Prionace glauca",
+        "Epinephelus costae",
+        "Gobius niger",
+        "Squatina squatina",
+        "Coryphaena hippurus"
+      ]
+    },
+    {
+      "beach_id": 330105200,
+      "beach_name": "Playa La Restinga",
+      "fish": [
+        "Scorpaena maderensis",
+        "Diplodus vulgaris",
+        "Oblada melanura",
+        "Trachinus araneus",
+        "Myliobatis aquila",
+        "Labrus merula"
+      ]
+    },
+    {
+      "beach_id": 330105300,
+      "beach_name": "Playa del Barranquillo",
+      "fish": [
+        "Boops boops",
+        "Conger conger",
+        "Sardina pilchardus",
+        "Anthias anthias",
+        "Carcharhinus falciformis"
+      ]
+    },
+    {
+      "beach_id": 330105400,
+      "beach_name": "Playa San Borondón",
+      "fish": [
+        "Enchelycore anatina",
+        "Trachinotus ovatus",
+        "Gobius niger",
+        "Labrus mixtus",
+        "Labrus merula",
+        "Sphyrna mokarran",
+        "Gymnothorax unicolor"
+      ]
+    },
+    {
+      "beach_id": 330105500,
+      "beach_name": "Playa Chica",
+      "fish": [
+        "Sardina pilchardus",
+        "Carcharodon carcharias",
+        "Serranus cabrilla",
+        "Mullus barbatus"
+      ]
+    },
+    {
+      "beach_id": 330105600,
+      "beach_name": "Playa de La Garita",
+      "fish": [
+        "Uranoscopus scaber",
+        "Labrus mixtus",
+        "Sphyrna mokarran",
+        "Parablennius pilicornis",
+        "Coryphaena hippurus",
+        "Syngnathus typhle"
+      ]
+    },
+    {
+      "beach_id": 330105700,
+      "beach_name": "Hoya del Pozo",
+      "fish": [
+        "Capros aper",
+        "Aetomylaeus bovinus",
+        "Carcharhinus falciformis",
+        "Serranus atricauda",
+        "Diplodus cervinus"
+      ]
+    },
+    {
+      "beach_id": 330105800,
+      "beach_name": "Playa del Hombre",
+      "fish": [
+        "Mustelus mustelus",
+        "Lithognathus mormyrus",
+        "Gobius paganellus"
+      ]
+    },
+    {
+      "beach_id": 330105900,
+      "beach_name": "Cala de Castellano",
+      "fish": [
+        "Epinephelus marginatus",
+        "Aetomylaeus bovinus",
+        "Squatina squatina",
+        "Mullus surmuletus",
+        "Trachinus radiatus",
+        "Epinephelus costae",
+        "Oblada melanura"
+      ]
+    },
+    {
+      "beach_id": 330106000,
+      "beach_name": "Charca de Taliarte",
+      "fish": [
+        "Scorpaena maderensis",
+        "Spondyliosoma cantharus",
+        "Taeniura grabata"
+      ]
+    },
+    {
+      "beach_id": 330106100,
+      "beach_name": "Playa de Melenara",
+      "fish": [
+        "Boops boops",
+        "Raja clavata",
+        "Serranus atricauda",
+        "euthynnus alletteratus",
+        "Squatina squatina",
+        "Syngnathus acus"
+      ]
+    },
+    {
+      "beach_id": 330106200,
+      "beach_name": "Playa de Salinetas",
+      "fish": [
+        "Epinephelus itajara",
+        "Taeniura grabata",
+        "Symphodus mediterraneus",
+        "Serranus atricauda",
+        "Epinephelus costae",
+        "Scomber colias"
+      ]
+    },
+    {
+      "beach_id": 330106300,
+      "beach_name": "Playa de Aguadulce",
+      "fish": [
+        "Capros aper",
+        "Mobula mobular",
+        "Parablennius pilicornis",
+        "Dactylopterus volitans",
+        "Labrus mixtus",
+        "Macroramphosus scolopax"
+      ]
+    },
+    {
+      "beach_id": 330106400,
+      "beach_name": "Playa de Silva",
+      "fish": [
+        "Scorpaena porcus",
+        "Torpedo marmorata",
+        "Apogon imberbis",
+        "Mullus surmuletus",
+        "Ginglymostoma cirratum"
+      ]
+    },
+    {
+      "beach_id": 330106500,
+      "beach_name": "Playa de Tufia",
+      "fish": [
+        "Parablennius pilicornis",
+        "Syngnathus acus",
+        "Diplodus cervinus",
+        "Lophius piscatorius",
+        "Muraena helena",
+        "Capros aper",
+        "Sciaena umbra"
+      ]
+    },
+    {
+      "beach_id": 330106600,
+      "beach_name": "Playa Ojos de Garza",
+      "fish": [
+        "Scomber scombrus",
+        "Parablennius incognitus",
+        "Bothus podas",
+        "Apogon imberbis",
+        "Lophius budegassa"
+      ]
+    },
+    {
+      "beach_id": 330106700,
+      "beach_name": "Charca de los Pérez",
+      "fish": [
+        "Bodianus scrofa",
+        "Polyprion americanus",
+        "Zeus faber",
+        "Carcharodon carcharias"
+      ]
+    },
+    {
+      "beach_id": 435109100,
+      "beach_name": "San Marcos",
+      "fish": [
+        "Ginglymostoma cirratum",
+        "Trachinus radiatus",
+        "Scorpaena maderensis",
+        "Dicentrarchus punctatus",
+        "Gymnura altavela"
+      ]
+    },
+    {
+      "beach_id": 435109200,
+      "beach_name": "Pescante de Agulo",
+      "fish": [
+        "Macroramphosus scolopax",
+        "Thalassoma pavo",
+        "Conger conger",
+        "Symphodus tinca",
+        "Echiichthys vipera",
+        "Anthias anthias"
+      ]
+    },
+    {
+      "beach_id": 436111100,
+      "beach_name": "La Playa La Negra",
+      "fish": [
+        "Trachinus radiatus",
+        "Pagellus erythrinus",
+        "Chromis limbata",
+        "Scomber colias",
+        "Sphyrna mokarran",
+        "Scomber scombrus"
+      ]
+    },
+    {
+      "beach_id": 436111200,
+      "beach_name": "Playa La Cantera",
+      "fish": [
+        "Kyphosus sectatrix",
+        "Coris julis",
+        "Cetorhinus maximus",
+        "Sciaena umbra",
+        "Raja clavata",
+        "Scyliorhinus stellaris"
+      ]
+    },
+    {
+      "beach_id": 436111300,
+      "beach_name": "La Playa de Ereses",
+      "fish": [
+        "Scomber colias",
+        "Taeniura grabata",
+        "Gobius paganellus",
+        "Muraena helena",
+        "Serranus atricauda",
+        "Symphodus mediterraneus",
+        "Enchelycore anatina"
+      ]
+    },
+    {
+      "beach_id": 436111400,
+      "beach_name": "Santiago",
+      "fish": [
+        "Scomber colias",
+        "Scorpaena porcus",
+        "Parablennius incognitus",
+        "Coris julis",
+        "Gobius paganellus"
+      ]
+    },
+    {
+      "beach_id": 437113100,
+      "beach_name": "La Caleta de Hermigua",
+      "fish": [
+        "Serranus scriba",
+        "Raja undulata",
+        "Dicentrarchus punctatus",
+        "Mullus surmuletus",
+        "Exocoetus volitans"
+      ]
+    },
+    {
+      "beach_id": 437113200,
+      "beach_name": "Hermigua",
+      "fish": [
+        "Ophioblennius atlanticus",
+        "Atherina boyeri",
+        "Epinephelus costae",
+        "Parablennius pilicornis",
+        "Scomber colias"
+      ]
+    },
+    {
+      "beach_id": 438111400,
+      "beach_name": "Santiago",
+      "fish": [
+        "Serranus scriba",
+        "Sardina pilchardus",
+        "Isurus oxyrinchus",
+        "Torpedo marmorata",
+        "Symphodus mediterraneus",
+        "Mullus surmuletus",
+        "Mycteroperca fusca"
+      ]
+    },
+    {
+      "beach_id": 438115100,
+      "beach_name": "Zamora",
+      "fish": [
+        "Mustelus mustelus",
+        "Carcharhinus falciformis",
+        "Gobius niger",
+        "Labrus merula"
+      ]
+    },
+    {
+      "beach_id": 438115200,
+      "beach_name": "Playa del Águila",
+      "fish": [
+        "Hippocampus guttulatus",
+        "Epinephelus marginatus",
+        "Pseudocaranx dentex"
+      ]
+    },
+    {
+      "beach_id": 438115300,
+      "beach_name": "Avalo",
+      "fish": [
+        "Dactylopterus volitans",
+        "Scorpaena maderensis",
+        "Symphodus mediterraneus"
+      ]
+    },
+    {
+      "beach_id": 438115400,
+      "beach_name": "La Cueva",
+      "fish": [
+        "Mycteroperca fusca",
+        "Sciaena umbra",
+        "Taeniura grabata",
+        "Pagrus pagrus",
+        "Labrus mixtus",
+        "Gymnura altavela"
+      ]
+    },
+    {
+      "beach_id": 438115500,
+      "beach_name": "San Sebastián",
+      "fish": [
+        "Scorpaena maderensis",
+        "Epinephelus itajara",
+        "Anthias anthias",
+        "Gobius paganellus",
+        "Sciaena umbra",
+        "Raja montagui",
+        "Lophius piscatorius"
+      ]
+    },
+    {
+      "beach_id": 438115600,
+      "beach_name": "La Guancha",
+      "fish": [
+        "Myliobatis aquila",
+        "Sphyraena viridensis",
+        "Kyphosus sectatrix",
+        "Scorpaena maderensis",
+        "Echiichthys vipera"
+      ]
+    },
+    {
+      "beach_id": 438115700,
+      "beach_name": "El Cabrito",
+      "fish": [
+        "Raja clavata",
+        "Taeniura grabata",
+        "Gymnothorax unicolor"
+      ]
+    },
+    {
+      "beach_id": 438115800,
+      "beach_name": "Oroja",
+      "fish": [
+        "Raja montagui",
+        "Bodianus scrofa",
+        "Sphyrna lewini",
+        "Labrus merula",
+        "Mustelus mustelus",
+        "Parablennius incognitus",
+        "Boops boops"
+      ]
+    },
+    {
+      "beach_id": 438115900,
+      "beach_name": "El Guincho",
+      "fish": [
+        "Hippocampus guttulatus",
+        "Diplodus puntazzo",
+        "Coryphaena hippurus",
+        "Carcharodon carcharias",
+        "Diplodus cervinus",
+        "Lophius budegassa",
+        "Gobius paganellus"
+      ]
+    },
+    {
+      "beach_id": 438116000,
+      "beach_name": "Suárez",
+      "fish": [
+        "Epinephelus costae",
+        "Gymnura altavela",
+        "Serranus cabrilla"
+      ]
+    },
+    {
+      "beach_id": 438116100,
+      "beach_name": "Chinguarime",
+      "fish": [
+        "Parapristipoma octolineatum",
+        "Canthigaster capistrata",
+        "Raja undulata",
+        "Tripterygion delaisi",
+        "Diplodus puntazzo",
+        "Sarpa salpa"
+      ]
+    },
+    {
+      "beach_id": 438116200,
+      "beach_name": "El Medio",
+      "fish": [
+        "Torpedo marmorata",
+        "Epinephelus costae",
+        "Coryphaena hippurus",
+        "Pagellus erythrinus"
+      ]
+    },
+    {
+      "beach_id": 438116300,
+      "beach_name": "Tapahuga",
+      "fish": [
+        "Apogon imberbis",
+        "Zeus faber",
+        "Seriola dumerili",
+        "Mycteroperca fusca",
+        "Carcharodon carcharias",
+        "Hippocampus guttulatus",
+        "Spicara maena"
+      ]
+    },
+    {
+      "beach_id": 438116400,
+      "beach_name": "El Machal",
+      "fish": [
+        "Tripterygion delaisi",
+        "Solea solea",
+        "Trachinus draco",
+        "Mobula mobular",
+        "Macroramphosus scolopax",
+        "Spondyliosoma cantharus"
+      ]
+    },
+    {
+      "beach_id": 438116500,
+      "beach_name": "Majona",
+      "fish": [
+        "Trachinus araneus",
+        "Sphyraena viridensis",
+        "Thalassoma pavo",
+        "Bodianus scrofa",
+        "Boops boops",
+        "Taeniura grabata",
+        "Thunnus thynnus"
+      ]
+    },
+    {
+      "beach_id": 439119100,
+      "beach_name": "Playa de Vueltas",
+      "fish": [
+        "Epinephelus marginatus",
+        "Serranus scriba",
+        "Bodianus scrofa"
+      ]
+    },
+    {
+      "beach_id": 439119200,
+      "beach_name": "Charco de la Condesa",
+      "fish": [
+        "Epinephelus marginatus",
+        "Mobula mobular",
+        "Epinephelus costae",
+        "Carcharhinus falciformis",
+        "Scorpaena porcus",
+        "Scorpaena scrofa",
+        "Conger conger"
+      ]
+    },
+    {
+      "beach_id": 439119300,
+      "beach_name": "El Charco del Conde",
+      "fish": [
+        "Myliobatis aquila",
+        "Sphyrna lewini",
+        "Solea solea"
+      ]
+    },
+    {
+      "beach_id": 439119400,
+      "beach_name": "La Playa de La Puntilla",
+      "fish": [
+        "Sparus aurata",
+        "Ophioblennius atlanticus",
+        "Prionace glauca"
+      ]
+    },
+    {
+      "beach_id": 439119500,
+      "beach_name": "Playa de La Calera",
+      "fish": [
+        "Bodianus scrofa",
+        "Thalassoma pavo",
+        "Carcharhinus falciformis",
+        "Sparisoma cretense",
+        "euthynnus alletteratus",
+        "Isurus oxyrinchus",
+        "Taeniura grabata"
+      ]
+    },
+    {
+      "beach_id": 439119600,
+      "beach_name": "Callao de las Mozas",
+      "fish": [
+        "Thalassoma pavo",
+        "Torpedo torpedo",
+        "Carcharodon carcharias",
+        "Gymnura altavela",
+        "Solea solea",
+        "Coris julis",
+        "Polyprion americanus"
+      ]
+    },
+    {
+      "beach_id": 439119700,
+      "beach_name": "Charco del Cieno",
+      "fish": [
+        "Epinephelus marginatus",
+        "Sardina pilchardus",
+        "Prionace glauca",
+        "Uranoscopus scaber",
+        "Mola mola"
+      ]
+    },
+    {
+      "beach_id": 439119800,
+      "beach_name": "Playa del Inglés",
+      "fish": [
+        "Sphyrna lewini",
+        "Parablennius incognitus",
+        "Cetorhinus maximus"
+      ]
+    },
+    {
+      "beach_id": 439119900,
+      "beach_name": "La Playa de Eredia",
+      "fish": [
+        "Sphyrna mokarran",
+        "Torpedo torpedo",
+        "Mobula mobular",
+        "Coryphaena hippurus"
+      ]
+    },
+    {
+      "beach_id": 439120000,
+      "beach_name": "La Playa de Guariñen",
+      "fish": [
+        "Oblada melanura",
+        "Serranus scriba",
+        "Hippocampus guttulatus",
+        "Polyprion americanus",
+        "Conger conger"
+      ]
+    },
+    {
+      "beach_id": 440121100,
+      "beach_name": "La Rajita",
+      "fish": [
+        "Dactylopterus volitans",
+        "Coris julis",
+        "Tripterygion delaisi",
+        "Scorpaena notata",
+        "Diplodus cervinus",
+        "Dasyatis pastinaca"
+      ]
+    },
+    {
+      "beach_id": 440121200,
+      "beach_name": "Las Arenas",
+      "fish": [
+        "Seriola dumerili",
+        "Oblada melanura",
+        "Ginglymostoma cirratum",
+        "Prionace glauca",
+        "Lithognathus mormyrus",
+        "Sphyrna lewini",
+        "Trachinus radiatus"
+      ]
+    },
+    {
+      "beach_id": 440121300,
+      "beach_name": "Argaga",
+      "fish": [
+        "Mustelus mustelus",
+        "Sparus aurata",
+        "Serranus cabrilla",
+        "Diplodus vulgaris",
+        "Dicentrarchus labrax"
+      ]
+    },
+    {
+      "beach_id": 440121400,
+      "beach_name": "Alojera",
+      "fish": [
+        "Pteroplatytrygon violacea",
+        "Lithognathus mormyrus",
+        "Serranus scriba",
+        "Sarpa salpa",
+        "Sphyrna lewini"
+      ]
+    },
+    {
+      "beach_id": 440121500,
+      "beach_name": "El Trigo",
+      "fish": [
+        "Carcharhinus falciformis",
+        "Apogon imberbis",
+        "Diplodus annularis",
+        "Spicara maena"
+      ]
+    },
+    {
+      "beach_id": 440121600,
+      "beach_name": "Arguamul",
+      "fish": [
+        "Labrus mixtus",
+        "Enchelycore anatina",
+        "Labrus merula",
+        "Thunnus thynnus"
+      ]
+    },
+    {
+      "beach_id": 440121700,
+      "beach_name": "Vallehermoso",
+      "fish": [
+        "Capros aper",
+        "Spicara maena",
+        "Trachinus draco"
+      ]
+    },
+    {
+      "beach_id": 440121800,
+      "beach_name": "Tamargada",
+      "fish": [
+        "Diplodus puntazzo",
+        "Raja montagui",
+        "Sphyrna lewini",
+        "Sparus aurata",
+        "Lophius piscatorius",
+        "Isurus oxyrinchus",
+        "Bodianus scrofa"
+      ]
+    },
+    {
+      "beach_id": 440121900,
+      "beach_name": "La Sepultura",
+      "fish": [
+        "Epinephelus marginatus",
+        "Trachinus draco",
+        "Scyliorhinus canicula",
+        "Coris julis",
+        "Dactylopterus volitans",
+        "Syngnathus acus"
+      ]
+    },
+    {
+      "beach_id": 541124100,
+      "beach_name": "El Verodal",
+      "fish": [
+        "Chromis limbata",
+        "Ophioblennius atlanticus",
+        "Apogon imberbis"
+      ]
+    },
+    {
+      "beach_id": 541124200,
+      "beach_name": "Arenas Blancas",
+      "fish": [
+        "Canthigaster capistrata",
+        "Seriola dumerili",
+        "Diplodus cervinus",
+        "Zeus faber",
+        "Carcharodon carcharias",
+        "Aetomylaeus bovinus",
+        "Gymnothorax unicolor"
+      ]
+    },
+    {
+      "beach_id": 541124300,
+      "beach_name": "Charco La Laja",
+      "fish": [
+        "Gymnothorax unicolor",
+        "Mycteroperca fusca",
+        "Zeus faber",
+        "Carcharodon carcharias"
+      ]
+    },
+    {
+      "beach_id": 541124400,
+      "beach_name": "Charco Azul",
+      "fish": [
+        "Taeniura grabata",
+        "Sphyraena viridensis",
+        "Mullus surmuletus",
+        "Trachinus araneus",
+        "Bothus podas"
+      ]
+    },
+    {
+      "beach_id": 541124500,
+      "beach_name": "Charco los Sargos",
+      "fish": [
+        "Uranoscopus scaber",
+        "Labrus mixtus",
+        "Chromis limbata",
+        "Pteroplatytrygon violacea",
+        "Sciaena umbra"
+      ]
+    },
+    {
+      "beach_id": 541124600,
+      "beach_name": "La Maceta",
+      "fish": [
+        "Polyprion americanus",
+        "Coris julis",
+        "Pteroplatytrygon violacea",
+        "Dicentrarchus punctatus"
+      ]
+    },
+    {
+      "beach_id": 541124700,
+      "beach_name": "El Río",
+      "fish": [
+        "Coris julis",
+        "Xyrichtys novacula",
+        "Balistes capriscus",
+        "Mullus surmuletus",
+        "Sarpa salpa"
+      ]
+    },
+    {
+      "beach_id": 541124800,
+      "beach_name": "Punta Grande",
+      "fish": [
+        "Scorpaena notata",
+        "Enchelycore anatina",
+        "Sardina pilchardus",
+        "Sparisoma cretense",
+        "Sphyraena viridensis"
+      ]
+    },
+    {
+      "beach_id": 542127100,
+      "beach_name": "Pozo de las Calcosas",
+      "fish": [
+        "Pteroplatytrygon violacea",
+        "Labrus merula",
+        "Taeniura grabata",
+        "Tripterygion delaisi"
+      ]
+    },
+    {
+      "beach_id": 542127200,
+      "beach_name": "El Charco Manso",
+      "fish": [
+        "Parablennius incognitus",
+        "Pteroplatytrygon violacea",
+        "Squatina squatina",
+        "Diplodus sargus",
+        "Ophioblennius atlanticus"
+      ]
+    },
+    {
+      "beach_id": 542127300,
+      "beach_name": "El Tamaduste",
+      "fish": [
+        "Serranus scriba",
+        "Gobius niger",
+        "Serranus cabrilla",
+        "Myliobatis aquila"
+      ]
+    },
+    {
+      "beach_id": 542127400,
+      "beach_name": "La Caleta",
+      "fish": [
+        "Labrus mixtus",
+        "Coris julis",
+        "Aulostomus strigosus"
+      ]
+    },
+    {
+      "beach_id": 542127500,
+      "beach_name": "Puerto de la Estaca",
+      "fish": [
+        "Epinephelus marginatus",
+        "Oblada melanura",
+        "Dicentrarchus labrax"
+      ]
+    },
+    {
+      "beach_id": 542127600,
+      "beach_name": "Playa de Temijiraque",
+      "fish": [
+        "Zeus faber",
+        "Epinephelus marginatus",
+        "Mobula mobular"
+      ]
+    },
+    {
+      "beach_id": 542127700,
+      "beach_name": "Charco de Agua Azul",
+      "fish": [
+        "Naucrates ductor",
+        "Raja undulata",
+        "Serranus scriba"
+      ]
+    },
+    {
+      "beach_id": 588131100,
+      "beach_name": "La Restinga",
+      "fish": [
+        "Anthias anthias",
+        "Serranus atricauda",
+        "Symphodus tinca",
+        "Mola mola",
+        "Scorpaena scrofa",
+        "Gobius niger"
+      ]
+    },
+    {
+      "beach_id": 588131200,
+      "beach_name": "Playa de Puerto Naos",
+      "fish": [
+        "Enchelycore anatina",
+        "Atherina boyeri",
+        "Scyliorhinus canicula",
+        "Scomber scombrus",
+        "euthynnus alletteratus",
+        "Lithognathus mormyrus",
+        "Dicentrarchus labrax"
+      ]
+    },
+    {
+      "beach_id": 588131300,
+      "beach_name": "Tacorón",
+      "fish": [
+        "Diplodus vulgaris",
+        "Diplodus annularis",
+        "Balistes capriscus",
+        "Lophius piscatorius",
+        "Apogon imberbis",
+        "Sardina pilchardus",
+        "euthynnus alletteratus"
+      ]
+    },
+    {
+      "beach_id": 588131400,
+      "beach_name": "Muellito de Orchilla",
+      "fish": [
+        "Capros aper",
+        "Diplodus sargus",
+        "Scyliorhinus stellaris",
+        "Spondyliosoma cantharus",
+        "Scorpaena notata",
+        "Torpedo marmorata",
+        "Diplodus annularis"
+      ]
+    },
+    {
+      "beach_id": 643134100,
+      "beach_name": "Fajana de Barlovento",
+      "fish": [
+        "Solea solea",
+        "Chromis limbata",
+        "Ginglymostoma cirratum",
+        "Macroramphosus scolopax",
+        "Sardina pilchardus",
+        "Ophioblennius atlanticus",
+        "Torpedo marmorata"
+      ]
+    },
+    {
+      "beach_id": 644136100,
+      "beach_name": "Bajamar",
+      "fish": [
+        "Enchelycore anatina",
+        "Xyrichtys novacula",
+        "Diplodus puntazzo",
+        "Scomber colias"
+      ]
+    },
+    {
+      "beach_id": 645138100,
+      "beach_name": "Los Cancajos",
+      "fish": [
+        "Hippocampus guttulatus",
+        "Squatina squatina",
+        "Parablennius pilicornis",
+        "Scorpaena scrofa",
+        "Symphodus mediterraneus",
+        "Gobius paganellus",
+        "Gobius niger"
+      ]
+    },
+    {
+      "beach_id": 646140100,
+      "beach_name": "El Río",
+      "fish": [
+        "Scyliorhinus canicula",
+        "Dicentrarchus punctatus",
+        "Pagellus erythrinus",
+        "Myliobatis aquila"
+      ]
+    },
+    {
+      "beach_id": 646140200,
+      "beach_name": "Los Roquitos",
+      "fish": [
+        "Gymnothorax unicolor",
+        "Aetomylaeus bovinus",
+        "Pseudocaranx dentex",
+        "Scyliorhinus stellaris",
+        "Serranus cabrilla",
+        "Sciaena umbra"
+      ]
+    },
+    {
+      "beach_id": 646140300,
+      "beach_name": "El Puertito",
+      "fish": [
+        "Raja clavata",
+        "Sparisoma cretense",
+        "Sarda sarda"
+      ]
+    },
+    {
+      "beach_id": 646140400,
+      "beach_name": "Las Cabras",
+      "fish": [
+        "Dicentrarchus labrax",
+        "Epinephelus marginatus",
+        "Labrus mixtus"
+      ]
+    },
+    {
+      "beach_id": 646140500,
+      "beach_name": "El Faro",
+      "fish": [
+        "Syngnathus typhle",
+        "Conger conger",
+        "Carcharodon carcharias",
+        "Enchelycore anatina",
+        "Dactylopterus volitans",
+        "Xyrichtys novacula"
+      ]
+    },
+    {
+      "beach_id": 646140600,
+      "beach_name": "Echentive",
+      "fish": [
+        "Ginglymostoma cirratum",
+        "Pagellus erythrinus",
+        "Sarda sarda",
+        "Sparus aurata",
+        "Scorpaena scrofa",
+        "Thalassoma pavo",
+        "Parapristipoma octolineatum"
+      ]
+    },
+    {
+      "beach_id": 646140700,
+      "beach_name": "Abadejos",
+      "fish": [
+        "Scorpaena maderensis",
+        "Uranoscopus scaber",
+        "Mullus surmuletus",
+        "Diplodus vulgaris",
+        "Serranus scriba",
+        "Anthias anthias"
+      ]
+    },
+    {
+      "beach_id": 646140800,
+      "beach_name": "Punta Larga",
+      "fish": [
+        "Trachinotus ovatus",
+        "Prionace glauca",
+        "Diplodus puntazzo",
+        "Atherina boyeri",
+        "Labrus mixtus",
+        "Gymnura altavela",
+        "Diplodus sargus"
+      ]
+    },
+    {
+      "beach_id": 646140900,
+      "beach_name": "La Zamora",
+      "fish": [
+        "Mycteroperca fusca",
+        "Mullus barbatus",
+        "Gymnura altavela",
+        "Diplodus vulgaris",
+        "Diplodus sargus",
+        "Sphyraena viridensis",
+        "Conger conger"
+      ]
+    },
+    {
+      "beach_id": 647144100,
+      "beach_name": "Playa de la Fajana de Franceses",
+      "fish": [
+        "Mycteroperca fusca",
+        "Serranus cabrilla",
+        "Ophioblennius atlanticus",
+        "Scyliorhinus canicula",
+        "Chromis limbata",
+        "Isurus oxyrinchus"
+      ]
+    },
+    {
+      "beach_id": 647144200,
+      "beach_name": "Playa de El Callejoncito",
+      "fish": [
+        "Parapristipoma octolineatum",
+        "Aetomylaeus bovinus",
+        "Boops boops",
+        "Scorpaena porcus",
+        "Labrus mixtus"
+      ]
+    },
+    {
+      "beach_id": 647144300,
+      "beach_name": "Callado de El Mudo",
+      "fish": [
+        "Trachinus araneus",
+        "Capros aper",
+        "Parablennius pilicornis",
+        "Sphyrna lewini",
+        "Lophius budegassa",
+        "Lophius piscatorius",
+        "Aulostomus strigosus"
+      ]
+    },
+    {
+      "beach_id": 647144400,
+      "beach_name": "Playa de Bujarén",
+      "fish": [
+        "Seriola dumerili",
+        "Ginglymostoma cirratum",
+        "Sphyrna mokarran",
+        "Gobius paganellus",
+        "Pagrus pagrus",
+        "Hippocampus guttulatus"
+      ]
+    },
+    {
+      "beach_id": 647144500,
+      "beach_name": "Porís de Lomada Grande",
+      "fish": [
+        "Diplodus annularis",
+        "Scyliorhinus canicula",
+        "Xyrichtys novacula",
+        "Exocoetus volitans",
+        "Aulostomus strigosus"
+      ]
+    },
+    {
+      "beach_id": 647144600,
+      "beach_name": "Puerto de Santo Domingo",
+      "fish": [
+        "Pseudocaranx dentex",
+        "Torpedo marmorata",
+        "Scomber scombrus",
+        "Scorpaena notata",
+        "Carcharodon carcharias"
+      ]
+    },
+    {
+      "beach_id": 648146100,
+      "beach_name": "Playa del Remo",
+      "fish": [
+        "Xyrichtys novacula",
+        "Syngnathus typhle",
+        "Chromis limbata",
+        "Cetorhinus maximus",
+        "Sphyraena viridensis",
+        "Mullus barbatus",
+        "euthynnus alletteratus"
+      ]
+    },
+    {
+      "beach_id": 648146200,
+      "beach_name": "Playa del Charco Verde",
+      "fish": [
+        "Labrus merula",
+        "Diplodus annularis",
+        "Bodianus scrofa",
+        "Serranus scriba",
+        "Sarda sarda",
+        "Trachinus araneus",
+        "Dasyatis pastinaca"
+      ]
+    },
+    {
+      "beach_id": 648146300,
+      "beach_name": "Las Monjas",
+      "fish": [
+        "Pagrus pagrus",
+        "Gymnothorax unicolor",
+        "Ginglymostoma cirratum"
+      ]
+    },
+    {
+      "beach_id": 648146400,
+      "beach_name": "Playa de Puerto Naos",
+      "fish": [
+        "Zeus faber",
+        "Raja undulata",
+        "Symphodus mediterraneus",
+        "Scorpaena maderensis",
+        "Gobius niger",
+        "Gymnothorax unicolor"
+      ]
+    },
+    {
+      "beach_id": 648146500,
+      "beach_name": "Playa de Murgas",
+      "fish": [
+        "Cetorhinus maximus",
+        "Scorpaena maderensis",
+        "Epinephelus itajara",
+        "Sparus aurata"
+      ]
+    },
+    {
+      "beach_id": 648146600,
+      "beach_name": "Playa de La Bombilla",
+      "fish": [
+        "Chromis limbata",
+        "Mullus barbatus",
+        "Scomber scombrus",
+        "Cetorhinus maximus",
+        "Raja clavata"
+      ]
+    },
+    {
+      "beach_id": 650149100,
+      "beach_name": "Porís de Puntagorda",
+      "fish": [
+        "Trachinus draco",
+        "Mola mola",
+        "Sparus aurata",
+        "Exocoetus volitans",
+        "Diplodus vulgaris"
+      ]
+    },
+    {
+      "beach_id": 651151100,
+      "beach_name": "Barranco de La Galga",
+      "fish": [
+        "Zeus faber",
+        "Hippocampus guttulatus",
+        "Squatina squatina",
+        "Sardina pilchardus",
+        "Torpedo torpedo",
+        "Symphodus mediterraneus"
+      ]
+    },
+    {
+      "beach_id": 651151200,
+      "beach_name": "Playa de Nogales",
+      "fish": [
+        "Scorpaena scrofa",
+        "Gobius niger",
+        "Dactylopterus volitans",
+        "Muraena helena",
+        "Parapristipoma octolineatum"
+      ]
+    },
+    {
+      "beach_id": 651151300,
+      "beach_name": "Puerto Paja",
+      "fish": [
+        "Spondyliosoma cantharus",
+        "Raja undulata",
+        "Squatina squatina",
+        "Mola mola",
+        "Lithognathus mormyrus",
+        "Polyprion americanus"
+      ]
+    },
+    {
+      "beach_id": 651151400,
+      "beach_name": "Playa Puerto Trigo",
+      "fish": [
+        "Prionace glauca",
+        "Raja brachyura",
+        "Carcharhinus falciformis",
+        "Boops boops",
+        "Zeus faber",
+        "Syngnathus typhle"
+      ]
+    },
+    {
+      "beach_id": 651151500,
+      "beach_name": "Martín Luis",
+      "fish": [
+        "Trachinus araneus",
+        "Coris julis",
+        "Symphodus mediterraneus"
+      ]
+    },
+    {
+      "beach_id": 652154100,
+      "beach_name": "Puerto Espíndola",
+      "fish": [
+        "Bodianus scrofa",
+        "Raja clavata",
+        "Canthigaster capistrata",
+        "Serranus cabrilla",
+        "Symphodus tinca"
+      ]
+    },
+    {
+      "beach_id": 652154200,
+      "beach_name": "Charco Azul",
+      "fish": [
+        "Symphodus tinca",
+        "Naucrates ductor",
+        "Aetomylaeus bovinus",
+        "Carcharhinus falciformis",
+        "Thalassoma pavo",
+        "Mustelus mustelus",
+        "Bodianus scrofa"
+      ]
+    },
+    {
+      "beach_id": 652154300,
+      "beach_name": "El Varadero",
+      "fish": [
+        "Mustelus mustelus",
+        "Epinephelus marginatus",
+        "Seriola dumerili"
+      ]
+    },
+    {
+      "beach_id": 652154400,
+      "beach_name": "Puerto La Cuevita",
+      "fish": [
+        "Gobius niger",
+        "Myliobatis aquila",
+        "Raja brachyura",
+        "Dactylopterus volitans"
+      ]
+    },
+    {
+      "beach_id": 653157100,
+      "beach_name": "Playa de Santa Cruz de la Palma",
+      "fish": [
+        "Uranoscopus scaber",
+        "Diplodus annularis",
+        "Mobula mobular"
+      ]
+    },
+    {
+      "beach_id": 654146600,
+      "beach_name": "La Bombilla",
+      "fish": [
+        "Polyprion americanus",
+        "Scorpaena porcus",
+        "Gymnura altavela"
+      ]
+    },
+    {
+      "beach_id": 654159100,
+      "beach_name": "Lago de las Damas",
+      "fish": [
+        "Dicentrarchus punctatus",
+        "Mycteroperca fusca",
+        "Sparisoma cretense",
+        "Scyliorhinus canicula"
+      ]
+    },
+    {
+      "beach_id": 654159300,
+      "beach_name": "Nueva",
+      "fish": [
+        "Lophius piscatorius",
+        "Dactylopterus volitans",
+        "Scyliorhinus canicula",
+        "Serranus atricauda"
+      ]
+    },
+    {
+      "beach_id": 654159400,
+      "beach_name": "Tarajales",
+      "fish": [
+        "Raja undulata",
+        "Serranus atricauda",
+        "Capros aper",
+        "Lophius piscatorius"
+      ]
+    },
+    {
+      "beach_id": 654159500,
+      "beach_name": "Puerto de Tazacorte",
+      "fish": [
+        "Lophius piscatorius",
+        "Diplodus cervinus",
+        "Tripterygion delaisi",
+        "Gobius paganellus",
+        "Serranus cabrilla"
+      ]
+    },
+    {
+      "beach_id": 655162100,
+      "beach_name": "Playa de Las Borreguitas",
+      "fish": [
+        "Torpedo marmorata",
+        "Sparisoma cretense",
+        "Gobius paganellus",
+        "Dicentrarchus punctatus"
+      ]
+    },
+    {
+      "beach_id": 655162200,
+      "beach_name": "Playa del Jurado",
+      "fish": [
+        "Aulostomus strigosus",
+        "Raja brachyura",
+        "Lophius piscatorius",
+        "Bothus podas",
+        "Canthigaster capistrata",
+        "Sphyrna mokarran"
+      ]
+    },
+    {
+      "beach_id": 655162300,
+      "beach_name": "El Porís de Candelaria",
+      "fish": [
+        "Symphodus tinca",
+        "Hippocampus guttulatus",
+        "Mustelus mustelus",
+        "Diplodus sargus",
+        "Bodianus scrofa",
+        "Scomber colias",
+        "Scyliorhinus canicula"
+      ]
+    },
+    {
+      "beach_id": 655162500,
+      "beach_name": "Playa de La Veta",
+      "fish": [
+        "Boops boops",
+        "Squatina squatina",
+        "Mullus surmuletus",
+        "Carcharhinus falciformis"
+      ]
+    },
+    {
+      "beach_id": 655162600,
+      "beach_name": "Playa de Mocán",
+      "fish": [
+        "Anthias anthias",
+        "Aulostomus strigosus",
+        "Parablennius pilicornis"
+      ]
+    },
+    {
+      "beach_id": 655162700,
+      "beach_name": "Playa del Barranco de las Viñas",
+      "fish": [
+        "Trachinus draco",
+        "Bodianus scrofa",
+        "Apogon imberbis",
+        "Uranoscopus scaber"
+      ]
+    },
+    {
+      "beach_id": 655162800,
+      "beach_name": "El Pozo de Tinizara",
+      "fish": [
+        "Bodianus scrofa",
+        "Zeus faber",
+        "Seriola dumerili",
+        "Bothus podas",
+        "Serranus cabrilla"
+      ]
+    },
+    {
+      "beach_id": 656165100,
+      "beach_name": "Piscinas Naturales de Las Maretas",
+      "fish": [
+        "Raja montagui",
+        "Squatina squatina",
+        "Syngnathus acus",
+        "Ginglymostoma cirratum",
+        "Xyrichtys novacula",
+        "Epinephelus costae"
+      ]
+    },
+    {
+      "beach_id": 656165200,
+      "beach_name": "San Juan de La Bajita",
+      "fish": [
+        "Tripterygion delaisi",
+        "Coris julis",
+        "Mustelus mustelus",
+        "Carcharodon carcharias",
+        "Sarda sarda",
+        "Chromis limbata"
+      ]
+    },
+    {
+      "beach_id": 656165300,
+      "beach_name": "El Pocito",
+      "fish": [
+        "Dicentrarchus punctatus",
+        "Sarpa salpa",
+        "Taeniura grabata"
+      ]
+    },
+    {
+      "beach_id": 656165400,
+      "beach_name": "Piedra Nueva",
+      "fish": [
+        "Diplodus puntazzo",
+        "Syngnathus typhle",
+        "Dicentrarchus labrax",
+        "Spondyliosoma cantharus",
+        "Aulostomus strigosus"
+      ]
+    },
+    {
+      "beach_id": 656165500,
+      "beach_name": "El Pozo Norte",
+      "fish": [
+        "Taeniura grabata",
+        "Dicentrarchus labrax",
+        "Sphyrna lewini"
+      ]
+    },
+    {
+      "beach_id": 656165600,
+      "beach_name": "Playa de La Cangrejera",
+      "fish": [
+        "Thalassoma pavo",
+        "Atherina boyeri",
+        "Scorpaena maderensis",
+        "Dasyatis pastinaca",
+        "Sardina pilchardus",
+        "Hippocampus hippocampus",
+        "Exocoetus volitans"
+      ]
+    },
+    {
+      "beach_id": 656165700,
+      "beach_name": "Playa La Cangrejera",
+      "fish": [
+        "Atherina boyeri",
+        "Gymnothorax unicolor",
+        "Diplodus vulgaris",
+        "Epinephelus marginatus",
+        "Scorpaena porcus"
+      ]
+    },
+    {
+      "beach_id": 656165800,
+      "beach_name": "El Burro",
+      "fish": [
+        "Oblada melanura",
+        "Trachinus araneus",
+        "Diplodus vulgaris",
+        "Taeniura grabata"
+      ]
+    },
+    {
+      "beach_id": 656165900,
+      "beach_name": "Playa de La Salemera",
+      "fish": [
+        "Hippocampus guttulatus",
+        "Thunnus thynnus",
+        "Scyliorhinus stellaris",
+        "Gymnura altavela"
+      ]
+    },
+    {
+      "beach_id": 656166000,
+      "beach_name": "Charca de la Salemera",
+      "fish": [
+        "Mobula mobular",
+        "Mycteroperca fusca",
+        "Coryphaena hippurus",
+        "Isurus oxyrinchus",
+        "Boops boops"
+      ]
+    },
+    {
+      "beach_id": 656166100,
+      "beach_name": "Puertito de la Salemera",
+      "fish": [
+        "Tripterygion delaisi",
+        "Scomber colias",
+        "Symphodus mediterraneus",
+        "Epinephelus itajara"
+      ]
+    },
+    {
+      "beach_id": 656166200,
+      "beach_name": "La Playa",
+      "fish": [
+        "Trachinus araneus",
+        "Cetorhinus maximus",
+        "Epinephelus costae"
+      ]
+    },
+    {
+      "beach_id": 656166300,
+      "beach_name": "Playa del Ancón",
+      "fish": [
+        "Tripterygion delaisi",
+        "Aetomylaeus bovinus",
+        "Scorpaena porcus",
+        "Ophioblennius atlanticus"
+      ]
+    },
+    {
+      "beach_id": 656166400,
+      "beach_name": "Playa del Azufre",
+      "fish": [
+        "Spicara maena",
+        "Apogon imberbis",
+        "Spondyliosoma cantharus",
+        "Serranus atricauda",
+        "Sarpa salpa",
+        "Epinephelus marginatus",
+        "Gobius paganellus"
+      ]
+    },
+    {
+      "beach_id": 656166500,
+      "beach_name": "Playa de La Barqueta",
+      "fish": [
+        "Parablennius pilicornis",
+        "Boops boops",
+        "Pteroplatytrygon violacea"
+      ]
+    },
+    {
+      "beach_id": 656166600,
+      "beach_name": "Playa de Los Roques",
+      "fish": [
+        "Chromis limbata",
+        "Gobius niger",
+        "Gymnothorax unicolor"
+      ]
+    },
+    {
+      "beach_id": 656166700,
+      "beach_name": "Playa del Jurado",
+      "fish": [
+        "Sarpa salpa",
+        "Kyphosus sectatrix",
+        "Symphodus mediterraneus",
+        "Mullus barbatus",
+        "Pagellus erythrinus"
+      ]
+    },
+    {
+      "beach_id": 656166800,
+      "beach_name": "Playa de Bocabarranco",
+      "fish": [
+        "Tripterygion delaisi",
+        "Parapristipoma octolineatum",
+        "Scorpaena notata",
+        "Canthigaster capistrata",
+        "Xyrichtys novacula"
+      ]
+    },
+    {
+      "beach_id": 656166900,
+      "beach_name": "El Poris",
+      "fish": [
+        "Taeniura grabata",
+        "Myliobatis aquila",
+        "Syngnathus typhle"
+      ]
+    },
+    {
+      "beach_id": 656167000,
+      "beach_name": "Martín",
+      "fish": [
+        "Sphyraena viridensis",
+        "Mullus barbatus",
+        "Zeus faber"
+      ]
+    },
+    {
+      "beach_id": 656167100,
+      "beach_name": "El Varadero de La Bajita",
+      "fish": [
+        "Mobula mobular",
+        "Thunnus thynnus",
+        "Parapristipoma octolineatum"
+      ]
+    },
+    {
+      "beach_id": 757169100,
+      "beach_name": "Troya I",
+      "fish": [
+        "Hippocampus guttulatus",
+        "Scyliorhinus stellaris",
+        "Labrus merula"
+      ]
+    },
+    {
+      "beach_id": 757169200,
+      "beach_name": "Troya II",
+      "fish": [
+        "Sciaena umbra",
+        "Muraena helena",
+        "Cetorhinus maximus",
+        "Spicara maena",
+        "Mobula mobular"
+      ]
+    },
+    {
+      "beach_id": 757169400,
+      "beach_name": "El Bobo",
+      "fish": [
+        "Boops boops",
+        "Trachinus araneus",
+        "Sphyrna lewini",
+        "Kyphosus sectatrix"
+      ]
+    },
+    {
+      "beach_id": 757169500,
+      "beach_name": "Piscina La Roca",
+      "fish": [
+        "Epinephelus itajara",
+        "Trachinus araneus",
+        "Exocoetus volitans",
+        "Carcharhinus falciformis",
+        "Carcharodon carcharias",
+        "Aetomylaeus bovinus"
+      ]
+    },
+    {
+      "beach_id": 757169600,
+      "beach_name": "La Pinta o Playa de Puerto Colón",
+      "fish": [
+        "Sparus aurata",
+        "Torpedo marmorata",
+        "Scomber colias"
+      ]
+    },
+    {
+      "beach_id": 757169700,
+      "beach_name": "Torviscas",
+      "fish": [
+        "Cetorhinus maximus",
+        "Capros aper",
+        "Scorpaena maderensis",
+        "Trachinotus ovatus",
+        "Sphyrna lewini"
+      ]
+    },
+    {
+      "beach_id": 757169800,
+      "beach_name": "Fañabé",
+      "fish": [
+        "Serranus atricauda",
+        "Boops boops",
+        "Sphyraena viridensis"
+      ]
+    },
+    {
+      "beach_id": 757169900,
+      "beach_name": "Bufadero",
+      "fish": [
+        "Sciaena umbra",
+        "Parablennius incognitus",
+        "euthynnus alletteratus",
+        "Mobula mobular",
+        "Apogon imberbis"
+      ]
+    },
+    {
+      "beach_id": 757170000,
+      "beach_name": "El Duque",
+      "fish": [
+        "Serranus cabrilla",
+        "Parablennius incognitus",
+        "Mullus barbatus"
+      ]
+    },
+    {
+      "beach_id": 757170100,
+      "beach_name": "El Beril. Duque Norte",
+      "fish": [
+        "Squatina squatina",
+        "Coryphaena hippurus",
+        "Diplodus sargus",
+        "Lophius budegassa"
+      ]
+    },
+    {
+      "beach_id": 757170200,
+      "beach_name": "La Enramada",
+      "fish": [
+        "Sphyrna lewini",
+        "Serranus scriba",
+        "Scorpaena notata",
+        "Cetorhinus maximus",
+        "Dicentrarchus punctatus",
+        "Dactylopterus volitans",
+        "Lophius piscatorius"
+      ]
+    },
+    {
+      "beach_id": 757170300,
+      "beach_name": "El Cabezo",
+      "fish": [
+        "Spondyliosoma cantharus",
+        "Prionace glauca",
+        "Lophius budegassa",
+        "Kyphosus sectatrix",
+        "Scorpaena porcus",
+        "Scyliorhinus canicula",
+        "Coryphaena hippurus"
+      ]
+    },
+    {
+      "beach_id": 757170400,
+      "beach_name": "La Calleja",
+      "fish": [
+        "Sparisoma cretense",
+        "Diplodus puntazzo",
+        "Scorpaena notata",
+        "Scomber scombrus",
+        "Gymnura altavela",
+        "Symphodus mediterraneus",
+        "Parablennius incognitus"
+      ]
+    },
+    {
+      "beach_id": 757170500,
+      "beach_name": "El Muelle",
+      "fish": [
+        "Mullus surmuletus",
+        "Diplodus annularis",
+        "Isurus oxyrinchus",
+        "Epinephelus costae",
+        "Spondyliosoma cantharus",
+        "Raja montagui"
+      ]
+    },
+    {
+      "beach_id": 757170600,
+      "beach_name": "El Varadero",
+      "fish": [
+        "Oblada melanura",
+        "Diplodus annularis",
+        "Scomber colias"
+      ]
+    },
+    {
+      "beach_id": 757170700,
+      "beach_name": "Los Morteros",
+      "fish": [
+        "Atherina boyeri",
+        "Mobula mobular",
+        "Kyphosus sectatrix",
+        "Sparus aurata",
+        "Parablennius pilicornis"
+      ]
+    },
+    {
+      "beach_id": 757170800,
+      "beach_name": "Diego Hernández o Playa Blanca",
+      "fish": [
+        "Parablennius incognitus",
+        "Squatina squatina",
+        "Anthias anthias",
+        "Apogon imberbis",
+        "Polyprion americanus",
+        "Torpedo marmorata"
+      ]
+    },
+    {
+      "beach_id": 757170900,
+      "beach_name": "El Puertito (El Pris)",
+      "fish": [
+        "Dasyatis pastinaca",
+        "Pseudocaranx dentex",
+        "Carcharhinus falciformis",
+        "Mola mola",
+        "Trachinotus ovatus",
+        "Sphyrna mokarran"
+      ]
+    },
+    {
+      "beach_id": 757171000,
+      "beach_name": "Las Salinas",
+      "fish": [
+        "Squatina squatina",
+        "Trachinotus ovatus",
+        "Spicara maena",
+        "Epinephelus itajara",
+        "Thalassoma pavo"
+      ]
+    },
+    {
+      "beach_id": 757171100,
+      "beach_name": "El Marqués",
+      "fish": [
+        "Zeus faber",
+        "Raja montagui",
+        "Mullus barbatus",
+        "Macroramphosus scolopax",
+        "Serranus cabrilla",
+        "Sphyrna lewini"
+      ]
+    },
+    {
+      "beach_id": 757171200,
+      "beach_name": "El Pinque",
+      "fish": [
+        "Cetorhinus maximus",
+        "Prionace glauca",
+        "Apogon imberbis",
+        "Sparisoma cretense"
+      ]
+    },
+    {
+      "beach_id": 757171300,
+      "beach_name": "Galgas",
+      "fish": [
+        "Apogon imberbis",
+        "Thalassoma pavo",
+        "Pagrus pagrus",
+        "Gymnothorax unicolor",
+        "Squatina squatina",
+        "Trachinus draco",
+        "Dactylopterus volitans"
+      ]
+    },
+    {
+      "beach_id": 757171400,
+      "beach_name": "Ajabo",
+      "fish": [
+        "Symphodus tinca",
+        "Trachinotus ovatus",
+        "Scyliorhinus stellaris",
+        "Diplodus annularis"
+      ]
+    },
+    {
+      "beach_id": 757171500,
+      "beach_name": "Piscina Las Barandas",
+      "fish": [
+        "Cetorhinus maximus",
+        "Chromis limbata",
+        "Serranus cabrilla",
+        "Conger conger",
+        "Balistes capriscus",
+        "Taeniura grabata"
+      ]
+    },
+    {
+      "beach_id": 757171600,
+      "beach_name": "Piscina Sueño Azul",
+      "fish": [
+        "Carcharhinus falciformis",
+        "Scorpaena maderensis",
+        "Raja montagui",
+        "Naucrates ductor"
+      ]
+    },
+    {
+      "beach_id": 757171700,
+      "beach_name": "Valito",
+      "fish": [
+        "Labrus merula",
+        "Kyphosus sectatrix",
+        "Muraena helena"
+      ]
+    },
+    {
+      "beach_id": 757171800,
+      "beach_name": "Marazul",
+      "fish": [
+        "Parapristipoma octolineatum",
+        "Pseudocaranx dentex",
+        "Sardina pilchardus"
+      ]
+    },
+    {
+      "beach_id": 758173100,
+      "beach_name": "Playa de Lima",
+      "fish": [
+        "Gymnura altavela",
+        "Trachinotus ovatus",
+        "Sphyrna mokarran",
+        "Diplodus sargus",
+        "Kyphosus sectatrix",
+        "Spicara maena",
+        "Coris julis"
+      ]
+    },
+    {
+      "beach_id": 758173200,
+      "beach_name": "Playa de Chimisay",
+      "fish": [
+        "Mullus barbatus",
+        "Mullus surmuletus",
+        "Naucrates ductor",
+        "Scorpaena notata",
+        "Scyliorhinus canicula"
+      ]
+    },
+    {
+      "beach_id": 759175200,
+      "beach_name": "Aguadulce",
+      "fish": [
+        "Epinephelus costae",
+        "Echiichthys vipera",
+        "Pagrus pagrus",
+        "Coris julis",
+        "Macroramphosus scolopax",
+        "Aulostomus strigosus",
+        "Myliobatis aquila"
+      ]
+    },
+    {
+      "beach_id": 759175300,
+      "beach_name": "El Sombrerito",
+      "fish": [
+        "Sardina pilchardus",
+        "Xyrichtys novacula",
+        "Trachinotus ovatus",
+        "Sarpa salpa",
+        "Boops boops",
+        "Trachinus radiatus"
+      ]
+    },
+    {
+      "beach_id": 759175400,
+      "beach_name": "El Bonito",
+      "fish": [
+        "Raja clavata",
+        "Coris julis",
+        "Syngnathus typhle",
+        "Parapristipoma octolineatum",
+        "Scorpaena porcus",
+        "Pagellus erythrinus",
+        "Chromis limbata"
+      ]
+    },
+    {
+      "beach_id": 759175500,
+      "beach_name": "Las Ceras",
+      "fish": [
+        "Raja undulata",
+        "Trachinus radiatus",
+        "Ginglymostoma cirratum",
+        "Scorpaena notata"
+      ]
+    },
+    {
+      "beach_id": 759175600,
+      "beach_name": "Poris",
+      "fish": [
+        "Cetorhinus maximus",
+        "Raja undulata",
+        "Muraena helena",
+        "Sparus aurata",
+        "Diplodus sargus"
+      ]
+    },
+    {
+      "beach_id": 759175700,
+      "beach_name": "El Caletón",
+      "fish": [
+        "Polyprion americanus",
+        "Spicara maena",
+        "Torpedo marmorata",
+        "Scyliorhinus stellaris",
+        "Lophius budegassa",
+        "Sarpa salpa",
+        "Sardina pilchardus"
+      ]
+    },
+    {
+      "beach_id": 759175800,
+      "beach_name": "Grande",
+      "fish": [
+        "Lophius piscatorius",
+        "Parablennius pilicornis",
+        "Diplodus puntazzo",
+        "Trachinotus ovatus"
+      ]
+    },
+    {
+      "beach_id": 759175900,
+      "beach_name": "Las Caletillas",
+      "fish": [
+        "Bodianus scrofa",
+        "Mustelus mustelus",
+        "Trachinus araneus",
+        "Pseudocaranx dentex"
+      ]
+    },
+    {
+      "beach_id": 759176000,
+      "beach_name": "Cueva de la Arena",
+      "fish": [
+        "Torpedo torpedo",
+        "Boops boops",
+        "Pagrus pagrus",
+        "Epinephelus costae"
+      ]
+    },
+    {
+      "beach_id": 759176100,
+      "beach_name": "Cardones",
+      "fish": [
+        "euthynnus alletteratus",
+        "Lithognathus mormyrus",
+        "Polyprion americanus",
+        "Atherina boyeri",
+        "Trachinus radiatus",
+        "Boops boops"
+      ]
+    },
+    {
+      "beach_id": 759176200,
+      "beach_name": "Los Abrigos",
+      "fish": [
+        "euthynnus alletteratus",
+        "Diplodus vulgaris",
+        "Lophius piscatorius",
+        "Taeniura grabata"
+      ]
+    },
+    {
+      "beach_id": 759176300,
+      "beach_name": "Abades",
+      "fish": [
+        "Boops boops",
+        "Muraena helena",
+        "Enchelycore anatina"
+      ]
+    },
+    {
+      "beach_id": 759176400,
+      "beach_name": "Tajao",
+      "fish": [
+        "Solea solea",
+        "Aetomylaeus bovinus",
+        "Thunnus thynnus",
+        "Gobius niger",
+        "Sparisoma cretense",
+        "Oblada melanura"
+      ]
+    },
+    {
+      "beach_id": 759176500,
+      "beach_name": "Callao Hondo",
+      "fish": [
+        "Enchelycore anatina",
+        "Parapristipoma octolineatum",
+        "Naucrates ductor"
+      ]
+    },
+    {
+      "beach_id": 759176600,
+      "beach_name": "El Río",
+      "fish": [
+        "Naucrates ductor",
+        "Scorpaena scrofa",
+        "Epinephelus itajara"
+      ]
+    },
+    {
+      "beach_id": 759176700,
+      "beach_name": "Las Maretas",
+      "fish": [
+        "Scorpaena porcus",
+        "Prionace glauca",
+        "Dicentrarchus punctatus",
+        "Mullus surmuletus"
+      ]
+    },
+    {
+      "beach_id": 759190800,
+      "beach_name": "Las Eras",
+      "fish": [
+        "Prionace glauca",
+        "Aulostomus strigosus",
+        "Syngnathus acus",
+        "Torpedo torpedo",
+        "Ophioblennius atlanticus"
+      ]
+    },
+    {
+      "beach_id": 760180100,
+      "beach_name": "Playa de Los Tarajales",
+      "fish": [
+        "Exocoetus volitans",
+        "Dicentrarchus punctatus",
+        "Mullus surmuletus",
+        "Gobius niger"
+      ]
+    },
+    {
+      "beach_id": 760180200,
+      "beach_name": "Varadero Viejo",
+      "fish": [
+        "Dasyatis pastinaca",
+        "Trachinus radiatus",
+        "Mullus surmuletus",
+        "Sparisoma cretense",
+        "Torpedo torpedo",
+        "Trachinus draco",
+        "Scomber colias"
+      ]
+    },
+    {
+      "beach_id": 760180300,
+      "beach_name": "Charco del Baño",
+      "fish": [
+        "Trachinus draco",
+        "Sarpa salpa",
+        "Lophius budegassa",
+        "Spicara maena",
+        "Oblada melanura",
+        "Aetomylaeus bovinus"
+      ]
+    },
+    {
+      "beach_id": 760180400,
+      "beach_name": "Las Galletas",
+      "fish": [
+        "Mola mola",
+        "Epinephelus itajara",
+        "Diplodus vulgaris",
+        "Diplodus sargus",
+        "Coris julis",
+        "Ginglymostoma cirratum",
+        "Naucrates ductor"
+      ]
+    },
+    {
+      "beach_id": 760180500,
+      "beach_name": "Enojados o Las Burras",
+      "fish": [
+        "Torpedo torpedo",
+        "Bodianus scrofa",
+        "Ophioblennius atlanticus"
+      ]
+    },
+    {
+      "beach_id": 760180700,
+      "beach_name": "Playa de la Arenita",
+      "fish": [
+        "Scomber colias",
+        "Symphodus tinca",
+        "Raja clavata",
+        "Uranoscopus scaber"
+      ]
+    },
+    {
+      "beach_id": 760180800,
+      "beach_name": "La Ballena",
+      "fish": [
+        "Mycteroperca fusca",
+        "Syngnathus acus",
+        "Labrus merula",
+        "Capros aper",
+        "Mobula mobular",
+        "Labrus mixtus",
+        "Polyprion americanus"
+      ]
+    },
+    {
+      "beach_id": 760180900,
+      "beach_name": "El Callao",
+      "fish": [
+        "Raja montagui",
+        "Seriola dumerili",
+        "Labrus merula",
+        "Ophioblennius atlanticus",
+        "Sphyraena viridensis"
+      ]
+    },
+    {
+      "beach_id": 760181000,
+      "beach_name": "Los Cristianos",
+      "fish": [
+        "Torpedo torpedo",
+        "Diplodus vulgaris",
+        "Carcharodon carcharias",
+        "Gobius paganellus",
+        "Isurus oxyrinchus",
+        "Lithognathus mormyrus"
+      ]
+    },
+    {
+      "beach_id": 760181100,
+      "beach_name": "Las Vistas",
+      "fish": [
+        "Xyrichtys novacula",
+        "Carcharodon carcharias",
+        "Raja brachyura",
+        "Torpedo marmorata"
+      ]
+    },
+    {
+      "beach_id": 760181200,
+      "beach_name": "El Camisón",
+      "fish": [
+        "Squatina squatina",
+        "Canthigaster capistrata",
+        "Uranoscopus scaber",
+        "Mola mola",
+        "Lophius piscatorius",
+        "Gobius niger"
+      ]
+    },
+    {
+      "beach_id": 760181300,
+      "beach_name": "Playa Honda",
+      "fish": [
+        "Boops boops",
+        "Polyprion americanus",
+        "Thalassoma pavo",
+        "Capros aper",
+        "Apogon imberbis"
+      ]
+    },
+    {
+      "beach_id": 761183100,
+      "beach_name": "Masca",
+      "fish": [
+        "Zeus faber",
+        "Sciaena umbra",
+        "Sparus aurata",
+        "Diplodus cervinus",
+        "Chromis limbata"
+      ]
+    },
+    {
+      "beach_id": 761183200,
+      "beach_name": "Juan López",
+      "fish": [
+        "Serranus scriba",
+        "Parapristipoma octolineatum",
+        "Myliobatis aquila",
+        "Syngnathus acus"
+      ]
+    },
+    {
+      "beach_id": 761183300,
+      "beach_name": "Playa el Carrizal",
+      "fish": [
+        "Squatina squatina",
+        "Enchelycore anatina",
+        "Naucrates ductor",
+        "Diplodus sargus",
+        "Mullus surmuletus",
+        "Parablennius pilicornis",
+        "Parapristipoma octolineatum"
+      ]
+    },
+    {
+      "beach_id": 761183400,
+      "beach_name": "La Ballenita",
+      "fish": [
+        "Scomber colias",
+        "Taeniura grabata",
+        "Symphodus tinca",
+        "Dactylopterus volitans"
+      ]
+    },
+    {
+      "beach_id": 761183500,
+      "beach_name": "El Fraile",
+      "fish": [
+        "Kyphosus sectatrix",
+        "Labrus mixtus",
+        "Raja montagui",
+        "Trachinus araneus",
+        "Trachinus draco",
+        "Dactylopterus volitans"
+      ]
+    },
+    {
+      "beach_id": 761183600,
+      "beach_name": "Las Mujeres",
+      "fish": [
+        "Parablennius incognitus",
+        "Uranoscopus scaber",
+        "euthynnus alletteratus",
+        "Gymnura altavela",
+        "Ginglymostoma cirratum",
+        "Sparisoma cretense"
+      ]
+    },
+    {
+      "beach_id": 761183700,
+      "beach_name": "Las Arenas",
+      "fish": [
+        "Lophius budegassa",
+        "Hippocampus hippocampus",
+        "Thalassoma pavo",
+        "Anthias anthias",
+        "Trachinotus ovatus"
+      ]
+    },
+    {
+      "beach_id": 761183800,
+      "beach_name": "Los Barqueros",
+      "fish": [
+        "Enchelycore anatina",
+        "Taeniura grabata",
+        "Mycteroperca fusca",
+        "Myliobatis aquila"
+      ]
+    },
+    {
+      "beach_id": 762186100,
+      "beach_name": "Playa de Cho Vito",
+      "fish": [
+        "Kyphosus sectatrix",
+        "Trachinus draco",
+        "Hippocampus guttulatus",
+        "Dicentrarchus labrax",
+        "Gobius niger",
+        "Symphodus tinca",
+        "Sarda sarda"
+      ]
+    },
+    {
+      "beach_id": 762186200,
+      "beach_name": "Playa de Caletillas",
+      "fish": [
+        "Balistes capriscus",
+        "Serranus atricauda",
+        "Trachinus radiatus"
+      ]
+    },
+    {
+      "beach_id": 762186300,
+      "beach_name": "Playa de La Arena",
+      "fish": [
+        "Ophioblennius atlanticus",
+        "Bodianus scrofa",
+        "Torpedo torpedo",
+        "Mustelus mustelus",
+        "Gobius niger"
+      ]
+    },
+    {
+      "beach_id": 762186500,
+      "beach_name": "Playas de Punta Larga",
+      "fish": [
+        "Diplodus cervinus",
+        "Lithognathus mormyrus",
+        "Sciaena umbra",
+        "Dasyatis pastinaca",
+        "Trachinus draco",
+        "Pagrus pagrus",
+        "Hippocampus guttulatus"
+      ]
+    },
+    {
+      "beach_id": 762186600,
+      "beach_name": "La Hornilla",
+      "fish": [
+        "Scomber colias",
+        "Serranus atricauda",
+        "Muraena helena",
+        "Scyliorhinus canicula",
+        "Mobula mobular",
+        "Coryphaena hippurus"
+      ]
+    },
+    {
+      "beach_id": 762186700,
+      "beach_name": "Playa de Olegario",
+      "fish": [
+        "Torpedo torpedo",
+        "Raja montagui",
+        "euthynnus alletteratus",
+        "Mullus surmuletus",
+        "Carcharodon carcharias",
+        "Diplodus vulgaris",
+        "Gymnothorax unicolor"
+      ]
+    },
+    {
+      "beach_id": 762186800,
+      "beach_name": "El Pozo",
+      "fish": [
+        "Uranoscopus scaber",
+        "Tripterygion delaisi",
+        "Capros aper",
+        "Sarda sarda",
+        "Scorpaena scrofa",
+        "Balistes capriscus"
+      ]
+    },
+    {
+      "beach_id": 762186900,
+      "beach_name": "Playa del Alcalde",
+      "fish": [
+        "Atherina boyeri",
+        "Diplodus vulgaris",
+        "Sardina pilchardus"
+      ]
+    },
+    {
+      "beach_id": 762187000,
+      "beach_name": "Playa de Candelaria o de Los Guanches",
+      "fish": [
+        "Dactylopterus volitans",
+        "Canthigaster capistrata",
+        "Labrus merula"
+      ]
+    },
+    {
+      "beach_id": 762187100,
+      "beach_name": "Playa de Samarines",
+      "fish": [
+        "Spicara maena",
+        "Thunnus thynnus",
+        "Symphodus mediterraneus",
+        "Aulostomus strigosus"
+      ]
+    },
+    {
+      "beach_id": 762187200,
+      "beach_name": "Playa de la Viuda",
+      "fish": [
+        "Trachinus draco",
+        "Mola mola",
+        "Torpedo torpedo",
+        "Mycteroperca fusca",
+        "Atherina boyeri",
+        "Pteroplatytrygon violacea",
+        "Epinephelus marginatus"
+      ]
+    },
+    {
+      "beach_id": 762187300,
+      "beach_name": "Charco de Graciliano",
+      "fish": [
+        "Sphyraena viridensis",
+        "Torpedo torpedo",
+        "Trachinus draco",
+        "Mullus barbatus",
+        "Pteroplatytrygon violacea"
+      ]
+    },
+    {
+      "beach_id": 763190100,
+      "beach_name": "Playa Callao de Herques",
+      "fish": [
+        "Taeniura grabata",
+        "Labrus mixtus",
+        "Epinephelus marginatus",
+        "Mola mola",
+        "Sphyrna mokarran"
+      ]
+    },
+    {
+      "beach_id": 763190200,
+      "beach_name": "Playa de Topuerque",
+      "fish": [
+        "Prionace glauca",
+        "Naucrates ductor",
+        "Scorpaena maderensis",
+        "Atherina boyeri"
+      ]
+    },
+    {
+      "beach_id": 763190400,
+      "beach_name": "Playa El Sobradito",
+      "fish": [
+        "Raja montagui",
+        "Seriola dumerili",
+        "Scyliorhinus stellaris",
+        "Ophioblennius atlanticus"
+      ]
+    },
+    {
+      "beach_id": 763190500,
+      "beach_name": "El Abrigo",
+      "fish": [
+        "Trachinotus ovatus",
+        "Pteroplatytrygon violacea",
+        "Enchelycore anatina",
+        "Mobula mobular",
+        "Carcharodon carcharias"
+      ]
+    },
+    {
+      "beach_id": 763190600,
+      "beach_name": "Los Roques",
+      "fish": [
+        "Sparus aurata",
+        "Scorpaena maderensis",
+        "Balistes capriscus",
+        "Anthias anthias"
+      ]
+    },
+    {
+      "beach_id": 763190700,
+      "beach_name": "Playa Zapata",
+      "fish": [
+        "Enchelycore anatina",
+        "Serranus cabrilla",
+        "Gobius niger"
+      ]
+    },
+    {
+      "beach_id": 763190800,
+      "beach_name": "Las Eras",
+      "fish": [
+        "Cetorhinus maximus",
+        "Trachinus draco",
+        "Pagellus erythrinus"
+      ]
+    },
+    {
+      "beach_id": 764193100,
+      "beach_name": "Playa La Caleta de Interian",
+      "fish": [
+        "Labrus mixtus",
+        "Parablennius pilicornis",
+        "Lophius piscatorius"
+      ]
+    },
+    {
+      "beach_id": 764193200,
+      "beach_name": "Playa El Gomero",
+      "fish": [
+        "Diplodus cervinus",
+        "Lithognathus mormyrus",
+        "Sarpa salpa",
+        "Parablennius pilicornis"
+      ]
+    },
+    {
+      "beach_id": 764193300,
+      "beach_name": "Playa El Muelle",
+      "fish": [
+        "Scyliorhinus stellaris",
+        "Pseudocaranx dentex",
+        "Scyliorhinus canicula"
+      ]
+    },
+    {
+      "beach_id": 764193400,
+      "beach_name": "Piscinas Naturales El Caletón",
+      "fish": [
+        "Symphodus mediterraneus",
+        "Coris julis",
+        "Naucrates ductor",
+        "Ophioblennius atlanticus",
+        "Scomber colias",
+        "Trachinus draco",
+        "Spondyliosoma cantharus"
+      ]
+    },
+    {
+      "beach_id": 764193500,
+      "beach_name": "Playa Las Aguas",
+      "fish": [
+        "Zeus faber",
+        "Sphyrna lewini",
+        "Carcharhinus falciformis"
+      ]
+    },
+    {
+      "beach_id": 764193600,
+      "beach_name": "Playa de la Consolación (El Gincho)",
+      "fish": [
+        "Scomber scombrus",
+        "Hippocampus guttulatus",
+        "Prionace glauca",
+        "Sphyraena viridensis",
+        "Mustelus mustelus",
+        "Scyliorhinus canicula"
+      ]
+    },
+    {
+      "beach_id": 765196500,
+      "beach_name": "Playa de la Tabaiba",
+      "fish": [
+        "Aetomylaeus bovinus",
+        "Hippocampus guttulatus",
+        "Boops boops",
+        "Mullus barbatus",
+        "Epinephelus marginatus"
+      ]
+    },
+    {
+      "beach_id": 765196600,
+      "beach_name": "Playa de La Madera",
+      "fish": [
+        "Scorpaena porcus",
+        "Sphyraena viridensis",
+        "Aulostomus strigosus",
+        "Sphyrna lewini",
+        "Lophius piscatorius",
+        "Ginglymostoma cirratum"
+      ]
+    },
+    {
+      "beach_id": 765196700,
+      "beach_name": "El Tanque del Vidrio",
+      "fish": [
+        "Uranoscopus scaber",
+        "Canthigaster capistrata",
+        "Anthias anthias",
+        "Lophius budegassa",
+        "Scorpaena notata",
+        "euthynnus alletteratus"
+      ]
+    },
+    {
+      "beach_id": 765196800,
+      "beach_name": "Playa de Cuevas del Trigo",
+      "fish": [
+        "Chromis limbata",
+        "Scorpaena maderensis",
+        "Torpedo torpedo",
+        "Dactylopterus volitans",
+        "Sparus aurata"
+      ]
+    },
+    {
+      "beach_id": 765197100,
+      "beach_name": "Playa Montaña Pelada",
+      "fish": [
+        "Mycteroperca fusca",
+        "Lophius budegassa",
+        "Coryphaena hippurus",
+        "Trachinotus ovatus",
+        "Serranus cabrilla"
+      ]
+    },
+    {
+      "beach_id": 765197300,
+      "beach_name": "Playa de La Jaquita",
+      "fish": [
+        "Symphodus mediterraneus",
+        "Cetorhinus maximus",
+        "Epinephelus itajara"
+      ]
+    },
+    {
+      "beach_id": 765197400,
+      "beach_name": "Playa El Cabezo",
+      "fish": [
+        "Squatina squatina",
+        "Seriola dumerili",
+        "Diplodus puntazzo",
+        "Labrus merula",
+        "Myliobatis aquila"
+      ]
+    },
+    {
+      "beach_id": 765197500,
+      "beach_name": "Playa Chica",
+      "fish": [
+        "Atherina boyeri",
+        "Thalassoma pavo",
+        "Labrus mixtus",
+        "Coryphaena hippurus",
+        "Torpedo torpedo",
+        "Sciaena umbra",
+        "Hippocampus guttulatus"
+      ]
+    },
+    {
+      "beach_id": 765197600,
+      "beach_name": "Playa El Médano",
+      "fish": [
+        "Sarpa salpa",
+        "Scorpaena scrofa",
+        "Parapristipoma octolineatum",
+        "Mycteroperca fusca"
+      ]
+    },
+    {
+      "beach_id": 765197700,
+      "beach_name": "Playa de Leocadio Machado",
+      "fish": [
+        "Scorpaena scrofa",
+        "euthynnus alletteratus",
+        "Gymnura altavela",
+        "Diplodus annularis",
+        "Taeniura grabata",
+        "Solea solea",
+        "Spicara maena"
+      ]
+    },
+    {
+      "beach_id": 765197800,
+      "beach_name": "Playa Montaña Roja",
+      "fish": [
+        "Raja clavata",
+        "Symphodus mediterraneus",
+        "Taeniura grabata"
+      ]
+    },
+    {
+      "beach_id": 765197900,
+      "beach_name": "Playa de La Tejita",
+      "fish": [
+        "Thalassoma pavo",
+        "Sciaena umbra",
+        "Epinephelus itajara",
+        "Serranus atricauda",
+        "Mola mola",
+        "Hippocampus hippocampus",
+        "Raja undulata"
+      ]
+    },
+    {
+      "beach_id": 765198000,
+      "beach_name": "Playa El Chinchorro",
+      "fish": [
+        "Sphyrna lewini",
+        "Parapristipoma octolineatum",
+        "Hippocampus guttulatus"
+      ]
+    },
+    {
+      "beach_id": 765198100,
+      "beach_name": "Playa El Confital/Playa del Horno",
+      "fish": [
+        "Carcharodon carcharias",
+        "Raja brachyura",
+        "Gobius paganellus"
+      ]
+    },
+    {
+      "beach_id": 765198200,
+      "beach_name": "Playa de La Mareta",
+      "fish": [
+        "Serranus scriba",
+        "Syngnathus typhle",
+        "Carcharodon carcharias",
+        "Gymnura altavela",
+        "Labrus mixtus",
+        "Gobius niger",
+        "Exocoetus volitans"
+      ]
+    },
+    {
+      "beach_id": 765198300,
+      "beach_name": "Charco del Clérigo",
+      "fish": [
+        "Myliobatis aquila",
+        "Torpedo torpedo",
+        "Sciaena umbra",
+        "Macroramphosus scolopax"
+      ]
+    },
+    {
+      "beach_id": 765198400,
+      "beach_name": "Playa de Agua Dulce",
+      "fish": [
+        "Epinephelus costae",
+        "Prionace glauca",
+        "Serranus cabrilla",
+        "Sciaena umbra",
+        "Gymnura altavela",
+        "Parapristipoma octolineatum"
+      ]
+    },
+    {
+      "beach_id": 765198500,
+      "beach_name": "Playa Grande",
+      "fish": [
+        "Sparus aurata",
+        "Raja clavata",
+        "Sciaena umbra",
+        "Enchelycore anatina"
+      ]
+    },
+    {
+      "beach_id": 766200100,
+      "beach_name": "Santo Domingo",
+      "fish": [
+        "Scorpaena porcus",
+        "Balistes capriscus",
+        "Mustelus mustelus",
+        "Coris julis",
+        "Gymnothorax unicolor",
+        "Labrus merula"
+      ]
+    },
+    {
+      "beach_id": 766200200,
+      "beach_name": "Charco de La Pulga",
+      "fish": [
+        "Bothus podas",
+        "Capros aper",
+        "Dasyatis pastinaca"
+      ]
+    },
+    {
+      "beach_id": 766200300,
+      "beach_name": "Charco del Viento",
+      "fish": [
+        "Gymnura altavela",
+        "Anthias anthias",
+        "Sarpa salpa"
+      ]
+    },
+    {
+      "beach_id": 766200400,
+      "beach_name": "Charco Verde",
+      "fish": [
+        "Sparisoma cretense",
+        "Sarda sarda",
+        "Torpedo torpedo",
+        "Apogon imberbis",
+        "Myliobatis aquila"
+      ]
+    },
+    {
+      "beach_id": 766200500,
+      "beach_name": "Charco de La Arena",
+      "fish": [
+        "Symphodus tinca",
+        "Pagellus erythrinus",
+        "Raja brachyura"
+      ]
+    },
+    {
+      "beach_id": 767202100,
+      "beach_name": "Embarcadero Abama",
+      "fish": [
+        "Kyphosus sectatrix",
+        "Sphyraena viridensis",
+        "Syngnathus acus",
+        "Pteroplatytrygon violacea"
+      ]
+    },
+    {
+      "beach_id": 767202200,
+      "beach_name": "Playa de Abama",
+      "fish": [
+        "Naucrates ductor",
+        "Sphyrna lewini",
+        "Coris julis",
+        "Syngnathus acus",
+        "Cetorhinus maximus",
+        "Mullus barbatus"
+      ]
+    },
+    {
+      "beach_id": 767202300,
+      "beach_name": "Playa del Roque",
+      "fish": [
+        "Ophioblennius atlanticus",
+        "Diplodus vulgaris",
+        "Pagellus erythrinus",
+        "euthynnus alletteratus",
+        "Carcharodon carcharias",
+        "Serranus atricauda",
+        "Gymnura altavela"
+      ]
+    },
+    {
+      "beach_id": 767202400,
+      "beach_name": "Playa de Agua Dulce",
+      "fish": [
+        "Aetomylaeus bovinus",
+        "Hippocampus hippocampus",
+        "Macroramphosus scolopax",
+        "Scorpaena scrofa",
+        "Diplodus sargus",
+        "Oblada melanura"
+      ]
+    },
+    {
+      "beach_id": 767202500,
+      "beach_name": "Playa de Los Callados",
+      "fish": [
+        "Trachinus draco",
+        "Labrus mixtus",
+        "Tripterygion delaisi"
+      ]
+    },
+    {
+      "beach_id": 767202600,
+      "beach_name": "Playa de San Juan",
+      "fish": [
+        "Exocoetus volitans",
+        "Parapristipoma octolineatum",
+        "Gymnothorax unicolor",
+        "Enchelycore anatina",
+        "Trachinus draco"
+      ]
+    },
+    {
+      "beach_id": 767202700,
+      "beach_name": "Caleta de Las Viejas",
+      "fish": [
+        "Raja montagui",
+        "Canthigaster capistrata",
+        "Lithognathus mormyrus",
+        "Mullus surmuletus",
+        "Atherina boyeri",
+        "Anthias anthias",
+        "Thunnus thynnus"
+      ]
+    },
+    {
+      "beach_id": 767202800,
+      "beach_name": "Playa de Fonsalía",
+      "fish": [
+        "Coryphaena hippurus",
+        "Xyrichtys novacula",
+        "Torpedo torpedo",
+        "Cetorhinus maximus",
+        "Mustelus mustelus",
+        "Epinephelus costae",
+        "Trachinotus ovatus"
+      ]
+    },
+    {
+      "beach_id": 767202900,
+      "beach_name": "Playa de Los Tarajales",
+      "fish": [
+        "Sardina pilchardus",
+        "Epinephelus marginatus",
+        "Myliobatis aquila"
+      ]
+    },
+    {
+      "beach_id": 767203000,
+      "beach_name": "Playa La Carrera",
+      "fish": [
+        "Mycteroperca fusca",
+        "Scyliorhinus stellaris",
+        "Sparisoma cretense",
+        "Torpedo torpedo",
+        "Cetorhinus maximus"
+      ]
+    },
+    {
+      "beach_id": 767203100,
+      "beach_name": "Playa de Los Topos",
+      "fish": [
+        "Dicentrarchus punctatus",
+        "Scorpaena notata",
+        "Pagrus pagrus",
+        "Sphyrna lewini",
+        "Capros aper"
+      ]
+    },
+    {
+      "beach_id": 767203200,
+      "beach_name": "Playa de Baja Larga",
+      "fish": [
+        "Tripterygion delaisi",
+        "Taeniura grabata",
+        "Gymnothorax unicolor",
+        "Gobius paganellus"
+      ]
+    },
+    {
+      "beach_id": 767203300,
+      "beach_name": "Playa Méndez",
+      "fish": [
+        "Sparus aurata",
+        "Xyrichtys novacula",
+        "Conger conger",
+        "Syngnathus typhle",
+        "Sarpa salpa",
+        "Pteroplatytrygon violacea"
+      ]
+    },
+    {
+      "beach_id": 767203400,
+      "beach_name": "La Playita",
+      "fish": [
+        "Hippocampus hippocampus",
+        "Raja montagui",
+        "Symphodus mediterraneus",
+        "Enchelycore anatina",
+        "Exocoetus volitans",
+        "Balistes capriscus",
+        "Bodianus scrofa"
+      ]
+    },
+    {
+      "beach_id": 767203500,
+      "beach_name": "Pris de Alcalá",
+      "fish": [
+        "Sardina pilchardus",
+        "Sarda sarda",
+        "Gymnura altavela",
+        "Kyphosus sectatrix"
+      ]
+    },
+    {
+      "beach_id": 767203600,
+      "beach_name": "Piscina Sur de La Jaquita",
+      "fish": [
+        "Sparus aurata",
+        "Oblada melanura",
+        "Anthias anthias",
+        "Epinephelus itajara",
+        "Scorpaena notata"
+      ]
+    },
+    {
+      "beach_id": 767203700,
+      "beach_name": "La Jaquita",
+      "fish": [
+        "Epinephelus marginatus",
+        "Scomber scombrus",
+        "Coris julis",
+        "Raja montagui",
+        "Atherina boyeri",
+        "Scorpaena notata"
+      ]
+    },
+    {
+      "beach_id": 767203800,
+      "beach_name": "Piscina Norte de La Jaquita",
+      "fish": [
+        "Scyliorhinus stellaris",
+        "Diplodus cervinus",
+        "Capros aper",
+        "Parablennius incognitus",
+        "Parablennius pilicornis",
+        "Trachinus araneus"
+      ]
+    },
+    {
+      "beach_id": 767203900,
+      "beach_name": "Playa La piedra del Navío",
+      "fish": [
+        "Dicentrarchus labrax",
+        "Ginglymostoma cirratum",
+        "Scomber colias",
+        "Scyliorhinus stellaris",
+        "Lophius budegassa",
+        "Diplodus puntazzo"
+      ]
+    },
+    {
+      "beach_id": 767204000,
+      "beach_name": "Playa del Callado Chico",
+      "fish": [
+        "Hippocampus guttulatus",
+        "Scorpaena maderensis",
+        "Raja brachyura",
+        "Serranus scriba",
+        "Mustelus mustelus"
+      ]
+    },
+    {
+      "beach_id": 767204100,
+      "beach_name": "Playa de Punta Blanca",
+      "fish": [
+        "Exocoetus volitans",
+        "Macroramphosus scolopax",
+        "Trachinus radiatus",
+        "Kyphosus sectatrix",
+        "Mycteroperca fusca",
+        "Dasyatis pastinaca",
+        "Gymnothorax unicolor"
+      ]
+    },
+    {
+      "beach_id": 768206100,
+      "beach_name": "El Socorro",
+      "fish": [
+        "Dactylopterus volitans",
+        "Bodianus scrofa",
+        "Coris julis",
+        "Epinephelus itajara"
+      ]
+    },
+    {
+      "beach_id": 768206200,
+      "beach_name": "El Puertito",
+      "fish": [
+        "Syngnathus typhle",
+        "Dasyatis pastinaca",
+        "Sphyraena viridensis",
+        "Hippocampus guttulatus",
+        "Bothus podas",
+        "Scorpaena scrofa",
+        "Squatina squatina"
+      ]
+    },
+    {
+      "beach_id": 768206300,
+      "beach_name": "Piscina Natural La Caleta",
+      "fish": [
+        "Raja undulata",
+        "Solea solea",
+        "Mycteroperca fusca",
+        "Diplodus annularis",
+        "Cetorhinus maximus",
+        "Diplodus vulgaris",
+        "Thunnus thynnus"
+      ]
+    },
+    {
+      "beach_id": 768206400,
+      "beach_name": "El Charquito",
+      "fish": [
+        "Pagrus pagrus",
+        "Scorpaena maderensis",
+        "Scorpaena scrofa",
+        "Sparisoma cretense",
+        "Canthigaster capistrata",
+        "Torpedo torpedo",
+        "Serranus scriba"
+      ]
+    },
+    {
+      "beach_id": 768206500,
+      "beach_name": "Playa de La Caleta",
+      "fish": [
+        "Hippocampus guttulatus",
+        "Hippocampus hippocampus",
+        "Zeus faber",
+        "Scorpaena scrofa",
+        "Gobius niger"
+      ]
+    },
+    {
+      "beach_id": 768206600,
+      "beach_name": "Piscina natural de Punta Prieta",
+      "fish": [
+        "Sparus aurata",
+        "Taeniura grabata",
+        "Zeus faber"
+      ]
+    },
+    {
+      "beach_id": 768206700,
+      "beach_name": "Piscina natural Los Barrancos",
+      "fish": [
+        "Sparisoma cretense",
+        "Parablennius pilicornis",
+        "Pteroplatytrygon violacea"
+      ]
+    },
+    {
+      "beach_id": 768206800,
+      "beach_name": "El Caletón",
+      "fish": [
+        "Mobula mobular",
+        "euthynnus alletteratus",
+        "Syngnathus acus",
+        "Thalassoma pavo",
+        "Sphyraena viridensis",
+        "Chromis limbata",
+        "Lophius budegassa"
+      ]
+    },
+    {
+      "beach_id": 768206900,
+      "beach_name": "Rabiosa",
+      "fish": [
+        "Oblada melanura",
+        "Sparisoma cretense",
+        "Symphodus tinca",
+        "Myliobatis aquila",
+        "Scorpaena scrofa",
+        "Atherina boyeri",
+        "Epinephelus costae"
+      ]
+    },
+    {
+      "beach_id": 768207000,
+      "beach_name": "El Tablado",
+      "fish": [
+        "Epinephelus costae",
+        "Lophius piscatorius",
+        "Myliobatis aquila",
+        "Sparisoma cretense",
+        "Echiichthys vipera"
+      ]
+    },
+    {
+      "beach_id": 769210100,
+      "beach_name": "San Marcos",
+      "fish": [
+        "Polyprion americanus",
+        "Gymnothorax unicolor",
+        "Ophioblennius atlanticus",
+        "Lophius budegassa",
+        "Macroramphosus scolopax"
+      ]
+    },
+    {
+      "beach_id": 769210200,
+      "beach_name": "El Monis",
+      "fish": [
+        "Squatina squatina",
+        "Raja undulata",
+        "Aulostomus strigosus"
+      ]
+    },
+    {
+      "beach_id": 770212100,
+      "beach_name": "Playa Caleta de la Barranquera",
+      "fish": [
+        "Anthias anthias",
+        "Parablennius incognitus",
+        "Scomber colias",
+        "Pteroplatytrygon violacea"
+      ]
+    },
+    {
+      "beach_id": 770212200,
+      "beach_name": "Playa del Guincho o Caleta del Muerto",
+      "fish": [
+        "Exocoetus volitans",
+        "Torpedo marmorata",
+        "Tripterygion delaisi",
+        "Zeus faber",
+        "Dasyatis pastinaca",
+        "Trachinus araneus",
+        "Symphodus mediterraneus"
+      ]
+    },
+    {
+      "beach_id": 770212500,
+      "beach_name": "Piscinas Naturales de Jover",
+      "fish": [
+        "Scorpaena scrofa",
+        "Diplodus annularis",
+        "Canthigaster capistrata",
+        "Dicentrarchus punctatus",
+        "Exocoetus volitans"
+      ]
+    },
+    {
+      "beach_id": 770212600,
+      "beach_name": "Playa Las Cañitas",
+      "fish": [
+        "Capros aper",
+        "Trachinus araneus",
+        "Scomber scombrus"
+      ]
+    },
+    {
+      "beach_id": 770212700,
+      "beach_name": "Playa y Piscinas Naturales de Bajamar",
+      "fish": [
+        "Xyrichtys novacula",
+        "Aulostomus strigosus",
+        "Lithognathus mormyrus"
+      ]
+    },
+    {
+      "beach_id": 770212800,
+      "beach_name": "Playa del Arenal",
+      "fish": [
+        "Diplodus cervinus",
+        "Echiichthys vipera",
+        "Anthias anthias",
+        "Mullus barbatus",
+        "Oblada melanura",
+        "Scorpaena porcus"
+      ]
+    },
+    {
+      "beach_id": 770212900,
+      "beach_name": "Playa El Roquete",
+      "fish": [
+        "Spondyliosoma cantharus",
+        "Scorpaena scrofa",
+        "Enchelycore anatina",
+        "Epinephelus itajara"
+      ]
+    },
+    {
+      "beach_id": 770213200,
+      "beach_name": "Piscina Natural de Punta del Hidalgo",
+      "fish": [
+        "Spicara maena",
+        "Gobius paganellus",
+        "Conger conger",
+        "Boops boops"
+      ]
+    },
+    {
+      "beach_id": 770213300,
+      "beach_name": "Playa del Cercado",
+      "fish": [
+        "Lophius piscatorius",
+        "Gymnura altavela",
+        "Coris julis"
+      ]
+    },
+    {
+      "beach_id": 770213400,
+      "beach_name": "Playa de Las Cuevillas",
+      "fish": [
+        "Solea solea",
+        "Anthias anthias",
+        "Scorpaena porcus",
+        "Serranus atricauda",
+        "Symphodus tinca",
+        "Zeus faber",
+        "Diplodus cervinus"
+      ]
+    },
+    {
+      "beach_id": 770213500,
+      "beach_name": "Playa 7 Chorros",
+      "fish": [
+        "Sardina pilchardus",
+        "Symphodus tinca",
+        "Sparisoma cretense"
+      ]
+    },
+    {
+      "beach_id": 770213700,
+      "beach_name": "Playa El Navío",
+      "fish": [
+        "Mullus surmuletus",
+        "Sarpa salpa",
+        "Parablennius incognitus"
+      ]
+    },
+    {
+      "beach_id": 770213800,
+      "beach_name": "Playa de Troche",
+      "fish": [
+        "Canthigaster capistrata",
+        "Bodianus scrofa",
+        "Bothus podas",
+        "Squatina squatina",
+        "Uranoscopus scaber",
+        "Mullus surmuletus",
+        "Scomber colias"
+      ]
+    },
+    {
+      "beach_id": 771216100,
+      "beach_name": "El Caletón",
+      "fish": [
+        "Epinephelus itajara",
+        "Carcharodon carcharias",
+        "Gobius niger"
+      ]
+    },
+    {
+      "beach_id": 772218100,
+      "beach_name": "Playa El Bollullo",
+      "fish": [
+        "Sphyraena viridensis",
+        "Thalassoma pavo",
+        "Sphyrna mokarran",
+        "Bodianus scrofa"
+      ]
+    },
+    {
+      "beach_id": 772218200,
+      "beach_name": "Playa los Patos",
+      "fish": [
+        "Hippocampus hippocampus",
+        "Dactylopterus volitans",
+        "Parablennius pilicornis",
+        "Raja montagui",
+        "Oblada melanura",
+        "Scyliorhinus canicula",
+        "Diplodus cervinus"
+      ]
+    },
+    {
+      "beach_id": 772218300,
+      "beach_name": "Playa El Ancón",
+      "fish": [
+        "Hippocampus guttulatus",
+        "Xyrichtys novacula",
+        "Lithognathus mormyrus"
+      ]
+    },
+    {
+      "beach_id": 773220100,
+      "beach_name": "Martianez",
+      "fish": [
+        "Xyrichtys novacula",
+        "Sarda sarda",
+        "Coryphaena hippurus",
+        "Kyphosus sectatrix",
+        "Gymnura altavela"
+      ]
+    },
+    {
+      "beach_id": 773220200,
+      "beach_name": "San Telmo",
+      "fish": [
+        "Sarpa salpa",
+        "Labrus merula",
+        "Raja undulata",
+        "Ginglymostoma cirratum",
+        "Lithognathus mormyrus"
+      ]
+    },
+    {
+      "beach_id": 773220300,
+      "beach_name": "El Muelle",
+      "fish": [
+        "Sardina pilchardus",
+        "Serranus scriba",
+        "Scyliorhinus stellaris",
+        "Parablennius pilicornis",
+        "Uranoscopus scaber",
+        "Seriola dumerili",
+        "Bodianus scrofa"
+      ]
+    },
+    {
+      "beach_id": 773220400,
+      "beach_name": "Playa Jardín",
+      "fish": [
+        "Diplodus cervinus",
+        "Diplodus puntazzo",
+        "Pagrus pagrus",
+        "Dicentrarchus punctatus"
+      ]
+    },
+    {
+      "beach_id": 773220500,
+      "beach_name": "Playa Chica",
+      "fish": [
+        "Dasyatis pastinaca",
+        "Thalassoma pavo",
+        "Torpedo torpedo"
+      ]
+    },
+    {
+      "beach_id": 773220600,
+      "beach_name": "Playa Punta Brava",
+      "fish": [
+        "Balistes capriscus",
+        "Echiichthys vipera",
+        "Tripterygion delaisi"
+      ]
+    },
+    {
+      "beach_id": 774223100,
+      "beach_name": "Playa La Grimona",
+      "fish": [
+        "Oblada melanura",
+        "Capros aper",
+        "Mullus surmuletus",
+        "Scyliorhinus stellaris"
+      ]
+    },
+    {
+      "beach_id": 774223200,
+      "beach_name": "Playa El Socorro",
+      "fish": [
+        "Zeus faber",
+        "Scyliorhinus canicula",
+        "Boops boops"
+      ]
+    },
+    {
+      "beach_id": 774223300,
+      "beach_name": "El Guindaste",
+      "fish": [
+        "Mobula mobular",
+        "Raja brachyura",
+        "Seriola dumerili"
+      ]
+    },
+    {
+      "beach_id": 774223400,
+      "beach_name": "Playa de Castro",
+      "fish": [
+        "Serranus scriba",
+        "Dactylopterus volitans",
+        "Scorpaena scrofa",
+        "Chromis limbata",
+        "Mycteroperca fusca",
+        "Serranus cabrilla"
+      ]
+    },
+    {
+      "beach_id": 774223500,
+      "beach_name": "Playa La Fajana",
+      "fish": [
+        "Capros aper",
+        "Carcharodon carcharias",
+        "Serranus cabrilla",
+        "Spicara maena",
+        "Coryphaena hippurus"
+      ]
+    },
+    {
+      "beach_id": 774223600,
+      "beach_name": "Playa de Los Roques",
+      "fish": [
+        "Sparisoma cretense",
+        "Diplodus puntazzo",
+        "Exocoetus volitans",
+        "Bodianus scrofa"
+      ]
+    },
+    {
+      "beach_id": 775226100,
+      "beach_name": "Playa Moro",
+      "fish": [
+        "Pagrus pagrus",
+        "Raja undulata",
+        "Enchelycore anatina",
+        "Pteroplatytrygon violacea"
+      ]
+    },
+    {
+      "beach_id": 775226200,
+      "beach_name": "Playa de La Nea",
+      "fish": [
+        "Raja clavata",
+        "Scomber colias",
+        "Thunnus thynnus",
+        "Trachinus araneus",
+        "Symphodus mediterraneus"
+      ]
+    },
+    {
+      "beach_id": 775226300,
+      "beach_name": "Playa de Radazul",
+      "fish": [
+        "Diplodus sargus",
+        "Macroramphosus scolopax",
+        "Serranus scriba",
+        "Raja clavata"
+      ]
+    },
+    {
+      "beach_id": 775226400,
+      "beach_name": "Playa Verrugato",
+      "fish": [
+        "Epinephelus itajara",
+        "Canthigaster capistrata",
+        "Lithognathus mormyrus"
+      ]
+    },
+    {
+      "beach_id": 775226500,
+      "beach_name": "ZBM de Boca Cangrejo",
+      "fish": [
+        "Isurus oxyrinchus",
+        "Diplodus vulgaris",
+        "Apogon imberbis",
+        "Dicentrarchus labrax",
+        "Boops boops"
+      ]
+    },
+    {
+      "beach_id": 775226600,
+      "beach_name": "Playa de Tabaiba I y II",
+      "fish": [
+        "Trachinus radiatus",
+        "Serranus cabrilla",
+        "Ophioblennius atlanticus",
+        "Zeus faber",
+        "Parablennius pilicornis"
+      ]
+    },
+    {
+      "beach_id": 775226700,
+      "beach_name": "Piscina Natural de Tabaiba",
+      "fish": [
+        "Lophius budegassa",
+        "Spicara maena",
+        "Mobula mobular",
+        "Hippocampus guttulatus",
+        "Hippocampus hippocampus",
+        "Dasyatis pastinaca"
+      ]
+    },
+    {
+      "beach_id": 775226800,
+      "beach_name": "Playa Las Hermanitas",
+      "fish": [
+        "Tripterygion delaisi",
+        "Boops boops",
+        "Trachinus draco",
+        "Trachinotus ovatus"
+      ]
+    },
+    {
+      "beach_id": 775226900,
+      "beach_name": "Playa El Puertito",
+      "fish": [
+        "Scorpaena porcus",
+        "Sciaena umbra",
+        "Symphodus mediterraneus",
+        "Solea solea",
+        "Sphyrna mokarran"
+      ]
+    },
+    {
+      "beach_id": 775227000,
+      "beach_name": "Playa El Varadero",
+      "fish": [
+        "Bodianus scrofa",
+        "Myliobatis aquila",
+        "Lithognathus mormyrus"
+      ]
+    },
+    {
+      "beach_id": 775227100,
+      "beach_name": "Playa Cabezo Barranco Hondo",
+      "fish": [
+        "Macroramphosus scolopax",
+        "Enchelycore anatina",
+        "Sardina pilchardus"
+      ]
+    },
+    {
+      "beach_id": 775227200,
+      "beach_name": "Playa de Barranco Hondo",
+      "fish": [
+        "Sparus aurata",
+        "Sphyraena viridensis",
+        "Lithognathus mormyrus",
+        "Aetomylaeus bovinus",
+        "Scorpaena notata"
+      ]
+    },
+    {
+      "beach_id": 776229100,
+      "beach_name": "Charco de La Laja",
+      "fish": [
+        "Trachinus draco",
+        "Bothus podas",
+        "Parablennius incognitus"
+      ]
+    },
+    {
+      "beach_id": 776229200,
+      "beach_name": "Los Roques",
+      "fish": [
+        "Epinephelus costae",
+        "Gymnura altavela",
+        "Mullus barbatus",
+        "Cetorhinus maximus",
+        "Gobius paganellus"
+      ]
+    },
+    {
+      "beach_id": 776229300,
+      "beach_name": "Las Aguas",
+      "fish": [
+        "Xyrichtys novacula",
+        "Diplodus cervinus",
+        "Taeniura grabata",
+        "Uranoscopus scaber"
+      ]
+    },
+    {
+      "beach_id": 776229400,
+      "beach_name": "Charco del Río",
+      "fish": [
+        "Macroramphosus scolopax",
+        "Canthigaster capistrata",
+        "Spicara maena",
+        "Thunnus thynnus",
+        "Serranus scriba",
+        "Raja clavata",
+        "Coryphaena hippurus"
+      ]
+    },
+    {
+      "beach_id": 777231100,
+      "beach_name": "San Blas",
+      "fish": [
+        "Sciaena umbra",
+        "Sphyrna lewini",
+        "Exocoetus volitans",
+        "Polyprion americanus",
+        "Xyrichtys novacula",
+        "Gymnothorax unicolor"
+      ]
+    },
+    {
+      "beach_id": 777231200,
+      "beach_name": "El Barranco",
+      "fish": [
+        "Scorpaena scrofa",
+        "Scorpaena porcus",
+        "Dasyatis pastinaca",
+        "Aetomylaeus bovinus"
+      ]
+    },
+    {
+      "beach_id": 777231300,
+      "beach_name": "Los Colmenares",
+      "fish": [
+        "Scomber colias",
+        "Kyphosus sectatrix",
+        "Xyrichtys novacula"
+      ]
+    },
+    {
+      "beach_id": 777231400,
+      "beach_name": "Amarilla",
+      "fish": [
+        "Gobius niger",
+        "Trachinus draco",
+        "Exocoetus volitans",
+        "Sciaena umbra"
+      ]
+    },
+    {
+      "beach_id": 778233100,
+      "beach_name": "Playas de Tamadite",
+      "fish": [
+        "Scorpaena maderensis",
+        "Capros aper",
+        "Aulostomus strigosus"
+      ]
+    },
+    {
+      "beach_id": 778233200,
+      "beach_name": "Playa Cuchillo Mulato",
+      "fish": [
+        "Epinephelus costae",
+        "Gymnura altavela",
+        "Sarpa salpa",
+        "Parapristipoma octolineatum",
+        "Diplodus vulgaris",
+        "Gobius niger",
+        "Lophius piscatorius"
+      ]
+    },
+    {
+      "beach_id": 778233300,
+      "beach_name": "Playa del Cardonal",
+      "fish": [
+        "Trachinus araneus",
+        "Parablennius incognitus",
+        "Serranus scriba"
+      ]
+    },
+    {
+      "beach_id": 778233400,
+      "beach_name": "Playa Tachero",
+      "fish": [
+        "Raja clavata",
+        "Parablennius incognitus",
+        "Parapristipoma octolineatum",
+        "Labrus mixtus",
+        "Labrus merula"
+      ]
+    },
+    {
+      "beach_id": 778233500,
+      "beach_name": "Playa del Roque de Las Bodegas",
+      "fish": [
+        "Sphyrna mokarran",
+        "Enchelycore anatina",
+        "Lithognathus mormyrus",
+        "Polyprion americanus",
+        "Seriola dumerili",
+        "Diplodus vulgaris"
+      ]
+    },
+    {
+      "beach_id": 778233600,
+      "beach_name": "Playa de Almáciga",
+      "fish": [
+        "Naucrates ductor",
+        "Taeniura grabata",
+        "Sphyrna lewini",
+        "Sarda sarda",
+        "Boops boops",
+        "Macroramphosus scolopax"
+      ]
+    },
+    {
+      "beach_id": 778233700,
+      "beach_name": "Playa de Benijo",
+      "fish": [
+        "Raja brachyura",
+        "Scorpaena maderensis",
+        "Boops boops"
+      ]
+    },
+    {
+      "beach_id": 778233800,
+      "beach_name": "Playa de Fabián",
+      "fish": [
+        "Trachinus radiatus",
+        "Myliobatis aquila",
+        "Diplodus annularis",
+        "Coryphaena hippurus",
+        "Lophius piscatorius",
+        "Lophius budegassa",
+        "Xyrichtys novacula"
+      ]
+    },
+    {
+      "beach_id": 778233900,
+      "beach_name": "Playa El Draguiillo",
+      "fish": [
+        "Bodianus scrofa",
+        "Serranus cabrilla",
+        "Diplodus puntazzo",
+        "Pagellus erythrinus"
+      ]
+    },
+    {
+      "beach_id": 778234000,
+      "beach_name": "Playa El Atracadero",
+      "fish": [
+        "Hippocampus guttulatus",
+        "Sardina pilchardus",
+        "Kyphosus sectatrix",
+        "Dasyatis pastinaca",
+        "Conger conger"
+      ]
+    },
+    {
+      "beach_id": 778234100,
+      "beach_name": "Playa La Tambora",
+      "fish": [
+        "Polyprion americanus",
+        "Ophioblennius atlanticus",
+        "Anthias anthias",
+        "Capros aper",
+        "Xyrichtys novacula"
+      ]
+    },
+    {
+      "beach_id": 778234200,
+      "beach_name": "Playa del Fuentecillo",
+      "fish": [
+        "Atherina boyeri",
+        "Anthias anthias",
+        "Aetomylaeus bovinus",
+        "Scyliorhinus canicula",
+        "Chromis limbata"
+      ]
+    },
+    {
+      "beach_id": 778234300,
+      "beach_name": "Playa del Roque",
+      "fish": [
+        "Uranoscopus scaber",
+        "Capros aper",
+        "Coryphaena hippurus"
+      ]
+    },
+    {
+      "beach_id": 778234400,
+      "beach_name": "Playa de Casas Blancas",
+      "fish": [
+        "Capros aper",
+        "Dicentrarchus labrax",
+        "Trachinus araneus",
+        "Carcharodon carcharias",
+        "Dicentrarchus punctatus",
+        "Aetomylaeus bovinus",
+        "Scyliorhinus canicula"
+      ]
+    },
+    {
+      "beach_id": 778234500,
+      "beach_name": "Playa Ijuana",
+      "fish": [
+        "Raja brachyura",
+        "Solea solea",
+        "Naucrates ductor"
+      ]
+    },
+    {
+      "beach_id": 778234600,
+      "beach_name": "Playa de Anosma",
+      "fish": [
+        "Pagrus pagrus",
+        "Anthias anthias",
+        "Solea solea",
+        "Epinephelus itajara"
+      ]
+    },
+    {
+      "beach_id": 778234700,
+      "beach_name": "Playa de Los Toscalitos",
+      "fish": [
+        "Scyliorhinus canicula",
+        "Scyliorhinus stellaris",
+        "Ophioblennius atlanticus",
+        "Seriola dumerili",
+        "Dactylopterus volitans",
+        "Sparus aurata"
+      ]
+    },
+    {
+      "beach_id": 778234800,
+      "beach_name": "Playa de Antequera",
+      "fish": [
+        "Aulostomus strigosus",
+        "Carcharhinus falciformis",
+        "Lophius budegassa",
+        "Pseudocaranx dentex",
+        "Syngnathus acus"
+      ]
+    },
+    {
+      "beach_id": 778234900,
+      "beach_name": "Playa Zapata",
+      "fish": [
+        "Scorpaena maderensis",
+        "Macroramphosus scolopax",
+        "Solea solea",
+        "Oblada melanura",
+        "Coryphaena hippurus",
+        "Epinephelus marginatus",
+        "Hippocampus guttulatus"
+      ]
+    },
+    {
+      "beach_id": 778235000,
+      "beach_name": "Playa La Bruja",
+      "fish": [
+        "Scyliorhinus stellaris",
+        "Serranus atricauda",
+        "Tripterygion delaisi"
+      ]
+    },
+    {
+      "beach_id": 778235100,
+      "beach_name": "Playa El Llano",
+      "fish": [
+        "Zeus faber",
+        "Serranus scriba",
+        "Sarpa salpa",
+        "Bothus podas",
+        "Mullus surmuletus",
+        "Raja clavata"
+      ]
+    },
+    {
+      "beach_id": 778235200,
+      "beach_name": "Playa El Burro",
+      "fish": [
+        "Pteroplatytrygon violacea",
+        "Scorpaena scrofa",
+        "Lophius budegassa",
+        "Aetomylaeus bovinus"
+      ]
+    },
+    {
+      "beach_id": 778235300,
+      "beach_name": "Playa El Balayo",
+      "fish": [
+        "Syngnathus acus",
+        "Sciaena umbra",
+        "Scyliorhinus stellaris",
+        "Diplodus vulgaris",
+        "Scomber scombrus",
+        "Mullus barbatus"
+      ]
+    },
+    {
+      "beach_id": 778235400,
+      "beach_name": "Playa Fea",
+      "fish": [
+        "Dasyatis pastinaca",
+        "Lophius piscatorius",
+        "Xyrichtys novacula"
+      ]
+    },
+    {
+      "beach_id": 778235500,
+      "beach_name": "Playa Chica",
+      "fish": [
+        "Zeus faber",
+        "Scomber scombrus",
+        "Oblada melanura"
+      ]
+    },
+    {
+      "beach_id": 778235600,
+      "beach_name": "Playa de Las Gaviotas",
+      "fish": [
+        "Trachinus radiatus",
+        "Scomber colias",
+        "Diplodus cervinus",
+        "Scyliorhinus stellaris"
+      ]
+    },
+    {
+      "beach_id": 778235700,
+      "beach_name": "Playa de Las Teresitas",
+      "fish": [
+        "Raja brachyura",
+        "Naucrates ductor",
+        "Trachinus radiatus"
+      ]
+    },
+    {
+      "beach_id": 778235800,
+      "beach_name": "Zona de baño de San Andrés",
+      "fish": [
+        "Sardina pilchardus",
+        "Labrus merula",
+        "Serranus scriba",
+        "Lithognathus mormyrus",
+        "Taeniura grabata",
+        "Macroramphosus scolopax"
+      ]
+    },
+    {
+      "beach_id": 778235900,
+      "beach_name": "Playa de Valleseco",
+      "fish": [
+        "Myliobatis aquila",
+        "Chromis limbata",
+        "Gymnothorax unicolor"
+      ]
+    },
+    {
+      "beach_id": 778236000,
+      "beach_name": "Playa de Los Alemanes",
+      "fish": [
+        "Scyliorhinus stellaris",
+        "Dicentrarchus punctatus",
+        "Gobius niger",
+        "Trachinotus ovatus",
+        "Labrus mixtus",
+        "Symphodus mediterraneus"
+      ]
+    },
+    {
+      "beach_id": 778236100,
+      "beach_name": "Playa del club Náutico",
+      "fish": [
+        "Labrus merula",
+        "Mycteroperca fusca",
+        "Isurus oxyrinchus",
+        "Coryphaena hippurus",
+        "Mustelus mustelus",
+        "Trachinus radiatus",
+        "Anthias anthias"
+      ]
+    },
+    {
+      "beach_id": 778236200,
+      "beach_name": "Zona de Baño Castillo de San Juan",
+      "fish": [
+        "Coryphaena hippurus",
+        "Apogon imberbis",
+        "Parablennius incognitus",
+        "Tripterygion delaisi",
+        "Scomber colias"
+      ]
+    },
+    {
+      "beach_id": 778236300,
+      "beach_name": "Playa del Parque",
+      "fish": [
+        "Ginglymostoma cirratum",
+        "Gobius paganellus",
+        "Mullus surmuletus",
+        "Syngnathus typhle",
+        "Lophius budegassa",
+        "Solea solea"
+      ]
+    },
+    {
+      "beach_id": 778236400,
+      "beach_name": "Playa de la Hondura",
+      "fish": [
+        "Mobula mobular",
+        "Sparus aurata",
+        "Raja montagui",
+        "Solea solea"
+      ]
+    },
+    {
+      "beach_id": 778236500,
+      "beach_name": "Zona de baño La Resbala",
+      "fish": [
+        "Trachinus draco",
+        "Scomber colias",
+        "Lophius piscatorius",
+        "Polyprion americanus",
+        "Exocoetus volitans"
+      ]
+    },
+    {
+      "beach_id": 778236600,
+      "beach_name": "Playa del Muerto",
+      "fish": [
+        "Dicentrarchus punctatus",
+        "Epinephelus marginatus",
+        "Taeniura grabata",
+        "Solea solea"
+      ]
+    },
+    {
+      "beach_id": 778236700,
+      "beach_name": "Playa del Recanto",
+      "fish": [
+        "Pseudocaranx dentex",
+        "Balistes capriscus",
+        "Oblada melanura",
+        "Coris julis",
+        "Labrus mixtus",
+        "Dactylopterus volitans",
+        "Scorpaena scrofa"
+      ]
+    },
+    {
+      "beach_id": 778236800,
+      "beach_name": "Playa de Santa Ana",
+      "fish": [
+        "Parablennius pilicornis",
+        "Epinephelus marginatus",
+        "Pagrus pagrus"
+      ]
+    },
+    {
+      "beach_id": 778236900,
+      "beach_name": "Muelle de Añaza",
+      "fish": [
+        "Aulostomus strigosus",
+        "Gymnura altavela",
+        "Anthias anthias",
+        "Sparus aurata",
+        "Sphyrna mokarran",
+        "Oblada melanura",
+        "Coris julis"
+      ]
+    },
+    {
+      "beach_id": 778237000,
+      "beach_name": "Playa sin nombre",
+      "fish": [
+        "Gobius paganellus",
+        "Scorpaena maderensis",
+        "Sciaena umbra",
+        "Gobius niger",
+        "Diplodus puntazzo",
+        "Tripterygion delaisi",
+        "Hippocampus hippocampus"
+      ]
+    },
+    {
+      "beach_id": 778237100,
+      "beach_name": "Los Pocitos",
+      "fish": [
+        "Zeus faber",
+        "euthynnus alletteratus",
+        "Carcharhinus falciformis",
+        "Scorpaena notata",
+        "Lophius budegassa",
+        "Mullus surmuletus",
+        "Echiichthys vipera"
+      ]
+    },
+    {
+      "beach_id": 778237200,
+      "beach_name": "Playa las Arenitas",
+      "fish": [
+        "Sphyrna lewini",
+        "Sardina pilchardus",
+        "Mullus barbatus",
+        "Raja brachyura",
+        "Raja undulata",
+        "Mola mola",
+        "Sarda sarda"
+      ]
+    },
+    {
+      "beach_id": 778237300,
+      "beach_name": "Playa de los Rempujos",
+      "fish": [
+        "Thalassoma pavo",
+        "Dicentrarchus labrax",
+        "Symphodus tinca",
+        "Oblada melanura",
+        "Spondyliosoma cantharus",
+        "Balistes capriscus"
+      ]
+    },
+    {
+      "beach_id": 779250100,
+      "beach_name": "Playa Barranco Hondo",
+      "fish": [
+        "Uranoscopus scaber",
+        "Echiichthys vipera",
+        "Diplodus vulgaris",
+        "Thalassoma pavo"
+      ]
+    },
+    {
+      "beach_id": 780241100,
+      "beach_name": "La Arena",
+      "fish": [
+        "Diplodus sargus",
+        "Sparisoma cretense",
+        "Sarda sarda",
+        "Sphyraena viridensis",
+        "Torpedo marmorata"
+      ]
+    },
+    {
+      "beach_id": 780241200,
+      "beach_name": "Santiago",
+      "fish": [
+        "Cetorhinus maximus",
+        "Diplodus sargus",
+        "Chromis limbata",
+        "Raja montagui",
+        "Syngnathus acus"
+      ]
+    },
+    {
+      "beach_id": 780241300,
+      "beach_name": "Los Guíos",
+      "fish": [
+        "Coryphaena hippurus",
+        "Sphyrna lewini",
+        "Apogon imberbis",
+        "Spondyliosoma cantharus",
+        "Uranoscopus scaber"
+      ]
+    },
+    {
+      "beach_id": 780241400,
+      "beach_name": "Barranco Seco",
+      "fish": [
+        "Torpedo marmorata",
+        "Muraena helena",
+        "Aetomylaeus bovinus",
+        "Dicentrarchus punctatus",
+        "Echiichthys vipera",
+        "Epinephelus costae"
+      ]
+    },
+    {
+      "beach_id": 781243100,
+      "beach_name": "La Garañona",
+      "fish": [
+        "Diplodus annularis",
+        "Uranoscopus scaber",
+        "Sphyrna mokarran",
+        "Scorpaena porcus"
+      ]
+    },
+    {
+      "beach_id": 782245100,
+      "beach_name": "Charco de la Araña",
+      "fish": [
+        "Labrus merula",
+        "Scomber colias",
+        "Sparus aurata",
+        "Diplodus sargus",
+        "Atherina boyeri",
+        "Parapristipoma octolineatum",
+        "Diplodus puntazzo"
+      ]
+    },
+    {
+      "beach_id": 782245200,
+      "beach_name": "Agua Dulce",
+      "fish": [
+        "Atherina boyeri",
+        "Sarda sarda",
+        "Pseudocaranx dentex",
+        "Carcharodon carcharias",
+        "Trachinus draco"
+      ]
+    },
+    {
+      "beach_id": 782245300,
+      "beach_name": "El Gomero",
+      "fish": [
+        "Dicentrarchus labrax",
+        "Pagrus pagrus",
+        "Parablennius pilicornis",
+        "Scomber colias"
+      ]
+    },
+    {
+      "beach_id": 783247100,
+      "beach_name": "El Camello",
+      "fish": [
+        "Hippocampus hippocampus",
+        "Gobius paganellus",
+        "Bodianus scrofa"
+      ]
+    },
+    {
+      "beach_id": 783247200,
+      "beach_name": "Playa de La Arena (Mesas del Mar)",
+      "fish": [
+        "Pagrus pagrus",
+        "Sphyrna lewini",
+        "Thalassoma pavo",
+        "Scomber colias",
+        "Carcharodon carcharias",
+        "Pseudocaranx dentex"
+      ]
+    },
+    {
+      "beach_id": 783247300,
+      "beach_name": "El Sargo",
+      "fish": [
+        "Solea solea",
+        "Scyliorhinus stellaris",
+        "Diplodus annularis",
+        "Balistes capriscus",
+        "Seriola dumerili",
+        "Kyphosus sectatrix",
+        "Diplodus cervinus"
+      ]
+    },
+    {
+      "beach_id": 783247400,
+      "beach_name": "Piscina Natural El Pris",
+      "fish": [
+        "Muraena helena",
+        "Labrus mixtus",
+        "Labrus merula",
+        "Carcharhinus falciformis",
+        "Boops boops",
+        "Spondyliosoma cantharus",
+        "Scyliorhinus canicula"
+      ]
+    },
+    {
+      "beach_id": 783247500,
+      "beach_name": "El Rincón",
+      "fish": [
+        "Sparisoma cretense",
+        "Balistes capriscus",
+        "Mullus surmuletus"
+      ]
+    },
+    {
+      "beach_id": 783247600,
+      "beach_name": "Charco Blanco",
+      "fish": [
+        "Mycteroperca fusca",
+        "Serranus cabrilla",
+        "Raja clavata",
+        "Symphodus mediterraneus",
+        "Syngnathus typhle",
+        "Syngnathus acus",
+        "Bothus podas"
+      ]
+    },
+    {
+      "beach_id": 783247700,
+      "beach_name": "Piscina Natural de Mesas del Mar",
+      "fish": [
+        "Scyliorhinus canicula",
+        "Diplodus annularis",
+        "Pagrus pagrus",
+        "Lophius piscatorius"
+      ]
+    },
+    {
+      "beach_id": 786250100,
+      "beach_name": "Playa Barranco Hondo",
+      "fish": [
+        "Sarpa salpa",
+        "Hippocampus guttulatus",
+        "Pagrus pagrus",
+        "Parablennius incognitus",
+        "Oblada melanura"
+      ]
+    }
+  ]
+}

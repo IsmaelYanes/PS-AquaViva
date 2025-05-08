@@ -68,15 +68,34 @@
         </div>
       </div>
 
+      <div class="filter-element-title">
+        <label for="fishFilter" class="titleFilter-text" style="font-weight: 800">Distribución de peces</label>
+        <input class="filterBox filter-element-title" type="text" id="fishFilter" placeholder="Nombre de peces">
+        <div class="filterResultListContainer" id="fishFilterResultList">
+          <ul id="fishResult"></ul>
+        </div>
+
+      </div>
+    </div>
+
     </div>
 
     <div class="filter-element-instalations">
-      <p class="filterContentTitle">Filtar por las instalaciones</p>
-      <div id="checkbox-container"></div>
+      <div style="display: flex;">
+        <p class="filterContentTitle" style="width: 60%">Filtar por las instalaciones</p>
+        <span class="filterContentTitle" style="width: 40%">Los peces seleccionados</span>
+      </div>
+
+      <div style="display: flex;">
+        <div id="checkbox-container" style="width: 60%"></div>
+        <div id="fishList" style="display: grid; width: 40% ">
+        </div>
+      </div>
     </div>
 
     <div class="filter-element-button">
       <button id="filterButton">Filtrar</button>
+      <button id="closeButton" style="margin-left: 10rem" onclick="showFilterAdvanced()">Cerrar</button>
     </div>
   </div>
 </div>

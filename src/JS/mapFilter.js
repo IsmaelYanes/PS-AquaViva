@@ -224,6 +224,13 @@ class AdvancedSearcher{
         this.facilities = Array.from(
             document.querySelectorAll("input[name='facilities']:checked"))
             .map(checkbox => checkbox.value);
+        this.fishesData = {};
+        this.fishNameSet = new Set();
+        this.fishSelected = [];
+        this.AllFishesSelected = [];
+    }
+    build(){
+        return this;
     }
 
     getResultsOfFilter(beachesList){
@@ -259,6 +266,101 @@ class AdvancedSearcher{
     getBathTypeCondition(beach){
         return beach.fields.type?.stringValue;
     }
+    loadFishesData(fishData){
+        this.fishNameSet = fishData[1];
+        this.fishesData = fishData[0];
+    }
+
+    handleFishInput(){
+        this.fishSelected = [];
+        const fishFilterInput = document.getElementById("fishFilter");
+        const searchText = fishFilterInput.value.trim().toLowerCase();
+        if (searchText.length === 0) {
+            this.clearResults();
+            return;
+        }
+        this.fishNameSet.forEach(fishName => {
+            if (fishName.toLowerCase().includes(searchText)){
+                this.fishSelected.push(fishName);
+            }
+        })
+        this.generateResultList();
+    }
+
+    generateResultList(){
+        this.clearResults();
+        const ul = document.getElementById("fishResult");
+        this.fishSelected.forEach((fish) => {
+            ul.appendChild(this.generateResult(fish));
+        })
+    }
+
+    removeList(fishName) {
+        const span = document.getElementById(fishName);
+        if (span && span.parentNode) {
+            span.parentNode.removeChild(span);
+        }
+    }
+    generateFishResultWithButton(fishName){
+        const span = document.createElement("span");
+        span.innerText = fishName;
+        span.id = fishName;
+        const button = document.createElement("button");
+        button.addEventListener("click", ()=>{this.removeList(fishName)});
+        button.name = 'cancelar';
+        button.type = 'button';
+        button.innerHTML = 'X';
+        button.classList.add('fishNameCancelButton')
+        span.appendChild(button);
+        return span;
+    }
+
+    selectLi(li){
+        const fishList = document.getElementById('fishList');
+        const span = this.generateFishResultWithButton(li.textContent);
+        fishList.appendChild(span);
+        this.clearResults();
+        this.clearField();
+
+    }
+    generateResult(fish){
+        const li = document.createElement("li");
+        li.textContent = fish;
+        li.classList.add("fishResultList");
+        li.addEventListener("click", ()=> this.selectLi(li));
+        return li;
+    }
+
+    clearField(){
+        document.getElementById("fishFilter").value = "";
+    }
+    clearResults(){
+        document.getElementById("fishResult").innerHTML = "";
+    }
+
+    getAllFishesNamesSelected() {
+        this.AllFishesSelected = [];
+        const fishListComponent = document.getElementById('fishList');
+        const childComponents = Array.from(fishListComponent.children);
+
+        childComponents.forEach(span => {
+            const fishName = Array.from(span.childNodes)
+                .filter(node => node.nodeType === Node.TEXT_NODE)
+                .map(node => node.textContent.trim())
+                .join('');
+            this.AllFishesSelected.push(fishName);
+        });
+    }
+    hasFishesSelected(beach) {
+        const fishListByBeach = this.fishesData[beach.fields["ID DGE"]?.integerValue];
+        for (let i = 0; i < this.AllFishesSelected.length; i++) {
+            if (! fishListByBeach.includes(this.AllFishesSelected[i])){
+                return false;
+            }
+        }
+        return true;
+    }
+
     getFacilitiesCondition(beach){
         const facilities = {
             "Aparcamientos": beach.fields.Aparcamientos?.stringValue,
@@ -278,6 +380,7 @@ class AdvancedSearcher{
 
 
     filterBeach(beach){
+        this.getAllFishesNamesSelected();
         const name = !(this.beachNameInput) || this.getBeachName(beach).toLowerCase().includes(this.beachNameInput);
         const island = !(this.islandSelect) || this.islandSelect === (this.getIsland(beach));
         const town = !(this.townSelect) || this.townSelect === (this.getTown(beach));
@@ -287,12 +390,48 @@ class AdvancedSearcher{
         const environmentCondition = !(this.environmentCondition) || this.environmentCondition === (this.getEnvironmentCondition(beach));
         const bath = !(this.bathType) || this.bathType === (this.getBathTypeCondition(beach));
         const facilities = !(this.facilities) || this.facilities.every(facility => this.getFacilitiesCondition(beach).includes(facility));
-        return name & island & town & bathing & access & influence & environmentCondition & bath & facilities;
+        return name & island & town & bathing & access & influence & environmentCondition & bath & facilities & this.hasFishesSelected(beach);
     }
 }
 
-function initAdvancedSearch(){
-    const advancedSearch = new AdvancedSearcher();
-    const result = advancedSearch.getResultsOfFilter(beachSearcher.getBeachesList());
-    showFilteredBeaches(result);
+async function loadFishesData(){
+    const fishDataList = {};
+    const fishNameSet = new Set();
+
+    try {
+        const response = await fetch('../Data/beach_fish_mapping.json');
+        const data = await response.json();
+
+        data.beach_fish_mapping.forEach(fishData => {
+            fishDataList[fishData.beach_id] = fishData.fish;
+            fishData.fish.forEach(fish => {
+                fishNameSet.add(fish);
+            });
+        });
+
+        return [fishDataList, fishNameSet];
+    } catch (error) {
+        console.error("No puede leer dato de peces", error);
+        return [fishDataList, fishNameSet];
+    }
 }
+
+
+
+
+function initAdvancedSearch (){
+    loadFishesData().then(data => {
+        const advancedSearch = new AdvancedSearcher();
+        advancedSearch.loadFishesData(data);
+        document.getElementById("fishFilter").addEventListener("input", () => {
+            advancedSearch.handleFishInput();
+        });
+        const result = advancedSearch.getResultsOfFilter(beachSearcher.getBeachesList());
+        showFilteredBeaches(result);
+    })
+}
+
+function startFilter(){
+
+}
+
