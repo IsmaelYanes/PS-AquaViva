@@ -3,30 +3,29 @@ function initBeach() {
     const beachId = urlParams.get("id");
     if (beachId) {
         console.log("📌 ID de la playa obtenida:", beachId);
-        cargarDatosPlaya(beachId);
+        cargarDatosPlayaDesdeColeccion(beachId);
     }
 }
 
-async function cargarDatosPlaya(id) {
-    const url = `https://firestore.googleapis.com/v1/projects/playascanarias-f83a8/databases/(default)/documents/playas/${id}`;
-
+async function cargarDatosPlayaDesdeColeccion(id) {
     try {
-        const response = await fetch(url);
+        const playas = await fetchAllBeaches(); // Retorna un array de objetos con campos 'fields'
 
-        if (!response.ok) {
-            throw new Error(`Error al obtener datos: ${response.statusText}`);
-        }
+        // Convertimos el ID a número para comparar correctamente con integerValue
+        const idBuscado = parseInt(id, 10);
 
-        const data = await response.json();
+        const playa = playas.find(p =>
+            parseInt(p.fields?.["ID DGE"]?.integerValue, 10) === idBuscado
+        );
 
-        if (!data.fields) {
-            console.error("⛔ No se encontraron datos de la playa.");
+        if (!playa) {
+            console.error("⛔ No se encontró la playa con ID DGE:", idBuscado);
             return;
         }
 
-        mostrarDetallesPlaya(data.fields);
+        mostrarDetallesPlaya(playa.fields);
     } catch (error) {
-        console.error("❌ Error al obtener datos de la playa:", error);
+        console.error("❌ Error al cargar playas:", error);
     }
 }
 
