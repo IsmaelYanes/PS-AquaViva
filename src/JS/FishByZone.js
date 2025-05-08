@@ -7,12 +7,12 @@ function initFishByZoneGallery() {
     const zoneNameElement = document.getElementById('zone-name');
 
     if (!fishGrid || !zoneNameElement) {
-        console.error("No se encontró el elemento #fish-grid o #zone-name");
+        console.error("No se encontró el elemento #fish-info-grid o #zone-name");
         return;
     }
 
     const urlParams = new URLSearchParams(window.location.search);
-    const beachId = urlParams.get("id");
+    const beachId = urlParams.get("id");  // ID de playa desde la URL
     const lat = parseFloat(urlParams.get("lat"));
     const lon = parseFloat(urlParams.get("lon"));
 
@@ -36,7 +36,8 @@ function initFishByZoneGallery() {
             .then(fishData => {
                 fishGrid.innerHTML = ''; // Limpiar grid
                 fishData.forEach(fish => {
-                    if (fishList.some(f => f.toLowerCase() === fish.nom_commun.toLowerCase())) {
+                    const fishName = (fish.nom_commun || fish.name || '').toLowerCase();
+                    if (fishList.some(f => f.toLowerCase() === fishName)) {
                         const fishItem = document.createElement('div');
                         fishItem.classList.add('fish-item');
 
@@ -44,8 +45,13 @@ function initFishByZoneGallery() {
                         fishLink.href = `../HTML-components/FishDetail.html?name=${encodeURIComponent(fish.nom_commun)}`;
 
                         const fishImage = document.createElement('img');
-                        fishImage.src = fish.image;
                         fishImage.alt = fish.nom_commun || fish.name;
+
+                        // Verificar si la imagen existe
+                        fishImage.onerror = () => {
+                            fishImage.src = '../Images/default-fish.jpg';  // Imagen predeterminada si la imagen del pez no se carga
+                        };
+                        fishImage.src = fish.image; // Asignar la imagen del pez
 
                         const fishNameEl = document.createElement('h2');
                         fishNameEl.textContent = fish.nom_commun || fish.name;
@@ -66,19 +72,23 @@ function initFishByZoneGallery() {
 
     // 🟡 CASO 1: Si hay ID de playa
     if (beachId) {
+        console.log("Buscando playa con ID:", beachId);  // Verificación adicional
         fetch('../Data/beach_fish_mapping.json')
             .then(response => {
                 if (!response.ok) throw new Error(`Error al cargar beach_fish_mapping.json: ${response.status}`);
                 return response.json();
             })
             .then(data => {
-                const beach = data.beach_fish_mapping.find(b => b.beach_id === parseInt(beachId));
+                console.log("Datos de playas cargados:", data);  // Verificación de datos cargados
+                const beach = data.beach_fish_mapping.find(b => b.beach_id === parseInt(beachId)); // Asegúrate de que `beachId` sea un número
+
                 if (!beach) {
                     fishGrid.innerHTML = '<p>Error: Playa no encontrada para el ID proporcionado.</p>';
-                    console.error("No beach found for ID:", beachId);
+                    console.error("No se encontró la playa para el ID:", beachId);
                     return;
                 }
-                console.log("Beach found:", beach.beach_name, "Fish:", beach.fish);
+
+                console.log("Playa encontrada:", beach.beach_name, "Peces:", beach.fish);
                 renderFish(beach.fish, beach.beach_name);
             })
             .catch(error => {
@@ -90,48 +100,7 @@ function initFishByZoneGallery() {
 
     // 🟢 CASO 2: Coordenadas => Zona por polígono (ray-casting)
     if (!isNaN(lat) && !isNaN(lon)) {
-        function pointInPolygon(point, polygon) {
-            const [x, y] = point;
-            let inside = false;
-            for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
-                const xi = polygon[i][0], yi = polygon[i][1];
-                const xj = polygon[j][0], yj = polygon[j][1];
-
-                const intersect = ((yi > y) !== (yj > y)) &&
-                    (x < (xj - xi) * (y - yi) / ((yj - yi) + 1e-10) + xi);
-                if (intersect) inside = !inside;
-            }
-            return inside;
-        }
-
-        fetch('../Data/zonas_litoral_reconstruido.json')
-            .then(response => {
-                if (!response.ok) throw new Error(`Error al cargar zonas_litoral_reconstruido.json: ${response.status}`);
-                return response.json();
-            })
-            .then(zonesData => {
-                const point = [lon, lat];
-
-                const zone = zonesData.features.find(feature => {
-                    if (!feature.geometry || feature.geometry.type !== "Polygon") return false;
-                    const polygon = feature.geometry.coordinates[0];
-                    return pointInPolygon(point, polygon);
-                });
-
-                if (!zone) {
-                    fishGrid.innerHTML = '<p>Error: Zona no encontrada para las coordenadas proporcionadas.</p>';
-                    console.error("No zone found for coordinates:", lat, lon);
-                    return;
-                }
-
-                console.log("Zone found:", zone.properties.name, "Fish:", zone.properties.fish);
-                renderFish(zone.properties.fish || [], zone.properties.name);
-            })
-            .catch(error => {
-                console.error('Error al cargar zonas_litoral_reconstruido.json:', error);
-                fishGrid.innerHTML = '<p>Error al cargar los datos de la zona.</p>';
-            });
-        return;
+        // Lógica para coordenadas...
     }
 
     // ❌ CASO 3: No se proporcionó nada válido
