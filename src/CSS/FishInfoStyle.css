@@ -63,6 +63,11 @@
     color: steelblue;
 }
 
+#zone-name {
+    color: steelblue;
+    font-size: 1.5rem;
+}
+
 /* Media queries para responsividad */
 /*
 @media (max-width: 1024px) {

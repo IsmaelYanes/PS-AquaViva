@@ -47,7 +47,7 @@ button:hover {
     border-radius: 20px;
     text-align: center;
     font-size: 1rem;
-    background: #eef7ff;
+    background: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .gap{
