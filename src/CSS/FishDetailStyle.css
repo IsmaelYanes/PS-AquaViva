@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 /* Base Styles */
 body {
     margin: 0;
@@ -30,6 +31,7 @@ body {
     color: steelblue;
     margin-bottom: 1.25em;
     text-align: center;
+    font-family: 'Poppins', sans-serif;
 }
 
 .fish-details img#fish-image {
@@ -52,7 +54,7 @@ body {
 .info-group {
     margin-bottom: 1.25em;
     padding: 0.938em;
-    background: #f3f6fb;
+    background: #eef7ff;
     border-radius: 8px;
 }
 
@@ -62,6 +64,7 @@ body {
     margin-bottom: 0.938em;
     border-bottom: 2px solid steelblue;
     padding-bottom: 5px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .info-group p {
@@ -69,6 +72,7 @@ body {
     line-height: 1.5;
     color: black;
     font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
 }
 
 .info-group strong {
