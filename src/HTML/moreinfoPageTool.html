@@ -36,12 +36,8 @@
         <section id="swell" class="section-info"></section>
         <section id="tide" class="section-info"></section>
         <section id="services" class="section-info"></section>
-        <section id="fish" class="section-info">
-            <div id="fishesbyzone-template-container"></div>
-        </section>
-        <section id="gallery" class="section-info">
-            <div id="fish-template-container"></div>
-        </section>
+        <section id="fish" class="section-info"></section>
+        <section id="gallery" class="section-info"></section>
     </main>
 </div>
 
@@ -90,8 +86,8 @@
             loadTemplate(`../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`, document.getElementById('weather'), initWeather);
             loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('swell'), initializeSwellPage);
             loadTemplate('../HTML-components/wave.html', document.getElementById('tide'), initWavePage);
-            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('fish-template-container'), initFishGallery);
-            loadTemplate(`../HTML-components/FishByZone.html?lat=${lat}&lon=${lon}`, document.getElementById('fishesbyzone-template-container'), initFishByZone);
+            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('fish'), initFishGallery);
+            loadTemplate(`../HTML-components/FishByZone.html?lat=${lat}&lon=${lon}`, document.getElementById('gallery'), initFishByZone);
         } else if (lat && lon) {
             coordLAT = lat;
             coordLON = lon;
@@ -102,8 +98,8 @@
             loadTemplate(defaultPage, document.getElementById('weather'), initWeather);
             loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('swell'), initializeSwellPage);
             loadTemplate('../HTML-components/wave.html', document.getElementById('tide'), initWavePage);
-            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('fish-template-container'), initFishGallery);
-            loadTemplate(`../HTML-components/FishByZone.html?lat=${lat}&lon=${lon}`, document.getElementById('fishesbyzone-template-container'), initFishByZone);
+            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('fish'), initFishGallery);
+            loadTemplate(`../HTML-components/FishByZone.html?lat=${lat}&lon=${lon}`, document.getElementById('gallery'), initFishByZone);
         } else {
             defaultPage = '../HTML-components/mainWeather.html';
             document.getElementById('services').style.display = 'none';
@@ -112,8 +108,8 @@
             loadTemplate(defaultPage, document.getElementById('weather'), initWeather);
             loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('swell'), initializeSwellPage);
             loadTemplate('../HTML-components/wave.html', document.getElementById('tide'), initWavePage);
-            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('fish-template-container'), initFishGallery);
-            loadTemplate(`../HTML-components/FishByZone.html?lat=${coordLAT}&lon=${coordLON}`, document.getElementById('fishesbyzone-template-container'), initFishByZone);
+            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('fish'), initFishGallery);
+            loadTemplate(`../HTML-components/FishByZone.html?lat=${coordLAT}&lon=${coordLON}`, document.getElementById('gallery'), initFishByZone);
         }
 
         console.log("Cargando página por defecto: " + defaultPage);
@@ -172,9 +168,9 @@
         loadTemplate('../HTML-components/wave.html', document.getElementById('tide'), initWavePage)
         loadTemplate('../HTML-components/services.html', document.getElementById('services'), function () {initBeach();})
 
-        loadTemplate('../HTML-components/FishByZone.html?lat=' + coordLAT + '&lon=' + coordLON, document.getElementById('fishesbyzone-template-container'), initFishByZone)
+        loadTemplate('../HTML-components/FishByZone.html?lat=' + coordLAT + '&lon=' + coordLON, document.getElementById('fish'), initFishByZone)
 
-        loadTemplate('../HTML-components/FishInfo.html', document.getElementById('fish-template-container'), initFishGallery)
+        loadTemplate('../HTML-components/FishInfo.html', document.getElementById('gallery'), initFishGallery)
 
 
 
