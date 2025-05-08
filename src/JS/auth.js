@@ -16,10 +16,16 @@ if (!firebase.apps.length) {
 const auth = firebase.auth();
 const db = firebase.firestore();
 
+// ---------------------- FUNCIONES DE USUARIO ----------------------
 
 async function registrarUsuario(nombre, email, password, confirmPassword) {
+    const erroresValidacion = validarContrasena(password);
     if (password !== confirmPassword) {
-        alert('Las contraseñas no coinciden');
+        erroresValidacion.push("Las contraseñas no coinciden.");
+    }
+
+    if (erroresValidacion.length > 0) {
+        mostrarError("signUpError", "Errores:\n- " + erroresValidacion.join("\n- "));
         return;
     }
 
@@ -39,22 +45,10 @@ async function registrarUsuario(nombre, email, password, confirmPassword) {
         alert('Te hemos enviado un correo de verificación. Verifica tu correo antes de cerrar esta pestaña.');
         auth.signOut();
     } catch (error) {
-        alert('Error al crear cuenta: ' + error.message);
+        manejarErroresAuth(error, "registrarse");
     }
 }
 
-async function reenviarVerificacion() {
-    const user = firebase.auth().currentUser;
-    if (user && !user.emailVerified) {
-        await user.sendEmailVerification();
-        alert("Correo de verificación reenviado.");
-    } else {
-        alert("Debes iniciar sesión con una cuenta no verificada.");
-    }
-}
-
-
-// Función para iniciar sesión con correo y contraseña solo si el correo está verificado
 async function iniciarSesion(email, password) {
     try {
         const userCredential = await auth.signInWithEmailAndPassword(email, password);
@@ -67,31 +61,10 @@ async function iniciarSesion(email, password) {
             await auth.signOut();
         }
     } catch (error) {
-        alert('Error al iniciar sesión: ' + error.message);
+        manejarErroresAuth(error, "iniciar sesión");
     }
 }
 
-// Función para iniciar sesión con Google (solo si ya está registrado)
-async function iniciarSesionConGoogle() {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    provider.setCustomParameters({ prompt: 'select_account' });
-
-    try {
-        const result = await auth.signInWithPopup(provider);
-        if (result.additionalUserInfo.isNewUser) {
-            await auth.signOut();
-            alert("Este correo no está registrado. Regístrate primero.");
-        } else {
-            alert("Inicio de sesión con Google exitoso.");
-            guardarUsuarioActual();
-            window.location.href = "../HTML/index.html";
-        }
-    } catch (error) {
-        alert("Error al iniciar sesión con Google: " + error.message);
-    }
-}
-
-// Función para registrar con Google (solo si es nuevo)
 async function registrarConGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
@@ -119,17 +92,48 @@ async function registrarConGoogle() {
     }
 }
 
-// Función para recuperar la contraseña
-async function recuperarContrasena(email) {
+async function iniciarSesionConGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: 'select_account' });
+
     try {
-        await auth.sendPasswordResetEmail(email);
-        alert('Correo de recuperación enviado');
+        const result = await auth.signInWithPopup(provider);
+        if (result.additionalUserInfo.isNewUser) {
+            await auth.signOut();
+            alert("Este correo no está registrado. Regístrate primero.");
+        } else {
+            alert("Inicio de sesión con Google exitoso.");
+            guardarUsuarioActual();
+            window.location.href = "../HTML/index.html";
+        }
     } catch (error) {
-        alert('Error al enviar el correo: ' + error.message);
+        alert("Error al iniciar sesión con Google: " + error.message);
     }
 }
 
-// Asignar manejadores de eventos
+async function recuperarContrasena(email) {
+    try {
+        await auth.sendPasswordResetEmail(email);
+        alert('Correo de recuperación enviado. Verifica tu bandeja de entrada.');
+    } catch (error) {
+        manejarErroresAuth(error, "recuperar la contraseña");
+    }
+}
+
+async function cerrarSesion() {
+    try {
+        await auth.signOut();
+        localStorage.removeItem("uid");
+        localStorage.removeItem("email");
+        localStorage.removeItem("idToken");
+        window.location.href = "index.html";
+    } catch (error) {
+        console.error("Error al cerrar sesión:", error.message);
+    }
+}
+
+// ---------------------- INTERFAZ DOM ----------------------
+
 document.addEventListener('DOMContentLoaded', () => {
     const signUpForm = document.querySelector('.sign-up-container form');
     const signInForm = document.querySelector('.sign-in-container form');
@@ -162,86 +166,109 @@ document.addEventListener('DOMContentLoaded', () => {
             recuperarContrasena(email);
         });
     }
+
+    const cerrarBtn = document.getElementById("cerrarSesion");
+    if (cerrarBtn) {
+        cerrarBtn.addEventListener("click", cerrarSesion);
+    }
 });
 
-window.socialSignIn = iniciarSesionConGoogle;
-window.socialSignUp = registrarConGoogle;
-window.recuperarContrasena = recuperarContrasena; // Asegúrate de que esté aquí
+// ---------------------- OBSERVADOR DE SESIÓN ----------------------
+
+auth.onAuthStateChanged((user) => {
+    const cuentaContainer = document.getElementById("cuenta-container");
+    const registroBtn = document.querySelector("a[href*='register']");
+    const loginBtn = document.querySelector("a[href*='login']");
+
+    if (user && user.emailVerified) {
+        cuentaContainer.style.display = "flex";
+        if (registroBtn) registroBtn.style.display = "none";
+        if (loginBtn) loginBtn.style.display = "none";
+    } else {
+        cuentaContainer.style.display = "none";
+        if (registroBtn) registroBtn.style.display = "inline-block";
+        if (loginBtn) loginBtn.style.display = "inline-block";
+    }
+});
+
+// ---------------------- UTILIDADES ----------------------
+
+function validarContrasena(password) {
+    const errores = [];
+    if (password.length < 6) errores.push("La contraseña debe tener al menos 6 caracteres.");
+    if (!/[A-Z]/.test(password)) errores.push("Debe contener al menos una letra mayúscula.");
+    if (!/[a-z]/.test(password)) errores.push("Debe contener al menos una letra minúscula.");
+    if (!/[^\w\s]/.test(password)) errores.push("Debe contener al menos un carácter especial.");
+    if (!/[0-9]/.test(password)) errores.push("Debe contener al menos un número.");
+    return errores;
+}
+
+function manejarErroresAuth(error, contexto) {
+    let mensaje = "";
+    switch (error.code) {
+        case "auth/email-already-in-use": mensaje = "El correo ya está en uso."; break;
+        case "auth/invalid-email": mensaje = "El correo no es válido."; break;
+        case "auth/weak-password": mensaje = "La contraseña es demasiado débil."; break;
+        case "auth/user-not-found": mensaje = "No existe una cuenta con este correo."; break;
+        case "auth/wrong-password": mensaje = "La contraseña es incorrecta."; break;
+        case "auth/too-many-requests": mensaje = "Demasiados intentos fallidos. Intenta de nuevo más tarde."; break;
+        case "auth/invalid-credential": mensaje = "La credencial es inválida o ha expirado."; break;
+        default: mensaje = error.message; break;
+    }
+
+    if (contexto === "registrarse") {
+        mostrarError("signUpError", mensaje);
+    } else if (contexto === "iniciar sesión") {
+        mostrarError("signInError", mensaje);
+    } else if (contexto === "recuperar la contraseña") {
+        mostrarError("recoverError", mensaje);
+    }
+}
+
+function mostrarError(formId, mensaje) {
+    const errorDiv = document.getElementById(formId);
+    if (errorDiv) {
+        errorDiv.textContent = mensaje;
+    }
+}
 
 function guardarUsuarioActual() {
     const user = auth.currentUser;
-
     if (user) {
-        // Guardar el uid, email y token en localStorage
         localStorage.setItem("uid", user.uid);
         localStorage.setItem("email", user.email);
-
-        // Obtener el idToken y guardarlo en localStorage
         user.getIdToken().then((idToken) => {
             localStorage.setItem("idToken", idToken);
         });
-
-        return user;
-    } else {
-        return null;
     }
 }
 
-async function comprobarUsuario() {
-    // Comprobar si hay un usuario logueado usando Firebase
-    const currentUser = auth.currentUser;
+// ---------------------- FAVORITOS ----------------------
 
-    if (currentUser) {
-        // Imprimir el email del usuario en la consola si está autenticado
-        console.log("Usuario autenticado: ", currentUser.email);
-        return true; // Usuario autenticado
-    } else {
-        console.log("No hay usuario autenticado.");
-        return false; // No hay usuario autenticado
-    }
-}
-
-async function cerrarSesion() {
-    try {
-        // Cerrar sesión en Firebase
-        await auth.signOut();
-
-        // Eliminar el UID, email y idToken del localStorage
-        localStorage.removeItem("uid");
-        localStorage.removeItem("email");
-        localStorage.removeItem("idToken");
-
-        console.log("✅ Sesión cerrada y datos eliminados de localStorage.");
-
-        // Redirigir a la página de inicio o login después de cerrar sesión
-        window.location.href = "index.html";
-    } catch (error) {
-        console.error("⚠️ Error al cerrar sesión:", error.message);
-    }
-}
-
-// Añadir una playa a favoritos
 async function añadirFavorito(uid, beachId) {
     try {
         await db.collection("users").doc(uid).update({
             favoritos: firebase.firestore.FieldValue.arrayUnion(beachId),
             lastUpdatedFav: firebase.firestore.FieldValue.serverTimestamp()
         });
-        console.log(`✅ Playa ${beachId} añadida a favoritos del usuario ${uid}`);
     } catch (error) {
         console.error(`❌ Error al añadir favorito: ${error.message}`);
     }
 }
 
-// Eliminar una playa de favoritos
 async function eliminarFavorito(uid, beachId) {
     try {
         await db.collection("users").doc(uid).update({
             favoritos: firebase.firestore.FieldValue.arrayRemove(beachId),
             lastUpdatedFav: firebase.firestore.FieldValue.serverTimestamp()
         });
-        console.log(`🗑️ Playa ${beachId} eliminada de favoritos del usuario ${uid}`);
     } catch (error) {
         console.error(`❌ Error al eliminar favorito: ${error.message}`);
     }
 }
+
+// ---------------------- EXPORTACIONES ----------------------
+
+window.socialSignIn = iniciarSesionConGoogle;
+window.socialSignUp = registrarConGoogle;
+window.recuperarContrasena = recuperarContrasena;

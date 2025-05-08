@@ -28,6 +28,9 @@ header {
     width: 9em;
 }
 
+#cuenta {
+    cursor: default;
+}
 
 .homeHeader-button {
     padding: 10px 10px;
@@ -38,10 +41,19 @@ header {
     border-radius: 1em;
     text-decoration: none;
     cursor: pointer;
+    transition: transform 80ms ease-in;
 }
 
 .homeHeader-button:hover {
     background-color: #35648c;
+}
+
+.homeHeader-button:active {
+    transform: scale(0.95);
+}
+
+.homeHeader-button:focus {
+    outline: none;
 }
 
 #aside-buttons {
@@ -52,7 +64,11 @@ header {
     gap: 2em;
 }
 
-
+.icon {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
 
 * {
     margin: 0;
