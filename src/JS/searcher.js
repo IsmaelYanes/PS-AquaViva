@@ -42,7 +42,6 @@ class BeachSearcher {
             .filter(beach =>
                 beach.fields.beachName.stringValue.toLowerCase().includes(searchText)
             )
-            .slice(0, 6)
             .map(beach => beach.fields);
     }
 
@@ -93,6 +92,8 @@ class BeachSearcher {
         this.searcher.setAttribute("lat", listItem.getAttribute("lat"));
         this.searcher.setAttribute("lon", listItem.getAttribute("lon"));
         this.searcher.setAttribute("id", listItem.getAttribute("id"));
+        document.getElementById('buscador-container').style.marginBottom = '0';
+        document.getElementById('results-searcher').style.display = 'none';
         this.searcher.focus();
         this.clearResults();
     }
@@ -110,7 +111,6 @@ class BeachSearcher {
         const lat = this.searcher.getAttribute("lat")?.replace(",", ".");
         const lon = this.searcher.getAttribute("lon")?.replace(",", ".");
         const id = this.searcher.getAttribute("id");
-
         if (lat && lon && id) {
             const url = `../HTML/MoreInfoPage.html?id=${id}&lat=${lat}&lon=-${lon}`;
             window.location.href = url;

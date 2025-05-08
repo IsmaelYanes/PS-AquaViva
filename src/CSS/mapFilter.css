@@ -124,6 +124,7 @@
     font-weight: bold;
     font-size: 16.5px;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
 #filterButton:hover {
@@ -133,4 +134,36 @@
 .titleFilter-text {
     font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
     font-size: 1.2em;
+}
+.filterResultListContainer {
+    overflow: auto;
+    max-height: 15rem;
+}
+.fishResultList {
+    padding: 8px;
+    cursor: pointer;
+    border: 1px solid #DBDBDB;
+    color: black;
+}
+.fishNameCancelButton {
+    margin-left: 1rem;
+    width: 1rem;
+    background: #FF6363 ;
+
+}
+#closeButton{
+    width: 8em;
+    height: 2.3em;
+    border: 1.5px solid steelblue;
+    border-radius: 8px;
+    background-color: steelblue;
+    color: whitesmoke;
+    font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 16.5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+#closeButton:hover {
+    background-color: #35648c;
 }
