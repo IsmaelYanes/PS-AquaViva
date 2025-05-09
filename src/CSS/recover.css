@@ -14,20 +14,14 @@ body {
 
 .form-error {
     color: red;
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-}
-
-.mensaje-error {
-    color: red;
-    font-size: 0.9em;
     margin-top: 5px;
+    font-size: 0.9em;
 }
 
-.mensaje-exito {
+.form-success {
     color: green;
-    font-size: 0.9em;
     margin-top: 5px;
+    font-size: 0.9em;
 }
 
 

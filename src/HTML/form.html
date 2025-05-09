@@ -48,43 +48,55 @@
       </button>
       <div class="divider">or</div>
       <input type="text" name="nombre" placeholder="Nombre de usuario" required />
+      <span class="error-text" data-error-for="nombre"></span>
+
       <input type="email" name="email" placeholder="Correo electrónico" required />
+      <span class="error-text" data-error-for="email"></span>
+
       <input type="password" name="contrasena" placeholder="Contraseña" required />
+      <span class="error-text" data-error-for="contrasena"></span>
+
       <input type="password" name="re-contrasena" placeholder="Repite la contraseña" required />
-      <div id="signUpError" class="form-error"></div>
-      <button type="submit" class="basic">Registrarse</button>
-    </form>
-  </div>
+      <span class="error-text" data-error-for="re-contrasena"></span>
 
-  <div class="form-container sign-in-container">
-    <form action="/logIn" method="post">
-      <h1>Iniciar sesión</h1>
-      <button type="button" class="google-button" onclick="socialSignIn('google')">
-        <img src="../Images/google.png">
-      </button>
-      <div class="divider">or</div>
-      <input type="email" name="email" placeholder="Correo electrónico" required />
-      <input type="password" name="password" placeholder="Contraseña" required />
-      <a href="../HTML-components/recover.html">¿Olvidaste tu contraseña?</a>
-      <div id="signInError" class="form-error"></div>
-      <button type="submit" class="basic">Iniciar sesión</button>
-    </form>
-  </div>
+      <!-- <div id="signUpError" class="form-error"></div> -->
+       <button type="submit" class="basic">Registrarse</button>
+     </form>
+   </div>
 
-  <div class="overlay-container">
-    <div class="overlay">
-      <div class="overlay-panel overlay-left">
-        <h1>¡Bienvenido de nuevo!</h1>
-        <p>Para mantenerse conectado con nosotros, por favor inicia sesión con tu información personal</p>
-        <button class="ghost" id="signIn">Iniciar sesión</button>
-      </div>
-      <div class="overlay-panel overlay-right">
-        <h1>¡Hola, amigo!</h1>
-        <p>Introduce tus datos personales y comienza tu viaje con nosotros</p>
-        <button class="ghost" id="signUp">Registrarse</button>
-      </div>
-    </div>
-  </div>
-</div>
-</body>
-</html>
+   <div class="form-container sign-in-container">
+     <form action="/logIn" method="post">
+       <h1>Iniciar sesión</h1>
+       <button type="button" class="google-button" onclick="socialSignIn('google')">
+         <img src="../Images/google.png">
+       </button>
+       <div class="divider">or</div>
+       <input type="email" name="email" placeholder="Correo electrónico" required />
+       <span class="error-text" data-error-for="login-email"></span>
+
+       <input type="password" name="password" placeholder="Contraseña" required />
+       <span class="error-text" data-error-for="login-password"></span>
+
+       <a href="../HTML-components/recover.html">¿Olvidaste tu contraseña?</a>
+       <!--<div id="signInError" class="form-error"></div>-->
+       <button type="submit" class="basic">Iniciar sesión</button>
+     </form>
+   </div>
+
+   <div class="overlay-container">
+     <div class="overlay">
+       <div class="overlay-panel overlay-left">
+         <h1>¡Bienvenido de nuevo!</h1>
+         <p>Para mantenerse conectado con nosotros, por favor inicia sesión con tu información personal</p>
+         <button class="ghost" id="signIn">Iniciar sesión</button>
+       </div>
+       <div class="overlay-panel overlay-right">
+         <h1>¡Hola, amigo!</h1>
+         <p>Introduce tus datos personales y comienza tu viaje con nosotros</p>
+         <button class="ghost" id="signUp">Registrarse</button>
+       </div>
+     </div>
+   </div>
+ </div>
+ </body>
+ </html>
