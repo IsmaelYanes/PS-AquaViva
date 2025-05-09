@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 * {
     margin: 0;
@@ -7,7 +6,6 @@
     scroll-behavior: smooth;
     font-family: 'Poppins', sans-serif;
 }
-
 
 #header {
     position: fixed;
@@ -53,11 +51,11 @@
 
 .nav-a:hover,
 .nav-a.active {
-    color: #0ef;
+    color: #54dbea;
 }
 
 .section-info {
-    min-height: 100vh;
+    min-height: 82vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -100,35 +98,12 @@
     }
 }
 
-#weather {
+#weather, #services {
     background: #f3f6fb;
 }
 
-#swell {
+#swell, #tide, #fish, #gallery  {
     display: flex;
     flex-direction: column;
     background: #f3f6fb;
 }
-
-#tide {
-    display: flex;
-    flex-direction: column;
-    background: #f3f6fb;
-}
-
-#services {
-    background: #f3f6fb;
-}
-
-#fish {
-    display: flex;
-    flex-direction: column;
-    background: #f3f6fb;
-}
-
-#gallery {
-    display: flex;
-    flex-direction: column;
-    background: #f3f6fb;
-}
-

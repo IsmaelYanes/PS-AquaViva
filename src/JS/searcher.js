@@ -112,7 +112,7 @@ class BeachSearcher {
         const lon = this.searcher.getAttribute("lon")?.replace(",", ".");
         const id = this.searcher.getAttribute("id");
         if (lat && lon && id) {
-            const url = `../HTML/MoreInfoPage.html?id=${id}&lat=${lat}&lon=-${lon}`;
+            const url = `../HTML/moreinfoPageTool.html?id=${id}&lat=${lat}&lon=-${lon}`;
             window.location.href = url;
         }else {
             alert("No encuentra la playa que busca")
