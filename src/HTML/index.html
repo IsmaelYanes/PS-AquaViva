@@ -52,7 +52,7 @@
         <div class="buscador-container" id="buscador-container">
             <div class="search-container">
                 <div class="search-text-container">
-                    <img src="/src/Videos/searcher/isla.png" class="search-logo" alt="">
+                    <img src="/src/Images/searcher/isla.png" class="search-logo" alt="">
                     <h2>Buscar playa</h2>
                 </div>
                 <div class="input-container">
@@ -68,26 +68,26 @@
         <div id="map-container">
             <div id="toolbar">
                 <div id="toolbar-hamburguer-container" onclick="toggleToolbar()">
-                    <img src="../Videos/toolbar/icono-hamburguesa.png" id="toolbar-icon-hamburguer" >
+                    <img src="../Images/toolbar/icono-hamburguesa.png" id="toolbar-icon-hamburguer" >
                 </div>
                 <div id="toolbar-content" style="display: none;">
                     <div class="toolbar-hamburguer-buttons" onclick="showFilterAdvanced()" title="Ver filtro avanzado">
-                        <img src="../Videos/toolbar/icon-filter.png" class="toolbar-icon" id="btn-filter">
+                        <img src="../Images/toolbar/icon-filter.png" class="toolbar-icon" id="btn-filter">
                     </div>
                     <div class="toolbar-hamburguer-buttons" onclick="showLocation()" title="Ver mi ubicación">
-                        <img src="../Videos/toolbar/icon-whereIam.png" class="toolbar-icon" id="btn-location" >
+                        <img src="../Images/toolbar/icon-whereIam.png" class="toolbar-icon" id="btn-location" >
                     </div>
                     <div id="favorites-button" class="toolbar-hamburguer-buttons" onclick="showFavorites()" title="Ver mis playas favoritas" style="display: none;">
-                        <img src="../Videos/toolbar/icon-favourites.png" class="toolbar-icon" id="btn-fav" >
+                        <img src="../Images/toolbar/icon-favourites.png" class="toolbar-icon" id="btn-fav" >
                     </div>
                     <div class="toolbar-hamburguer-buttons" onclick="measureDistance()" title="Calcular distancia">
-                        <img src="../Videos/toolbar/icon-distance.png" class="toolbar-icon" id="btn-distance" >
+                        <img src="../Images/toolbar/icon-distance.png" class="toolbar-icon" id="btn-distance" >
                     </div>
                     <div class="toolbar-hamburguer-buttons" onclick="defineZone()" title="Ver zonas">
-                        <img src="../Videos/toolbar/icon-map.png" class="toolbar-icon" id="btn-zone" >
+                        <img src="../Images/toolbar/icon-map.png" class="toolbar-icon" id="btn-zone" >
                     </div>
                     <div class="toolbar-hamburguer-buttons" onclick="showBeaches()" title="Ver playas">
-                        <img src="../Videos/toolbar/icon-beach.png" class="toolbar-icon" id="btn-beach" >
+                        <img src="../Images/toolbar/icon-beach.png" class="toolbar-icon" id="btn-beach" >
                     </div>
                 </div>
             </div>
@@ -148,17 +148,17 @@
     <div class="carrusel">
         <div class="carrusel-image">
             <div class="back" id="back">
-                <img src="../Videos/carrusel/img_1.png" alt="back" loading="lazy">
+                <img src="../Images/carrusel/img_1.png" alt="back" loading="lazy">
             </div>
 
             <div class="widgetContainer">
                 <div id="widget">
-                    <img id="image" src="../Videos/playa-widget.png" alt="imagen 1" loading="lazy">
+                    <img id="image" src="../Images/carrusel/playa-widget.png" alt="imagen 1" loading="lazy">
                 </div>
             </div>
 
             <div class="forward" id="forward">
-                <img src="../Videos/carrusel/img.png" alt="forward" loading="lazy">
+                <img src="../Images/carrusel/img.png" alt="forward" loading="lazy">
             </div>
         </div>
 
@@ -311,10 +311,10 @@
 
     /*carrusel*/
     let widgetContainer = [
-        { url: "../Videos/playa-widget.png" },
-        { url: "../Videos/filtro-widget.png" },
-        { url: "../Videos/oleaje-widget.png" },
-        { url: "../Videos/pescados-widget.png" },
+        { url: "../Images/carrusel/playa-widget.png" },
+        { url: "../Images/carrusel/filtro-widget.png" },
+        { url: "../Images/carrusel/oleaje-widget.png" },
+        { url: "../Images/carrusel/pescados-widget.png" },
     ];
 
     let imagenPrincipal = document.getElementById('image');
