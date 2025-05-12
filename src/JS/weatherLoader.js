@@ -12,31 +12,32 @@ class WeatherControl {
     async loadWeather(lat, lon) {
         const response = await fetch(`https://api.weatherapi.com/v1/marine.json?key=${KEY}&q=${lat},${lon}`);
         const data = await response.json();
-        this.temperature = data.current.temp_c;
-        this.windSpeed = data.condition.wind_kph;
-        this.precipitation = data.condition.precip_mm;
+        this.updateTemperature(data.current.temp_c);
+        this.updateWindSpeed(data.condition.wind_kph);
+        this.updatePrecipitation(data.condition.precip_mm);
     }
 
     notifyAlert(){
 
     }
     updateTemperature(temperature) {
-        if (Math.abs(temperature - this.temperature) > this.TEMPERATUREUMBRAL) {
+        if (Math.abs(temperature - this.temperature) > this.TEMPERATUREUMBRAL && this.temperature !== 0) {
             this.notifyAlert();
         }
         this.temperature = temperature;
     };
 
     updatePrecipitation(precipitation) {
-        if ( (precipitation - this.precipitation) > this.PRECIPITATIONUMBRAL ) {
+        if ( (precipitation - this.precipitation) > this.PRECIPITATIONUMBRAL && this.precipitation !== 0 ) {
             this.notifyAlert();
         }
         this.precipitation = precipitation;
     }
 
     updateWindSpeed(windSpeed) {
-        if ( (windSpeed - this.windSpeed) > this.WINDSPEEDUMBRAL ) {
+        if ( (windSpeed - this.windSpeed) > this.WINDSPEEDUMBRAL && this.windSpeed !== 0) {
             this.notifyAlert();
         }
+        this.windSpeed = windSpeed;
     }
 }
