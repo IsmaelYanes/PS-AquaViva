@@ -102,8 +102,9 @@
     background: #f3f6fb;
 }
 
-#swell, #tide, #fish, #gallery  {
+#swell, #tide, #fish, #gallery, #tabla-container  {
     display: flex;
     flex-direction: column;
     background: #f3f6fb;
 }
+
