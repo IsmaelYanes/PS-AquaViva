@@ -1,16 +1,22 @@
-let lat;
-let lon;
-const apiKey = "8b85f367751d4882aab231335250305";
 
 function initBeach() {
     const urlParams = new URLSearchParams(window.location.search);
     const beachId = urlParams.get("id");
+
+    lat = urlParams.get("lat");
+    lon = urlParams.get("lon");
+    console.log(lat, lon);
+    const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lon}&days=7&aqi=no&alerts=no`;
+    console.log("📡 URL del tiempo:", jsonURL);
+
+
     if (beachId) {
         console.log("📌 ID de la playa obtenida:", beachId);
         cargarDatosPlayaDesdeColeccion(beachId);
-        mostrarRecomendaciones(urlParams);
+        mostrarRecomendaciones(jsonURL);
     }
 }
+
 
 async function cargarDatosPlayaDesdeColeccion(id) {
     try {
@@ -56,31 +62,31 @@ function mostrarDetallesPlaya(fields) {
     document.getElementById("beachImage").src = fields.imageURL?.stringValue || "https://via.placeholder.com/300";
 }
 
-function mostrarRecomendaciones(urlParams) {
-    lat = urlParams.get("lat");
-    lon = urlParams.get("lon");
-    console.log(lat, lon);
-    const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lon}&days=7&aqi=no&alerts=no`;
 
+function mostrarRecomendaciones(jsonURL) {
+    console.log("ejecuta recomendaciones");
     getDataJson(jsonURL);
+    function getDataJson(url) {
+        fetch(url, {
+            method: "GET",
+            headers: { 'Content-Type': 'application/json' }
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error(`Error en la respuesta: ${response.status}`);
+            }
+            return response.json();
+        }).then(json => {
+            console.log("uv");
+            const uvIndex = json.current.uv;
+            console.log(uvIndex);
+            document.getElementById('recomendations').innerHTML = getRecomendation(uvIndex).replace(/\n/g, '<br>');
+            document.getElementById('recomendations-final').textContent = 'Tenga cuidado con las superficies brillantes, como arena, agua y nieve, que reflejan los rayos UV y aumentan la exposición.';
+        }).catch(error => {
+            console.error("❌ Error al obtener datos del tiempo:", error);
+        });
+    }
 }
 
-function getDataJson(url) {
-    fetch(url, {
-        method: "GET",
-        headers: { 'Content-Type': 'application/json' }
-    }).then(response => {
-        if (!response.ok) {
-            throw new Error(`Error en la respuesta: ${response.status}`);
-        }
-        return response.json();
-    }).then(json => {
-        const uvIndex = json.current.uv;
-        console.log(uvIndex);
-        document.getElementById('recomendations').innerHTML = getRecomendation(uvIndex).replace(/\n/g, '<br>');
-        document.getElementById('recomendations-final').textContent = 'Tenga cuidado con las superficies brillantes, como arena, agua y nieve, que reflejan los rayos UV y aumentan la exposición.';
-    })
-}
 
 function getRecomendation(uvIndex) {
     if (uvIndex <= 2) {
