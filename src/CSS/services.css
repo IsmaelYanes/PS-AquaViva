@@ -107,3 +107,17 @@ body {
 .btn:hover {
     background-color: #005f8a;
 }
+
+.uv-direction, #title-uv {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.uv-direction {
+    flex-direction: column;
+}
+
+#uv-icon {
+    margin-left: 0.5em;
+}

@@ -13,7 +13,7 @@
     overflow: hidden;
     width: 100%;
     height: 40rem;
-    background-image: url('../Videos/background-carrusel.png');
+    background-image: url('../Images/carrusel/background-carrusel.png');
     background-size: cover;
     flex-direction: column;
 }
