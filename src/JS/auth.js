@@ -187,15 +187,28 @@ async function iniciarSesionConGoogle() {
 
 async function cerrarSesion() {
     try {
+        // Obtener UID actual antes de cerrar sesión
+        const user = auth.currentUser;
+        const uid = user?.uid;
+
+        // Cerrar sesión
         await auth.signOut();
+
+        // Limpiar datos del usuario del localStorage
         localStorage.removeItem("uid");
         localStorage.removeItem("email");
         localStorage.removeItem("idToken");
+        if (uid) {
+            localStorage.removeItem(`favoritos_${uid}`);
+        }
+
+        // Redirigir al inicio
         window.location.href = "index.html";
     } catch (error) {
-        console.error("Error al cerrar sesión:", error.message);
+        console.error("❌ Error al cerrar sesión:", error.message);
     }
 }
+
 
 // ---------------------- INTERFAZ DOM ----------------------
 
@@ -311,7 +324,6 @@ function limpiarErroresFormulario(formulario) {
     formulario.querySelectorAll('.input-error').forEach(input => input.classList.remove('input-error'));
 }
 
-
 function guardarUsuarioActual() {
     const user = auth.currentUser;
     if (user) {
@@ -342,25 +354,69 @@ function esProveedorGoogle(user) {
 
 // ---------------------- FAVORITOS ----------------------
 
-async function añadirFavorito(uid, beachId) {
+async function addFavourite(uid, beachId) {
+    if (!uid || !beachId) {
+        console.warn("⚠️ UID o BeachID inválido.");
+        return;
+    }
+
     try {
         await db.collection("users").doc(uid).update({
             favoritos: firebase.firestore.FieldValue.arrayUnion(beachId),
             lastUpdatedFav: firebase.firestore.FieldValue.serverTimestamp()
         });
+
+        // 🔄 Actualizar el cache local
+        await downloadFavourite(uid, true);
     } catch (error) {
         console.error(`❌ Error al añadir favorito: ${error.message}`);
     }
 }
 
-async function eliminarFavorito(uid, beachId) {
+async function removeFavourite(uid, beachId) {
+    if (!uid || !beachId) {
+        console.warn("⚠️ UID o BeachID inválido.");
+        return;
+    }
+
     try {
         await db.collection("users").doc(uid).update({
             favoritos: firebase.firestore.FieldValue.arrayRemove(beachId),
             lastUpdatedFav: firebase.firestore.FieldValue.serverTimestamp()
         });
+
+        // 🔄 Actualizar el cache local
+        await downloadFavourite(uid, true);
     } catch (error) {
         console.error(`❌ Error al eliminar favorito: ${error.message}`);
+    }
+}
+
+async function downloadFavourite(uid) {
+    const localKey = `favoritos_${uid}`;
+
+    // ✅ Comprobamos si ya existen en localStorage
+    const yaCargados = localStorage.getItem(localKey);
+    if (yaCargados) {
+        console.log("📦 Favoritos ya cargados en localStorage. No se actualiza desde Firestore.");
+        return;
+    }
+
+    try {
+        const userDoc = await db.collection("users").doc(uid).get();
+
+        if (!userDoc.exists) {
+            console.warn("⚠️ El usuario no existe.");
+            return;
+        }
+
+        const userData = userDoc.data();
+        const favoritos = userData.favoritos || [];
+
+        localStorage.setItem(localKey, JSON.stringify(favoritos));
+        console.log(`✅ Favoritos cargados en localStorage: ${favoritos.length} elementos.`);
+    } catch (error) {
+        console.error(`❌ Error al cargar favoritos: ${error.message}`);
     }
 }
 
