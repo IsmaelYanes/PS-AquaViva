@@ -25,7 +25,6 @@
             <a href="#fish" class="nav-a" id="fishes-by-x">Peces por zona</a><br>
             <a href="#gallery" class="nav-a">Galería de peces</a><br>
             <a href="#tabla-container" class="nav-a">Ir a tabla de playas</a><br>
-            <button onclick="downloadCSVTableAsPDF()" class="nav-button">Descargar tabla PDF</button>
         </nav>
     </aside>
 
@@ -72,13 +71,6 @@
     let coordLAT;
     let coordLON;
 
-    function loadDefaultPage() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const lat = urlParams.get("lat");
-        const lon = urlParams.get("lon");
-        loadTemplate(`../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`, document.getElementById('weather'), initWeather);
-    }
-
     function detectSourceAndLoad() {
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get("id");
@@ -95,25 +87,10 @@
             loadTemplate(`../HTML-components/FishByZone.html?lat=${lat}&lon=${lon}`, document.getElementById('fish'), initFishByZone);
             loadTemplate('../HTML-components/FishInfo.html', document.getElementById('gallery'), initFishGallery);
             if (typeof loadCSVTable === 'function') {
-                loadCSVTable('/Data/beaches_table');
+                loadCSVTable('../data/beaches_table.csv');
             } else {
                 console.error('loadCSVTable function is not defined. Check loadCsvTable.js');
                 document.getElementById('tabla-container').innerHTML = '<p>Error: No se pudo cargar la tabla.</p>';
-            }
-        } else if (lat && lon) {
-            coordLAT = lat;
-            coordLON = lon;
-            defaultPage = `../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`;
-            document.getElementById('services').style.display = 'none';
-            document.getElementById('services-link').style.display = 'none';
-            document.getElementById('services-br').style.display = 'none';
-            loadTemplate(defaultPage, document.getElementById('weather'), initWeather);
-            loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('swell'), initializeSwellPage);
-            loadTemplate('../HTML-components/wave.html', document.getElementById('tide'), initWavePage);
-            loadTemplate(`../HTML-components/FishByZone.html?lat=${lat}&lon=${lon}`, document.getElementById('fish'), initFishByZone);
-            loadTemplate('../HTML-components/FishInfo.html', document.getElementById('gallery'), initFishGallery);
-            if (typeof loadCSVTable === 'function') {
-                loadCSVTable('/Data/beaches_table');
             }
         } else {
             defaultPage = '../HTML-components/mainWeather.html';
@@ -126,7 +103,7 @@
             loadTemplate(`../HTML-components/FishByZone.html?lat=${coordLAT}&lon=${coordLON}`, document.getElementById('fish'), initFishByZone);
             loadTemplate('../HTML-components/FishInfo.html', document.getElementById('gallery'), initFishGallery);
             if (typeof loadCSVTable === 'function') {
-                loadCSVTable('/Data/beaches_table');
+                loadCSVTable('../data/beaches_table.csv');
             }
         }
 
@@ -181,17 +158,14 @@
         if (typeof window.initFishByZoneGallery === 'function') {
             window.initFishByZoneGallery();
         } else {
-            console.error("initFishByZoneGallery no está definido");
             const script = document.createElement('script');
             script.src = '../JS/FishByZone.js';
             script.onload = () => {
                 if (typeof window.initFishByZoneGallery === 'function') {
                     window.initFishByZoneGallery();
-                } else {
-                    console.error("Failed to load initFishByZoneGallery after manual load");
                 }
             };
-            script.onerror = () => console.error("Error loading FishByZone.js manually");
+            script.onerror = () => console.error("Error cargando FishByZone.js");
             document.body.appendChild(script);
         }
     }
