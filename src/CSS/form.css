@@ -28,6 +28,29 @@ h2 {
     margin-bottom: 10px;
 }
 
+.input-error {
+    border: 1px solid red;
+}
+
+.error-text {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 4px;
+    display: block;
+}
+
+.mensaje-error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.mensaje-exito {
+    color: green;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
 
 p {
     font-size: 14px;
