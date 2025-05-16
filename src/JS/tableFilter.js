@@ -48,7 +48,8 @@ function initFilters(headers, data) {
     // Populate advanced filters (fields with < 7 unique values)
     const uniqueValues = {};
     headers.forEach((header, colIndex) => {
-        const values = [...new Set(data.map(row => row[colIndex]))].filter(v => v !== 'Desconocido');
+        // Excluir la primera fila (encabezados) al calcular valores únicos
+        const values = [...new Set(data.slice(1).map(row => row[colIndex]))].filter(v => v !== 'Desconocido');
         uniqueValues[header] = values;
     });
 
