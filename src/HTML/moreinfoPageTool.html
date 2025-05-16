@@ -11,6 +11,84 @@
     <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.3/jspdf.plugin.autotable.min.js"></script>
+    <style>
+        #filter-bar {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        #filter-button {
+            padding: 8px 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        #filter-container {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 1000;
+            width: 300px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        #filter-container.show {
+            display: block;
+        }
+        #filter-container label {
+            display: block;
+            margin: 5px 0;
+        }
+        #advanced-filter {
+            margin-top: 10px;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+        #advanced-filter select {
+            width: 100%;
+            margin: 5px 0;
+        }
+        #apply-filter {
+            margin-top: 10px;
+            padding: 8px 16px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            width: 100%;
+        }
+        #search-container {
+            display: flex;
+            gap: 10px;
+        }
+        #search-input {
+            padding: 8px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #search-next {
+            padding: 8px 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
 </head>
 <body>
 <div id="header"></div>
@@ -38,6 +116,21 @@
         <section id="tabla-container" class="section-info">
             <section class="section">
                 <h2>Tabla de playas</h2>
+                <div id="filter-bar">
+                    <button id="filter-button">Filtro</button>
+                    <div id="search-container">
+                        <input type="text" id="search-input" placeholder="Buscar en la tabla...">
+                        <button id="search-next">Siguiente</button>
+                    </div>
+                </div>
+                <div id="filter-container">
+                    <div id="column-filters"></div>
+                    <div id="advanced-filter">
+                        <h3>Filtrado Avanzado</h3>
+                        <div id="advanced-filter-options"></div>
+                        <button id="apply-filter">Aplicar Filtro</button>
+                    </div>
+                </div>
                 <div id="table-wrapper">
                     <table id="csv-table"></table>
                     <button onclick="downloadCSVTableAsPDF()" style="margin-top: 10px; padding: 8px 16px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 4px; width: 100%; display: block;">Descargar en PDF</button>
@@ -60,6 +153,7 @@
 <script src="../JS/FishByZone.js"></script>
 <script src="../JS/loadCsvTable.js"></script>
 <script src="../JS/downloadTableAsPDF.js"></script>
+<script src="../JS/tableFilter.js"></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -112,7 +206,7 @@
 
     function loadTemplate(fileName, element, callback) {
         if (!element) {
-            console.error("Elemento no encontrado para", fileName);
+            console.error("Elemento no encontrado para RIGHTS", fileName);
             return;
         }
 
