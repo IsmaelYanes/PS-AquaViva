@@ -419,6 +419,30 @@ async function downloadFavourite(uid) {
         console.error(`❌ Error al cargar favoritos: ${error.message}`);
     }
 }
+//----------------------- COMENTARIOS ------------------------
+
+async function addComment(beachId, comentarioTexto, ownerEmail, fishArray = []) {
+    try {
+        if (!beachId || !comentarioTexto || !ownerEmail) {
+            throw new Error("beachId, comentarioTexto y ownerEmail son obligatorios");
+        }
+
+        // Referencia a la colección de comentarios del beachId dentro de forums
+        const comentariosRef = db.collection("forums").doc(beachId).collection("comments");
+
+        // Crear nuevo documento con datos
+        await comentariosRef.add({
+            text: comentarioTexto,
+            date: firebase.firestore.FieldValue.serverTimestamp(),
+            owner: ownerEmail,
+            fish: fishArray
+        });
+
+        console.log(`Comentario añadido a la playa ${beachId}`);
+    } catch (error) {
+        console.error(`❌ Error al añadir comentario: ${error.message}`);
+    }
+}
 
 // ---------------------- EXPORTACIONES ----------------------
 

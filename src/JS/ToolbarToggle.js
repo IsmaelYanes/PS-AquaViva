@@ -529,8 +529,6 @@ function getUserLocation(callback) {
     );
 }
 
-
-
 function clearMapLayers() {
     if (window.zonasLitoralLayer) {
         window.map.removeLayer(window.zonasLitoralLayer);
