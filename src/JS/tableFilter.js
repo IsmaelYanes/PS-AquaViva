@@ -3,11 +3,13 @@ let visibleColumns = [];
 let advancedFilters = {};
 let currentSearchIndex = -1;
 let searchMatches = [];
+let currentSearchQuery = '';
 
 function initFilters(headers, data) {
     originalData = data;
     visibleColumns = headers.map((_, index) => index);
     advancedFilters = {};
+    currentSearchQuery = '';
 
     // Initialize filter container
     const filterButton = document.getElementById('filter-button');
@@ -39,6 +41,7 @@ function initFilters(headers, data) {
             } else {
                 visibleColumns = visibleColumns.filter(col => col !== index);
             }
+            renderFilteredTable(); // Re-render table on column visibility change
         });
         label.appendChild(checkbox);
         label.appendChild(document.createTextNode(` ${header}`));
@@ -76,6 +79,30 @@ function initFilters(headers, data) {
         }
     });
 
+    // Add clear filters button
+    const clearFiltersButton = document.createElement('button');
+    clearFiltersButton.textContent = 'Limpiar Filtros';
+    clearFiltersButton.style.marginTop = '10px';
+    clearFiltersButton.style.padding = '8px 16px';
+    clearFiltersButton.style.cursor = 'pointer';
+    clearFiltersButton.style.backgroundColor = '#dc3545';
+    clearFiltersButton.style.color = 'white';
+    clearFiltersButton.style.border = 'none';
+    clearFiltersButton.style.borderRadius = '4px';
+    clearFiltersButton.style.width = '100%';
+    clearFiltersButton.addEventListener('click', () => {
+        // Clear all advanced filter selections
+        advancedFilterOptions.querySelectorAll('select').forEach(select => {
+            Array.from(select.options).forEach(option => {
+                option.selected = false;
+            });
+        });
+        advancedFilters = {};
+        renderFilteredTable();
+        filterContainer.classList.remove('show');
+    });
+    advancedFilterOptions.appendChild(clearFiltersButton);
+
     // Apply filters
     applyFilterButton.addEventListener('click', () => {
         filterContainer.classList.remove('show');
@@ -86,20 +113,8 @@ function initFilters(headers, data) {
     searchInput.addEventListener('input', () => {
         currentSearchIndex = -1;
         searchMatches = [];
-        const query = searchInput.value.toLowerCase();
-        if (query) {
-            const tbody = document.querySelector('#csv-table tbody');
-            tbody.querySelectorAll('tr').forEach((row, rowIndex) => {
-                row.querySelectorAll('td').forEach((cell, colIndex) => {
-                    if (visibleColumns.includes(colIndex) && cell.textContent.toLowerCase().includes(query)) {
-                        searchMatches.push({ rowIndex, colIndex, element: cell });
-                    }
-                });
-            });
-            highlightMatches();
-        } else {
-            clearHighlights();
-        }
+        currentSearchQuery = searchInput.value.toLowerCase();
+        renderFilteredTable(); // Re-render table with search query
     });
 
     searchNextButton.addEventListener('click', () => {
@@ -116,9 +131,10 @@ function highlightMatches() {
     searchMatches.forEach((match, index) => {
         if (index === currentSearchIndex) {
             match.element.classList.add('highlight');
-            match.element.style.backgroundColor = '#ffeb3b';
+            match.element.style.backgroundColor = '#4682B4'; // Azul más oscuro para el resultado actual
         } else {
             match.element.classList.add('highlight');
+            match.element.style.backgroundColor = '#87CEEB'; // Azul claro para los resultados no actuales
         }
     });
 }
@@ -133,6 +149,8 @@ function clearHighlights() {
 function renderFilteredTable() {
     const table = document.getElementById('csv-table');
     table.innerHTML = '';
+    searchMatches = [];
+    currentSearchIndex = -1;
 
     // Filter rows based on advanced filters
     let filteredData = originalData.filter(row => {
@@ -142,6 +160,15 @@ function renderFilteredTable() {
             return advancedFilters[header].includes(row[colIndex]);
         });
     });
+
+    // Further filter rows based on search query
+    if (currentSearchQuery) {
+        filteredData = filteredData.filter(row => {
+            return visibleColumns.some(colIndex => {
+                return row[colIndex].toLowerCase().includes(currentSearchQuery);
+            });
+        });
+    }
 
     // Render headers
     const thead = document.createElement('thead');
@@ -154,18 +181,26 @@ function renderFilteredTable() {
     thead.appendChild(headTr);
     table.appendChild(thead);
 
-    // Render rows
+    // Render rows and collect search matches
     const tbody = document.createElement('tbody');
-    filteredData.slice(1).forEach(row => {
+    filteredData.slice(1).forEach((row, rowIndex) => {
         const tr = document.createElement('tr');
         visibleColumns.forEach(colIndex => {
             const td = document.createElement('td');
             td.textContent = row[colIndex];
+            if (currentSearchQuery && td.textContent.toLowerCase().includes(currentSearchQuery)) {
+                searchMatches.push({ rowIndex, colIndex, element: td });
+            }
             tr.appendChild(td);
         });
         tbody.appendChild(tr);
     });
     table.appendChild(tbody);
+
+    // Highlight search matches if any
+    if (searchMatches.length > 0) {
+        highlightMatches();
+    }
 }
 
 function updatePDFDownload() {
@@ -178,15 +213,25 @@ function updatePDFDownload() {
         doc.text("Tabla de Playas Filtrada", 40, 40);
 
         const headers = visibleColumns.map(index => originalData[0][index]);
-        const data = originalData.slice(1)
+        let data = originalData.slice(1)
             .filter(row => {
                 return Object.keys(advancedFilters).every(header => {
                     if (!advancedFilters[header]) return true;
                     const colIndex = originalData[0].indexOf(header);
                     return advancedFilters[header].includes(row[colIndex]);
                 });
-            })
-            .map(row => visibleColumns.map(index => row[index]));
+            });
+
+        // Apply search query to PDF data
+        if (currentSearchQuery) {
+            data = data.filter(row => {
+                return visibleColumns.some(colIndex => {
+                    return row[colIndex].toLowerCase().includes(currentSearchQuery);
+                });
+            });
+        }
+
+        data = data.map(row => visibleColumns.map(index => row[index]));
 
         doc.autoTable({
             head: [headers],
