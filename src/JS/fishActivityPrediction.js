@@ -11,8 +11,18 @@ class Solunar{
         this.moonTimes = SunCalc.getMoonTimes(this.date, this.lat, this.lon);
         this.moonrise = this.moonTimes.rise ? this.roundToMinutes(this.moonTimes.rise): null;
         this.moonset = this.moonTimes.set ? this.roundToMinutes(this.moonTimes.set): null;
+        console.log(this.moonrise, this.moonset);
+        if(this.moonrise === null){
+            this.getNextMoonRise()
+        }
     }
+    getNextMoonRise(){
+        const today = new Date();
+        today.setDate(today.getDate() + 1);
+        const moonTime = SunCalc.getMoonTimes(today, this.lat, this.lon);
+        this.moonrise = moonTime.rise ? this.roundToMinutes(moonTime.rise): null;
 
+    }
     roundToMinutes(date){
         return new Date(Math.round(date.getTime()/60000)*60000);
     }
