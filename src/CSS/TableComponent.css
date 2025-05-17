@@ -32,3 +32,15 @@
     max-width: 100%;
     max-height: 82vh;
 }
+
+#table-button {
+    padding: 10px 10px;
+    /* background: linear-gradient(#33CCCC, #0099CC); */
+    background-color: steelblue;
+    color: whitesmoke;
+    border: none;
+    border-radius: 1em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 80ms ease-in;
+}

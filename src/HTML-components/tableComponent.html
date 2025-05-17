@@ -1,1 +1,20 @@
+<link rel="stylesheet" href="../CSS/TableComponent.css">
 
+<script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.3/jspdf.plugin.autotable.min.js"></script>
+
+<h2 id="table-beach-title">Tabla de playas</h2>
+<div id="table-wrapper">
+    <table id="csv-table"></table>
+</div>
+<button onclick="downloadCSVTableAsPDF()" id="table-button">Descargar en PDF</button>
+
+<script>
+    if (typeof loadCSVTable === 'function') {
+        loadCSVTable('../data/beaches_table.csv');
+    } else {
+        console.error('loadCSVTable function is not defined. Check loadCsvTable.js');
+        document.getElementById('tabla-container').innerHTML = '<p>Error: No se pudo cargar la tabla.</p>';
+    }
+</script>
