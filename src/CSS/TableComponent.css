@@ -8,10 +8,8 @@
 #csv-table {
     margin: 1em 0;
     font-size: 0.875em;
-    width: max-content;
     border-collapse: collapse;
     max-width: 100%;
-    overflow-x: auto;
 }
 
 #csv-table th, #csv-table td {
@@ -29,6 +27,8 @@
     padding: 0.625em;
     margin-bottom: 0.625em;
     overflow-x: auto;
+    overflow-y: auto;
     width: 100%;
     max-width: 100%;
+    max-height: 82vh;
 }
