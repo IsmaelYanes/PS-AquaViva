@@ -22,6 +22,7 @@
     flex: 1;
     padding: 1em;
     margin-top: 5.5rem;
+    width: calc(100% - 12rem);
 }
 
 
@@ -59,7 +60,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #1f242d;
+    background: #f3f6fb;
     /*font-weight: 700;
     width: 100%;
     max-width: 100%;*/

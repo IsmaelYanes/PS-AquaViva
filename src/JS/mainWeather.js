@@ -1,7 +1,7 @@
 // Elimina el listener de DOMContentLoaded y encapsula la lógica en initWeather()
 let lat;
 let lon;
-const apiKey = "8b85f367751d4882aab231335250305";
+const apiKey = "8c3dc1f983ee4d6b88c143808251705 ";
 
 function initWeather() {
     const urlParams = new URLSearchParams(window.location.search);

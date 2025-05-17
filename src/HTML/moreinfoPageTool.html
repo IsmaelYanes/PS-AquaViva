@@ -6,15 +6,10 @@
     <title>Información</title>
     <link rel="stylesheet" href="../CSS/homeHeader.css">
     <link rel="stylesheet" href="../CSS/services.css">
-    <script
-            src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
-            type="module"
-    ></script>
     <link rel="stylesheet" href="../CSS/MoreInfoPageTool.css">
     <link rel="stylesheet" href="../CSS/fishActivitiesPrediction.css">
-
-    <link rel="stylesheet" href="moreInfoPageTool.css">
     <link rel="stylesheet" href="../CSS/TableComponent.css">
+
     <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.3/jspdf.plugin.autotable.min.js"></script>
@@ -32,8 +27,7 @@
             <a href="#fish" class="nav-a" id="fishes-by-x">Peces por zona</a><br>
             <a href="#fish-activity" class="nav-a">Actividad por peces</a><br>
             <a href="#gallery" class="nav-a">Galería de peces</a><br>
-            <a href="#tabla-container" class="nav-a">Ir a tabla de playas</a><br>
-            <button onclick="downloadCSVTableAsPDF()" class="nav-button">Descargar tabla PDF</button>
+            <a href="#tabla-container" class="nav-a">Tabla de playas</a><br>
         </nav>
     </aside>
 
@@ -46,13 +40,11 @@
         <section id="fish-activity" class="section-info"></section>
         <section id="gallery" class="section-info"></section>
         <section id="tabla-container" class="section-info">
-            <section class="section">
-                <h2>Tabla de playas</h2>
-                <div id="table-wrapper">
-                    <table id="csv-table"></table>
-                    <button onclick="downloadCSVTableAsPDF()" style="margin-top: 10px; padding: 8px 16px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 4px; width: 100%; display: block;">Descargar en PDF</button>
-                </div>
-            </section>
+            <h2 id="table-beach-title">Tabla de playas</h2>
+            <div id="table-wrapper">
+                <table id="csv-table"></table>
+                <button onclick="downloadCSVTableAsPDF()" style="margin-top: 10px; padding: 8px 16px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 4px; width: 100%; display: block;">Descargar en PDF</button>
+            </div>
         </section>
     </main>
 </div>
@@ -82,14 +74,6 @@
     let coordLAT;
     let coordLON;
 
-    function loadDefaultPage() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const lat = urlParams.get("lat");
-        const lon = urlParams.get("lon");
-        const id = urlParams.get("id");
-        loadTemplate(`../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`, document.getElementById('weather'), initWeather);
-    }
-
     function detectSourceAndLoad() {
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get("id");
@@ -105,8 +89,10 @@
             loadTemplate('../HTML-components/wave.html', document.getElementById('tide'), initWavePage);
             loadTemplate(`../HTML-components/FishByZone.html?lat=${lat}&lon=${lon}`, document.getElementById('fish'), initFishByZone);
             loadTemplate('../HTML-components/FishInfo.html', document.getElementById('gallery'), initFishGallery);
+            loadTemplate('../HTML-components/fishPrediction.html', document.getElementById('fish-activity'), loadPrediction);
+
             if (typeof loadCSVTable === 'function') {
-                loadCSVTable('/Data/beaches_table');
+                loadCSVTable('../data/beaches_table.csv');
             } else {
                 console.error('loadCSVTable function is not defined. Check loadCsvTable.js');
                 document.getElementById('tabla-container').innerHTML = '<p>Error: No se pudo cargar la tabla.</p>';
@@ -123,8 +109,9 @@
             loadTemplate('../HTML-components/wave.html', document.getElementById('tide'), initWavePage);
             loadTemplate(`../HTML-components/FishByZone.html?lat=${lat}&lon=${lon}`, document.getElementById('fish'), initFishByZone);
             loadTemplate('../HTML-components/FishInfo.html', document.getElementById('gallery'), initFishGallery);
+            loadTemplate('../HTML-components/fishPrediction.html', document.getElementById('fish-activity'), loadPrediction);
             if (typeof loadCSVTable === 'function') {
-                loadCSVTable('/Data/beaches_table');
+                loadCSVTable('../data/beaches_table.csv');
             }
         } else {
             defaultPage = '../HTML-components/mainWeather.html';
@@ -136,8 +123,9 @@
             loadTemplate('../HTML-components/wave.html', document.getElementById('tide'), initWavePage);
             loadTemplate(`../HTML-components/FishByZone.html?lat=${coordLAT}&lon=${coordLON}`, document.getElementById('fish'), initFishByZone);
             loadTemplate('../HTML-components/FishInfo.html', document.getElementById('gallery'), initFishGallery);
+            loadTemplate('../HTML-components/fishPrediction.html', document.getElementById('fish-activity'), loadPrediction);
             if (typeof loadCSVTable === 'function') {
-                loadCSVTable('/Data/beaches_table');
+                loadCSVTable('../data/beaches_table.csv');
             }
         }
 
