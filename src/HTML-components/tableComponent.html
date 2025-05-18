@@ -1,16 +1,47 @@
-<link rel="stylesheet" href="../CSS/TableComponent.css">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabla con filtros</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="../CSS/TableComponent.css">
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.3/jspdf.plugin.autotable.min.js"></script>
 
-<script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.3/jspdf.plugin.autotable.min.js"></script>
+</head>
+
+<body>
 
 <h2 id="table-beach-title">Tabla de playas</h2>
+
+<div id="filter-wrapper" style="position: relative;">
+    <div id="filter-bar">
+        <button id="filter-button">Filtro</button>
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Buscar en la tabla...">
+            <button id="search-next">Siguiente</button>
+        </div>
+    </div>
+    <div id="filter-container">
+        <div id="column-filters"></div>
+        <div id="advanced-filter">
+            <h3>Filtrado Avanzado</h3>
+            <div id="advanced-filter-options"></div>
+            <button id="apply-filter">Aplicar Filtro</button>
+        </div>
+    </div>
+</div>
+
 <div id="table-wrapper">
     <table id="csv-table"></table>
 </div>
 <button onclick="downloadCSVTableAsPDF()" id="table-button">Descargar en PDF</button>
+</body>
 
 <script>
+    initFilters(headers, data);
+    renderFilteredTable();
     if (typeof loadCSVTable === 'function') {
         loadCSVTable('../data/beaches_table.csv');
     } else {

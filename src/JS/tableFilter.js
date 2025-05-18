@@ -1,3 +1,4 @@
+
 let originalData = [];
 let visibleColumns = [];
 let advancedFilters = {};

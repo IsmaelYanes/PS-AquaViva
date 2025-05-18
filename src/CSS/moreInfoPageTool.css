@@ -109,3 +109,12 @@
     background: #f3f6fb;
 }
 
+
+.tabla-container {
+    max-height: none;
+    overflow: visible;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+

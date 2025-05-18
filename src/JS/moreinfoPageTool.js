@@ -55,6 +55,7 @@ function detectSourceAndLoad() {
         loadTemplate('../HTML-components/tableComponent.html', document.getElementById('tabla-container'), () => {
             loadCSVTable('../data/beaches_table.csv');
         });
+
     }
     loadTemplate('../HTML-components/FishInfo.html', document.getElementById('gallery'), initFishGallery);
     console.log("Cargando página por defecto: " + defaultPage);
