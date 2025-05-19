@@ -1,5 +1,12 @@
 function loadCSVTable(csvPath) {
-    fetch(csvPath)
+    // Load table component HTML
+    fetch('../HTML-components/tableComponent.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('tabla-container').innerHTML = html;
+            // Load CSV data
+            return fetch(csvPath);
+        })
         .then(response => response.text())
         .then(data => {
             const rows = data.split('\n').filter(row => row.trim() !== '');
@@ -26,7 +33,7 @@ function loadCSVTable(csvPath) {
             renderFilteredTable();
         })
         .catch(error => {
-            console.error('Error cargando el archivo CSV:', error);
-            document.getElementById('csv-table').innerHTML = '<tr><td colspan="100%">Error al cargar la tabla</td></tr>';
+            console.error('Error cargando el archivo CSV o el componente:', error);
+            document.getElementById('tabla-container').innerHTML = '<p>Error al cargar la tabla.</p>';
         });
 }
