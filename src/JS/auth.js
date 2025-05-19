@@ -76,11 +76,13 @@ async function registrarUsuario(nombre, email, password, confirmPassword) {
         await user.sendEmailVerification();
 
         await db.collection("users").doc(user.uid).set({
-            nombre,
+            nombre: user.displayName || "",
+            email: user.email,
             favoritos: [],
             creadoEn: firebase.firestore.FieldValue.serverTimestamp(),
             lastUpdatedFav: firebase.firestore.FieldValue.serverTimestamp()
         });
+
 
         alert('Te hemos enviado un correo de verificación. Verifica tu correo antes de cerrar esta pestaña.');
         auth.signOut();
@@ -141,13 +143,20 @@ async function registrarConGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
 
+    // Solicita permiso explícito para acceder al correo
+    provider.addScope('email');
+
     try {
         const result = await auth.signInWithPopup(provider);
         const user = result.user;
 
+        // Intenta obtener el correo directamente desde user o providerData
+        const email = user.email || user.providerData[0]?.email || "";
+
         if (result.additionalUserInfo.isNewUser) {
             await db.collection("users").doc(user.uid).set({
                 nombre: user.displayName || "",
+                email: email,
                 favoritos: [],
                 creadoEn: firebase.firestore.FieldValue.serverTimestamp(),
                 lastUpdatedFav: firebase.firestore.FieldValue.serverTimestamp()
@@ -207,6 +216,21 @@ async function cerrarSesion() {
     }
 }
 
+async function actualizarEstadoNotificaciones(uid, activar) {
+    try {
+        await db.collection("users").doc(uid).update({
+            notificacionesActivadas: activar
+        });
+        // No necesitamos actualizar notificacionesActivadas aquí, ya que lo haremos en el listener
+        const toggleNotificacionesBtn = document.getElementById('toggle-notificaciones');
+        if (toggleNotificacionesBtn) {
+            toggleNotificacionesBtn.textContent = activar ? 'Desactivar Notificaciones' : 'Activar Notificaciones';
+        }
+    } catch (error) {
+        console.error("Error al actualizar el estado de las notificaciones:", error);
+        alert("No se pudo actualizar el estado de las notificaciones.");
+    }
+}
 
 // ---------------------- INTERFAZ DOM ----------------------
 
@@ -356,38 +380,6 @@ auth.onAuthStateChanged((user) => {
 
 // ---------------------- UTILIDADES ----------------------
 
-//function validarContrasena(password) {
-    //const errores = [];
-    //if (password.length < 6) errores.push("La contraseña debe tener al menos 6 caracteres.");
-    //if (!/[A-Z]/.test(password)) errores.push("Debe contener al menos una letra mayúscula.");
-    //if (!/[a-z]/.test(password)) errores.push("Debe contener al menos una letra minúscula.");
-    //if (!/[^\w\s]/.test(password)) errores.push("Debe contener al menos un carácter especial.");
-    //if (!/[0-9]/.test(password)) errores.push("Debe contener al menos un número.");
-    //return errores;
-//}
-
-//function manejarErroresAuth(error, contexto) {
-    //let mensaje = "";
-    //switch (error.code) {
-        //case "auth/email-already-in-use": mensaje = "El correo ya está en uso."; break;
-        //case "auth/invalid-email": mensaje = "El correo no es válido."; break;
-        //case "auth/weak-password": mensaje = "La contraseña es demasiado débil."; break;
-        //case "auth/user-not-found": mensaje = "No existe una cuenta con este correo."; break;
-        //case "auth/wrong-password": mensaje = "La contraseña es incorrecta."; break;
-        //case "auth/too-many-requests": mensaje = "Demasiados intentos fallidos. Intenta de nuevo más tarde."; break;
-       // case "auth/invalid-credential": mensaje = "La credencial es inválida o ha expirado."; break;
-        //default: mensaje = error.message; break;
-    //}
-
-    //if (contexto === "registrarse") {
-       // mostrarError("signUpError", mensaje);
-    //} else if (contexto === "iniciar sesión") {
-      //  mostrarError("signInError", mensaje);
-    //} else if (contexto === "recuperar la contraseña") {
-        //mostrarError("recoverError", mensaje);
-    //}
-//}
-
 function mostrarErrorCampo(nombreCampo, mensaje, isLogin = false) {
     const campo = document.querySelector(`[name="${nombreCampo}"]`);
     const errorKey = isLogin ? `login-${nombreCampo}` : nombreCampo;
@@ -437,7 +429,6 @@ async function comprobarUsuario() {
 function esProveedorGoogle(user) {
     return user.providerData.some(provider => provider.providerId === "google.com");
 }
-
 
 // ---------------------- FAVORITOS ----------------------
 
@@ -504,33 +495,6 @@ async function downloadFavourite(uid) {
         console.log(`✅ Favoritos cargados en localStorage: ${favoritos.length} elementos.`);
     } catch (error) {
         console.error(`❌ Error al cargar favoritos: ${error.message}`);
-    }
-}
-
-async function hasUnreadComments(beachId) {
-    const userUid = localStorage.getItem("uid");
-    if (!userUid || !beachId) {
-        console.warn("Falta el UID o el ID de la playa.");
-        return false;
-    }
-
-    try {
-        const commentsRef = collection(db, "beaches", beachId, "comments");
-        const snapshot = await getDocs(commentsRef);
-
-        for (const doc of snapshot.docs) {
-            const data = doc.data();
-            const readers = data.readers || [];
-
-            if (!readers.includes(userUid)) {
-                return true;
-            }
-        }
-
-        return false;
-    } catch (error) {
-        console.error("Error verificando comentarios no leídos:", error);
-        return false;
     }
 }
 
@@ -624,7 +588,32 @@ async function deleteCommentById(commentId) {
     }
 }
 
+async function hasUnreadComments(beachId) {
+    const userUid = localStorage.getItem("uid");
+    if (!userUid || !beachId) {
+        console.warn("Falta el UID o el ID de la playa.");
+        return false;
+    }
 
+    try {
+        const commentsRef = collection(db, "beaches", beachId, "comments");
+        const snapshot = await getDocs(commentsRef);
+
+        for (const doc of snapshot.docs) {
+            const data = doc.data();
+            const readers = data.readers || [];
+
+            if (!readers.includes(userUid)) {
+                return true;
+            }
+        }
+
+        return false;
+    } catch (error) {
+        console.error("Error verificando comentarios no leídos:", error);
+        return false;
+    }
+}
 // ---------------------- EXPORTACIONES ----------------------
 
 window.socialSignIn = iniciarSesionConGoogle;

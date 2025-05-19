@@ -32,6 +32,13 @@ header {
     cursor: default;
 }
 
+#cuenta-container {
+    position: relative;
+    display: flex; /* para que los botones estén en línea */
+    align-items: center;
+}
+
+
 .homeHeader-button {
     padding: 10px 10px;
     /*background: linear-gradient(#33CCCC, #0099CC);*/
@@ -47,6 +54,22 @@ header {
 .homeHeader-button:hover {
     background-color: #35648c;
 }
+
+#notificaciones-dropdown {
+    display: none;
+    border-radius: 20px;
+}
+
+#notificaciones-dropdown button {
+    color: #0056b3;
+    font-weight: bold;
+}
+
+#notificaciones-dropdown button:hover {
+    background-color: #f0f0f0;
+}
+
+
 
 .homeHeader-button:active {
     transform: scale(0.95);
