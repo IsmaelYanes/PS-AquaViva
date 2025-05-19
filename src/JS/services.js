@@ -22,6 +22,10 @@ function initBeach() {
 
     // --- NUEVO: Inicializa el buscador de peces ---
     initFishAutocomplete();
+
+    //Ver comentarios
+    showCommentsWithFishImages();
+
 }
 
 async function loadFishData() {
@@ -115,62 +119,190 @@ function initFishAutocomplete() {
 }
 
 //añadir comentario
-async function handleAddComment() {
-    const isUserLogged = await comprobarUsuario();
-    if (!isUserLogged) {
-        alert("Debes iniciar sesión para poder comentar.");
-        return;
-    }
+async function handleAddComment(e) {
+    if (e) e.preventDefault();
 
-    const commentInput = document.getElementById("commentInput");
-    const commentText = commentInput.value.trim();
-
-    if (!commentText) {
-        alert("El comentario no puede estar vacío.");
-        return;
-    }
-
-    // Suponiendo que tienes el beachId disponible en alguna variable global o la sacas igual que antes
-    const urlParams = new URLSearchParams(window.location.search);
-    const beachId = urlParams.get("id");
-
-    if (!beachId) {
-        alert("No se pudo determinar la playa para añadir el comentario.");
-        return;
-    }
-
-    // Supongamos también que tienes la lista selectedFish con los peces avistados
-    // y que tienes acceso al usuario (puedes sacar email de auth.currentUser)
-    const currentUser = auth.currentUser;
-    const userEmail = currentUser.email;
-
-    const commentData = {
-        text: commentText,
-        date: new Date(),
-        owner: userEmail,
-        fish: selectedFish.map(f => f.name) // solo los nombres de peces seleccionados
-    };
+    const button = document.getElementById("submitComment");
+    button.disabled = true;
 
     try {
-        await addComment(beachId, commentData);
-        alert("Comentario añadido correctamente.");
+        const isUserLogged = comprobarUsuario();
+        if (!isUserLogged) {
+            alert("Debes iniciar sesión para poder comentar.");
+            button.disabled = false;
+            return;
+        }
 
-        // Limpiar inputs y lista de peces avistados tras añadir
+        const commentInput = document.getElementById("commentInput");
+        const commentText = commentInput.value.trim();
+
+        if (!commentText) {
+            alert("El comentario no puede estar vacío.");
+            button.disabled = false;
+            return;
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const beachId = urlParams.get("id");
+
+        if (!beachId) {
+            alert("No se pudo determinar la playa para añadir el comentario.");
+            button.disabled = false;
+            return;
+        }
+
+        const userEmail = localStorage.getItem("email");
+        const userUid = localStorage.getItem("uid");
+
+        const commentData = {
+            text: commentText,
+            date: new Date(),
+            owner: userEmail,
+            uid: userUid,
+            fish: selectedFish.map(f => f.name)
+        };
+
+        await addComment(beachId, commentData);
+
+        alert("Comentario añadido correctamente.");
+        showCommentsWithFishImages();
+
         commentInput.value = "";
         selectedFish = [];
-        updateFishSelectedUI(); // función que tengas para actualizar la UI del listado de peces
+        renderSelectedFish();
 
-        // También puedes recargar la lista de comentarios para mostrar el nuevo
-        loadCommentsForBeach(beachId);
     } catch (error) {
         console.error("Error añadiendo comentario:", error);
-        alert("Hubo un error al añadir el comentario. Inténtalo de nuevo.");
+        alert("Hubo un error al añadir el comentario.");
+    } finally {
+        button.disabled = false; // Reactiva el botón pase lo que pase
+    }
+}
+
+//mostrar comentarios:
+async function showCommentsWithFishImages() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const beachId = urlParams.get("id");
+    const currentUserUid = localStorage.getItem("uid");
+    const currentUserEmail = localStorage.getItem("email"); // asumimos que guardas el email en localStorage
+
+    if (!beachId || !currentUserUid || !currentUserEmail) {
+        console.warn("No se pudo obtener beachId, UID o email de usuario");
+        return;
+    }
+
+    try {
+        let comments = await loadComments(beachId, currentUserUid);
+
+        comments.sort((a, b) => {
+            const dateA = a.date?.toDate ? a.date.toDate() : new Date(a.date);
+            const dateB = b.date?.toDate ? b.date.toDate() : new Date(b.date);
+            return dateB - dateA;
+        });
+
+        const commentsList = document.getElementById("commentsList");
+        commentsList.innerHTML = "";
+
+        comments.forEach(comment => {
+            const li = document.createElement("li");
+            li.className = "comment-item";
+
+            // Contenedor para email + posible papelera
+            const ownerContainer = document.createElement("p");
+            ownerContainer.className = "comment-owner";
+
+            const ownerEmailSpan = document.createElement("span");
+            ownerEmailSpan.textContent = comment.owner;
+            ownerContainer.appendChild(ownerEmailSpan);
+
+            if (comment.owner === currentUserEmail) {
+                // Crear icono de papelera
+                const trashIcon = document.createElement("img");
+                trashIcon.src = "../Images/icono-papelera.png";
+                trashIcon.alt = "Eliminar comentario";
+                trashIcon.title = "Eliminar comentario";
+                trashIcon.className = "trash-icon";
+                trashIcon.style.cursor = "pointer";
+                trashIcon.style.marginLeft = "8px";
+                trashIcon.addEventListener("click", () => {
+                    showDeleteConfirmPopup(comment.id, li);
+                });
+                ownerContainer.appendChild(trashIcon);
+            }
+
+            const textEl = document.createElement("p");
+            textEl.className = "comment-text";
+            textEl.textContent = comment.text;
+
+            const fishImagesContainer = document.createElement("div");
+            fishImagesContainer.className = "comment-fish-images";
+
+            if (comment.fish && comment.fish.length > 0) {
+                comment.fish.forEach(fishName => {
+                    const fishData = allFish.find(f => f.name === fishName);
+                    if (fishData && fishData.image) {
+                        const img = document.createElement("img");
+                        img.src = fishData.image;
+                        img.alt = fishName;
+                        img.title = fishName;
+                        img.className = "fish-image-comment";
+                        fishImagesContainer.appendChild(img);
+                    }
+                });
+            }
+
+            li.appendChild(ownerContainer);
+            li.appendChild(textEl);
+            li.appendChild(fishImagesContainer);
+            commentsList.appendChild(li);
+        });
+
+    } catch (error) {
+        console.error("Error mostrando comentarios:", error);
+    }
+}
+
+//Eliminar comentario
+function showDeleteConfirmPopup(commentId, commentElement) {
+    // Crear overlay
+    const overlay = document.createElement("div");
+    overlay.className = "popup-overlay";
+
+    // Crear popup
+    const popup = document.createElement("div");
+    popup.className = "popup-confirm";
+
+    popup.innerHTML = `
+        <p>¿Estás seguro que quieres eliminar este comentario?</p>
+        <div class="popup-buttons">
+            <button id="confirmDeleteBtn">Sí, eliminar</button>
+            <button id="cancelDeleteBtn">Cancelar</button>
+        </div>
+    `;
+
+    overlay.appendChild(popup);
+    document.body.appendChild(overlay);
+
+    // Eventos botones
+    document.getElementById("confirmDeleteBtn").addEventListener("click", async () => {
+        try {
+            await deleteCommentById(commentId);
+            commentElement.remove();
+            closePopup();
+        } catch (error) {
+            alert("Error eliminando comentario. Intenta de nuevo.");
+            console.error(error);
+        }
+    });
+
+    document.getElementById("cancelDeleteBtn").addEventListener("click", closePopup);
+
+    function closePopup() {
+        document.body.removeChild(overlay);
     }
 }
 
 
-
-// --- Código que ya tenías para cargar la playa ---
 async function cargarDatosPlayaDesdeColeccion(id) {
     try {
         const playas = await fetchAllBeaches(); // Retorna un array de objetos con campos 'fields'
