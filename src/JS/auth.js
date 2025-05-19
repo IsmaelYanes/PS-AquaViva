@@ -506,6 +506,34 @@ async function downloadFavourite(uid) {
         console.error(`❌ Error al cargar favoritos: ${error.message}`);
     }
 }
+
+async function hasUnreadComments(beachId) {
+    const userUid = localStorage.getItem("uid");
+    if (!userUid || !beachId) {
+        console.warn("Falta el UID o el ID de la playa.");
+        return false;
+    }
+
+    try {
+        const commentsRef = collection(db, "beaches", beachId, "comments");
+        const snapshot = await getDocs(commentsRef);
+
+        for (const doc of snapshot.docs) {
+            const data = doc.data();
+            const readers = data.readers || [];
+
+            if (!readers.includes(userUid)) {
+                return true;
+            }
+        }
+
+        return false;
+    } catch (error) {
+        console.error("Error verificando comentarios no leídos:", error);
+        return false;
+    }
+}
+
 //----------------------- COMENTARIOS ------------------------
 
 async function addComment(beachId, commentData) {
