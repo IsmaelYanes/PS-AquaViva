@@ -15,6 +15,11 @@ function toggleToolbar() {
 window.userLat = null;
 window.userLng = null;
 
+let satelliteLayer;
+let isFavBeachViewActive = false;
+let isSatelliteView = false;
+let isBeachViewActive = false;
+
 /**
  * Descarga todas las playas desde Firestore y las cachea en memoria.
  * Usa la REST API de Firestore y maneja paginación automáticamente.
@@ -146,7 +151,7 @@ async function showCustomPopup(fields, showRouteButton = false, routeData = null
 
     if (uid) {
         // Obtener favoritos del usuario desde localStorage
-        const favoritosRaw = JSON.parse(localStorage.getItem("favoritos")) || [];
+        const favoritosRaw = JSON.parse(localStorage.getItem(`favoritos_${uid}`)) || [];
 
         // Normalizar a string los IDs de favoritos
         const favoritos = favoritosRaw.map(fav => typeof fav === "object" && fav.stringValue ? fav.stringValue : String(fav));
@@ -201,16 +206,11 @@ async function showCustomPopup(fields, showRouteButton = false, routeData = null
 //Añadir-quitar de favorito
 async function toggleFavorite(starElement) {
     const beachId = starElement.id.replace("fav-", "");
-
-    // Determinar el estado actual del favorito a través del color o contenido del icono
     const isCurrentlyFavorited = starElement.textContent === "★" || starElement.style.color === "gold";
-
-    // 🔒 Obtener el UID desde localStorage
     const uid = localStorage.getItem("uid");
 
-    // Verificar si el usuario está autenticado
     const usuarioAutenticado = await comprobarUsuario();
-    if (!usuarioAutenticado) {
+    if (!usuarioAutenticado || !uid) {
         console.warn("⚠️ Usuario no autenticado");
         localStorage.removeItem("uid");
         localStorage.removeItem("idToken");
@@ -218,39 +218,44 @@ async function toggleFavorite(starElement) {
     }
 
     try {
+        const localKey = `favoritos_${uid}`;
+        let favoritos = JSON.parse(localStorage.getItem(localKey)) || [];
+
         if (isCurrentlyFavorited) {
-            // Eliminar favorito
-            await eliminarFavorito(uid, beachId);
+            // 🔻 Eliminar favorito
+            await removeFavourite(uid, beachId);
             starElement.textContent = "☆";
             starElement.style.color = "grey";
             console.log(`📌 Playa ${beachId} eliminada de favoritos`);
+
+            // 🧼 Limpiar de localStorage
+            favoritos = favoritos.filter(id => (id.stringValue || id) !== beachId);
+
+            // 🗺️ Eliminar marcador del mapa si estás viendo favoritos
+            if (isFavBeachViewActive) {
+                showFavorites()
+            }
+
         } else {
-            // Añadir favorito
-            await añadirFavorito(uid, beachId);
+            // ⭐ Añadir favorito
+            await addFavourite(uid, beachId);
             starElement.textContent = "★";
             starElement.style.color = "gold";
             console.log(`📌 Playa ${beachId} añadida a favoritos`);
+
+            favoritos.push(beachId);
         }
 
-        // Actualizar valores en localStorage
+        // 💾 Actualizar localStorage
         localStorage.setItem("lastUpdatedFav", Date.now().toString());
-
-        // Actualizar array local de favoritos
-        let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-
-        if (isCurrentlyFavorited) {
-            favoritos = favoritos.filter(item => (item.stringValue || item) !== beachId);
-        } else {
-            favoritos.push({ stringValue: beachId });
-        }
-
-        localStorage.setItem("favoritos", JSON.stringify(favoritos));
+        localStorage.setItem(localKey, JSON.stringify(favoritos));
 
     } catch (error) {
         console.error("❌ Error al actualizar favoritos:", error.message);
     }
 }
 
+//Ruta google maps
 function startRoute() {
     if (window.userLat === null || window.userLng === null) {
         alert("⚠️ No se ha obtenido tu ubicación aún.");
@@ -524,10 +529,6 @@ function getUserLocation(callback) {
     );
 }
 
-let satelliteLayer;
-let isSatelliteView = false;
-let isBeachViewActive = false;
-
 function clearMapLayers() {
     if (window.zonasLitoralLayer) {
         window.map.removeLayer(window.zonasLitoralLayer);
@@ -549,6 +550,7 @@ function clearMapLayers() {
         window.map.removeControl(window.backButtonControl);
         window.backButtonControl = null;
     }
+    if (isFavBeachViewActive){isFavBeachViewActive=false;}
 }
 
 //Funcion para mostrar las playas filtradas (Se le pasa las playas)
@@ -634,17 +636,20 @@ async function showFavorites() {
         return;
     }
 
-    // Obtener favoritos desde localStorage
-    let favoritosRaw = localStorage.getItem("favoritos");
-    let favoritos = favoritosRaw ? JSON.parse(favoritosRaw).map(f => f.stringValue) : [];
-
-    if (favoritos.length === 0) {
-        alert("ℹ️ No tienes playas favoritas guardadas.");
-        return;
-    }
-
     try {
-        // 🧼 Limpieza general del mapa usando función reutilizable
+        // 🔄 Cargar favoritos desde Firestore y guardarlos en localStorage
+        await downloadFavourite(uid);
+
+        // ✅ Obtener favoritos desde localStorage actualizado
+        let favoritosRaw = localStorage.getItem(`favoritos_${uid}`);
+        let favoritos = favoritosRaw ? JSON.parse(favoritosRaw) : [];
+
+        if (favoritos.length === 0) {
+            alert("ℹ️ No tienes playas favoritas guardadas.");
+            return;
+        }
+
+        // 🧼 Limpieza general del mapa
         clearMapLayers();
 
         let allBeaches = await fetchAllBeaches();
@@ -695,7 +700,7 @@ async function showFavorites() {
 
         window.map.addLayer(window.markersCluster);
         window.map.invalidateSize();
-        isBeachViewActive = true;
+        isFavBeachViewActive = true;
     } catch (error) {
         console.error("❌ Error al mostrar las playas favoritas:", error);
     }

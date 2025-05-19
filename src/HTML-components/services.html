@@ -77,6 +77,36 @@
         </div>
     </div>
 
-    <a href="index.html" class="btn">Volver</a>
+    <!-- Sección Comentarios -->
+    <h2 class="services-title">Comentarios</h2>
+
+    <div id="commentsSection" class="comments-section">
+        <ul id="commentsList" class="comments-list">
+            <!-- Aquí se listarán los comentarios -->
+        </ul>
+
+        <div class="add-comment">
+            <textarea id="commentInput" placeholder="Escribe tu comentario aquí..." rows="3"></textarea>
+
+            <div class="fish-autocomplete-container">
+                <input
+                        type="text"
+                        id="fishInput"
+                        placeholder="Busca peces vistos (escribe y selecciona)"
+                        autocomplete="off"
+                />
+                <ul id="fishSuggestions" class="fish-suggestions"></ul>
+
+                <div id="fishSelectedList" class="fish-selected-list"></div>
+            </div>
+
+
+            <button id="submitComment" class="btn">Añadir Comentario</button>
+        </div>
+    </div>
 
 </div>
+
+<script>
+    document.getElementById("submitComment").addEventListener("click", handleAddComment);
+</script>
