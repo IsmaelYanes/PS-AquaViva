@@ -1,3 +1,5 @@
+let allFish = [];
+let selectedFish = [];
 
 function initBeach() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -9,15 +11,166 @@ function initBeach() {
     const jsonURL = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lon}&days=7&aqi=no&alerts=no`;
     console.log("📡 URL del tiempo:", jsonURL);
 
+    // --- NUEVO: Carga los peces para autocomplete ---
+    loadFishData();
 
     if (beachId) {
         console.log("📌 ID de la playa obtenida:", beachId);
         cargarDatosPlayaDesdeColeccion(beachId);
         mostrarRecomendaciones(jsonURL);
     }
+
+    // --- NUEVO: Inicializa el buscador de peces ---
+    initFishAutocomplete();
+}
+
+async function loadFishData() {
+    try {
+        const response = await fetch("../Data/fullfish.json");
+        const data = await response.json();
+        allFish = data.map(f => ({
+            name: f["nom_commun"],
+            image: f.image
+        }));
+    } catch (e) {
+        console.error("Error cargando datos de peces:", e);
+    }
+}
+
+function filterFish(query) {
+    if (!query) return [];
+    const q = query.toLowerCase();
+    return allFish.filter(fish =>
+        fish.name.toLowerCase().includes(q) &&
+        !selectedFish.find(sf => sf.name === fish.name)
+    );
+}
+
+function renderFishSuggestions(filtered) {
+    const suggestions = document.getElementById("fishSuggestions");
+    suggestions.innerHTML = "";
+
+    if (filtered.length === 0) {
+        suggestions.style.display = "none";
+        return;
+    }
+
+    for (const fish of filtered) {
+        const li = document.createElement("li");
+        li.innerHTML = `<img src="${fish.image}" alt="${fish.name}"> <span>${fish.name}</span>`;
+        li.addEventListener("click", () => {
+            addFishChip(fish);
+            clearFishSuggestions();
+            document.getElementById("fishInput").value = "";
+        });
+        suggestions.appendChild(li);
+    }
+
+    suggestions.style.display = "block";
+}
+
+function addFishChip(fish) {
+    selectedFish.push(fish);
+    renderSelectedFish();
+}
+
+function renderSelectedFish() {
+    const container = document.getElementById("fishSelectedList");
+    container.innerHTML = "";
+
+    selectedFish.forEach((fish, index) => {
+        const chip = document.createElement("div");
+        chip.className = "fish-chip";
+        chip.innerHTML = `
+          <img src="${fish.image}" alt="${fish.name}">
+          <span>${fish.name}</span>
+          <span class="remove-chip" title="Eliminar">&times;</span>
+        `;
+        chip.querySelector(".remove-chip").addEventListener("click", () => {
+            selectedFish.splice(index, 1);
+            renderSelectedFish();
+        });
+        container.appendChild(chip);
+    });
+}
+
+function clearFishSuggestions() {
+    const suggestions = document.getElementById("fishSuggestions");
+    suggestions.innerHTML = "";
+    suggestions.style.display = "none";
+}
+
+function initFishAutocomplete() {
+    const input = document.getElementById("fishInput");
+    input.addEventListener("input", (e) => {
+        const filtered = filterFish(e.target.value);
+        renderFishSuggestions(filtered);
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!document.querySelector(".fish-autocomplete-container").contains(e.target)) {
+            clearFishSuggestions();
+        }
+    });
+}
+
+//añadir comentario
+async function handleAddComment() {
+    const isUserLogged = await comprobarUsuario();
+    if (!isUserLogged) {
+        alert("Debes iniciar sesión para poder comentar.");
+        return;
+    }
+
+    const commentInput = document.getElementById("commentInput");
+    const commentText = commentInput.value.trim();
+
+    if (!commentText) {
+        alert("El comentario no puede estar vacío.");
+        return;
+    }
+
+    // Suponiendo que tienes el beachId disponible en alguna variable global o la sacas igual que antes
+    const urlParams = new URLSearchParams(window.location.search);
+    const beachId = urlParams.get("id");
+
+    if (!beachId) {
+        alert("No se pudo determinar la playa para añadir el comentario.");
+        return;
+    }
+
+    // Supongamos también que tienes la lista selectedFish con los peces avistados
+    // y que tienes acceso al usuario (puedes sacar email de auth.currentUser)
+    const currentUser = auth.currentUser;
+    const userEmail = currentUser.email;
+
+    const commentData = {
+        text: commentText,
+        date: new Date(),
+        owner: userEmail,
+        fish: selectedFish.map(f => f.name) // solo los nombres de peces seleccionados
+    };
+
+    try {
+        await addComment(beachId, commentData);
+        alert("Comentario añadido correctamente.");
+
+        // Limpiar inputs y lista de peces avistados tras añadir
+        commentInput.value = "";
+        selectedFish = [];
+        updateFishSelectedUI(); // función que tengas para actualizar la UI del listado de peces
+
+        // También puedes recargar la lista de comentarios para mostrar el nuevo
+        loadCommentsForBeach(beachId);
+    } catch (error) {
+        console.error("Error añadiendo comentario:", error);
+        alert("Hubo un error al añadir el comentario. Inténtalo de nuevo.");
+    }
 }
 
 
+
+// --- Código que ya tenías para cargar la playa ---
 async function cargarDatosPlayaDesdeColeccion(id) {
     try {
         const playas = await fetchAllBeaches(); // Retorna un array de objetos con campos 'fields'
