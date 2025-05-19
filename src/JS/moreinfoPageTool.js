@@ -22,6 +22,7 @@ function detectSourceAndLoad() {
         loadTemplate('../HTML-components/wave.html', document.getElementById('tide'), initWavePage);
         loadTemplate(`../HTML-components/FishByZone.html?lat=${lat}&lon=${lon}`, document.getElementById('fish'), initFishByZone);
         loadTemplate('../HTML-components/fishPrediction.html', document.getElementById('fish-activity'), loadPrediction);
+        loadTemplate('../HTML-components/marineInfoTable.html', document.getElementById('marine-table'), initDownloadWeatherTable);
         loadTemplate('../HTML-components/tableComponent.html', document.getElementById('tabla-container'), () => {
             loadCSVTable('../data/beaches_table.csv');
         });
@@ -38,6 +39,7 @@ function detectSourceAndLoad() {
         loadTemplate('../HTML-components/wave.html', document.getElementById('tide'), initWavePage);
         loadTemplate(`../HTML-components/FishByZone.html?lat=${lat}&lon=${lon}`, document.getElementById('fish'), initFishByZone);
         loadTemplate('../HTML-components/fishPrediction.html', document.getElementById('fish-activity'), loadPrediction);
+        loadTemplate('../HTML-components/marineInfoTable.html', document.getElementById('marine-table'), initDownloadWeatherTable);
         loadTemplate('../HTML-components/tableComponent.html', document.getElementById('tabla-container'), () => {
             loadCSVTable('../data/beaches_table.csv');
         });
@@ -52,6 +54,7 @@ function detectSourceAndLoad() {
         loadTemplate('../HTML-components/wave.html', document.getElementById('tide'), initWavePage);
         loadTemplate(`../HTML-components/FishByZone.html?lat=${coordLAT}&lon=${coordLON}`, document.getElementById('fish'), initFishByZone);
         loadTemplate('../HTML-components/fishPrediction.html', document.getElementById('fish-activity'), loadPrediction);
+        loadTemplate('../HTML-components/marineInfoTable.html', document.getElementById('marine-table'), initDownloadWeatherTable);
         loadTemplate('../HTML-components/tableComponent.html', document.getElementById('tabla-container'), () => {
             loadCSVTable('../data/beaches_table.csv');
         });

@@ -1,0 +1,34 @@
+.weather-table-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.weather-table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.weather-table th,
+.weather-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.weather-table th {
+    background-color: #007acc;
+    color: white;
+}
+
+.weather-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.weather-table-caption {
+    caption-side: top;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
