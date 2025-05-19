@@ -571,18 +571,21 @@ async function loadComments(beachId, currentUserUid) {
     }
 }
 
-async function deleteCommentById(commentId) {
-    if (!commentId) {
-        console.warn("No se proporcionó un ID de comentario para eliminar.");
+async function deleteCommentById(beachId, commentId) {
+    if (!beachId || !commentId) {
+        console.warn("No se proporcionó un ID de playa o comentario para eliminar.");
         return;
     }
 
     try {
-        // Ajusta esta ruta según tu estructura de Firestore
-        // Por ejemplo: collection "comments" o "beaches/{beachId}/comments"
-        const commentRef = doc(db, "comments", commentId);
-        await deleteDoc(commentRef);
-        console.log(`Comentario con ID ${commentId} eliminado correctamente.`);
+        await db
+            .collection("forums")
+            .doc(beachId)
+            .collection("comments")
+            .doc(commentId)
+            .delete();
+
+        console.log(`✅ Comentario ${commentId} eliminado de forum ${beachId}`);
     } catch (error) {
         console.error("Error eliminando comentario:", error);
     }

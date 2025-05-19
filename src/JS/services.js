@@ -163,8 +163,7 @@ async function handleAddComment(e) {
         };
 
         await addComment(beachId, commentData);
-
-        alert("Comentario añadido correctamente.");
+        
         showCommentsWithFishImages();
 
         commentInput.value = "";
@@ -194,6 +193,7 @@ async function showCommentsWithFishImages() {
     try {
         let comments = await loadComments(beachId, currentUserUid);
 
+        // Ordenar comentarios más recientes primero
         comments.sort((a, b) => {
             const dateA = a.date?.toDate ? a.date.toDate() : new Date(a.date);
             const dateB = b.date?.toDate ? b.date.toDate() : new Date(b.date);
@@ -207,33 +207,12 @@ async function showCommentsWithFishImages() {
             const li = document.createElement("li");
             li.className = "comment-item";
 
-            // Contenedor para email + posible papelera
-            const ownerContainer = document.createElement("p");
-            ownerContainer.className = "comment-owner";
-
-            const ownerEmailSpan = document.createElement("span");
-            ownerEmailSpan.textContent = comment.owner;
-            ownerContainer.appendChild(ownerEmailSpan);
-
-            if (comment.owner === currentUserEmail) {
-                // Crear icono de papelera
-                const trashIcon = document.createElement("img");
-                trashIcon.src = "../Images/icono-papelera.png";
-                trashIcon.alt = "Eliminar comentario";
-                trashIcon.title = "Eliminar comentario";
-                trashIcon.className = "trash-icon";
-                trashIcon.style.cursor = "pointer";
-                trashIcon.style.marginLeft = "8px";
-                trashIcon.addEventListener("click", () => {
-                    showDeleteConfirmPopup(comment.id, li);
-                });
-                ownerContainer.appendChild(trashIcon);
+            const hasSingleFish = comment.fish && comment.fish.length === 1;
+            if (hasSingleFish) {
+                li.classList.add("single-fish");
             }
 
-            const textEl = document.createElement("p");
-            textEl.className = "comment-text";
-            textEl.textContent = comment.text;
-
+            // Contenedor imágenes de peces
             const fishImagesContainer = document.createElement("div");
             fishImagesContainer.className = "comment-fish-images";
 
@@ -251,9 +230,51 @@ async function showCommentsWithFishImages() {
                 });
             }
 
-            li.appendChild(ownerContainer);
-            li.appendChild(textEl);
-            li.appendChild(fishImagesContainer);
+            // Contenedor propietario (email) + posible papelera
+            const ownerContainer = document.createElement("p");
+            ownerContainer.className = "comment-owner";
+
+            const ownerEmailSpan = document.createElement("span");
+            ownerEmailSpan.textContent = comment.owner;
+            ownerContainer.appendChild(ownerEmailSpan);
+
+            if (comment.owner === currentUserEmail) {
+                const trashIcon = document.createElement("img");
+                trashIcon.src = "../Images/icono-papelera.png";
+                trashIcon.alt = "Eliminar comentario";
+                trashIcon.title = "Eliminar comentario";
+                trashIcon.className = "trash-icon";
+                trashIcon.style.cursor = "pointer";
+                trashIcon.style.marginLeft = "8px";
+                trashIcon.addEventListener("click", () => {
+                    showDeleteConfirmPopup(beachId, comment.id, li);
+                });
+                ownerContainer.appendChild(trashIcon);
+            }
+
+            // Texto del comentario
+            const textEl = document.createElement("p");
+            textEl.className = "comment-text";
+            textEl.textContent = comment.text;
+
+            if (hasSingleFish) {
+                // Para single fish, crear wrapper para propietario+texto
+                const textOwnerWrapper = document.createElement("div");
+                textOwnerWrapper.className = "comment-text-owner-wrapper";
+
+                textOwnerWrapper.appendChild(ownerContainer);
+                textOwnerWrapper.appendChild(textEl);
+
+                // Orden: imagen (izq) + wrapper (der)
+                li.appendChild(fishImagesContainer);
+                li.appendChild(textOwnerWrapper);
+            } else {
+                // Para varios o sin peces: apilar vertical
+                li.appendChild(ownerContainer);
+                li.appendChild(textEl);
+                li.appendChild(fishImagesContainer);
+            }
+
             commentsList.appendChild(li);
         });
 
@@ -263,8 +284,7 @@ async function showCommentsWithFishImages() {
 }
 
 //Eliminar comentario
-function showDeleteConfirmPopup(commentId, commentElement) {
-    // Crear overlay
+function showDeleteConfirmPopup(beachId, commentId, commentElement) {
     const overlay = document.createElement("div");
     overlay.className = "popup-overlay";
 
@@ -286,7 +306,7 @@ function showDeleteConfirmPopup(commentId, commentElement) {
     // Eventos botones
     document.getElementById("confirmDeleteBtn").addEventListener("click", async () => {
         try {
-            await deleteCommentById(commentId);
+            await deleteCommentById(beachId, commentId);
             commentElement.remove();
             closePopup();
         } catch (error) {
@@ -301,7 +321,6 @@ function showDeleteConfirmPopup(commentId, commentElement) {
         document.body.removeChild(overlay);
     }
 }
-
 
 async function cargarDatosPlayaDesdeColeccion(id) {
     try {
