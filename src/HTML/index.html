@@ -174,7 +174,7 @@
             <h3 class="contact-information">Ayúdanos a mejorar, si tienes ideas o dudas no dudes en ponerte en contacto con nosotros.</h3>
         </div>
         <div id="contact-button">
-            <button class="contact-button" onclick="copiarCorreo()">Enviar mensaje</button>
+            <button class="contact-button" onclick="testEmailAlerta()">Enviar mensaje</button>
             <p id="mensaje-copiado">¡Correo copiado al portapapeles!</p>
         </div>
     </div>
@@ -364,6 +364,19 @@
             });
     }
 
+</script>
+<script>
+    function testEmailAlerta() {
+        fetch("http://localhost:3000/api/test-email-alerta")
+            .then(res => res.json())
+            .then(data => {
+                alert("✅ " + data.message);
+            })
+            .catch(err => {
+                console.error(err);
+                alert("❌ Error al enviar la alerta.");
+            });
+    }
 </script>
 
 

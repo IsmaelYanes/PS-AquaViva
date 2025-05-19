@@ -1,139 +1,148 @@
+const express = require("express");
+const cors = require("cors");
 const admin = require("firebase-admin");
-const { Resend } = require("resend");
-const fetch = require("node-fetch");
-const cron = require("node-cron");
+const nodemailer = require("nodemailer");
 const serviceAccount = require("./serviceAccountKey.json");
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(cors());
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
 
 const db = admin.firestore();
-const resend = new Resend("re_FbziYn8T_9ESHMji841ses2s8vFD4hxBM");
-const WEATHER_API_KEY = "8b85f367751d4882aab231335250305";
 
+// Configura nodemailer con Gmail SMTP
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "aquavivaps@gmail.com",          // Cambia esto por tu correo Gmail
+    pass: "unkz regw ypxd eubn", // Cambia esto por tu contraseña o contraseña de app
+  },
+});
+
+// Clase para enviar alertas de viento
 class WeatherControl {
-  constructor(user, favorito) {
+  constructor(user, playas) {
     this.user = user;
-    this.favorito = favorito;
-    this.temperature = 0;
-    this.windSpeed = 0;
-    this.precipitation = 0;
-
-    this.TEMPERATURE_UMBRAL = 2;
-    this.WINDSPEED_UMBRAL = 15;
-    this.PRECIPITATION_UMBRAL = 5;
+    this.playas = playas; // array de playas
   }
 
-  async loadWeather() {
-    const { lat, lon } = this.favorito;
-    const response = await fetch(
-        `https://api.weatherapi.com/v1/marine.json?key=${WEATHER_API_KEY}&q=${lat},${lon}`
-    );
-    const data = await response.json();
-    const current = data.current;
+  async notifyWindAlert(currentWind, previousWind) {
+    let mensaje = `
+Hola ${this.user.nombre || "usuario"},
 
-    await this.updateTemperature(current.temp_c);
-    await this.updateWindSpeed(current.wind_kph);
-    await this.updatePrecipitation(current.precip_mm);
-  }
+Se ha detectado un cambio brusco de viento en una o varias de tus zonas favoritas:
 
-  async notifyAlert(type, currentValue, previousValue) {
-    const mensaje = `
-Hola ${this.user.nombre},
+`;
 
-Se ha detectado un cambio brusco en una de tus zonas favoritas:
+    this.playas.forEach(playa => {
+      mensaje += `📍 Playa: ${playa.nombre}
+📍 Ubicación: (lat: ${playa.lat}, lon: ${playa.lon})
 
-- Ubicación: (lat: ${this.favorito.lat}, lon: ${this.favorito.lon})
-- Parámetro afectado: ${type}
+`;
+    });
 
-- Valor anterior: ${previousValue}
-- Valor actual: ${currentValue}
+    mensaje += `🌬️ Velocidad anterior: ${previousWind} km/h
+🌬️ Velocidad actual: ${currentWind} km/h
 
 Consulta más detalles en nuestra web.
 
 Un saludo.
-`;
+    `;
 
     try {
-      await resend.emails.send({
-        from: "alertas@tuweb.com",
+      await transporter.sendMail({
+        from: '"Alerta Viento" <aquavivaps@gmail.com>', // Cambia por tu correo o nombre que quieres mostrar
         to: this.user.email,
-        subject: `⚠️ Alerta: Cambio brusco en ${type}`,
+        subject: `⚠️ Alerta de viento`,
         text: mensaje,
       });
 
-      console.log(`✅ Email enviado a ${this.user.email} (cambio en ${type})`);
+      console.log(`✅ Email enviado a ${this.user.email}`);
     } catch (error) {
       console.error(`❌ Error enviando email a ${this.user.email}:`, error);
     }
   }
+}
 
-  async updateTemperature(temperature) {
-    if (
-        this.temperature !== 0 &&
-        Math.abs(temperature - this.temperature) > this.TEMPERATURE_UMBRAL
-    ) {
-      await this.notifyAlert("Temperatura", temperature, this.temperature);
-    }
-    this.temperature = temperature;
-  }
+// Función auxiliar para obtener info de la playa por ID
+async function getPlayaById(id) {
+  try {
+    const doc = await db.collection("playas").doc(id).get();
+    if (!doc.exists) return null;
 
-  async updatePrecipitation(precipitation) {
-    if (
-        this.precipitation !== 0 &&
-        precipitation - this.precipitation > this.PRECIPITATION_UMBRAL
-    ) {
-      await this.notifyAlert("Precipitación", precipitation, this.precipitation);
-    }
-    this.precipitation = precipitation;
-  }
+    const data = doc.data();
 
-  async updateWindSpeed(windSpeed) {
-    if (
-        this.windSpeed !== 0 &&
-        windSpeed - this.windSpeed > this.WINDSPEED_UMBRAL
-    ) {
-      await this.notifyAlert("Viento", windSpeed, this.windSpeed);
-    }
-    this.windSpeed = windSpeed;
+    // Reemplaza la coma decimal por punto para convertir correctamente
+    const latNum = data.LAT ? Number(data.LAT.replace(",", ".")) : NaN;
+    const lonNum = data.LOG ? Number(data.LOG.replace(",", ".")) : NaN;
+
+    return {
+      id,
+      nombre: data.beachName || "Playa sin nombre",
+      lat: latNum,
+      lon: lonNum,
+    };
+  } catch (err) {
+    console.error("❌ Error obteniendo playa:", err);
+    return null;
   }
 }
 
-async function main() {
-  console.log("⏰ Verificando usuarios con alertas activas...");
-  const usuariosSnapshot = await db
-      .collection("usuarios")
-      .where("notificacionesActivadas", "==", true)
-      .get();
+// TEST MANUAL que fuerza alerta de viento a todos los usuarios
+app.get("/api/test-email-alerta", async (req, res) => {
+  try {
+    const usuariosSnapshot = await db.collection("users").get();
 
-  if (usuariosSnapshot.empty) {
-    console.log("No hay usuarios con alertas activas.");
-    return;
-  }
+    if (usuariosSnapshot.empty) {
+      console.log("No hay usuarios registrados.");
+      return res.status(404).json({ success: false, message: "Sin usuarios" });
+    }
 
-  for (const doc of usuariosSnapshot.docs) {
-    const usuario = doc.data();
-    if (!usuario.email || !Array.isArray(usuario.favoritos)) continue;
+    for (const doc of usuariosSnapshot.docs) {
+      const usuario = doc.data();
+      if (!usuario.email || !Array.isArray(usuario.favoritos)) continue;
 
-    for (const favorito of usuario.favoritos) {
-      if (
-          typeof favorito.lat !== "number" ||
-          typeof favorito.lon !== "number"
-      ) {
-        console.log("Favorito mal definido:", favorito);
-        continue;
+      // Array para acumular las playas válidas con sus datos numéricos
+      const playasValidas = [];
+
+      for (const playaId of usuario.favoritos) {
+        const playa = await getPlayaById(playaId);
+
+        if (!playa || isNaN(playa.lat) || isNaN(playa.lon)) {
+          console.log("❌ Playa no válida o mal definida:", playaId);
+          continue;
+        }
+
+        playasValidas.push(playa);
       }
 
-      const weatherControl = new WeatherControl(usuario, favorito);
-      await weatherControl.loadWeather();
+      if (playasValidas.length === 0) {
+        console.log(`Usuario ${usuario.email} no tiene playas válidas para alertar.`);
+        continue; // No enviamos email si no hay playas válidas
+      }
+
+      const weatherControl = new WeatherControl(usuario, playasValidas);
+
+      // Simula cambio fuerte de viento
+      const previousWind = 5;
+      const currentWind = 25;
+
+      await weatherControl.notifyWindAlert(currentWind, previousWind);
     }
+
+    res.json({ success: true, message: "Correos enviados." });
+  } catch (error) {
+    console.error("❌ Error en test:", error);
+    res.status(500).json({ success: false, message: "Error interno." });
   }
+});
 
-  console.log("✅ Verificación completada.");
-}
-
-// Ejecutar cada hora localmente con cron
-cron.schedule("0 * * * *", () => {
-  main().catch(console.error);
+// Inicia el servidor
+app.listen(PORT, () => {
+  console.log(`🚀 Servidor escuchando en http://localhost:${PORT}`);
 });
