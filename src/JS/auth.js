@@ -76,11 +76,13 @@ async function registrarUsuario(nombre, email, password, confirmPassword) {
         await user.sendEmailVerification();
 
         await db.collection("users").doc(user.uid).set({
-            nombre,
+            nombre: user.displayName || "",
+            email: user.email,
             favoritos: [],
             creadoEn: firebase.firestore.FieldValue.serverTimestamp(),
             lastUpdatedFav: firebase.firestore.FieldValue.serverTimestamp()
         });
+
 
         alert('Te hemos enviado un correo de verificación. Verifica tu correo antes de cerrar esta pestaña.');
         auth.signOut();
@@ -143,13 +145,20 @@ async function registrarConGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
 
+    // Solicita permiso explícito para acceder al correo
+    provider.addScope('email');
+
     try {
         const result = await auth.signInWithPopup(provider);
         const user = result.user;
 
+        // Intenta obtener el correo directamente desde user o providerData
+        const email = user.email || user.providerData[0]?.email || "";
+
         if (result.additionalUserInfo.isNewUser) {
             await db.collection("users").doc(user.uid).set({
                 nombre: user.displayName || "",
+                email: email,
                 favoritos: [],
                 creadoEn: firebase.firestore.FieldValue.serverTimestamp(),
                 lastUpdatedFav: firebase.firestore.FieldValue.serverTimestamp()
@@ -197,12 +206,105 @@ async function cerrarSesion() {
     }
 }
 
+async function actualizarEstadoNotificaciones(uid, activar) {
+    try {
+        await db.collection("users").doc(uid).update({
+            notificacionesActivadas: activar
+        });
+        // No necesitamos actualizar notificacionesActivadas aquí, ya que lo haremos en el listener
+        const toggleNotificacionesBtn = document.getElementById('toggle-notificaciones');
+        if (toggleNotificacionesBtn) {
+            toggleNotificacionesBtn.textContent = activar ? 'Desactivar Notificaciones' : 'Activar Notificaciones';
+        }
+    } catch (error) {
+        console.error("Error al actualizar el estado de las notificaciones:", error);
+        alert("No se pudo actualizar el estado de las notificaciones.");
+    }
+}
+
 // ---------------------- INTERFAZ DOM ----------------------
 
 document.addEventListener('DOMContentLoaded', () => {
     const signUpForm = document.querySelector('.sign-up-container form');
     const signInForm = document.querySelector('.sign-in-container form');
     const recoverForm = document.getElementById('recover-form');
+    let cuentaBtn;
+    let notificacionesDropdown;
+    let toggleNotificacionesBtn;
+    let notificacionesActivadas = false;
+
+    auth.onAuthStateChanged(async (user) => {
+        const cuentaContainer = document.getElementById("cuenta-container");
+        const asideButtons = document.getElementById("aside-buttons");
+        cuentaBtn = document.getElementById('cuenta');
+        notificacionesDropdown = document.getElementById('notificaciones-dropdown');
+        toggleNotificacionesBtn = document.getElementById('toggle-notificaciones');
+
+        if (user && (user.emailVerified || esProveedorGoogle(user))) {
+            asideButtons.querySelectorAll("a").forEach(a => a.style.display = "none");
+            cuentaContainer.style.display = "flex";
+            if (cuentaBtn) {
+                const displayEmail = user.email || user.providerData.find(provider => provider.providerId === 'google.com')?.email || "Cuenta";
+                cuentaBtn.title = displayEmail;
+                cuentaBtn.addEventListener('click', () => {
+                    if (notificacionesDropdown) {
+                        notificacionesDropdown.style.display = notificacionesDropdown.style.display === 'block' ? 'none' : 'block';
+                    }
+                });
+            } else {
+                console.error("No se encontró el botón con id 'cuenta' dentro del observador de sesión.");
+            }
+
+            const cerrarSesionBtn = document.getElementById("cerrarSesion");
+            if (cerrarSesionBtn) {
+                cerrarSesionBtn.addEventListener("click", async () => {
+                    await cerrarSesion();
+                });
+            }
+
+            if (toggleNotificacionesBtn) {
+                toggleNotificacionesBtn.addEventListener('click', async () => {
+                    if (user) {
+                        notificacionesActivadas = !notificacionesActivadas;
+                        toggleNotificacionesBtn.textContent = notificacionesActivadas ? 'Desactivar Notificaciones' : 'Activar Notificaciones';
+                        await actualizarEstadoNotificaciones(user.uid, notificacionesActivadas);
+                    } else {
+                        alert("Debes iniciar sesión para gestionar las notificaciones.");
+                        if (notificacionesDropdown) {
+                            notificacionesDropdown.style.display = 'none';
+                        }
+                    }
+                });
+
+                const userDoc = await db.collection("users").doc(user.uid).get();
+                if (userDoc.exists && userDoc.data().notificacionesActivadas !== undefined) {
+                    notificacionesActivadas = userDoc.data().notificacionesActivadas;
+                    toggleNotificacionesBtn.textContent = notificacionesActivadas ? 'Desactivar Notificaciones' : 'Activar Notificaciones';
+                } else {
+                    await db.collection("users").doc(user.uid).set({ notificacionesActivadas: false }, { merge: true });
+                    notificacionesActivadas = false;
+                    toggleNotificacionesBtn.textContent = 'Activar Notificaciones';
+                }
+            } else {
+                console.error("No se encontró el botón con id 'toggle-notificaciones' dentro del observador de sesión.");
+            }
+
+        } else {
+            if (cuentaContainer) {
+                cuentaContainer.style.display = "none";
+            }
+            asideButtons.querySelectorAll("a").forEach(a => a.style.display = "inline-block");
+            if (notificacionesDropdown) {
+                notificacionesDropdown.style.display = 'none';
+            }
+        }
+    });
+
+    document.addEventListener('click', (event) => {
+        if (cuentaBtn && notificacionesDropdown && !cuentaBtn.contains(event.target) && !notificacionesDropdown.contains(event.target)) {
+            notificacionesDropdown.style.display = 'none';
+        }
+    });
 
     if (signUpForm) {
         signUpForm.addEventListener('submit', (e) => {
@@ -236,6 +338,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cerrarBtn) {
         cerrarBtn.addEventListener("click", cerrarSesion);
     }
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            console.log("Usuario autenticado:", user.email || user.providerData.find(provider => provider.providerId === 'google.com')?.email || null);
+            guardarUsuarioActual();
+        } else {
+            console.log("No hay usuario autenticado.");
+        }
+    });
 });
 
 // ---------------------- OBSERVADOR DE SESIÓN ----------------------
@@ -312,11 +422,12 @@ function limpiarErroresFormulario(formulario) {
 }
 
 
-function guardarUsuarioActual() {
+async function guardarUsuarioActual() {
     const user = auth.currentUser;
     if (user) {
         localStorage.setItem("uid", user.uid);
-        localStorage.setItem("email", user.email);
+        const email = user.email || user.providerData.find(provider => provider.providerId === 'google.com')?.email || null;
+        localStorage.setItem("email", email);
         user.getIdToken().then((idToken) => {
             localStorage.setItem("idToken", idToken);
         });
@@ -324,16 +435,21 @@ function guardarUsuarioActual() {
 }
 
 async function comprobarUsuario() {
-    const currentUser = auth.currentUser;
-
-    if (currentUser) {
-        console.log("Usuario autenticado: ", currentUser.email);
-        return true; // Usuario autenticado
-    } else {
-        console.log("No hay usuario autenticado.");
-        return false;
-    }
+    return new Promise((resolve) => {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                const email = user.email || user.providerData.find(provider => provider.providerId === 'google.com')?.email || null;
+                console.log("Usuario autenticado:", email);
+                resolve(true);
+            } else {
+                console.log("No hay usuario autenticado.");
+                resolve(false);
+            }
+        });
+    });
 }
+
+
 
 function esProveedorGoogle(user) {
     return user.providerData.some(provider => provider.providerId === "google.com");
