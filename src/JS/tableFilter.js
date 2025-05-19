@@ -41,7 +41,7 @@ function initFilters(headers, data) {
             } else {
                 visibleColumns = visibleColumns.filter(col => col !== index);
             }
-            renderFilteredTable();
+            renderFilteredTable(); // Re-render table on column visibility change
         });
         label.appendChild(checkbox);
         label.appendChild(document.createTextNode(` ${header}`));
@@ -51,9 +51,8 @@ function initFilters(headers, data) {
     // Populate advanced filters (fields with < 7 unique values)
     const uniqueValues = {};
     headers.forEach((header, colIndex) => {
-        // Excluir la primera fila y valores vacíos o no válidos
-        const values = [...new Set(data.slice(1).map(row => row[colIndex]))]
-            .filter(v => v !== 'Desconocido' && v !== '' && v != null);
+        // Excluir la primera fila (encabezados) al calcular valores únicos
+        const values = [...new Set(data.slice(1).map(row => row[colIndex]))].filter(v => v !== 'Desconocido');
         uniqueValues[header] = values;
     });
 
@@ -92,6 +91,7 @@ function initFilters(headers, data) {
     clearFiltersButton.style.borderRadius = '4px';
     clearFiltersButton.style.width = '100%';
     clearFiltersButton.addEventListener('click', () => {
+        // Clear all advanced filter selections
         advancedFilterOptions.querySelectorAll('select').forEach(select => {
             Array.from(select.options).forEach(option => {
                 option.selected = false;
@@ -109,18 +109,19 @@ function initFilters(headers, data) {
         renderFilteredTable();
     });
 
-    // Search functionality (only for highlighting)
+    // Search functionality
     searchInput.addEventListener('input', () => {
         currentSearchIndex = -1;
         searchMatches = [];
         currentSearchQuery = searchInput.value.toLowerCase();
-        renderFilteredTable();
+        renderFilteredTable(); // Re-render table with search query
     });
 
     searchNextButton.addEventListener('click', () => {
         if (searchMatches.length > 0) {
             currentSearchIndex = (currentSearchIndex + 1) % searchMatches.length;
             highlightMatches();
+            searchMatches[currentSearchIndex].element.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     });
 }
@@ -130,10 +131,10 @@ function highlightMatches() {
     searchMatches.forEach((match, index) => {
         if (index === currentSearchIndex) {
             match.element.classList.add('highlight');
-            match.element.style.backgroundColor = '#4682B4'; // Azul más oscuro
+            match.element.style.backgroundColor = '#4682B4'; // Azul más oscuro para el resultado actual
         } else {
             match.element.classList.add('highlight');
-            match.element.style.backgroundColor = '#87CEEB'; // Azul claro
+            match.element.style.backgroundColor = '#87CEEB'; // Azul claro para los resultados no actuales
         }
     });
 }
@@ -151,7 +152,7 @@ function renderFilteredTable() {
     searchMatches = [];
     currentSearchIndex = -1;
 
-    // Filter rows based on advanced filters only
+    // Filter rows based on advanced filters
     let filteredData = originalData.filter(row => {
         return Object.keys(advancedFilters).every(header => {
             if (!advancedFilters[header]) return true;
@@ -159,6 +160,15 @@ function renderFilteredTable() {
             return advancedFilters[header].includes(row[colIndex]);
         });
     });
+
+    // Further filter rows based on search query
+    if (currentSearchQuery) {
+        filteredData = filteredData.filter(row => {
+            return visibleColumns.some(colIndex => {
+                return row[colIndex].toLowerCase().includes(currentSearchQuery);
+            });
+        });
+    }
 
     // Render headers
     const thead = document.createElement('thead');
@@ -191,51 +201,5 @@ function renderFilteredTable() {
     if (searchMatches.length > 0) {
         highlightMatches();
     }
-}
-
-function updatePDFDownload() {
-    const originalDownload = window.downloadCSVTableAsPDF;
-    window.downloadCSVTableAsPDF = function() {
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF('l', 'pt', 'a4');
-
-        doc.setFontSize(14);
-        doc.text("Tabla de Playas Filtrada", 40, 40);
-
-        const headers = visibleColumns.map(index => originalData[0][index]);
-        const data = originalData.slice(1)
-            .filter(row => {
-                return Object.keys(advancedFilters).every(header => {
-                    if (!advancedFilters[header]) return true;
-                    const colIndex = originalData[0].indexOf(header);
-                    return advancedFilters[header].includes(row[colIndex]);
-                });
-            })
-            .map(row => visibleColumns.map(index => row[index]));
-
-        doc.autoTable({
-            head: [headers],
-            body: data,
-            startY: 60,
-            styles: {
-                fontSize: 7,
-                cellPadding: 2,
-                overflow: 'linebreak'
-            },
-            headStyles: {
-                fillColor: [0, 123, 255],
-                textColor: [255, 255, 255],
-                halign: 'center',
-                fontSize: 8
-            },
-            bodyStyles: {
-                halign: 'left',
-                valign: 'top'
-            },
-            margin: { left: 40, right: 40 },
-            theme: 'striped'
-        });
-
-        doc.save('tabla_playas_filtrada.pdf');
-    };
+    updatePDFDownload();
 }

@@ -1,39 +1,32 @@
 function loadCSVTable(csvPath) {
-    // Load table component HTML
-    fetch('../HTML-components/tableComponent.html')
-        .then(response => response.text())
-        .then(html => {
-            document.getElementById('tabla-container').innerHTML = html;
-            // Load CSV data
-            return fetch(csvPath);
-        })
+    fetch(csvPath)
         .then(response => response.text())
         .then(data => {
-            const rows = data.split('\n').filter(row => row.trim() !== '');
-            const table = document.getElementById('csv-table');
-            table.innerHTML = '';
+            // Limpieza más agresiva del CSV
+            const rows = data
+                .split('\n')
+                .filter(row => row.trim() !== '')
+                .map(row => row.split(';').map(cell => {
+                    let cleaned = cell.trim()
+                        .replace(/^"|"$/g, '')
+                        .replace(/""/g, '"');
+                    return (cleaned === '' || cleaned.toLowerCase() === 'null') ? "Desconocido" : cleaned;
+                }));
 
-            if (rows.length === 0) return;
-
-            // Parse data
-            const parsedData = rows.map(row => {
-                return row.split(';').map(cell => {
-                    const cleaned = cell.trim().replace(/^"|"$/g, '');
-                    return (!cleaned || cleaned.toLowerCase() === 'null') ? "Desconocido" : cleaned;
-                });
+            // Asegurar que todas las filas tengan el mismo número de columnas
+            const maxColumns = Math.max(...rows.map(row => row.length));
+            const paddedRows = rows.map(row => {
+                while (row.length < maxColumns) row.push("Desconocido");
+                return row;
             });
 
-            // Initialize filters
-            if (typeof initFilters === 'function') {
-                initFilters(parsedData[0], parsedData);
-                updatePDFDownload();
-            }
+            originalData = paddedRows;
 
-            // Initial render
-            renderFilteredTable();
+            if (typeof initFilters === 'function') {
+                initFilters(originalData[0], originalData);
+                updatePDFDownload();
+                renderFilteredTable();
+            }
         })
-        .catch(error => {
-            console.error('Error cargando el archivo CSV o el componente:', error);
-            document.getElementById('tabla-container').innerHTML = '<p>Error al cargar la tabla.</p>';
-        });
+        .catch(error => console.error('Error:', error));
 }
