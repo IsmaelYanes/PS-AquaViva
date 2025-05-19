@@ -1,13 +1,18 @@
 .weather-table-container {
-    padding: 20px;
+    padding: 1.25em;
+    width: 100%;
     font-family: Arial, sans-serif;
 }
 
 .weather-table {
-    border-collapse: collapse;
     width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
     background-color: white;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
+    border-radius: 0.5em;
+    overflow: hidden;
 }
 
 .weather-table th,
@@ -18,7 +23,7 @@
 }
 
 .weather-table th {
-    background-color: #007acc;
+    background-color: steelblue;
     color: white;
 }
 
@@ -31,4 +36,36 @@
     font-size: 1.5em;
     margin-bottom: 10px;
     font-weight: bold;
+    color: steelblue;
 }
+
+#downloadTableButton {
+    margin-top: 1em;
+    background-color: steelblue;
+    border-radius: 1em;
+}
+
+#downloadTableButton:hover {
+    background-color: #35648c;
+}
+
+.weather-table th:first-child {
+    border-top-left-radius: 0.5em;
+}
+
+.weather-table th:last-child {
+    border-top-right-radius: 0.5em;
+}
+
+.weather-table tr:last-child td:first-child {
+    border-bottom-left-radius: 0.5em;
+}
+
+.weather-table tr:last-child td:last-child {
+    border-bottom-right-radius: 0.5em;
+}
+
+#weatherTable {
+    border-radius: 0.5em;
+}
+

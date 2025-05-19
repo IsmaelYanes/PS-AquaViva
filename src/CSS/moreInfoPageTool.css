@@ -68,10 +68,6 @@
     padding: 1rem;
     box-sizing: border-box;
 }
-.section-info:nth-child(odd) {
-    background: #323946;
-}
-
 
 /*Ajuste de main weather*/
 #wrapper-mainWeather {

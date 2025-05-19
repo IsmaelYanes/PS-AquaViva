@@ -128,13 +128,13 @@ class MarineControl {
     convertToJson(){
         return [
             {
-                "Average Water Temperature (C)": this.getWaterAverageTemperature(),
-                "Average Swell High (m)" : this.getAverageSwellHt(),
-                "Average Temperature (C)": this.getForecastAverageTemperatures(),
-                "Max Wind Speed (kmh)": this.getForecastMaxWinds(),
-                "Precipitation (mm)" : this.getTotalPrecipitations(),
-                "Max Temperature (C)": this.getForecastMaxTemperatures(),
-                "Min Temperature (C)": this.getForecastMinTemperatures(),
+                "Temperatura media del agua (ºC)": this.getWaterAverageTemperature(),
+                "Altura media del oleaje (m)" : this.getAverageSwellHt(),
+                "Temperatura media del aire (ºC)": this.getForecastAverageTemperatures(),
+                "Velocidad máxima del viento (km/h)": this.getForecastMaxWinds(),
+                "Precipitación  (mm)" : this.getTotalPrecipitations(),
+                "Temperatura máxima (ºC)": this.getForecastMaxTemperatures(),
+                "Temperatura mínima (ºC)": this.getForecastMinTemperatures(),
             }
         ]
     }
