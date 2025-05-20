@@ -253,6 +253,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (user && (user.emailVerified || esProveedorGoogle(user))) {
             asideButtons.querySelectorAll("a").forEach(a => a.style.display = "none");
             cuentaContainer.style.display = "flex";
+            const bell = document.getElementById('bell');
+            const dropdown = document.getElementById('notifications');
+
+            if (bell && dropdown) {
+                bell.addEventListener('click', () => {
+                    dropdown.classList.toggle('active');
+                });
+
+                window.addEventListener('click', (e) => {
+                    if (!bell.contains(e.target) && !dropdown.contains(e.target)) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+            } else {
+                console.warn("🔔 Bell or notifications dropdown element not found. Notifications might not work as expected.");
+            }
             if (cuentaBtn) {
                 const displayEmail = user.email || user.providerData.find(provider => provider.providerId === 'google.com')?.email || "Cuenta";
                 cuentaBtn.title = displayEmail;

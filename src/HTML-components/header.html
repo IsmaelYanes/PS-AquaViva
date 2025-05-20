@@ -14,6 +14,18 @@
         <a href="../HTML/form.html?view=register"> <button class="homeHeader-button">Registrarse</button></a>
         <a href="../HTML/form.html?view=login"> <button class="homeHeader-button" id="iniciarSesion">Iniciar sesión</button></a>
         <div id="cuenta-container" style="display: none; position: relative;">
+            <div class="notification-container">
+                <button id="bell" data-count="3" title="Notificaciones"
+                    style="cursor: pointer; background: none; border: none; padding: 0; margin-left:4em;">
+                    <img src="/src/Images/campana.png" alt="Notificaciones" class="icon">
+                </button>
+                <div class="notifications-dropdown" id="notifications">
+                    <div class="arrow-up"></div>
+                    <div class="notification-item"><span class="notification-icon">📌</span> Tienes una nueva tarea pendiente</div>
+                    <div class="notification-item"><span class="notification-icon">💬</span> Nuevo mensaje en el chat</div>
+                    <div class="notification-item"><span class="notification-icon">✅</span> Solicitud aprobada</div>
+                </div>
+            </div>
             <button id="cuenta" title="Cuenta"
                     style="cursor: pointer; background: none; border: none; padding: 0; margin-left:4em;">
                 <img src="/src/Images/cuenta.png" alt="Cuenta" class="icon">
