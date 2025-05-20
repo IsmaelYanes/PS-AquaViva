@@ -241,10 +241,12 @@ async function addComment(beachId, commentData) {
         if (!beachId || !text || !owner || !uid) {
             throw new Error("beachId, comentarioTexto, ownerEmail y uid son obligatorios");
         }
-        beachId=beachId.trim();
 
-        const comentariosRef = db.collection("forums").doc(beachId).collection("comments");
+        beachId = beachId.trim();
+        const forumDocRef = db.collection("forums").doc(beachId);
+        const comentariosRef = forumDocRef.collection("comments");
 
+        // 1. Añadir comentario
         await comentariosRef.add({
             text,
             date: firebase.firestore.FieldValue.serverTimestamp(),
@@ -253,6 +255,14 @@ async function addComment(beachId, commentData) {
         });
 
         console.log(`✅ Comentario añadido en foro ${beachId}`);
+
+        // 2. Reiniciar campo readers con solo el UID actual
+        await forumDocRef.set(
+            { readers: [uid] },
+            { merge: true } // mantiene otros campos del documento
+        );
+
+        console.log(`🧹 Campo 'readers' actualizado para ${beachId} con solo el UID ${uid}`);
 
     } catch (error) {
         console.error(`❌ Error al añadir comentario en ${beachId}:`, error);
