@@ -14,10 +14,25 @@
         <a href="../HTML/form.html?view=register"> <button class="homeHeader-button">Registrarse</button></a>
         <a href="../HTML/form.html?view=login"> <button class="homeHeader-button" id="iniciarSesion">Iniciar sesión</button></a>
         <div id="cuenta-container" style="display: none; position: relative;">
+            <div class="notification-container">
+                <button id="bell" data-count="0" title="Notificaciones"
+                    style="cursor: pointer; background: none; border: none; padding: 0; margin-left:4em;">
+                    <img src="/src/Images/campana.png" alt="Notificaciones" class="icon">
+                </button>
+                <div class="notifications-dropdown" id="notifications">
+                    <div class="arrow-up"></div>
+
+                </div>
+            </div>
             <button id="cuenta" title="Cuenta"
                     style="cursor: pointer; background: none; border: none; padding: 0; margin-left:4em;">
                 <img src="/src/Images/cuenta.png" alt="Cuenta" class="icon">
             </button>
+            <div id="notificaciones-dropdown" style="position: absolute; top: 100%; right: 0; background-color: white; border: 1px solid #ccc; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 10; display: none;">
+                <button id="toggle-notificaciones" style="display: block; width: 100%; padding: 10px; text-align: left; border: none; background: none; cursor: pointer;">
+                    Activar Notificaciones
+                </button>
+            </div>
             <button id="cerrarSesion" style="background: none; border: none; padding: 0; cursor: pointer; margin-left:4em;">
                 <img src="/src/Images/logout.png" alt="Cerrar sesión" class="icon">
             </button>
@@ -25,4 +40,3 @@
     </div>
 </header>
 </body>
-

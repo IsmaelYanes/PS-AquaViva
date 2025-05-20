@@ -76,11 +76,13 @@ async function registrarUsuario(nombre, email, password, confirmPassword) {
         await user.sendEmailVerification();
 
         await db.collection("users").doc(user.uid).set({
-            nombre,
+            nombre: user.displayName || "",
+            email: user.email,
             favoritos: [],
             creadoEn: firebase.firestore.FieldValue.serverTimestamp(),
             lastUpdatedFav: firebase.firestore.FieldValue.serverTimestamp()
         });
+
 
         alert('Te hemos enviado un correo de verificación. Verifica tu correo antes de cerrar esta pestaña.');
         auth.signOut();
@@ -96,7 +98,6 @@ async function registrarUsuario(nombre, email, password, confirmPassword) {
         }
     }
 }
-
 
 async function iniciarSesion(email, password) {
     const form = document.querySelector('.sign-in-container form');
@@ -138,18 +139,24 @@ async function iniciarSesion(email, password) {
     }
 }
 
-
 async function registrarConGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
+
+    // Solicita permiso explícito para acceder al correo
+    provider.addScope('email');
 
     try {
         const result = await auth.signInWithPopup(provider);
         const user = result.user;
 
+        // Intenta obtener el correo directamente desde user o providerData
+        const email = user.email || user.providerData[0]?.email || "";
+
         if (result.additionalUserInfo.isNewUser) {
             await db.collection("users").doc(user.uid).set({
                 nombre: user.displayName || "",
+                email: email,
                 favoritos: [],
                 creadoEn: firebase.firestore.FieldValue.serverTimestamp(),
                 lastUpdatedFav: firebase.firestore.FieldValue.serverTimestamp()
@@ -209,6 +216,251 @@ async function cerrarSesion() {
     }
 }
 
+async function actualizarEstadoNotificaciones(uid, activar) {
+    try {
+        await db.collection("users").doc(uid).update({
+            notificacionesActivadas: activar
+        });
+        // No necesitamos actualizar notificacionesActivadas aquí, ya que lo haremos en el listener
+        const toggleNotificacionesBtn = document.getElementById('toggle-notificaciones');
+        if (toggleNotificacionesBtn) {
+            toggleNotificacionesBtn.textContent = activar ? 'Desactivar Notificaciones' : 'Activar Notificaciones';
+        }
+    } catch (error) {
+        console.error("Error al actualizar el estado de las notificaciones:", error);
+        alert("No se pudo actualizar el estado de las notificaciones.");
+    }
+}
+
+//----------------------- COMENTARIOS ------------------------
+
+async function addComment(beachId, commentData) {
+    try {
+        const { text, owner, fish, uid } = commentData;
+
+        if (!beachId || !text || !owner || !uid) {
+            throw new Error("beachId, comentarioTexto, ownerEmail y uid son obligatorios");
+        }
+        beachId=beachId.trim();
+
+        const comentariosRef = db.collection("forums").doc(beachId).collection("comments");
+
+        await comentariosRef.add({
+            text,
+            date: firebase.firestore.FieldValue.serverTimestamp(),
+            owner,
+            fish: fish || []
+        });
+
+        console.log(`✅ Comentario añadido en foro ${beachId}`);
+
+    } catch (error) {
+        console.error(`❌ Error al añadir comentario en ${beachId}:`, error);
+    }
+}
+
+async function loadComments(beachId, currentUserUid) {
+    if (!beachId || !currentUserUid) {
+        throw new Error("beachId y currentUserUid son obligatorios");
+    }
+    beachId=beachId.trim();
+    console.log(typeof beachId);
+    console.log(`ET${beachId}TE`);
+
+    const beachDocRef = db.collection("forums").doc(beachId);
+    const commentsRef = beachDocRef.collection("comments");
+
+    try {
+        // 1. Obtener comentarios ordenados por fecha
+        const commentsSnapshot = await commentsRef.orderBy("date", "asc").get();
+
+        const comments = commentsSnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+        }));
+
+        // 2. Leer el documento de la playa para obtener el array de readers
+        const beachDoc = await beachDocRef.get();
+
+        let readers = [];
+        if (beachDoc.exists) {
+            readers = beachDoc.data().readers || [];
+        }
+
+        // 3. Añadir UID a readers si no está
+        if (!readers.includes(currentUserUid)) {
+            readers.push(currentUserUid);
+            await beachDocRef.set({ readers }, { merge: true });
+            console.log(`UID ${currentUserUid} añadido a readers de la playa ${beachId}`);
+        }
+
+        return comments;
+
+    } catch (error) {
+        console.error("Error cargando comentarios y actualizando readers:", error);
+        throw error;
+    }
+}
+
+async function deleteCommentById(beachId, commentId) {
+    if (!beachId || !commentId) {
+        console.warn("No se proporcionó un ID de playa o comentario para eliminar.");
+        return;
+    }
+    beachId=beachId.trim();
+
+    try {
+        await db
+            .collection("forums")
+            .doc(beachId)
+            .collection("comments")
+            .doc(commentId)
+            .delete();
+
+        console.log(`✅ Comentario ${commentId} eliminado de forum ${beachId}`);
+    } catch (error) {
+        console.error("Error eliminando comentario:", error);
+    }
+}
+
+/**
+ * Comprueba si un usuario tiene comentarios sin leer en una playa.
+ * Según tu modelo, un usuario está al día si su uid figura en `forums/{beachId}.readers`.
+ *
+ * @param {string} uid
+ * @param {string} beachId
+ * @returns {Promise<boolean>} true = hay comentarios sin leer
+ */
+async function hasUnreadComments(uid, beachId) {
+    if (!uid || beachId === undefined || beachId === null) {
+        throw new Error("UID y beachId son obligatorios");
+    }
+
+    const forumRef = db.collection("forums").doc(String(beachId));
+
+    try {
+        const snap = await forumRef.get();
+        if (!snap.exists) {
+            console.log(`ℹ️ Foro ${beachId} no existe, asumo cero comentarios → todo leído.`);
+            return false;
+        }
+
+        const readers = Array.isArray(snap.data().readers)
+            ? snap.data().readers
+            : [];
+
+        const unread = !readers.includes(uid);
+        console.log(
+            unread
+                ? `📌 Usuario ${uid} tiene comentarios sin leer en ${beachId}`
+                : `✅ Usuario ${uid} ya leyó todos en ${beachId}`
+        );
+        return unread;
+    } catch (e) {
+        console.error(`❌ Error comprobando unread en ${beachId}:`, e);
+        return false;
+    }
+}
+
+async function getUnreadFavoritesWithUid(uid, favoriteBeaches = null) {
+    if (!uid) {
+        throw new Error("UID es obligatorio");
+    }
+
+    // Si no pasaron la lista de favoritas, la intentamos cargar igual que antes
+    if (!favoriteBeaches) {
+        const localKey = `favoritos_${uid}`;
+        let favoritosString = localStorage.getItem(localKey);
+        if (!favoritosString) {
+            await downloadFavourite(uid);
+            favoritosString = localStorage.getItem(localKey);
+            if (!favoritosString) {
+                console.warn("⚠️ No se encontraron favoritos tras descargar.");
+                return [];
+            }
+        }
+        favoriteBeaches = JSON.parse(favoritosString);
+    }
+
+    // Limpiar IDs de espacios u otros caracteres invisibles
+    favoriteBeaches = favoriteBeaches.map(id => String(id).trim());
+
+    const pendientes = [];
+
+    for (const beachId of favoriteBeaches) {
+        console.log(`Mirando la playa ${beachId}`);
+        const hasUnread = await hasUnreadComments(uid, beachId);
+        if (hasUnread) pendientes.push(beachId);
+    }
+
+    return pendientes;
+}
+
+async function populateNotificationDropdown() {
+    console.log("Se llamo correctamente.");
+    const dropdown = document.getElementById("notifications");
+
+    // Conservar solo el primer hijo (.arrow-up)
+    while (dropdown.children.length > 1) {
+        dropdown.removeChild(dropdown.lastChild);
+    }
+
+    const bellButton = document.getElementById("bell");
+    const uid = localStorage.getItem("uid");
+    const unreadBeachIds = await getUnreadFavoritesWithUid(uid);
+
+    // 🛎️ Gestionar el atributo data-count del botón
+    if (unreadBeachIds.length === 0) {
+        bellButton.removeAttribute("data-count");
+
+        const noNotif = document.createElement("div");
+        noNotif.className = "notification-item";
+        noNotif.textContent = "🔕 No hay nuevas notificaciones";
+        dropdown.appendChild(noNotif);
+
+        return;
+    } else {
+        bellButton.setAttribute("data-count", unreadBeachIds.length);
+    }
+
+    const allBeaches = await fetchAllBeaches();
+
+    unreadBeachIds.forEach(beachId => {
+        const beachDoc = allBeaches.find(doc => doc.name.split("/").pop() === beachId);
+        if (!beachDoc) return;
+
+        const fields = beachDoc.fields;
+        const name = fields?.beachName?.stringValue || "Playa desconocida";
+        const image = fields?.imageURL?.stringValue || "/src/Images/default-beach.jpg";
+
+        const lat = fields?.LAT?.stringValue?.replace(",", ".") || "0";
+        const lon = fields?.LOG?.stringValue?.replace(",", ".") || "0";
+
+        const notificationLink = document.createElement("a");
+        notificationLink.href = `../HTML/moreinfoPageTool.html?id=${beachId}&lat=${lat}&lon=-${lon}`;
+        notificationLink.className = "notification-item";
+        notificationLink.style.display = "flex";
+        notificationLink.style.alignItems = "center";
+        notificationLink.style.gap = "10px";
+        notificationLink.style.textDecoration = "none";
+        notificationLink.style.color = "inherit";
+
+        const img = document.createElement("img");
+        img.src = image;
+        img.alt = name;
+        img.style.width = "40px";
+        img.style.height = "40px";
+        img.style.objectFit = "cover";
+        img.style.borderRadius = "8px";
+
+        const text = document.createElement("span");
+        text.textContent = `💬 Nuevos comentarios en ${name}`;
+
+        notificationLink.appendChild(img);
+        notificationLink.appendChild(text);
+        dropdown.appendChild(notificationLink);
+    });
+}
 
 // ---------------------- INTERFAZ DOM ----------------------
 
@@ -216,6 +468,103 @@ document.addEventListener('DOMContentLoaded', () => {
     const signUpForm = document.querySelector('.sign-up-container form');
     const signInForm = document.querySelector('.sign-in-container form');
     const recoverForm = document.getElementById('recover-form');
+    let cuentaBtn;
+    let notificacionesDropdown;
+    let toggleNotificacionesBtn;
+    let notificacionesActivadas = false;
+
+    auth.onAuthStateChanged(async (user) => {
+        const cuentaContainer = document.getElementById("cuenta-container");
+        const asideButtons = document.getElementById("aside-buttons");
+        cuentaBtn = document.getElementById('cuenta');
+        notificacionesDropdown = document.getElementById('notificaciones-dropdown');
+        toggleNotificacionesBtn = document.getElementById('toggle-notificaciones');
+
+        if (user && (user.emailVerified || esProveedorGoogle(user))) {
+            asideButtons.querySelectorAll("a").forEach(a => a.style.display = "none");
+            cuentaContainer.style.display = "flex";
+
+            await populateNotificationDropdown();
+
+            const bell = document.getElementById('bell');
+            const dropdown = document.getElementById('notifications');
+
+            if (bell && dropdown) {
+                bell.addEventListener('click', async () => {
+                    await populateNotificationDropdown();
+                    dropdown.classList.toggle('active');
+                });
+
+                window.addEventListener('click', (e) => {
+                    if (!bell.contains(e.target) && !dropdown.contains(e.target)) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+            } else {
+                console.warn("🔔 Bell or notifications dropdown element not found. Notifications might not work as expected.");
+            }
+            if (cuentaBtn) {
+                const displayEmail = user.email || user.providerData.find(provider => provider.providerId === 'google.com')?.email || "Cuenta";
+                cuentaBtn.title = displayEmail;
+                cuentaBtn.addEventListener('click', () => {
+                    if (notificacionesDropdown) {
+                        notificacionesDropdown.style.display = notificacionesDropdown.style.display === 'block' ? 'none' : 'block';
+                    }
+                });
+            } else {
+                console.error("No se encontró el botón con id 'cuenta' dentro del observador de sesión.");
+            }
+
+            const cerrarSesionBtn = document.getElementById("cerrarSesion");
+            if (cerrarSesionBtn) {
+                cerrarSesionBtn.addEventListener("click", async () => {
+                    await cerrarSesion();
+                });
+            }
+
+            if (toggleNotificacionesBtn) {
+                toggleNotificacionesBtn.addEventListener('click', async () => {
+                    if (user) {
+                        notificacionesActivadas = !notificacionesActivadas;
+                        toggleNotificacionesBtn.textContent = notificacionesActivadas ? 'Desactivar Notificaciones' : 'Activar Notificaciones';
+                        await actualizarEstadoNotificaciones(user.uid, notificacionesActivadas);
+                    } else {
+                        alert("Debes iniciar sesión para gestionar las notificaciones.");
+                        if (notificacionesDropdown) {
+                            notificacionesDropdown.style.display = 'none';
+                        }
+                    }
+                });
+
+                const userDoc = await db.collection("users").doc(user.uid).get();
+                if (userDoc.exists && userDoc.data().notificacionesActivadas !== undefined) {
+                    notificacionesActivadas = userDoc.data().notificacionesActivadas;
+                    toggleNotificacionesBtn.textContent = notificacionesActivadas ? 'Desactivar Notificaciones' : 'Activar Notificaciones';
+                } else {
+                    await db.collection("users").doc(user.uid).set({ notificacionesActivadas: false }, { merge: true });
+                    notificacionesActivadas = false;
+                    toggleNotificacionesBtn.textContent = 'Activar Notificaciones';
+                }
+            } else {
+                console.error("No se encontró el botón con id 'toggle-notificaciones' dentro del observador de sesión.");
+            }
+
+        } else {
+            if (cuentaContainer) {
+                cuentaContainer.style.display = "none";
+            }
+            asideButtons.querySelectorAll("a").forEach(a => a.style.display = "inline-block");
+            if (notificacionesDropdown) {
+                notificacionesDropdown.style.display = 'none';
+            }
+        }
+    });
+
+    document.addEventListener('click', (event) => {
+        if (cuentaBtn && notificacionesDropdown && !cuentaBtn.contains(event.target) && !notificacionesDropdown.contains(event.target)) {
+            notificacionesDropdown.style.display = 'none';
+        }
+    });
 
     if (signUpForm) {
         signUpForm.addEventListener('submit', (e) => {
@@ -249,6 +598,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cerrarBtn) {
         cerrarBtn.addEventListener("click", cerrarSesion);
     }
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            console.log("Usuario autenticado:", user.email || user.providerData.find(provider => provider.providerId === 'google.com')?.email || null);
+            guardarUsuarioActual();
+        } else {
+            console.log("No hay usuario autenticado.");
+        }
+    });
 });
 
 // ---------------------- OBSERVADOR DE SESIÓN ----------------------
@@ -273,38 +630,6 @@ auth.onAuthStateChanged((user) => {
 
 // ---------------------- UTILIDADES ----------------------
 
-//function validarContrasena(password) {
-    //const errores = [];
-    //if (password.length < 6) errores.push("La contraseña debe tener al menos 6 caracteres.");
-    //if (!/[A-Z]/.test(password)) errores.push("Debe contener al menos una letra mayúscula.");
-    //if (!/[a-z]/.test(password)) errores.push("Debe contener al menos una letra minúscula.");
-    //if (!/[^\w\s]/.test(password)) errores.push("Debe contener al menos un carácter especial.");
-    //if (!/[0-9]/.test(password)) errores.push("Debe contener al menos un número.");
-    //return errores;
-//}
-
-//function manejarErroresAuth(error, contexto) {
-    //let mensaje = "";
-    //switch (error.code) {
-        //case "auth/email-already-in-use": mensaje = "El correo ya está en uso."; break;
-        //case "auth/invalid-email": mensaje = "El correo no es válido."; break;
-        //case "auth/weak-password": mensaje = "La contraseña es demasiado débil."; break;
-        //case "auth/user-not-found": mensaje = "No existe una cuenta con este correo."; break;
-        //case "auth/wrong-password": mensaje = "La contraseña es incorrecta."; break;
-        //case "auth/too-many-requests": mensaje = "Demasiados intentos fallidos. Intenta de nuevo más tarde."; break;
-       // case "auth/invalid-credential": mensaje = "La credencial es inválida o ha expirado."; break;
-        //default: mensaje = error.message; break;
-    //}
-
-    //if (contexto === "registrarse") {
-       // mostrarError("signUpError", mensaje);
-    //} else if (contexto === "iniciar sesión") {
-      //  mostrarError("signInError", mensaje);
-    //} else if (contexto === "recuperar la contraseña") {
-        //mostrarError("recoverError", mensaje);
-    //}
-//}
-
 function mostrarErrorCampo(nombreCampo, mensaje, isLogin = false) {
     const campo = document.querySelector(`[name="${nombreCampo}"]`);
     const errorKey = isLogin ? `login-${nombreCampo}` : nombreCampo;
@@ -324,11 +649,12 @@ function limpiarErroresFormulario(formulario) {
     formulario.querySelectorAll('.input-error').forEach(input => input.classList.remove('input-error'));
 }
 
-function guardarUsuarioActual() {
+async function guardarUsuarioActual() {
     const user = auth.currentUser;
     if (user) {
         localStorage.setItem("uid", user.uid);
-        localStorage.setItem("email", user.email);
+        const email = user.email || user.providerData.find(provider => provider.providerId === 'google.com')?.email || null;
+        localStorage.setItem("email", email);
         user.getIdToken().then((idToken) => {
             localStorage.setItem("idToken", idToken);
         });
@@ -336,21 +662,23 @@ function guardarUsuarioActual() {
 }
 
 async function comprobarUsuario() {
-    const currentUser = auth.currentUser;
-
-    if (currentUser) {
-        console.log("Usuario autenticado: ", currentUser.email);
-        return true; // Usuario autenticado
-    } else {
-        console.log("No hay usuario autenticado.");
-        return false;
-    }
+    return new Promise((resolve) => {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                const email = user.email || user.providerData.find(provider => provider.providerId === 'google.com')?.email || null;
+                console.log("Usuario autenticado:", email);
+                resolve(true);
+            } else {
+                console.log("No hay usuario autenticado.");
+                resolve(false);
+            }
+        });
+    });
 }
 
 function esProveedorGoogle(user) {
     return user.providerData.some(provider => provider.providerId === "google.com");
 }
-
 
 // ---------------------- FAVORITOS ----------------------
 
@@ -419,30 +747,8 @@ async function downloadFavourite(uid) {
         console.error(`❌ Error al cargar favoritos: ${error.message}`);
     }
 }
-//----------------------- COMENTARIOS ------------------------
 
-async function addComment(beachId, comentarioTexto, ownerEmail, fishArray = []) {
-    try {
-        if (!beachId || !comentarioTexto || !ownerEmail) {
-            throw new Error("beachId, comentarioTexto y ownerEmail son obligatorios");
-        }
 
-        // Referencia a la colección de comentarios del beachId dentro de forums
-        const comentariosRef = db.collection("forums").doc(beachId).collection("comments");
-
-        // Crear nuevo documento con datos
-        await comentariosRef.add({
-            text: comentarioTexto,
-            date: firebase.firestore.FieldValue.serverTimestamp(),
-            owner: ownerEmail,
-            fish: fishArray
-        });
-
-        console.log(`Comentario añadido a la playa ${beachId}`);
-    } catch (error) {
-        console.error(`❌ Error al añadir comentario: ${error.message}`);
-    }
-}
 
 // ---------------------- EXPORTACIONES ----------------------
 
