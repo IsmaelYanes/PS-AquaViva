@@ -232,6 +232,236 @@ async function actualizarEstadoNotificaciones(uid, activar) {
     }
 }
 
+//----------------------- COMENTARIOS ------------------------
+
+async function addComment(beachId, commentData) {
+    try {
+        const { text, owner, fish, uid } = commentData;
+
+        if (!beachId || !text || !owner || !uid) {
+            throw new Error("beachId, comentarioTexto, ownerEmail y uid son obligatorios");
+        }
+        beachId=beachId.trim();
+
+        const comentariosRef = db.collection("forums").doc(beachId).collection("comments");
+
+        await comentariosRef.add({
+            text,
+            date: firebase.firestore.FieldValue.serverTimestamp(),
+            owner,
+            fish: fish || []
+        });
+
+        console.log(`✅ Comentario añadido en foro ${beachId}`);
+
+    } catch (error) {
+        console.error(`❌ Error al añadir comentario en ${beachId}:`, error);
+    }
+}
+
+async function loadComments(beachId, currentUserUid) {
+    if (!beachId || !currentUserUid) {
+        throw new Error("beachId y currentUserUid son obligatorios");
+    }
+    beachId=beachId.trim();
+    console.log(typeof beachId);
+    console.log(`ET${beachId}TE`);
+
+    const beachDocRef = db.collection("forums").doc(beachId);
+    const commentsRef = beachDocRef.collection("comments");
+
+    try {
+        // 1. Obtener comentarios ordenados por fecha
+        const commentsSnapshot = await commentsRef.orderBy("date", "asc").get();
+
+        const comments = commentsSnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+        }));
+
+        // 2. Leer el documento de la playa para obtener el array de readers
+        const beachDoc = await beachDocRef.get();
+
+        let readers = [];
+        if (beachDoc.exists) {
+            readers = beachDoc.data().readers || [];
+        }
+
+        // 3. Añadir UID a readers si no está
+        if (!readers.includes(currentUserUid)) {
+            readers.push(currentUserUid);
+            await beachDocRef.set({ readers }, { merge: true });
+            console.log(`UID ${currentUserUid} añadido a readers de la playa ${beachId}`);
+        }
+
+        return comments;
+
+    } catch (error) {
+        console.error("Error cargando comentarios y actualizando readers:", error);
+        throw error;
+    }
+}
+
+async function deleteCommentById(beachId, commentId) {
+    if (!beachId || !commentId) {
+        console.warn("No se proporcionó un ID de playa o comentario para eliminar.");
+        return;
+    }
+    beachId=beachId.trim();
+
+    try {
+        await db
+            .collection("forums")
+            .doc(beachId)
+            .collection("comments")
+            .doc(commentId)
+            .delete();
+
+        console.log(`✅ Comentario ${commentId} eliminado de forum ${beachId}`);
+    } catch (error) {
+        console.error("Error eliminando comentario:", error);
+    }
+}
+
+/**
+ * Comprueba si un usuario tiene comentarios sin leer en una playa.
+ * Según tu modelo, un usuario está al día si su uid figura en `forums/{beachId}.readers`.
+ *
+ * @param {string} uid
+ * @param {string} beachId
+ * @returns {Promise<boolean>} true = hay comentarios sin leer
+ */
+async function hasUnreadComments(uid, beachId) {
+    if (!uid || beachId === undefined || beachId === null) {
+        throw new Error("UID y beachId son obligatorios");
+    }
+
+    const forumRef = db.collection("forums").doc(String(beachId));
+
+    try {
+        const snap = await forumRef.get();
+        if (!snap.exists) {
+            console.log(`ℹ️ Foro ${beachId} no existe, asumo cero comentarios → todo leído.`);
+            return false;
+        }
+
+        const readers = Array.isArray(snap.data().readers)
+            ? snap.data().readers
+            : [];
+
+        const unread = !readers.includes(uid);
+        console.log(
+            unread
+                ? `📌 Usuario ${uid} tiene comentarios sin leer en ${beachId}`
+                : `✅ Usuario ${uid} ya leyó todos en ${beachId}`
+        );
+        return unread;
+    } catch (e) {
+        console.error(`❌ Error comprobando unread en ${beachId}:`, e);
+        return false;
+    }
+}
+
+async function getUnreadFavoritesWithUid(uid, favoriteBeaches = null) {
+    if (!uid) {
+        throw new Error("UID es obligatorio");
+    }
+
+    // Si no pasaron la lista de favoritas, la intentamos cargar igual que antes
+    if (!favoriteBeaches) {
+        const localKey = `favoritos_${uid}`;
+        let favoritosString = localStorage.getItem(localKey);
+        if (!favoritosString) {
+            await downloadFavourite(uid);
+            favoritosString = localStorage.getItem(localKey);
+            if (!favoritosString) {
+                console.warn("⚠️ No se encontraron favoritos tras descargar.");
+                return [];
+            }
+        }
+        favoriteBeaches = JSON.parse(favoritosString);
+    }
+
+    // Limpiar IDs de espacios u otros caracteres invisibles
+    favoriteBeaches = favoriteBeaches.map(id => String(id).trim());
+
+    const pendientes = [];
+
+    for (const beachId of favoriteBeaches) {
+        console.log(`Mirando la playa ${beachId}`);
+        const hasUnread = await hasUnreadComments(uid, beachId);
+        if (hasUnread) pendientes.push(beachId);
+    }
+
+    return pendientes;
+}
+
+async function populateNotificationDropdown() {
+    console.log("Se llamo correctamente.");
+    const dropdown = document.getElementById("notifications");
+
+    // Conservar solo el primer hijo (.arrow-up)
+    while (dropdown.children.length > 1) {
+        dropdown.removeChild(dropdown.lastChild);
+    }
+
+    const bellButton = document.getElementById("bell");
+    const uid = localStorage.getItem("uid");
+    const unreadBeachIds = await getUnreadFavoritesWithUid(uid);
+
+    // 🛎️ Gestionar el atributo data-count del botón
+    if (unreadBeachIds.length === 0) {
+        bellButton.removeAttribute("data-count");
+
+        const noNotif = document.createElement("div");
+        noNotif.className = "notification-item";
+        noNotif.textContent = "🔕 No hay nuevas notificaciones";
+        dropdown.appendChild(noNotif);
+
+        return;
+    } else {
+        bellButton.setAttribute("data-count", unreadBeachIds.length);
+    }
+
+    const allBeaches = await fetchAllBeaches();
+
+    unreadBeachIds.forEach(beachId => {
+        const beachDoc = allBeaches.find(doc => doc.name.split("/").pop() === beachId);
+        if (!beachDoc) return;
+
+        const fields = beachDoc.fields;
+        const name = fields?.beachName?.stringValue || "Playa desconocida";
+        const image = fields?.imageURL?.stringValue || "/src/Images/default-beach.jpg";
+
+        const lat = fields?.LAT?.stringValue?.replace(",", ".") || "0";
+        const lon = fields?.LOG?.stringValue?.replace(",", ".") || "0";
+
+        const notificationLink = document.createElement("a");
+        notificationLink.href = `../HTML/moreinfoPageTool.html?id=${beachId}&lat=${lat}&lon=-${lon}`;
+        notificationLink.className = "notification-item";
+        notificationLink.style.display = "flex";
+        notificationLink.style.alignItems = "center";
+        notificationLink.style.gap = "10px";
+        notificationLink.style.textDecoration = "none";
+        notificationLink.style.color = "inherit";
+
+        const img = document.createElement("img");
+        img.src = image;
+        img.alt = name;
+        img.style.width = "40px";
+        img.style.height = "40px";
+        img.style.objectFit = "cover";
+        img.style.borderRadius = "8px";
+
+        const text = document.createElement("span");
+        text.textContent = `💬 Nuevos comentarios en ${name}`;
+
+        notificationLink.appendChild(img);
+        notificationLink.appendChild(text);
+        dropdown.appendChild(notificationLink);
+    });
+}
+
 // ---------------------- INTERFAZ DOM ----------------------
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -253,11 +483,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (user && (user.emailVerified || esProveedorGoogle(user))) {
             asideButtons.querySelectorAll("a").forEach(a => a.style.display = "none");
             cuentaContainer.style.display = "flex";
+
+            await populateNotificationDropdown();
+
             const bell = document.getElementById('bell');
             const dropdown = document.getElementById('notifications');
 
             if (bell && dropdown) {
-                bell.addEventListener('click', () => {
+                bell.addEventListener('click', async () => {
+                    await populateNotificationDropdown();
                     dropdown.classList.toggle('active');
                 });
 
@@ -514,138 +748,7 @@ async function downloadFavourite(uid) {
     }
 }
 
-//----------------------- COMENTARIOS ------------------------
 
-async function addComment(beachId, commentData) {
-    try {
-        const { text, owner, fish, uid } = commentData;
-
-        if (!beachId || !text || !owner || !uid) {
-            throw new Error("beachId, comentarioTexto, ownerEmail y uid son obligatorios");
-        }
-        beachId=beachId.trim();
-
-        const comentariosRef = db.collection("forums").doc(beachId).collection("comments");
-
-        await comentariosRef.add({
-            text,
-            date: firebase.firestore.FieldValue.serverTimestamp(),
-            owner,
-            fish: fish || []
-        });
-
-        console.log(`✅ Comentario añadido en foro ${beachId}`);
-
-    } catch (error) {
-        console.error(`❌ Error al añadir comentario en ${beachId}:`, error);
-    }
-}
-
-
-async function loadComments(beachId, currentUserUid) {
-    if (!beachId || !currentUserUid) {
-        throw new Error("beachId y currentUserUid son obligatorios");
-    }
-    beachId=beachId.trim();
-    console.log(typeof beachId);
-    console.log(`ET${beachId}TE`);
-
-    const beachDocRef = db.collection("forums").doc(beachId);
-    const commentsRef = beachDocRef.collection("comments");
-
-    try {
-        // 1. Obtener comentarios ordenados por fecha
-        const commentsSnapshot = await commentsRef.orderBy("date", "asc").get();
-
-        const comments = commentsSnapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data()
-        }));
-
-        // 2. Leer el documento de la playa para obtener el array de readers
-        const beachDoc = await beachDocRef.get();
-
-        let readers = [];
-        if (beachDoc.exists) {
-            readers = beachDoc.data().readers || [];
-        }
-
-        // 3. Añadir UID a readers si no está
-        if (!readers.includes(currentUserUid)) {
-            readers.push(currentUserUid);
-            await beachDocRef.set({ readers }, { merge: true });
-            console.log(`UID ${currentUserUid} añadido a readers de la playa ${beachId}`);
-        }
-
-        return comments;
-
-    } catch (error) {
-        console.error("Error cargando comentarios y actualizando readers:", error);
-        throw error;
-    }
-}
-
-
-async function deleteCommentById(beachId, commentId) {
-    if (!beachId || !commentId) {
-        console.warn("No se proporcionó un ID de playa o comentario para eliminar.");
-        return;
-    }
-    beachId=beachId.trim();
-
-    try {
-        await db
-            .collection("forums")
-            .doc(beachId)
-            .collection("comments")
-            .doc(commentId)
-            .delete();
-
-        console.log(`✅ Comentario ${commentId} eliminado de forum ${beachId}`);
-    } catch (error) {
-        console.error("Error eliminando comentario:", error);
-    }
-}
-
-
-/**
- * Comprueba si un usuario tiene comentarios sin leer en una playa.
- * Según tu modelo, un usuario está al día si su uid figura en `forums/{beachId}.readers`.
- *
- * @param {string} uid
- * @param {string} beachId
- * @returns {Promise<boolean>} true = hay comentarios sin leer
- */
-async function hasUnreadComments(uid, beachId) {
-    if (!uid || beachId === undefined || beachId === null) {
-        throw new Error("UID y beachId son obligatorios");
-    }
-
-    const forumRef = db.collection("forums").doc(String(beachId));
-
-    try {
-        const snap = await forumRef.get();
-        if (!snap.exists) {
-            console.log(`ℹ️ Foro ${beachId} no existe, asumo cero comentarios → todo leído.`);
-            return false;
-        }
-
-        const readers = Array.isArray(snap.data().readers)
-            ? snap.data().readers
-            : [];
-
-        const unread = !readers.includes(uid);
-        console.log(
-            unread
-                ? `📌 Usuario ${uid} tiene comentarios sin leer en ${beachId}`
-                : `✅ Usuario ${uid} ya leyó todos en ${beachId}`
-        );
-        return unread;
-    } catch (e) {
-        console.error(`❌ Error comprobando unread en ${beachId}:`, e);
-        return false;
-    }
-}
 
 // ---------------------- EXPORTACIONES ----------------------
 

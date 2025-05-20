@@ -15,7 +15,7 @@
         <a href="../HTML/form.html?view=login"> <button class="homeHeader-button" id="iniciarSesion">Iniciar sesión</button></a>
         <div id="cuenta-container" style="display: none; position: relative;">
             <div class="notification-container">
-                <button id="bell" data-count="3" title="Notificaciones"
+                <button id="bell" data-count="0" title="Notificaciones"
                     style="cursor: pointer; background: none; border: none; padding: 0; margin-left:4em;">
                     <img src="/src/Images/campana.png" alt="Notificaciones" class="icon">
                 </button>
@@ -40,9 +40,3 @@
     </div>
 </header>
 </body>
-
-<script>
-    document.getElementById("bell").addEventListener("click", () => {
-        populateNotificationDropdown();
-    });
-</script>
