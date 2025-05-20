@@ -523,33 +523,32 @@ async function addComment(beachId, commentData) {
         if (!beachId || !text || !owner || !uid) {
             throw new Error("beachId, comentarioTexto, ownerEmail y uid son obligatorios");
         }
+        beachId=beachId.trim();
 
         const comentariosRef = db.collection("forums").doc(beachId).collection("comments");
 
-        // Añadir comentario
         await comentariosRef.add({
-            text: text,
+            text,
             date: firebase.firestore.FieldValue.serverTimestamp(),
-            owner: owner,
+            owner,
             fish: fish || []
         });
 
-        // Asegurar que el documento de la playa existe y añadir el UID como único lector
-        const beachDocRef = db.collection("forums").doc(beachId);
-        await beachDocRef.set({
-            readers: [uid]
-        }, { merge: true });
+        console.log(`✅ Comentario añadido en foro ${beachId}`);
 
-        console.log(`✅ Comentario añadido y lectores actualizados para la playa ${beachId}`);
     } catch (error) {
-        console.error(`❌ Error al añadir comentario: ${error.message}`);
+        console.error(`❌ Error al añadir comentario en ${beachId}:`, error);
     }
 }
+
 
 async function loadComments(beachId, currentUserUid) {
     if (!beachId || !currentUserUid) {
         throw new Error("beachId y currentUserUid son obligatorios");
     }
+    beachId=beachId.trim();
+    console.log(typeof beachId);
+    console.log(`ET${beachId}TE`);
 
     const beachDocRef = db.collection("forums").doc(beachId);
     const commentsRef = beachDocRef.collection("comments");
@@ -558,7 +557,6 @@ async function loadComments(beachId, currentUserUid) {
         // 1. Obtener comentarios ordenados por fecha
         const commentsSnapshot = await commentsRef.orderBy("date", "asc").get();
 
-        // Transformar snapshot a array de comentarios
         const comments = commentsSnapshot.docs.map(doc => ({
             id: doc.id,
             ...doc.data()
@@ -587,11 +585,13 @@ async function loadComments(beachId, currentUserUid) {
     }
 }
 
+
 async function deleteCommentById(beachId, commentId) {
     if (!beachId || !commentId) {
         console.warn("No se proporcionó un ID de playa o comentario para eliminar.");
         return;
     }
+    beachId=beachId.trim();
 
     try {
         await db
@@ -607,59 +607,44 @@ async function deleteCommentById(beachId, commentId) {
     }
 }
 
-async function hasUnreadComments(beachId) {
-    const userUid = localStorage.getItem("uid");
-    if (!userUid || !beachId) {
-        console.warn("Falta el UID o el ID de la playa.");
-        return false;
+
+/**
+ * Comprueba si un usuario tiene comentarios sin leer en una playa.
+ * Según tu modelo, un usuario está al día si su uid figura en `forums/{beachId}.readers`.
+ *
+ * @param {string} uid
+ * @param {string} beachId
+ * @returns {Promise<boolean>} true = hay comentarios sin leer
+ */
+async function hasUnreadComments(uid, beachId) {
+    if (!uid || beachId === undefined || beachId === null) {
+        throw new Error("UID y beachId son obligatorios");
     }
+
+    const forumRef = db.collection("forums").doc(String(beachId));
 
     try {
-        const commentsRef = collection(db, "beaches", beachId, "comments");
-        const snapshot = await getDocs(commentsRef);
-
-        for (const doc of snapshot.docs) {
-            const data = doc.data();
-            const readers = data.readers || [];
-
-            if (!readers.includes(userUid)) {
-                return true;
-            }
+        const snap = await forumRef.get();
+        if (!snap.exists) {
+            console.log(`ℹ️ Foro ${beachId} no existe, asumo cero comentarios → todo leído.`);
+            return false;
         }
 
+        const readers = Array.isArray(snap.data().readers)
+            ? snap.data().readers
+            : [];
+
+        const unread = !readers.includes(uid);
+        console.log(
+            unread
+                ? `📌 Usuario ${uid} tiene comentarios sin leer en ${beachId}`
+                : `✅ Usuario ${uid} ya leyó todos en ${beachId}`
+        );
+        return unread;
+    } catch (e) {
+        console.error(`❌ Error comprobando unread en ${beachId}:`, e);
         return false;
-    } catch (error) {
-        console.error("Error verificando comentarios no leídos:", error);
-        return false;
     }
-}
-
-async function getFavoriteBeachesWithUnreadComments() {
-    const uid = localStorage.getItem("uid");
-    if (!uid) {
-        console.warn("UID no disponible.");
-        return [];
-    }
-
-    const localKey = `favoritos_${uid}`;
-    const favoritosString = localStorage.getItem(localKey);
-
-    if (!favoritosString) {
-        console.warn("No se encontraron favoritos en localStorage.");
-        return [];
-    }
-
-    const favoritos = JSON.parse(favoritosString); // Array de IDs de playas
-    const playasConComentariosNoLeidos = [];
-
-    for (const beachId of favoritos) {
-        const tieneNoLeidos = await hasUnreadComments(beachId);
-        if (tieneNoLeidos) {
-            playasConComentariosNoLeidos.push(beachId);
-        }
-    }
-
-    return playasConComentariosNoLeidos;
 }
 
 // ---------------------- EXPORTACIONES ----------------------
