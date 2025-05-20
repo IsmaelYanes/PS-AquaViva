@@ -21,9 +21,7 @@
                 </button>
                 <div class="notifications-dropdown" id="notifications">
                     <div class="arrow-up"></div>
-                    <div class="notification-item"><span class="notification-icon">📌</span> Tienes una nueva tarea pendiente</div>
-                    <div class="notification-item"><span class="notification-icon">💬</span> Nuevo mensaje en el chat</div>
-                    <div class="notification-item"><span class="notification-icon">✅</span> Solicitud aprobada</div>
+
                 </div>
             </div>
             <button id="cuenta" title="Cuenta"
@@ -42,4 +40,8 @@
     </div>
 </header>
 </body>
-
+<script>
+    document.getElementById("bell").addEventListener("click", () => {
+        populateNotificationDropdown();
+    });
+</script>

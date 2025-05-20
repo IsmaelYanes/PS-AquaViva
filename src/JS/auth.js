@@ -633,6 +633,35 @@ async function hasUnreadComments(beachId) {
         return false;
     }
 }
+
+async function getFavoriteBeachesWithUnreadComments() {
+    const uid = localStorage.getItem("uid");
+    if (!uid) {
+        console.warn("UID no disponible.");
+        return [];
+    }
+
+    const localKey = `favoritos_${uid}`;
+    const favoritosString = localStorage.getItem(localKey);
+
+    if (!favoritosString) {
+        console.warn("No se encontraron favoritos en localStorage.");
+        return [];
+    }
+
+    const favoritos = JSON.parse(favoritosString); // Array de IDs de playas
+    const playasConComentariosNoLeidos = [];
+
+    for (const beachId of favoritos) {
+        const tieneNoLeidos = await hasUnreadComments(beachId);
+        if (tieneNoLeidos) {
+            playasConComentariosNoLeidos.push(beachId);
+        }
+    }
+
+    return playasConComentariosNoLeidos;
+}
+
 // ---------------------- EXPORTACIONES ----------------------
 
 window.socialSignIn = iniciarSesionConGoogle;
