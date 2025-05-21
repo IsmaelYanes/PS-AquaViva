@@ -1,7 +1,7 @@
 let allFish = [];
 let selectedFish = [];
 
-function initBeach() {
+async function initBeach() {
     const urlParams = new URLSearchParams(window.location.search);
     const beachId = urlParams.get("id");
 
@@ -23,9 +23,17 @@ function initBeach() {
     // --- NUEVO: Inicializa el buscador de peces ---
     initFishAutocomplete();
 
-    //Ver comentarios
+    // Ver comentarios
     showCommentsWithFishImages();
 
+    // --- NUEVO: Oculta sección de añadir comentario si no hay usuario autenticado ---
+    const isAuthenticated = await comprobarUsuario();
+    if (!isAuthenticated) {
+        const addCommentSection = document.querySelector('.add-comment');
+        if (addCommentSection) {
+            addCommentSection.style.display = 'none';
+        }
+    }
 }
 
 async function loadFishData() {
@@ -183,14 +191,15 @@ async function showCommentsWithFishImages() {
     const urlParams = new URLSearchParams(window.location.search);
     const beachId = urlParams.get("id");
     const currentUserUid = localStorage.getItem("uid");
-    const currentUserEmail = localStorage.getItem("email"); // asumimos que guardas el email en localStorage
+    const currentUserEmail = localStorage.getItem("email");
 
-    if (!beachId || !currentUserUid || !currentUserEmail) {
-        console.warn("No se pudo obtener beachId, UID o email de usuario");
+    if (!beachId) {
+        console.warn("No se pudo obtener beachId");
         return;
     }
 
     try {
+        // Cargar comentarios con o sin UID
         let comments = await loadComments(beachId, currentUserUid);
 
         // Ordenar comentarios más recientes primero
@@ -238,7 +247,8 @@ async function showCommentsWithFishImages() {
             ownerEmailSpan.textContent = comment.owner;
             ownerContainer.appendChild(ownerEmailSpan);
 
-            if (comment.owner === currentUserEmail) {
+            // Solo mostrar ícono de eliminar si el email actual coincide
+            if (currentUserEmail && comment.owner === currentUserEmail) {
                 const trashIcon = document.createElement("img");
                 trashIcon.src = "../Images/icono-papelera.png";
                 trashIcon.alt = "Eliminar comentario";
@@ -258,18 +268,14 @@ async function showCommentsWithFishImages() {
             textEl.textContent = comment.text;
 
             if (hasSingleFish) {
-                // Para single fish, crear wrapper para propietario+texto
                 const textOwnerWrapper = document.createElement("div");
                 textOwnerWrapper.className = "comment-text-owner-wrapper";
-
                 textOwnerWrapper.appendChild(ownerContainer);
                 textOwnerWrapper.appendChild(textEl);
 
-                // Orden: imagen (izq) + wrapper (der)
                 li.appendChild(fishImagesContainer);
                 li.appendChild(textOwnerWrapper);
             } else {
-                // Para varios o sin peces: apilar vertical
                 li.appendChild(ownerContainer);
                 li.appendChild(textEl);
                 li.appendChild(fishImagesContainer);
@@ -366,7 +372,6 @@ function mostrarDetallesPlaya(fields) {
     document.getElementById("beachImage").src = fields.imageURL?.stringValue || "https://via.placeholder.com/300";
 }
 
-
 function mostrarRecomendaciones(jsonURL) {
     console.log("ejecuta recomendaciones");
     getDataJson(jsonURL);
@@ -390,7 +395,6 @@ function mostrarRecomendaciones(jsonURL) {
         });
     }
 }
-
 
 function getRecomendation(uvIndex) {
     if (uvIndex <= 2) {

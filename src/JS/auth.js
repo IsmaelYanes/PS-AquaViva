@@ -269,11 +269,12 @@ async function addComment(beachId, commentData) {
     }
 }
 
-async function loadComments(beachId, currentUserUid) {
-    if (!beachId || !currentUserUid) {
-        throw new Error("beachId y currentUserUid son obligatorios");
+async function loadComments(beachId, currentUserUid = null) {
+    if (!beachId) {
+        throw new Error("beachId es obligatorio");
     }
-    beachId=beachId.trim();
+
+    beachId = beachId.trim();
     console.log(typeof beachId);
     console.log(`ET${beachId}TE`);
 
@@ -297,8 +298,8 @@ async function loadComments(beachId, currentUserUid) {
             readers = beachDoc.data().readers || [];
         }
 
-        // 3. Añadir UID a readers si no está
-        if (!readers.includes(currentUserUid)) {
+        // 3. Añadir UID a readers solo si existe y no está ya
+        if (currentUserUid && !readers.includes(currentUserUid)) {
             readers.push(currentUserUid);
             await beachDocRef.set({ readers }, { merge: true });
             console.log(`UID ${currentUserUid} añadido a readers de la playa ${beachId}`);
@@ -757,8 +758,6 @@ async function downloadFavourite(uid) {
         console.error(`❌ Error al cargar favoritos: ${error.message}`);
     }
 }
-
-
 
 // ---------------------- EXPORTACIONES ----------------------
 
