@@ -33,7 +33,6 @@ function detectSourceAndLoad() {
         defaultPage = `../HTML-components/mainWeather.html?lat=${lat}&lon=${lon}`;
         document.getElementById('services').style.display = 'none';
         document.getElementById('services-link').style.display = 'none';
-        document.getElementById('services-br').style.display = 'none';
         loadTemplate(defaultPage, document.getElementById('weather'), initWeather);
         loadTemplate('../HTML-components/dynamicSwell.html', document.getElementById('swell'), initializeSwellPage);
         loadTemplate('../HTML-components/wave.html', document.getElementById('tide'), initWavePage);
