@@ -24,11 +24,11 @@ Facilitar el acceso a datos fiables del estado del mar para mejorar la seguridad
 
 ### 👨‍💻 Equipo de desarrollo
 
-- Zuleima Hernández Hernández  
-- Wei Li  
-- Aythami Pérez Vega  
-- Ismael Pérez Yanes  
-- Eva Yuan Robaina Navarro
+- [Zuleima Hernández Hernández](https://github.com/ZuliiHdez)  
+- [Wei Li](https://github.com/WeeiLee)  
+- [Aythami Pérez Vega](https://github.com/AythamiPV)  
+- [Ismael Pérez Yanes](https://github.com/IsmaelYanes)  
+- [Eva Yuan Robaina Navarro](https://github.com/Evaay)
 
 ---
 
